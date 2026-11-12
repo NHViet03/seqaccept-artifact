@@ -1,0 +1,31 @@
+# Secrets: never commit these.
+.env
+.env.*
+
+# Python environment and caches
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+
+# Run logs, block checkpoints and the job ledger (re-created by the scripts).
+# The execution-order blocks are data for exec_order.py analyze and stay.
+runs/*
+!runs/exec_order/
+
+# Superseded results and the unused B7 variant (not part of the paper)
+archive/
+*@b7*
+
+# Output of paper_numbers.py (set SEQACCEPT_PAPER_DIR to write elsewhere)
+paper_out/
+
+# Notes, plans, manuscript sources: not part of the artifact. Only the README is kept.
+*.md
+!/README.md
+*.tex
+*.bib
+*.pdf
+*.log
+*.bak*

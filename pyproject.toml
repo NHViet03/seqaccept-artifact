@@ -1,0 +1,15 @@
+[project]
+name = "seqaccept-pilot"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = ["matplotlib"]
+
+[dependency-groups]
+dev = ["pytest"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[project.optional-dependencies]
+llm = ["openai"]

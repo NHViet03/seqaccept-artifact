@@ -1,0 +1,22 @@
+{
+ "slug": "ecshackweek_impedance_py_d1019c16",
+ "url": "https://github.com/ECSHackWeek/impedance.py",
+ "sha": "d1019c161be9e967ae227117b72acae4351e198f",
+ "kinds": "OD",
+ "idoft_tests": 2,
+ "tests": [
+  "impedance/tests/test_circuit_elements.py::test_each_element",
+  "impedance/tests/test_circuit_elements.py::test_element_function_names"
+ ],
+ "image": "seqaccept-screen/ecshackweek_impedance_py_d1019c16:1",
+ "screened_at": "2026-10-24T22:47:03+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 1,
+ "seconds_per_block": 0.8572133958514314,
+ "failing_tests": [],
+ "missing_modules": [
+  "pandas"
+ ],
+ "p0_estimate": 1,
+ "verdict": "tests need uninstalled modules"
+}

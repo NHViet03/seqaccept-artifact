@@ -1,0 +1,15 @@
+{
+ "slug": "eillarra_carbonize_891d1d07",
+ "url": "https://github.com/eillarra/carbonize",
+ "sha": "891d1d07ca2e9cc48ca5b609da292dce2e574c7e",
+ "kinds": "OD",
+ "idoft_tests": 2,
+ "tests": [
+  "test_api.py::TestFootprint::test_flight?",
+  "test_api.py::TestFootprint::test_flight_two_way?"
+ ],
+ "image": "seqaccept-screen/eillarra_carbonize_891d1d07:1",
+ "screened_at": "2026-10-24T22:47:20+00:00",
+ "verdict": "build failed",
+ "detail": "eqaccept/base:1\n   3 | >>> RUN git clone -q https://github.com/eillarra/carbonize /repo && git -C /repo checkout -q 891d1d07ca2e9cc48ca5b609da292dce2e574c7e\n   4 |     WORKDIR /repo\n   5 |     RUN pip install --no-cache-dir -e . || true\n--------------------\nERROR: failed to build: failed to solve: process \"/bin/sh -c git clone -q https://github.com/eillarra/carbonize /repo && git -C /repo checkout -q 891d1d07ca2e9cc48ca5b609da292dce2e574c7e\" did not complete successfully: exit code: 128\n\nView build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/zqtlkyt2gmq98legwn3di3lta\n"
+}

@@ -1,0 +1,29 @@
+{
+ "slug": "django_beam_django_beam_43b2111f",
+ "url": "https://github.com/django-beam/django-beam",
+ "sha": "43b2111f5c65937aa1e2cc9704b59796e982a805",
+ "kinds": "NOD",
+ "idoft_tests": 11,
+ "tests": [
+  "tests/test_contrib_reversion.py::test_revision_is_visible_in_list",
+  "tests/test_contrib_reversion.py::test_show_detail_from_previous_version",
+  "tests/test_views.py::test_delete",
+  "tests/test_views.py::test_delete_protected_not_allowed",
+  "tests/test_views.py::test_delete_shows_related",
+  "tests/test_views.py::test_detail",
+  "tests/test_views.py::test_list",
+  "tests/test_views.py::test_list_search",
+  "tests/test_views.py::test_list_sort",
+  "tests/test_views.py::test_only_popup_param_is_preserved_in_detail_links",
+  "tests/test_views.py::test_update"
+ ],
+ "image": "seqaccept-screen/django_beam_django_beam_43b2111f:1",
+ "screened_at": "2026-10-24T22:42:01+00:00",
+ "flaky_rate": 0,
+ "default_order_failed": 0,
+ "seconds_per_block": 1.583178770847735,
+ "failing_tests": [],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "flake not reproduced"
+}

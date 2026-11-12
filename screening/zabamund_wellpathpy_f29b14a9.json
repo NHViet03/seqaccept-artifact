@@ -1,0 +1,23 @@
+{
+ "slug": "zabamund_wellpathpy_f29b14a9",
+ "url": "https://github.com/Zabamund/wellpathpy",
+ "sha": "f29b14a9a1c46e77ea98b141e3cdc43674654ea2",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "wellpathpy/test/test_location.py::test_wellhead"
+ ],
+ "image": "seqaccept-screen/zabamund_wellpathpy_f29b14a9:1",
+ "screened_at": "2026-10-24T23:04:27+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 1,
+ "seconds_per_block": 1.5781395376397995,
+ "failing_tests": [
+  "wellpathpy/test/test_location.py::test_tvdss",
+  "wellpathpy/test/test_location.py::test_wellhead",
+  "wellpathpy/test/test_location.py::test_zero"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 1,
+ "verdict": "p0 > 0.05 without the flaky tests"
+}

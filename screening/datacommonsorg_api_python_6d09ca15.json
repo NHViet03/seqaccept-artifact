@@ -1,0 +1,23 @@
+{
+ "slug": "datacommonsorg_api_python_6d09ca15",
+ "url": "https://github.com/datacommonsorg/api-python",
+ "sha": "6d09ca1557da0af893f008f7302801f12afc2d46",
+ "kinds": "OD",
+ "idoft_tests": 2,
+ "tests": [
+  "datacommons/test/set_api_key_test.py::TestApiKey::test_query_no_api_key",
+  "datacommons/test/set_api_key_test.py::TestApiKey::test_send_request_no_api_key"
+ ],
+ "image": "seqaccept-screen/datacommonsorg_api_python_6d09ca15:1",
+ "screened_at": "2026-10-24T22:46:28+00:00",
+ "flaky_rate": 0.9,
+ "default_order_failed": 1,
+ "seconds_per_block": 0.3628008938481798,
+ "failing_tests": [
+  "datacommons/test/set_api_key_test.py::TestApiKey::test_query_no_api_key",
+  "datacommons/test/set_api_key_test.py::TestApiKey::test_send_request_no_api_key"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "candidate"
+}

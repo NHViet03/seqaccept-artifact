@@ -1,0 +1,23 @@
+{
+ "slug": "fooof_tools_fooof_14d6196e",
+ "url": "https://github.com/fooof-tools/fooof",
+ "sha": "14d6196e0b60c7e6da95b5cf858b20adcc5fc0ac",
+ "kinds": "NOD",
+ "idoft_tests": 1,
+ "tests": [
+  "fooof/tests/utils/test_download.py::test_check_data_file"
+ ],
+ "image": "seqaccept-screen/fooof_tools_fooof_14d6196e:1",
+ "screened_at": "2026-10-24T22:55:13+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 1,
+ "seconds_per_block": 1.4063009438512382,
+ "failing_tests": [
+  "fooof/tests/utils/test_download.py::test_check_data_file",
+  "fooof/tests/utils/test_download.py::test_fetch_fooof_data",
+  "fooof/tests/utils/test_download.py::test_load_fooof_data"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 1,
+ "verdict": "p0 > 0.05 without the flaky tests"
+}

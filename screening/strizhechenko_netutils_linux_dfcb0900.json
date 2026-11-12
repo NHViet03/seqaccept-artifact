@@ -1,0 +1,21 @@
+{
+ "slug": "strizhechenko_netutils_linux_dfcb0900",
+ "url": "https://github.com/strizhechenko/netutils-linux",
+ "sha": "dfcb0900ffffa3020656338bbab123f6da00a168",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "netutils_linux_tuning/test_rx_buffers.py::RxBuffersTuneTest::test_all"
+ ],
+ "image": "seqaccept-screen/strizhechenko_netutils_linux_dfcb0900:1",
+ "screened_at": "2026-10-24T23:02:58+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 1,
+ "seconds_per_block": 0.9682479146373225,
+ "failing_tests": [
+  "netutils_linux_tuning/test_rx_buffers.py::RxBuffersTuneTest::test_all"
+ ],
+ "missing_modules": [],
+ "p0_estimate": null,
+ "verdict": "no tests left without the flaky ones"
+}

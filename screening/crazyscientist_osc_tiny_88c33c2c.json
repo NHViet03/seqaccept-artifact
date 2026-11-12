@@ -1,0 +1,21 @@
+{
+ "slug": "crazyscientist_osc_tiny_88c33c2c",
+ "url": "https://github.com/crazyscientist/osc-tiny",
+ "sha": "88c33c2c7f73ea26067e1bb4190bab5dc298dd85",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "osctiny/tests/test_issues.py::TestIssue::test_get"
+ ],
+ "image": "seqaccept-screen/crazyscientist_osc_tiny_88c33c2c:1",
+ "screened_at": "2026-10-24T22:54:00+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 1,
+ "seconds_per_block": 0.8463413729565218,
+ "failing_tests": [],
+ "missing_modules": [
+  "lxml"
+ ],
+ "p0_estimate": 1,
+ "verdict": "tests need uninstalled modules"
+}

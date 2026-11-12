@@ -1,0 +1,17 @@
+{
+ "slug": "dowjones_tokendito_f5d8e517",
+ "url": "https://github.com/dowjones/tokendito",
+ "sha": "f5d8e5171ddcca0c62925263ddb80535f51aded3",
+ "kinds": "NOD+OD",
+ "idoft_tests": 4,
+ "tests": [
+  "tests/functional_test.py::test_package_exists",
+  "tests/functional_test.py::test_version[runnable2]",
+  "tests/unit_test.py::test_set_okta_password",
+  "tests/unit_test.py::test_set_okta_username"
+ ],
+ "image": "seqaccept-screen/dowjones_tokendito_f5d8e517:1",
+ "screened_at": "2026-10-24T22:39:24+00:00",
+ "verdict": "tests do not run",
+ "detail": "docker/pytest exit code 4: gin: helpconfig, Hook: pytest_cmdline_parse\nConftestImportFailure: ModuleNotFoundError: No module named 'future' (from /repo/tests/conftest.py)\nFor more information see https://pluggy.readthedocs.io/en/stable/api_reference.html#pluggy.PluggyTeardownRaisedWarning\n  config = pluginmanager.hook.pytest_cmdline_parse(\nImportError while loading conftest '/repo/tests/conftest.py'.\ntests/conftest.py:7: in <module>\n    from future import standard_library\nE   ModuleNotFoundError: No module named 'future'\n"
+}

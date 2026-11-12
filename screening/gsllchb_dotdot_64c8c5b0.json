@@ -1,0 +1,27 @@
+{
+ "slug": "gsllchb_dotdot_64c8c5b0",
+ "url": "https://github.com/Gsllchb/DotDot",
+ "sha": "64c8c5b0523211f243eef5dc6ea7c22dec5383cc",
+ "kinds": "OD",
+ "idoft_tests": 4,
+ "tests": [
+  "tests/test_dot.py::test_dot",
+  "tests/test_dotdot.py::test_dotdot",
+  "tests/test_dotdotdot.py::test_dotdotdot",
+  "tests/test_dotdotdotdot.py::test_dotdotdotdot"
+ ],
+ "image": "seqaccept-screen/gsllchb_dotdot_64c8c5b0:1",
+ "screened_at": "2026-10-24T22:45:16+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 1,
+ "seconds_per_block": 0.33734062930452635,
+ "failing_tests": [
+  "tests/test_dot.py::test_dot",
+  "tests/test_dotdot.py::test_dotdot",
+  "tests/test_dotdotdot.py::test_dotdotdot",
+  "tests/test_dotdotdotdot.py::test_dotdotdotdot"
+ ],
+ "missing_modules": [],
+ "p0_estimate": null,
+ "verdict": "no tests left without the flaky ones"
+}

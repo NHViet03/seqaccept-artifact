@@ -1,0 +1,25 @@
+{
+ "slug": "devkeh_redisqueue_feac4dfc",
+ "url": "https://github.com/DevKeh/redisqueue",
+ "sha": "feac4dfc30837e0ab1a55a8479443ea74b2793f2",
+ "kinds": "OD",
+ "idoft_tests": 3,
+ "tests": [
+  "tests/test_redisqueue.py::test_mock_queue_get_put_same_task",
+  "tests/test_redisqueue.py::test_mock_queue_put_get",
+  "tests/test_redisqueue.py::test_mock_queue_unique"
+ ],
+ "image": "seqaccept-screen/devkeh_redisqueue_feac4dfc:1",
+ "screened_at": "2026-10-24T22:45:49+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 0,
+ "seconds_per_block": 0.3902424959494965,
+ "failing_tests": [
+  "tests/test_redisqueue.py::test_mock_queue_get_put_same_task",
+  "tests/test_redisqueue.py::test_mock_queue_put_get",
+  "tests/test_redisqueue.py::test_mock_queue_unique"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "candidate"
+}

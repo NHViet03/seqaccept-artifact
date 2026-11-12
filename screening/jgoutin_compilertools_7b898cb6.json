@@ -1,0 +1,15 @@
+{
+ "slug": "jgoutin_compilertools_7b898cb6",
+ "url": "https://github.com/JGoutin/compilertools",
+ "sha": "7b898cb6970f5f25c5356b15a2efd0cb2e54d566",
+ "kinds": "OD",
+ "idoft_tests": 2,
+ "tests": [
+  "tests/test_build.py::tests_patch___new__",
+  "tests/test___init__.py::tests_init"
+ ],
+ "image": "seqaccept-screen/jgoutin_compilertools_7b898cb6:1",
+ "screened_at": "2026-10-24T22:48:02+00:00",
+ "verdict": "build failed",
+ "detail": "pt/base:1\n   3 | >>> RUN git clone -q https://github.com/JGoutin/compilertools /repo && git -C /repo checkout -q 7b898cb6970f5f25c5356b15a2efd0cb2e54d566\n   4 |     WORKDIR /repo\n   5 |     RUN pip install --no-cache-dir -e . || true\n--------------------\nERROR: failed to build: failed to solve: process \"/bin/sh -c git clone -q https://github.com/JGoutin/compilertools /repo && git -C /repo checkout -q 7b898cb6970f5f25c5356b15a2efd0cb2e54d566\" did not complete successfully: exit code: 128\n\nView build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/nciasl7ljd3j7ce19ofthawro\n"
+}

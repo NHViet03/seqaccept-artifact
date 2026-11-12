@@ -1,0 +1,19 @@
+{
+ "slug": "cornices_cornice_ext_swagger_17a63e86",
+ "url": "https://github.com/Cornices/cornice.ext.swagger",
+ "sha": "17a63e86751c7d8f1b2b75d49056161c80f4cef2",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/test_app.py::AppSpecViewTest::test_validate_spec"
+ ],
+ "image": "seqaccept-screen/cornices_cornice_ext_swagger_17a63e86:1",
+ "screened_at": "2026-10-24T22:53:54+00:00",
+ "flaky_rate": 0,
+ "default_order_failed": 0,
+ "seconds_per_block": 1.3495050957950299,
+ "failing_tests": [],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "flake not reproduced"
+}

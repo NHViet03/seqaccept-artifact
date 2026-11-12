@@ -1,0 +1,34 @@
+{
+ "slug": "pyfunceble_domain2idna_39a1c4e1",
+ "url": "https://github.com/PyFunceble/domain2idna",
+ "sha": "39a1c4e1ebb877ed511e53b618fbe437a685c970",
+ "kinds": "OD",
+ "idoft_tests": 12,
+ "tests": [
+  "tests/test_cli.py::TestCLI::test_domain",
+  "tests/test_cli.py::TestCLI::test_file",
+  "tests/test_converter.py::TestConverter::test_commented_line",
+  "tests/test_converter.py::TestConverter::test_hosts_file_format",
+  "tests/test_converter.py::TestConverter::test_to_idna_multiple",
+  "tests/test_converter.py::TestConverter::test_to_idna_multiple_urls",
+  "tests/test_converter.py::TestConverter::test_to_idna_single",
+  "tests/test_helpers.py::TestFile::test_delete_not_exist",
+  "tests/test_helpers.py::TestFile::test_read_delete",
+  "tests/test_helpers.py::TestFile::test_write_delete",
+  "tests/test_helpers.py::TestFile::test_write_overwrite_delete",
+  "tests/test_init.py::TestInit::test_get"
+ ],
+ "image": "seqaccept-screen/pyfunceble_domain2idna_39a1c4e1:1",
+ "screened_at": "2026-10-24T22:41:20+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 1,
+ "seconds_per_block": 0.37743545639095827,
+ "failing_tests": [
+  "tests/test_cli.py::TestCLI::test_domain_output",
+  "tests/test_cli.py::TestCLI::test_empty_domain",
+  "tests/test_cli.py::TestCLI::test_file_output"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 1,
+ "verdict": "p0 > 0.05 without the flaky tests"
+}

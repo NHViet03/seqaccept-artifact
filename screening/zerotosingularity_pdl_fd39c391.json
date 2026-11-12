@@ -1,0 +1,21 @@
+{
+ "slug": "zerotosingularity_pdl_fd39c391",
+ "url": "https://github.com/zerotosingularity/pdl",
+ "sha": "fd39c391101b3fe315631565a0f4eb7c99890789",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/test_pdl.py::test_no_archive_url"
+ ],
+ "image": "seqaccept-screen/zerotosingularity_pdl_fd39c391:1",
+ "screened_at": "2026-10-24T23:04:54+00:00",
+ "flaky_rate": 0.25,
+ "default_order_failed": 0,
+ "seconds_per_block": 1.2323459022474708,
+ "failing_tests": [
+  "tests/test_pdl.py::test_no_archive_url"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "candidate"
+}

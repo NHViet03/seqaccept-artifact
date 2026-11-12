@@ -1,0 +1,64 @@
+.FFF...                                                                  [100%]
+=================================== FAILURES ===================================
+________________________________ test_counters _________________________________
+
+cache_obj = <tests.test_class.MyApp object at 0xffffb4e63790>
+
+    def test_counters(cache_obj):
+        c.clear()
+        c._debug = True
+    
+        for _ in range(10):
+            cache_obj.test3(8, 2)
+    
+>       assert len(c.counters) == 1
+E       assert 0 == 1
+E        +  where 0 = len({})
+E        +    where {} = <yamicache.yamicache.Cache object at 0xffffb4be7cd0>.counters
+
+tests/test_class.py:120: AssertionError
+_________________________________ test_timeout _________________________________
+
+cache_obj = <tests.test_class.MyApp object at 0xffffb517f760>
+
+    def test_timeout(cache_obj):
+        c.clear()
+        c._debug = True
+    
+        cache_obj.test3(8, 2)
+        cache_obj.test3(8, 2)
+    
+        time.sleep(1)
+    
+        c.collect()
+>       assert len(c) == 1
+E       assert 0 == 1
+E        +  where 0 = len(<yamicache.yamicache.Cache object at 0xffffb4be7cd0>)
+
+tests/test_class.py:154: AssertionError
+_________________________________ test_prefix __________________________________
+
+cache_obj = <tests.test_class.MyApp object at 0xffffb4d33310>
+
+    def test_prefix(cache_obj):
+        c.clear()
+        cache_obj.test1(8, 0)
+>       key = list(c.keys())[0]
+E       IndexError: list index out of range
+
+tests/test_class.py:193: IndexError
+=============================== warnings summary ===============================
+yamicache/yamicache.py:77
+  /repo/yamicache/yamicache.py:77: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated since Python 3.3, and in 3.10 it will stop working
+    class Cache(collections.MutableMapping):
+
+tests/test_gc.py: 12 warnings
+  /repo/yamicache/yamicache.py:237: DeprecationWarning: inspect.getargspec() is deprecated since Python 3.0, use inspect.signature() or inspect.getfullargspec()
+    fargs, _, _, defaults = inspect.getargspec(func)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_class.py::test_counters - assert 0 == 1
+FAILED tests/test_class.py::test_timeout - assert 0 == 1
+FAILED tests/test_class.py::test_prefix - IndexError: list index out of range
+3 failed, 4 passed, 3 deselected, 13 warnings in 8.10s

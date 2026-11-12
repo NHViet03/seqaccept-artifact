@@ -1,0 +1,60 @@
+nTuple((add, 1, 1)), 1]
+test_output = ([ExpressionTuple((mul, 2, 1)), 1],)
+
+    @pytest.mark.parametrize(
+        "test_input, test_output",
+        [
+            ([], ()),
+            ([1], ()),
+            ([etuple(add, 1, 1),], ([etuple(mul, 2, 1)],)),
+            ([1, etuple(add, 1, 1)], ([1, etuple(mul, 2, 1)],)),
+            ([etuple(add, 1, 1), 1], ([etuple(mul, 2, 1), 1],)),
+            (
+                [etuple(mul, 2, 1), etuple(add, 1, 1), 1],
+                ([etuple(mul, 2, 1), etuple(mul, 2, 1), 1],),
+            ),
+            (
+                [etuple(add, 1, 1), etuple(log, etuple(exp, 5)),],
+                (
+                    [etuple(mul, 2, 1), 5],
+                    [etuple(add, 1, 1), 5],
+                    [etuple(mul, 2, 1), etuple(log, etuple(exp, 5))],
+                ),
+            ),
+        ],
+    )
+    def test_map_anyo(test_input, test_output):
+        """Test `map_anyo` with fully ground terms (i.e. no logic variables)."""
+        q_lv = var()
+        test_res = run(0, q_lv, map_anyo(math_reduceo, test_input, q_lv),)
+    
+>       assert len(test_res) == len(test_output)
+E       assert 0 == 1
+E        +  where 0 = len(())
+E        +  and   1 = len(([ExpressionTuple((mul, 2, 1)), 1],))
+
+tests/test_graph.py:266: AssertionError
+=============================== warnings summary ===============================
+tests/test_graph.py::test_walko_reverse
+tests/test_graph.py::test_walko_reverse
+  /repo/tests/test_graph.py:428: DeprecationWarning: `eval_obj` is deprecated; use `evaled_obj`.
+    assert all(e.eval_obj == 5.0 for e in test_res)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_assoccomm.py::test_assoccomm_algebra - assert () == ((3, 2),)
+FAILED tests/test_assoccomm.py::test_eq_assoc - RecursionError: maximum recur...
+FAILED tests/test_assoccomm.py::test_eq_comm - RecursionError: maximum recurs...
+FAILED tests/test_graph.py::test_map_anyo[test_input6-test_output6] - assert ...
+FAILED tests/test_graph.py::test_walko[test_input3-test_output3] - assert 0 == 4
+FAILED tests/test_graph.py::test_map_anyo_types - IndexError: tuple index out...
+FAILED tests/test_graph.py::test_map_anyo[test_input5-test_output5] - assert ...
+FAILED tests/test_graph.py::test_map_anyo_reverse - RecursionError: maximum r...
+FAILED tests/test_graph.py::test_walko_misc - assert 1 == 162
+FAILED tests/test_graph.py::test_map_anyo[test_input2-test_output2] - assert ...
+FAILED tests/test_graph.py::test_map_anyo[test_input3-test_output3] - assert ...
+FAILED tests/test_graph.py::test_walko[test_input2-test_output2] - assert 0 == 2
+FAILED tests/test_graph.py::test_map_anyo_misc - assert 0 == 7
+FAILED tests/test_graph.py::test_walko_reverse - RecursionError: maximum recu...
+FAILED tests/test_graph.py::test_map_anyo[test_input4-test_output4] - assert ...
+15 failed, 66 passed, 3 skipped, 1 deselected, 1 xfailed, 2 warnings in 40.27s

@@ -1,0 +1,21 @@
+{
+ "slug": "cesar_rodriguez_terrascan_fd4ca9d2",
+ "url": "https://github.com/cesar-rodriguez/terrascan",
+ "sha": "fd4ca9d23e694185fd5cb9ddf357b52b15adc6ca",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/test_terrascan.py::test_success"
+ ],
+ "image": "seqaccept-screen/cesar_rodriguez_terrascan_fd4ca9d2:1",
+ "screened_at": "2026-10-24T22:52:08+00:00",
+ "flaky_rate": 0.55,
+ "default_order_failed": 0,
+ "seconds_per_block": 3.692993049946381,
+ "failing_tests": [
+  "tests/test_terrascan.py::test_success"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "candidate"
+}

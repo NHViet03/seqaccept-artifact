@@ -1,0 +1,14 @@
+{
+ "slug": "osantana_prettyconf_issues_47_f278b6ac",
+ "url": "https://github.com/osantana/prettyconf/issues/47",
+ "sha": "f278b6ac6786f6ab8fe41ffacde0cc1e41cee207",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/test_commandline.py::test_ignores_not_set_values"
+ ],
+ "image": "seqaccept-screen/osantana_prettyconf_issues_47_f278b6ac:1",
+ "screened_at": "2026-10-24T22:58:27+00:00",
+ "verdict": "build failed",
+ "detail": " >>> RUN git clone -q https://github.com/osantana/prettyconf/issues/47 /repo && git -C /repo checkout -q f278b6ac6786f6ab8fe41ffacde0cc1e41cee207\n   4 |     WORKDIR /repo\n   5 |     RUN pip install --no-cache-dir -e . || true\n--------------------\nERROR: failed to build: failed to solve: process \"/bin/sh -c git clone -q https://github.com/osantana/prettyconf/issues/47 /repo && git -C /repo checkout -q f278b6ac6786f6ab8fe41ffacde0cc1e41cee207\" did not complete successfully: exit code: 128\n\nView build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/jggwv06suzyvli4rrg87cso2v\n"
+}

@@ -1,0 +1,14 @@
+{
+ "slug": "swstephe_py2jdbc_issues_8_515d06a4",
+ "url": "https://github.com/swstephe/py2jdbc/issues/8",
+ "sha": "515d06a48e54ca9f690f94fd795e49ba7758fcd4",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/test_dbi.py"
+ ],
+ "image": "seqaccept-screen/swstephe_py2jdbc_issues_8_515d06a4:1",
+ "screened_at": "2026-10-24T23:03:03+00:00",
+ "verdict": "build failed",
+ "detail": "1\n   3 | >>> RUN git clone -q https://github.com/swstephe/py2jdbc/issues/8 /repo && git -C /repo checkout -q 515d06a48e54ca9f690f94fd795e49ba7758fcd4\n   4 |     WORKDIR /repo\n   5 |     RUN pip install --no-cache-dir -e . || true\n--------------------\nERROR: failed to build: failed to solve: process \"/bin/sh -c git clone -q https://github.com/swstephe/py2jdbc/issues/8 /repo && git -C /repo checkout -q 515d06a48e54ca9f690f94fd795e49ba7758fcd4\" did not complete successfully: exit code: 128\n\nView build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/ar3ip0t9d7b6bs24xcetgf71t\n"
+}

@@ -1,0 +1,23 @@
+{
+ "slug": "econ_ark_hark_f18dc695",
+ "url": "https://github.com/econ-ark/HARK",
+ "sha": "f18dc69520db9e15d1d355e604ff712d38ce3d2b",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "HARK/ConsumptionSaving/tests/test_ConsAggShockModel.py::KrusellSmithAgentTestCase::test_agent"
+ ],
+ "image": "seqaccept-screen/econ_ark_hark_f18dc695:1",
+ "screened_at": "2026-10-24T22:54:50+00:00",
+ "flaky_rate": 0.85,
+ "default_order_failed": 0,
+ "seconds_per_block": 37.864185862595335,
+ "failing_tests": [
+  "HARK/ConsumptionSaving/tests/test_ConsAggShockModel.py::KrusellSmithAgentTestCase::test_agent",
+  "HARK/ConsumptionSaving/tests/test_ConsAggShockModel.py::KrusellSmithMethodsTestCase::test_methods",
+  "HARK/ConsumptionSaving/tests/test_ConsAggShockModel.py::testAggShockMarkovConsumerType::test_agent"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 0.65,
+ "verdict": "p0 > 0.05 without the flaky tests"
+}

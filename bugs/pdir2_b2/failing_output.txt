@@ -1,0 +1,66 @@
+ubclasshook__', '__delattr__', '__dir__', '__getattribute__', '__setattr__', '__init_subclass__', ...])
+
+tests/test_filters.py:85: AssertionError
+_____________________________ test_chained_filters _____________________________
+
+    def test_chained_filters():
+>       assert items_equal(
+            [p.name for p in pdir(inst).public.own.properties.pattrs],
+            [
+                'base_instance_variable',
+                'derived_class_variable',
+                'derived_instance_variable',
+            ],
+        )
+E       AssertionError: assert False
+E        +  where False = items_equal([], ['base_instance_variable', 'derived_class_variable', 'derived_instance_variable'])
+
+tests/test_filters.py:145: AssertionError
+________________________ test_order_of_chained_filters _________________________
+
+    def test_order_of_chained_filters():
+>       assert items_equal(
+            [p.name for p in pdir(inst).own.properties.public.pattrs],
+            [
+                'base_instance_variable',
+                'derived_class_variable',
+                'derived_instance_variable',
+            ],
+        )
+E       AssertionError: assert False
+E        +  where False = items_equal([], ['base_instance_variable', 'derived_class_variable', 'derived_instance_variable'])
+
+tests/test_filters.py:156: AssertionError
+_______________________________ test_properties ________________________________
+
+    def test_properties():
+>       assert items_equal(
+            [p.name for p in pdir(inst).properties.pattrs],
+            [
+                'base_class_variable',
+                'base_instance_variable',
+                'derived_class_variable',
+                'derived_instance_variable',
+                '__class__',
+                '__dict__',
+                '__doc__',
+                '__module__',
+                '__weakref__',
+            ],
+        )
+E       AssertionError: assert False
+E        +  where False = items_equal(['__class__', '__dict__', '__doc__', '__module__', '__weakref__'], ['base_class_variable', 'base_instance_variable', 'derived_class_variable', 'derived_instance_variable', '__class__', '__dict__', ...])
+
+tests/test_filters.py:46: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_slots.py::test_set_base - assert False
+FAILED tests/test_slots.py::test_set_derive - assert False
+FAILED tests/test_slots.py::test_not_set - assert False
+FAILED tests/test_buggy_attrs.py::test_descriptor - assert False
+FAILED tests/test_buggy_attrs.py::test_type - assert False
+FAILED tests/test_buggy_attrs.py::test_list - assert False
+FAILED tests/test_filters.py::test_methods - AssertionError: assert False
+FAILED tests/test_filters.py::test_chained_filters - AssertionError: assert F...
+FAILED tests/test_filters.py::test_order_of_chained_filters - AssertionError:...
+FAILED tests/test_filters.py::test_properties - AssertionError: assert False
+10 failed, 13 passed, 1 deselected, 1 xfailed in 0.16s

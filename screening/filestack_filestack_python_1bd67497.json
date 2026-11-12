@@ -1,0 +1,20 @@
+{
+ "slug": "filestack_filestack_python_1bd67497",
+ "url": "https://github.com/filestack/filestack-python",
+ "sha": "1bd6749735e5c78dde767e0685ddfdf0cd7423e2",
+ "kinds": "OD",
+ "idoft_tests": 2,
+ "tests": [
+  "tests/intelligent_ingestion_test.py::test_upload_part_success",
+  "tests/intelligent_ingestion_test.py::test_upload_part_with_resize"
+ ],
+ "image": "seqaccept-screen/filestack_filestack_python_1bd67497:1",
+ "screened_at": "2026-10-24T22:47:49+00:00",
+ "flaky_rate": 0.7,
+ "default_order_failed": 0,
+ "seconds_per_block": 0.5311893604055513,
+ "failing_tests": [],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "candidate"
+}

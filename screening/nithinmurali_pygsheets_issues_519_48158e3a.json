@@ -1,0 +1,14 @@
+{
+ "slug": "nithinmurali_pygsheets_issues_519_48158e3a",
+ "url": "https://github.com/nithinmurali/pygsheets/issues/519",
+ "sha": "48158e3a2c20d8b84a28b117ae1024bd4dedee08",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/online_test.py::TestGridRange::test_start_b_end_b;tests/online_test.py::TestGridRange::test_start_b_end_ub;and tests/online_test.py::TestCell::test_properties"
+ ],
+ "image": "seqaccept-screen/nithinmurali_pygsheets_issues_519_48158e3a:1",
+ "screened_at": "2026-10-24T22:58:26+00:00",
+ "verdict": "build failed",
+ "detail": " git clone -q https://github.com/nithinmurali/pygsheets/issues/519 /repo && git -C /repo checkout -q 48158e3a2c20d8b84a28b117ae1024bd4dedee08\n   4 |     WORKDIR /repo\n   5 |     RUN pip install --no-cache-dir -e . || true\n--------------------\nERROR: failed to build: failed to solve: process \"/bin/sh -c git clone -q https://github.com/nithinmurali/pygsheets/issues/519 /repo && git -C /repo checkout -q 48158e3a2c20d8b84a28b117ae1024bd4dedee08\" did not complete successfully: exit code: 128\n\nView build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/kwo83iopc4gki7shx38vmsgg1\n"
+}

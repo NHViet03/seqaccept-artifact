@@ -1,0 +1,14 @@
+{
+ "slug": "apache_beam_faae168f",
+ "url": "https://github.com/apache/beam",
+ "sha": "faae168fa34e97475df70b707f4df91c4946c6ca",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "sdks/python/apache_beam/runners/portability/portable_runner_test.py::PortableRunnerTest::test_assert_that"
+ ],
+ "image": "seqaccept-screen/apache_beam_faae168f:1",
+ "screened_at": "2026-10-24T22:49:58+00:00",
+ "verdict": "tests do not run",
+ "detail": "docker/pytest exit code 4: (\nImportError while loading conftest '/repo/sdks/python/conftest.py'.\nsdks/python/conftest.py:26: in <module>\n    from apache_beam.options import pipeline_options\nsdks/python/apache_beam/__init__.py:87: in <module>\n    from apache_beam import coders\nsdks/python/apache_beam/coders/__init__.py:17: in <module>\n    from apache_beam.coders.coders import *\nsdks/python/apache_beam/coders/coders.py:56: in <module>\n    import google.protobuf.wrappers_pb2\nE   ModuleNotFoundError: No module named 'google'\n"
+}

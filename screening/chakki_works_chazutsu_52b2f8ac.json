@@ -1,0 +1,14 @@
+{
+ "slug": "chakki_works_chazutsu_52b2f8ac",
+ "url": "https://github.com/chakki-works/chazutsu",
+ "sha": "52b2f8acaac1b6c7eab97dded1a1757d3adcefa7",
+ "kinds": "NOD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/test_movie_review.py::test_download"
+ ],
+ "image": "seqaccept-screen/chakki_works_chazutsu_52b2f8ac:1",
+ "screened_at": "2026-10-24T22:52:39+00:00",
+ "verdict": "build failed",
+ "detail": "pt/base:1\n   3 | >>> RUN git clone -q https://github.com/chakki-works/chazutsu /repo && git -C /repo checkout -q 52b2f8acaac1b6c7eab97dded1a1757d3adcefa7\n   4 |     WORKDIR /repo\n   5 |     RUN pip install --no-cache-dir -e . || true\n--------------------\nERROR: failed to build: failed to solve: process \"/bin/sh -c git clone -q https://github.com/chakki-works/chazutsu /repo && git -C /repo checkout -q 52b2f8acaac1b6c7eab97dded1a1757d3adcefa7\" did not complete successfully: exit code: 128\n\nView build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/zdrlakj4i7mlzh4iqzrmr1355\n"
+}

@@ -1,0 +1,14 @@
+{
+ "slug": "verdan_pyatlasclient_issues_12_afb4bb6c",
+ "url": "https://github.com/verdan/pyatlasclient/issues/12",
+ "sha": "afb4bb6c169c7aedefaac91f12e150ad9c1da8db",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/test_models.py::TestDiscoveryREST::test_search_attribute_get"
+ ],
+ "image": "seqaccept-screen/verdan_pyatlasclient_issues_12_afb4bb6c:1",
+ "screened_at": "2026-10-24T23:03:49+00:00",
+ "verdict": "build failed",
+ "detail": ">> RUN git clone -q https://github.com/verdan/pyatlasclient/issues/12 /repo && git -C /repo checkout -q afb4bb6c169c7aedefaac91f12e150ad9c1da8db\n   4 |     WORKDIR /repo\n   5 |     RUN pip install --no-cache-dir -e . || true\n--------------------\nERROR: failed to build: failed to solve: process \"/bin/sh -c git clone -q https://github.com/verdan/pyatlasclient/issues/12 /repo && git -C /repo checkout -q afb4bb6c169c7aedefaac91f12e150ad9c1da8db\" did not complete successfully: exit code: 128\n\nView build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/twiesp2k4nrz4nn9efw8wqq2l\n"
+}

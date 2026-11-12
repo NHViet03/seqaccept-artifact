@@ -1,0 +1,14 @@
+{
+ "slug": "ww_tech_primrose_bd9bb8d5",
+ "url": "https://github.com/ww-tech/primrose",
+ "sha": "bd9bb8d5d5aaf31d473d01645a862ac9d5fc6f8e",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "test/test_factory.py::test_unregister"
+ ],
+ "image": "seqaccept-screen/ww_tech_primrose_bd9bb8d5:1",
+ "screened_at": "2026-10-24T23:04:25+00:00",
+ "verdict": "build failed",
+ "detail": "OM seqaccept/base:1\n   3 | >>> RUN git clone -q https://github.com/ww-tech/primrose /repo && git -C /repo checkout -q bd9bb8d5d5aaf31d473d01645a862ac9d5fc6f8e\n   4 |     WORKDIR /repo\n   5 |     RUN pip install --no-cache-dir -e . || true\n--------------------\nERROR: failed to build: failed to solve: process \"/bin/sh -c git clone -q https://github.com/ww-tech/primrose /repo && git -C /repo checkout -q bd9bb8d5d5aaf31d473d01645a862ac9d5fc6f8e\" did not complete successfully: exit code: 128\n\nView build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/tda9bdrkmpr5se6op8fvwqe9f\n"
+}

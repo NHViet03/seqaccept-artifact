@@ -1,0 +1,21 @@
+{
+ "slug": "samreay_chainconsumer_56066965",
+ "url": "https://github.com/Samreay/ChainConsumer",
+ "sha": "5606696525d91f11d8093085934fa352b98ce97c",
+ "kinds": "NOD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/test_analysis.py::test_summary_power"
+ ],
+ "image": "seqaccept-screen/samreay_chainconsumer_56066965:1",
+ "screened_at": "2026-10-24T22:59:41+00:00",
+ "flaky_rate": 0.35,
+ "default_order_failed": 0,
+ "seconds_per_block": 16.11427142074972,
+ "failing_tests": [
+  "tests/test_analysis.py::TestChain::test_summary_power"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 0.35,
+ "verdict": "p0 > 0.05 without the flaky tests"
+}

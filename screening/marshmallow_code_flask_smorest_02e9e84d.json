@@ -1,0 +1,29 @@
+{
+ "slug": "marshmallow_code_flask_smorest_02e9e84d",
+ "url": "https://github.com/marshmallow-code/flask-smorest",
+ "sha": "02e9e84def5ace80522c76b830fbef9930a28771",
+ "kinds": "OD",
+ "idoft_tests": 16,
+ "tests": [
+  "tests/test_pagination.py::TestPagination::test_pagination_max_page_size[app_fixture0-AppConfig-1000]",
+  "tests/test_pagination.py::TestPagination::test_pagination_max_page_size[app_fixture1-AppConfig-1000]",
+  "tests/test_pagination.py::TestPagination::test_pagination_max_page_size[app_fixture2-AppConfig-1000]",
+  "tests/test_pagination.py::TestPagination::test_pagination_max_page_size[app_fixture3-AppConfig-1000]",
+  "tests/test_pagination.py::TestPagination::test_pagination_max_page_size[app_fixture4-AppConfig-1000]",
+  "tests/test_pagination.py::TestPagination::test_pagination_max_page_size[app_fixture5-AppConfig-1000]",
+  "tests/test_pagination.py::TestPagination::test_pagination_max_page_size[app_fixture6-AppConfig-1000]",
+  "tests/test_pagination.py::TestPagination::test_pagination_max_page_size[app_fixture7-AppConfig-1000]",
+  "tests/test_pagination.py::TestPagination::test_pagination_min_page_page_size[app_fixture0-AppConfig-1000]",
+  "tests/test_pagination.py::TestPagination::test_pagination_min_page_page_size[app_fixture1-AppConfig-1000]",
+  "tests/test_pagination.py::TestPagination::test_pagination_min_page_page_size[app_fixture2-AppConfig-1000]",
+  "tests/test_pagination.py::TestPagination::test_pagination_min_page_page_size[app_fixture3-AppConfig-1000]",
+  "tests/test_pagination.py::TestPagination::test_pagination_min_page_page_size[app_fixture4-AppConfig-1000]",
+  "tests/test_pagination.py::TestPagination::test_pagination_min_page_page_size[app_fixture5-AppConfig-1000]",
+  "tests/test_pagination.py::TestPagination::test_pagination_min_page_page_size[app_fixture6-AppConfig-1000]",
+  "tests/test_pagination.py::TestPagination::test_pagination_min_page_page_size[app_fixture7-AppConfig-1000]"
+ ],
+ "image": "seqaccept-screen/marshmallow_code_flask_smorest_02e9e84d:1",
+ "screened_at": "2026-10-24T22:40:21+00:00",
+ "verdict": "tests do not run",
+ "detail": "docker/pytest exit code 4:  '/repo/tests/conftest.py'.\ntests/conftest.py:9: in <module>\n    from flask_smorest.compat import MARSHMALLOW_VERSION_MAJOR\nflask_smorest/__init__.py:5: in <module>\n    from .spec import APISpecMixin\nflask_smorest/spec/__init__.py:12: in <module>\n    from flask_smorest.utils import prepare_response\nflask_smorest/utils.py:6: in <module>\n    from flask import _app_ctx_stack\nE   ImportError: cannot import name '_app_ctx_stack' from 'flask' (/usr/local/lib/python3.8/site-packages/flask/__init__.py)\n"
+}

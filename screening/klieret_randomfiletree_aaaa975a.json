@@ -1,0 +1,19 @@
+{
+ "slug": "klieret_randomfiletree_aaaa975a",
+ "url": "https://github.com/klieret/RandomFileTree",
+ "sha": "aaaa975ae61afa6f0f5b481ebafcfa0f0216e471",
+ "kinds": "NOD",
+ "idoft_tests": 1,
+ "tests": [
+  "randomfiletree/test/test_core.py::TestTreeCreation::test_create_random_dirs"
+ ],
+ "image": "seqaccept-screen/klieret_randomfiletree_aaaa975a:1",
+ "screened_at": "2026-10-24T22:57:07+00:00",
+ "flaky_rate": 0,
+ "default_order_failed": 0,
+ "seconds_per_block": 0.977195985353319,
+ "failing_tests": [],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "flake not reproduced"
+}

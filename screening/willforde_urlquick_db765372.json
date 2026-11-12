@@ -1,0 +1,22 @@
+{
+ "slug": "willforde_urlquick_db765372",
+ "url": "https://github.com/willforde/urlquick",
+ "sha": "db765372b73800cfa056047a3f3331820abd4ae8",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/test_urlquick.py::TestCacheHandler::test_cache_check_no_cache"
+ ],
+ "image": "seqaccept-screen/willforde_urlquick_db765372:1",
+ "screened_at": "2026-10-24T23:04:02+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 1,
+ "seconds_per_block": 0.8925456479482818,
+ "failing_tests": [
+  "tests/test_urlquick.py::TestCacheHandler::test_cache_check_no_cache",
+  "tests/test_urlquick.py::TestResponse::test_parse"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 1,
+ "verdict": "p0 > 0.05 without the flaky tests"
+}

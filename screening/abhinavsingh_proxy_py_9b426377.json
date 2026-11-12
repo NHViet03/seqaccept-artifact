@@ -1,0 +1,19 @@
+{
+ "slug": "abhinavsingh_proxy_py_9b426377",
+ "url": "https://github.com/abhinavsingh/proxy.py",
+ "sha": "9b4263777bea7b3e00a1a3546511f2117f210a2b",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/common/test_utils.py::TestSocketConnectionUtils::test_new_socket_connection_ipv4"
+ ],
+ "image": "seqaccept-screen/abhinavsingh_proxy_py_9b426377:1",
+ "screened_at": "2026-10-24T22:49:29+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 1,
+ "seconds_per_block": 0.2963353790895781,
+ "failing_tests": [],
+ "missing_modules": [],
+ "p0_estimate": 1,
+ "verdict": "p0 > 0.05 without the flaky tests"
+}

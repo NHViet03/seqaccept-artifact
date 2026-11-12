@@ -1,0 +1,19 @@
+{
+ "slug": "spulec_freezegun_89945582",
+ "url": "https://github.com/spulec/freezegun",
+ "sha": "8994558274161b527ab83a3b13ea5969e9ebd144",
+ "kinds": "NOD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/test_class_import.py::test_import_after_start"
+ ],
+ "image": "seqaccept-screen/spulec_freezegun_89945582:1",
+ "screened_at": "2026-10-24T23:02:35+00:00",
+ "flaky_rate": 0,
+ "default_order_failed": 0,
+ "seconds_per_block": 0.7688114770542598,
+ "failing_tests": [],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "flake not reproduced"
+}

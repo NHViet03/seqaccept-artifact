@@ -1,0 +1,20 @@
+{
+ "slug": "malongge_exceltojson_6724c7de",
+ "url": "https://github.com/malongge/exceltojson",
+ "sha": "6724c7de5153a7b125011e879419273589206d0d",
+ "kinds": "OD",
+ "idoft_tests": 2,
+ "tests": [
+  "tests/test_excel_2_json.py::TestProcessExcel::test_excel_process_not_patch_sheet_names",
+  "tests/test_excel_2_json.py::TestProcessExcel::test_excel_process_with_sheet_names"
+ ],
+ "image": "seqaccept-screen/malongge_exceltojson_6724c7de:1",
+ "screened_at": "2026-10-24T22:48:04+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 0,
+ "seconds_per_block": 0.28642112484376414,
+ "failing_tests": [],
+ "missing_modules": [],
+ "p0_estimate": 1,
+ "verdict": "p0 > 0.05 without the flaky tests"
+}

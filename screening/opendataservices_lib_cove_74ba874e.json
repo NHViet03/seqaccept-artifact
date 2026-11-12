@@ -1,0 +1,23 @@
+{
+ "slug": "opendataservices_lib_cove_74ba874e",
+ "url": "https://github.com/OpenDataServices/lib-cove",
+ "sha": "74ba874ec6882969894797ee0dbc5c70a16019e5",
+ "kinds": "OD",
+ "idoft_tests": 3,
+ "tests": [
+  "tests/lib/test_converters.py::test_convert_activity_xml_1",
+  "tests/lib/test_converters.py::test_convert_json_1",
+  "tests/lib/test_converters.py::test_convert_org_xml_1"
+ ],
+ "image": "seqaccept-screen/opendataservices_lib_cove_74ba874e:1",
+ "screened_at": "2026-10-24T22:46:01+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 1,
+ "seconds_per_block": 0.3740640709496802,
+ "failing_tests": [],
+ "missing_modules": [
+  "flattentool"
+ ],
+ "p0_estimate": 1,
+ "verdict": "tests need uninstalled modules"
+}

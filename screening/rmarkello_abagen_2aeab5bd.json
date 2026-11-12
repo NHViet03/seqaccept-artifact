@@ -1,0 +1,14 @@
+{
+ "slug": "rmarkello_abagen_2aeab5bd",
+ "url": "https://github.com/rmarkello/abagen",
+ "sha": "2aeab5bd0f147fa76b488645e148a1c18095378d",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "mouse\\test_gene.py::test_get_gene_info::test_get_gene_info"
+ ],
+ "image": "seqaccept-screen/rmarkello_abagen_2aeab5bd:1",
+ "screened_at": "2026-10-24T22:59:11+00:00",
+ "verdict": "tests do not run",
+ "detail": "docker/pytest exit code 4: ERROR: file or directory not found: mouse\\test_gene.py\n\n"
+}

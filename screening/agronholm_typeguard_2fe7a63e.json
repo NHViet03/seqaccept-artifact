@@ -1,0 +1,16 @@
+{
+ "slug": "agronholm_typeguard_2fe7a63e",
+ "url": "https://github.com/agronholm/typeguard",
+ "sha": "2fe7a63e7e7fe6b7910fd423ba82eea4bffb1f17",
+ "kinds": "OD",
+ "idoft_tests": 3,
+ "tests": [
+  "test_typeguard.py::test_check_call_args",
+  "test_typeguard.py::test_exec_no_namespace",
+  "test_typeguard.py::test_forward_ref_policy_guess"
+ ],
+ "image": "seqaccept-screen/agronholm_typeguard_2fe7a63e:1",
+ "screened_at": "2026-10-24T22:45:31+00:00",
+ "verdict": "tests do not run",
+ "detail": "docker/pytest exit code 4: ERROR: file or directory not found: test_typeguard.py\n\n"
+}

@@ -1,0 +1,15 @@
+{
+ "slug": "edasi_kool_efe847a0",
+ "url": "https://github.com/edasi/kool",
+ "sha": "efe847a05c1a07af5eddeeeb700fdefcb6c9ced9",
+ "kinds": "NOD+OD",
+ "idoft_tests": 2,
+ "tests": [
+  "tests/contrib/quizzes/test_question.py::TestQuestion::test_add_choices",
+  "tests/db/flatfile/test_database.py::TestFlatFile::test_tables"
+ ],
+ "image": "seqaccept-screen/edasi_kool_efe847a0:1",
+ "screened_at": "2026-10-24T22:39:42+00:00",
+ "verdict": "tests do not run",
+ "detail": "docker/pytest exit code 4: ile/test_database.py\n  inifile: /repo/pytest.ini\n  rootdir: /repo\nFor more information see https://pluggy.readthedocs.io/en/stable/api_reference.html#pluggy.PluggyTeardownRaisedWarning\n  config = pluginmanager.hook.pytest_cmdline_parse(\nERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]\n__main__.py: error: unrecognized arguments: --cov=kool --cov-report=html tests/contrib/quizzes/test_question.py tests/db/flatfile/test_database.py\n  inifile: /repo/pytest.ini\n  rootdir: /repo\n\n"
+}

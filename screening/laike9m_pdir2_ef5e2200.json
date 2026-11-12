@@ -1,0 +1,31 @@
+{
+ "slug": "laike9m_pdir2_ef5e2200",
+ "url": "https://github.com/laike9m/pdir2",
+ "sha": "ef5e2200074d68e2ca3df4ee441a1b9ea6ca5abc",
+ "kinds": "OD",
+ "idoft_tests": 6,
+ "tests": [
+  "tests/test_user_config.py::test_invalid_config_1",
+  "tests/test_user_config.py::test_invalid_config_2",
+  "tests/test_user_config.py::test_read_config",
+  "tests/test_user_config.py::test_read_config_from_custom_location",
+  "tests/test_user_config.py::test_set_env_without_config",
+  "tests/test_user_config.py::test_uniform_color"
+ ],
+ "image": "seqaccept-screen/laike9m_pdir2_ef5e2200:1",
+ "screened_at": "2026-10-24T22:44:45+00:00",
+ "flaky_rate": 0.8,
+ "default_order_failed": 0,
+ "seconds_per_block": 0.40002773325832097,
+ "failing_tests": [
+  "tests/test_user_config.py::test_invalid_config_1",
+  "tests/test_user_config.py::test_invalid_config_2",
+  "tests/test_user_config.py::test_read_config",
+  "tests/test_user_config.py::test_read_config_from_custom_location",
+  "tests/test_user_config.py::test_set_env_without_config",
+  "tests/test_user_config.py::test_uniform_color"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "candidate"
+}

@@ -1,0 +1,310 @@
+slug,verdict,kinds,idoft_tests,flaky_rate,default_order_failed,p0_estimate,seconds_per_block,missing_modules,url,sha,detail
+benjaminp_six_c0be8815,candidate,OD,1,0.4,0,0,0.6179099770553875,,https://github.com/benjaminp/six,c0be8815d13df45b6ae471c4c436cce8c192245d,
+cesar_rodriguez_terrascan_fd4ca9d2,candidate,OD,1,0.55,0,0,3.692993049946381,,https://github.com/cesar-rodriguez/terrascan,fd4ca9d23e694185fd5cb9ddf357b52b15adc6ca,
+chinapnr_fishbase_1615ccff,candidate,OD,1,0.55,0,0,2.5616738352953687,,https://github.com/chinapnr/fishbase,1615ccff9106bf42fc6ae862cd13353c12c1b76d,
+crumpstrr33_utter_more_418cf5f5,candidate,OD,4,0.8,0,0,0.3991059436521027,,https://github.com/crumpstrr33/Utter-More,418cf5f5ef337700bf0897e746eff8bb275e6da6,
+datacommonsorg_api_python_6d09ca15,candidate,OD,2,0.9,1,0,0.3628008938481798,,https://github.com/datacommonsorg/api-python,6d09ca1557da0af893f008f7302801f12afc2d46,
+devkeh_redisqueue_feac4dfc,candidate,OD,3,1,0,0,0.3902424959494965,,https://github.com/DevKeh/redisqueue,feac4dfc30837e0ab1a55a8479443ea74b2793f2,
+filestack_filestack_python_1bd67497,candidate,OD,2,0.7,0,0,0.5311893604055513,,https://github.com/filestack/filestack-python,1bd6749735e5c78dde767e0685ddfdf0cd7423e2,
+ganehag_pymeterbus_bc853aa3,candidate,OD,1,0.35,0,0,0.3782001125131501,,https://github.com/ganehag/pyMeterBus,bc853aa38ac6b10301bdf97f13ac25b36985316f,
+goodmami_penman_e83cf6d0,candidate,NOD,1,0.85,0,0,0.40673056049563455,,https://github.com/goodmami/penman,e83cf6d006724d72a3e19a955aad94412da912b7,
+hefnawi_json_storage_manager_c7521fc4,candidate,OD,7,0.95,0,0,0.3711348124576034,,https://github.com/hefnawi/json-storage-manager,c7521fc4a576cf23a8c2454106bed6fb8c951b8d,
+laike9m_pdir2_ef5e2200,candidate,OD,6,0.8,0,0,0.40002773325832097,,https://github.com/laike9m/pdir2,ef5e2200074d68e2ca3df4ee441a1b9ea6ca5abc,
+martyni_autoyaml_be3f4506,candidate,OD,2,0.95,0,0,0.4319314000982558,,https://github.com/martyni/autoyaml,be3f450667bcca477683e63bcc49c67c5d170855,
+mtik00_yamicache_1109d08b,candidate,NOD+OD,5,0.65,0,0,13.499271466737264,,https://github.com/mtik00/yamicache,1109d08b18be94bdee55e113309f7be29f25d840,
+netflix_skunkworks_policyuniverse_b633e572,candidate,OD,2,0.7,0,0,0.5752822937385644,,https://github.com/Netflix-Skunkworks/policyuniverse,b633e572ecdba45d70398ac034fb44e0e4e7dbf8,
+parsely_serpextract_aec8f2bd,candidate,OD,3,0.1,0,0,0.5499681647110265,,https://github.com/Parsely/serpextract/,aec8f2bd79c66953938569a24b05c693ab70b4ce,
+pycqa_mccabe_e92e9e79,candidate,OD,1,0.45,0,0,0.4939887978602201,,https://github.com/pycqa/mccabe,e92e9e79799c5796f76f3da821dbb5aa56e41028,
+pythological_kanren_bacc7eb5,candidate,NOD,1,0.1,0,0,0.6786217290471541,,https://github.com/pythological/kanren,bacc7eb5895c348e348c1b5291ddf188f88c5c88,
+sjoerdk_anonapi_5e70dfd9,candidate,OD,1,0.8,0,0,1.2286308521957836,,https://github.com/sjoerdk/anonapi,5e70dfd9fcb7dcc4e2345a6a153d9530f4886e73,
+stfc_fparser_4be91d2e,candidate,NOD,1,0.6,0,0,0.6014769706496736,,https://github.com/stfc/fparser,4be91d2e1078fa5588e84a3299131f297afba675,
+tencent_qtaf_c9141e8f,candidate,OD,1,0.45,0,0,0.811124070698861,,https://github.com/Tencent/QTAF,c9141e8fbdfd89f5f13dd59dfab17f9e8193dcf8,
+tianocore_edk2_pytool_library_ab6bac82,candidate,OD,1,0.95,0,0,0.8201247834047536,,https://github.com/tianocore/edk2-pytool-library,ab6bac82f297b4e8fe0a0d4dcde4711b3cb1bc88,
+zerotosingularity_pdl_fd39c391,candidate,OD,1,0.25,0,0,1.2323459022474708,,https://github.com/zerotosingularity/pdl,fd39c391101b3fe315631565a0f4eb7c99890789,
+abhinavsingh_proxy_py_9b426377,p0 > 0.05 without the flaky tests,OD,1,1,1,1,0.2963353790895781,,https://github.com/abhinavsingh/proxy.py,9b4263777bea7b3e00a1a3546511f2117f210a2b,
+agile4you_bottle_neck_ebc670a4,p0 > 0.05 without the flaky tests,OD,1,0.65,0,0.55,0.4260412126488518,,https://github.com/agile4you/bottle-neck,ebc670a4b178255473d68e9b4122ba04e38f4810,
+agronholm_typeguard_2fe7a63e,tests do not run,OD,3,,,,,,https://github.com/agronholm/typeguard,2fe7a63e7e7fe6b7910fd423ba82eea4bffb1f17,"docker/pytest exit code 4: ERROR: file or directory not found: test_typeguard.py
+
+"
+apache_beam_faae168f,tests do not run,OD,1,,,,,,https://github.com/apache/beam,faae168fa34e97475df70b707f4df91c4946c6ca,"docker/pytest exit code 4: (
+ImportError while loading conftest '/repo/sdks/python/conftest.py'.
+sdks/python/conftest.py:26: in <module>
+    from apache_beam.options import pipeline_options
+sdks/python/apache_beam/__init__.py:87: in <module>
+    from apache_beam import coders
+sdks/python/apache_beam/coders/__init__.py:17: in <module>
+    from apache_beam.coders.coders import *
+sdks/python/apache_beam/coders/coders.py:56: in <module>
+    import google.protobuf.wrappers_pb2
+E   ModuleNotFoundError: No module named 'google'
+"
+avature_confight_be2d162c,p0 > 0.05 without the flaky tests,OD,1,1,1,1,0.6408580166898901,,https://github.com/avature/confight,be2d162c99cc3c709289913de137f8d8bfbd35d5,
+bennymeg_butter_mas_pythonapi_f86ebe75,p0 > 0.05 without the flaky tests,NOD,53,1,1,1,91.29431485620735,,https://github.com/bennymeg/Butter.MAS.PythonAPI,f86ebe75df3826f62a268645cdbe4400b43fab07,
+brightway_lca_stats_arrays_3d3480d0,tests do not run,OD,3,,,,,,https://github.com/brightway-lca/stats_arrays,3d3480d064365571e64e736dcbd778badb1210db,"docker/pytest exit code 4: ERROR: file or directory not found: extreme.py
+
+"
+bwohlberg_sporco_efd9237e,p0 > 0.05 without the flaky tests,OD,1,1,1,1,3.799807527201483,,https://github.com/bwohlberg/sporco,efd9237ec0d254e2ff630ad0ac17eb8dc566c586,
+chakki_works_chazutsu_52b2f8ac,build failed,NOD,1,,,,,,https://github.com/chakki-works/chazutsu,52b2f8acaac1b6c7eab97dded1a1757d3adcefa7,"pt/base:1
+   3 | >>> RUN git clone -q https://github.com/chakki-works/chazutsu /repo && git -C /repo checkout -q 52b2f8acaac1b6c7eab97dded1a1757d3adcefa7
+   4 |     WORKDIR /repo
+   5 |     RUN pip install --no-cache-dir -e . || true
+--------------------
+ERROR: failed to build: failed to solve: process ""/bin/sh -c git clone -q https://github.com/chakki-works/chazutsu /repo && git -C /repo checkout -q 52b2f8acaac1b6c7eab97dded1a1757d3adcefa7"" did not complete successfully: exit code: 128
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/zdrlakj4i7mlzh4iqzrmr1355
+"
+chinapnr_fishbase_73ae6701,tests do not run,NOD,1,,,,,,https://github.com/chinapnr/fishbase,73ae6701eee5d1bdd31a3e7b4d86fa11de9b6522,"docker/pytest exit code 4: ERROR: file or directory not found: test_common.py
+
+"
+codespell_project_codespell_4f2325ec,tests do not run,OD,1,,,,,,https://github.com/codespell-project/codespell,4f2325ec18ccef64ed8062f63dc63d360fa33f47,"docker/pytest exit code 4: or_dir] [...]
+__main__.py: error: unrecognized arguments: --cov=codespell_lib --cov-report=
+  inifile: /repo/setup.cfg
+  rootdir: /repo
+For more information see https://pluggy.readthedocs.io/en/stable/api_reference.html#pluggy.PluggyTeardownRaisedWarning
+  config = pluginmanager.hook.pytest_cmdline_parse(
+ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]
+__main__.py: error: unrecognized arguments: --cov=codespell_lib --cov-report=
+  inifile: /repo/setup.cfg
+  rootdir: /repo
+
+"
+cornices_cornice_ext_swagger_17a63e86,flake not reproduced,OD,1,0,0,0,1.3495050957950299,,https://github.com/Cornices/cornice.ext.swagger,17a63e86751c7d8f1b2b75d49056161c80f4cef2,
+crazyscientist_osc_tiny_88c33c2c,tests need uninstalled modules,OD,1,1,1,1,0.8463413729565218,lxml,https://github.com/crazyscientist/osc-tiny,88c33c2c7f73ea26067e1bb4190bab5dc298dd85,
+cronofy_pycronofy_issues_72_eac7d290,build failed,OD,1,,,,,,https://github.com/cronofy/pycronofy/issues/72,eac7d290e3f3638d82c84d1c51a46c10257a6e20," 3 | >>> RUN git clone -q https://github.com/cronofy/pycronofy/issues/72 /repo && git -C /repo checkout -q eac7d290e3f3638d82c84d1c51a46c10257a6e20
+   4 |     WORKDIR /repo
+   5 |     RUN pip install --no-cache-dir -e . || true
+--------------------
+ERROR: failed to build: failed to solve: process ""/bin/sh -c git clone -q https://github.com/cronofy/pycronofy/issues/72 /repo && git -C /repo checkout -q eac7d290e3f3638d82c84d1c51a46c10257a6e20"" did not complete successfully: exit code: 128
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/k5i2dv2w0yix2tgswuvrlf5j2
+"
+datacommonsorg_api_python_16fabfc4,tests do not run,OD,2,,,,,,https://github.com/datacommonsorg/api-python,16fabfc49a9c7d46a5b5847b0d9809242ec884e5,"docker/pytest exit code 4: ERROR: file or directory not found: set_api_key_test.py
+
+"
+dgilland_pydash_issues_170_24ad0e43,build failed,OD,1,,,,,,https://github.com/dgilland/pydash/issues/170,24ad0e43b51b367d00447c45baa68c9c03ad1a52,"   3 | >>> RUN git clone -q https://github.com/dgilland/pydash/issues/170 /repo && git -C /repo checkout -q 24ad0e43b51b367d00447c45baa68c9c03ad1a52
+   4 |     WORKDIR /repo
+   5 |     RUN pip install --no-cache-dir -e . || true
+--------------------
+ERROR: failed to build: failed to solve: process ""/bin/sh -c git clone -q https://github.com/dgilland/pydash/issues/170 /repo && git -C /repo checkout -q 24ad0e43b51b367d00447c45baa68c9c03ad1a52"" did not complete successfully: exit code: 128
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/uah7477mapjtkz45vnvwgk505
+"
+didix21_mdutils_2ef859ec,flake not reproduced,OD,8,0,0,0,0.4293199062551139,,https://github.com/didix21/mdutils,2ef859ecc1e4f1a3e24f4150c96f61180bc57ceb,
+django_beam_django_beam_43b2111f,flake not reproduced,NOD,11,0,0,0,1.583178770847735,,https://github.com/django-beam/django-beam,43b2111f5c65937aa1e2cc9704b59796e982a805,
+dowjones_factiva_news_python_763b178f,tests do not run,OD,1,,,,,,https://github.com/dowjones/factiva-news-python,763b178fe7fd3716e5542cf098600ef56c6fbd62,"docker/pytest exit code 4: ERROR: file or directory not found: __init__.py
+
+"
+dowjones_tokendito_f5d8e517,tests do not run,NOD+OD,4,,,,,,https://github.com/dowjones/tokendito,f5d8e5171ddcca0c62925263ddb80535f51aded3,"docker/pytest exit code 4: gin: helpconfig, Hook: pytest_cmdline_parse
+ConftestImportFailure: ModuleNotFoundError: No module named 'future' (from /repo/tests/conftest.py)
+For more information see https://pluggy.readthedocs.io/en/stable/api_reference.html#pluggy.PluggyTeardownRaisedWarning
+  config = pluginmanager.hook.pytest_cmdline_parse(
+ImportError while loading conftest '/repo/tests/conftest.py'.
+tests/conftest.py:7: in <module>
+    from future import standard_library
+E   ModuleNotFoundError: No module named 'future'
+"
+econ_ark_hark_c9138af4,p0 > 0.05 without the flaky tests,OD,3,0.9,0,0.5,35.122964020894145,,https://github.com/econ-ark/HARK,c9138af45fd0a0d97c718c8558f3ea8d9f2ae820,
+econ_ark_hark_f18dc695,p0 > 0.05 without the flaky tests,OD,1,0.85,0,0.65,37.864185862595335,,https://github.com/econ-ark/HARK,f18dc69520db9e15d1d355e604ff712d38ce3d2b,
+ecshackweek_impedance_py_d1019c16,tests need uninstalled modules,OD,2,1,1,1,0.8572133958514314,pandas,https://github.com/ECSHackWeek/impedance.py,d1019c161be9e967ae227117b72acae4351e198f,
+edasi_kool_efe847a0,tests do not run,NOD+OD,2,,,,,,https://github.com/edasi/kool,efe847a05c1a07af5eddeeeb700fdefcb6c9ced9,"docker/pytest exit code 4: ile/test_database.py
+  inifile: /repo/pytest.ini
+  rootdir: /repo
+For more information see https://pluggy.readthedocs.io/en/stable/api_reference.html#pluggy.PluggyTeardownRaisedWarning
+  config = pluginmanager.hook.pytest_cmdline_parse(
+ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]
+__main__.py: error: unrecognized arguments: --cov=kool --cov-report=html tests/contrib/quizzes/test_question.py tests/db/flatfile/test_database.py
+  inifile: /repo/pytest.ini
+  rootdir: /repo
+
+"
+eillarra_carbonize_891d1d07,build failed,OD,2,,,,,,https://github.com/eillarra/carbonize,891d1d07ca2e9cc48ca5b609da292dce2e574c7e,"eqaccept/base:1
+   3 | >>> RUN git clone -q https://github.com/eillarra/carbonize /repo && git -C /repo checkout -q 891d1d07ca2e9cc48ca5b609da292dce2e574c7e
+   4 |     WORKDIR /repo
+   5 |     RUN pip install --no-cache-dir -e . || true
+--------------------
+ERROR: failed to build: failed to solve: process ""/bin/sh -c git clone -q https://github.com/eillarra/carbonize /repo && git -C /repo checkout -q 891d1d07ca2e9cc48ca5b609da292dce2e574c7e"" did not complete successfully: exit code: 128
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/zqtlkyt2gmq98legwn3di3lta
+"
+ericmjl_nxviz_d2a2a622,tests need uninstalled modules,NOD,2,1,1,1,0.4947621374594746,matplotlib numpy,https://github.com/ericmjl/nxviz,d2a2a622e834148a9f4337dbe1021a05c5f18548,
+eth_cscs_reframe_576eb3f1,p0 > 0.05 without the flaky tests,NOD+OD,136,1,1,1,25.232955512352056,,https://github.com/eth-cscs/reframe,576eb3f1dcc015d1e6d7a10602c748d4f810da68,
+fooof_tools_fooof_14d6196e,p0 > 0.05 without the flaky tests,NOD,1,1,1,1,1.4063009438512382,,https://github.com/fooof-tools/fooof,14d6196e0b60c7e6da95b5cf858b20adcc5fc0ac,
+gmggroup_omf_bf0cfaa4,build failed,OD,1,,,,,,https://github.com/gmggroup/omf,bf0cfaa4d05c438606d7b4561166bf12d2c1be74,"|     FROM seqaccept/base:1
+   3 | >>> RUN git clone -q https://github.com/gmggroup/omf /repo && git -C /repo checkout -q bf0cfaa4d05c438606d7b4561166bf12d2c1be74
+   4 |     WORKDIR /repo
+   5 |     RUN pip install --no-cache-dir -e . || true
+--------------------
+ERROR: failed to build: failed to solve: process ""/bin/sh -c git clone -q https://github.com/gmggroup/omf /repo && git -C /repo checkout -q bf0cfaa4d05c438606d7b4561166bf12d2c1be74"" did not complete successfully: exit code: 128
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/9svirb0887q9bpx0lx9c9019n
+"
+goodmami_penman_7770dfe1,flake not reproduced,NOD,1,0,0,0,0.5359650251513812,,https://github.com/goodmami/penman,7770dfe14b3d0d197cedc6640f3ff7e3bd695726,
+grabbles_grabbit_83ff93df,tests need uninstalled modules,NOD,5,1,1,1,0.3784732832486043,six,https://github.com/grabbles/grabbit,83ff93df36019eaaee9d4e31f816a518e46cae07,
+gsllchb_dotdot_64c8c5b0,no tests left without the flaky ones,OD,4,1,1,,0.33734062930452635,,https://github.com/Gsllchb/DotDot,64c8c5b0523211f243eef5dc6ea7c22dec5383cc,
+h2non_pook_2071da27,flake not reproduced,OD,4,0,0,0,0.41226657075167167,,https://github.com/h2non/pook,2071da27701c82ce02b015e01e2aa6fd203e7bb5,
+huashengdun_webssh_51d527fe,tests need uninstalled modules,NOD+OD,29,1,1,1,0.4308895748516079,six,https://github.com/huashengdun/webssh,51d527fe75a62aed239126a6697749a30baecb30,
+irmen_pyro5_55bec918,tests do not run,OD,1,,,,,,https://github.com/irmen/Pyro5,55bec91891bb9007441024186f3c62b06a3a6870,"docker/pytest exit code 4: ERROR: file or directory not found: test_pyro4compat.py
+
+"
+izar_pytm_724df0c6,flake not reproduced,OD,2,0,0,0,0.3680806935473811,,https://github.com/izar/pytm,724df0c6346706e9c3678bee11e23d9609d8fa4c,
+jgoutin_compilertools_7b898cb6,build failed,OD,2,,,,,,https://github.com/JGoutin/compilertools,7b898cb6970f5f25c5356b15a2efd0cb2e54d566,"pt/base:1
+   3 | >>> RUN git clone -q https://github.com/JGoutin/compilertools /repo && git -C /repo checkout -q 7b898cb6970f5f25c5356b15a2efd0cb2e54d566
+   4 |     WORKDIR /repo
+   5 |     RUN pip install --no-cache-dir -e . || true
+--------------------
+ERROR: failed to build: failed to solve: process ""/bin/sh -c git clone -q https://github.com/JGoutin/compilertools /repo && git -C /repo checkout -q 7b898cb6970f5f25c5356b15a2efd0cb2e54d566"" did not complete successfully: exit code: 128
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/nciasl7ljd3j7ce19ofthawro
+"
+juntossomosmais_regex4ocr_a140c62e,tests do not run,OD,1,,,,,,https://github.com/juntossomosmais/regex4ocr,a140c62e01b378ef9fc334e66eaf3450da70feed,"docker/pytest exit code 4: ERROR: file or directory not found: test_drm_scanner.py
+
+"
+klieret_randomfiletree_aaaa975a,flake not reproduced,NOD,1,0,0,0,0.977195985353319,,https://github.com/klieret/RandomFileTree,aaaa975ae61afa6f0f5b481ebafcfa0f0216e471,
+ljvmiranda921_pyswarms_08756526,tests need uninstalled modules,NOD+OD,7,1,1,1,0.5209748832101468,yaml,https://github.com/ljvmiranda921/pyswarms,08756526f39699eef28e515cac2ead17cef55710,
+lonly7star_icloud_photos_downloader_999c804a,tests do not run,OD,1,,,,,,https://github.com/lonly7star/icloud_photos_downloader,999c804a02c6db420aeb517700d09d9ba1c5a9df,"docker/pytest exit code 4: ERROR: file or directory not found: test_logger.py
+
+"
+malongge_exceltojson_6724c7de,p0 > 0.05 without the flaky tests,OD,2,1,0,1,0.28642112484376414,,https://github.com/malongge/exceltojson,6724c7de5153a7b125011e879419273589206d0d,
+marshmallow_code_flask_smorest_02e9e84d,tests do not run,OD,16,,,,,,https://github.com/marshmallow-code/flask-smorest,02e9e84def5ace80522c76b830fbef9930a28771,"docker/pytest exit code 4:  '/repo/tests/conftest.py'.
+tests/conftest.py:9: in <module>
+    from flask_smorest.compat import MARSHMALLOW_VERSION_MAJOR
+flask_smorest/__init__.py:5: in <module>
+    from .spec import APISpecMixin
+flask_smorest/spec/__init__.py:12: in <module>
+    from flask_smorest.utils import prepare_response
+flask_smorest/utils.py:6: in <module>
+    from flask import _app_ctx_stack
+E   ImportError: cannot import name '_app_ctx_stack' from 'flask' (/usr/local/lib/python3.8/site-packages/flask/__init__.py)
+"
+martlark_flask_ipban_1a56cbfe,tests do not run,OD,1,,,,,,https://github.com/Martlark/flask-ipban,1a56cbfee501da36a3c86c7f38882381a14f45bb,"docker/pytest exit code 4: ERROR: file or directory not found: blob/master/flask_ipban/test_persistence.py
+
+"
+mehdisadeghi_clashogram_6ea9eef5,flake not reproduced,OD,1,0,0,0,1.4367196269449778,,https://github.com/mehdisadeghi/clashogram,6ea9eef543201f117749fa290df800c32eb18f54,
+mfreeborn_fastapi_sqlalchemy_8ddf0eda,tests do not run,OD,2,,,,,,https://github.com/mfreeborn/fastapi-sqlalchemy,8ddf0edab22873365441757107ce21234bc09f8f,"docker/pytest exit code 4: n.
+Plugin: helpconfig, Hook: pytest_cmdline_parse
+ConftestImportFailure: ModuleNotFoundError: No module named 'fastapi' (from /repo/tests/conftest.py)
+For more information see https://pluggy.readthedocs.io/en/stable/api_reference.html#pluggy.PluggyTeardownRaisedWarning
+  config = pluginmanager.hook.pytest_cmdline_parse(
+ImportError while loading conftest '/repo/tests/conftest.py'.
+tests/conftest.py:4: in <module>
+    from fastapi import FastAPI
+E   ModuleNotFoundError: No module named 'fastapi'
+"
+microsoft_knack_dc7b7d85,flake not reproduced,OD,8,0,0,0,0.5340318561473396,,https://github.com/microsoft/knack,dc7b7d857ce3c11b2a3155b81f2470b3b579e7c9,
+mirkorossini_zanna_4c28b5ea,no tests left without the flaky ones,OD,2,0.8,0,,0.44188995625299865,,https://github.com/MirkoRossini/zanna,4c28b5ea3940fba69bee3fdf965a039c9b8f45c5,
+mrob95_breathe_3ebcdfc9,p0 > 0.05 without the flaky tests,OD,5,1,0,1,0.5169787126476877,,https://github.com/mrob95/Breathe,3ebcdfc9c011f1b64f00ae320f4704b78783f751,
+naorlivne_parse_it_886d7de0,p0 > 0.05 without the flaky tests,OD,2,1,1,1,1.2867762353969738,,https://github.com/naorlivne/parse_it,886d7de0e74e67edc136411a5220e35c1149e743,
+napalm_automation_napalm_0e23a55f,tests need uninstalled modules,OD,2,1,1,1,0.4581253187934635,lxml,https://github.com/napalm-automation/napalm,0e23a55f52221e528be66c1f06a141f937e842f7,
+ndbroadbent_icloud_photos_downloader_e5f30494,p0 > 0.05 without the flaky tests,OD,1,1,1,1,0.41660955639381425,,https://github.com/ndbroadbent/icloud_photos_downloader,e5f304941e2a74b1fbda06c4270ec2fc100e6a49,
+neurodsp_tools_neurodsp_19aa50c7,p0 > 0.05 without the flaky tests,OD,1,1,1,1,1.6600814104895107,,https://github.com/neurodsp-tools/neurodsp,19aa50c71deaa19e4ed85efa192afa8ab63d0bf1,
+nithinmurali_pygsheets_issues_519_48158e3a,build failed,OD,1,,,,,,https://github.com/nithinmurali/pygsheets/issues/519,48158e3a2c20d8b84a28b117ae1024bd4dedee08," git clone -q https://github.com/nithinmurali/pygsheets/issues/519 /repo && git -C /repo checkout -q 48158e3a2c20d8b84a28b117ae1024bd4dedee08
+   4 |     WORKDIR /repo
+   5 |     RUN pip install --no-cache-dir -e . || true
+--------------------
+ERROR: failed to build: failed to solve: process ""/bin/sh -c git clone -q https://github.com/nithinmurali/pygsheets/issues/519 /repo && git -C /repo checkout -q 48158e3a2c20d8b84a28b117ae1024bd4dedee08"" did not complete successfully: exit code: 128
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/kwo83iopc4gki7shx38vmsgg1
+"
+opendataservices_lib_cove_74ba874e,tests need uninstalled modules,OD,3,1,1,1,0.3740640709496802,flattentool,https://github.com/OpenDataServices/lib-cove,74ba874ec6882969894797ee0dbc5c70a16019e5,
+osantana_prettyconf_issues_47_f278b6ac,build failed,OD,1,,,,,,https://github.com/osantana/prettyconf/issues/47,f278b6ac6786f6ab8fe41ffacde0cc1e41cee207," >>> RUN git clone -q https://github.com/osantana/prettyconf/issues/47 /repo && git -C /repo checkout -q f278b6ac6786f6ab8fe41ffacde0cc1e41cee207
+   4 |     WORKDIR /repo
+   5 |     RUN pip install --no-cache-dir -e . || true
+--------------------
+ERROR: failed to build: failed to solve: process ""/bin/sh -c git clone -q https://github.com/osantana/prettyconf/issues/47 /repo && git -C /repo checkout -q f278b6ac6786f6ab8fe41ffacde0cc1e41cee207"" did not complete successfully: exit code: 128
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/jggwv06suzyvli4rrg87cso2v
+"
+parsely_serpextract_e156430b,tests do not run,NOD,1,,,,,,https://github.com/Parsely/serpextract,e156430b32eb833686820f490dbcdd989f27baa2,"docker/pytest exit code 4: ERROR: file or directory not found: test_serps.py
+
+"
+pawelzny_dotty_dict_ae87e3fb,flake not reproduced,OD,1,0,0,0,0.45426314999931494,,https://github.com/pawelzny/dotty_dict,ae87e3fb76cbec5bfb9c885ccfb942afc3f0c9b5,
+prancer_io_cloud_validation_framework_94522590,p0 > 0.05 without the flaky tests,NOD,10,1,0,1,0.3707636583480053,,https://github.com/prancer-io/cloud-validation-framework,94522590d9881a5125d81da701a65f7f63383c0d,
+prodesire_pydu_e6e4055f,flake not reproduced,OD,1,0,0,0,0.49479496470303275,,https://github.com/Prodesire/pydu,e6e4055f81dbbece55dccfe29b7fb82b9bf40610,
+pyasi_pybuildkite_issues_72_0cf6db2a,build failed,OD,1,,,,,,https://github.com/pyasi/pybuildkite/issues/72,0cf6db2adcc01bf3014b84da5e15f6e1bc50b46b," 3 | >>> RUN git clone -q https://github.com/pyasi/pybuildkite/issues/72 /repo && git -C /repo checkout -q 0cf6db2adcc01bf3014b84da5e15f6e1bc50b46b
+   4 |     WORKDIR /repo
+   5 |     RUN pip install --no-cache-dir -e . || true
+--------------------
+ERROR: failed to build: failed to solve: process ""/bin/sh -c git clone -q https://github.com/pyasi/pybuildkite/issues/72 /repo && git -C /repo checkout -q 0cf6db2adcc01bf3014b84da5e15f6e1bc50b46b"" did not complete successfully: exit code: 128
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/jlrbtonnrjis9kf43wcmqicvl
+"
+pyfunceble_domain2idna_39a1c4e1,p0 > 0.05 without the flaky tests,OD,12,1,1,1,0.37743545639095827,,https://github.com/PyFunceble/domain2idna,39a1c4e1ebb877ed511e53b618fbe437a685c970,
+raamana_pyradigm_01d47cf3,p0 > 0.05 without the flaky tests,OD,15,1,1,1,0.6077814313030103,,https://github.com/raamana/pyradigm,01d47cf34a9af4bb104e2891559059a522221b4d,
+raphaelvallat_pingouin_08560bb9,p0 > 0.05 without the flaky tests,OD,1,1,1,1,0.5668158207437954,,https://github.com/raphaelvallat/pingouin,08560bb978949e97653b203f7374e90b022b88fb,
+richecr_pygraph_e81c3a0f,p0 > 0.05 without the flaky tests,OD,11,1,0,1,0.3904273374500917,,https://github.com/richecr/PyGraph,e81c3a0f543f5bfcda1a603c6dcecde13d582c57,
+rmarkello_abagen_2aeab5bd,tests do not run,OD,1,,,,,,https://github.com/rmarkello/abagen,2aeab5bd0f147fa76b488645e148a1c18095378d,"docker/pytest exit code 4: ERROR: file or directory not found: mouse\test_gene.py
+
+"
+rochefort_lab_fissa_2077a8c8,p0 > 0.05 without the flaky tests,OD,1,1,1,1,5.815688252105611,,https://github.com/rochefort-lab/fissa,2077a8c8a029948dcf1d4c352f785700f42aff9f,
+saabeilin_kafkian_79eb88b8,flake not reproduced,OD,2,0,0,0,0.5697043686523102,,https://github.com/saabeilin/kafkian,79eb88b874876632590fea48afcab09592c717dd,
+samreay_chainconsumer_56066965,p0 > 0.05 without the flaky tests,NOD,1,0.35,0,0.35,16.11427142074972,,https://github.com/Samreay/ChainConsumer,5606696525d91f11d8093085934fa352b98ce97c,
+santoshphilip_eppy_98e58583,p0 > 0.05 without the flaky tests,OD,84,1,1,1,0.2391824373480631,,https://github.com/santoshphilip/eppy,98e58583dce6c0fcec9c7b1ff1142bae0a67ddc7,
+scrapinghub_shub_7297d6b0,tests do not run,OD,1,,,,,,https://github.com/scrapinghub/shub,7297d6b05b487749d99a4d94eea2f2de3e558f8a,"docker/pytest exit code 4: ERROR: file or directory not found: test_utils.py
+
+"
+scrapinghub_spidermon_d58090de,tests do not run,NOD,1,,,,,,https://github.com/scrapinghub/spidermon,d58090de7c0fcb656fc4daa19b6119df95df57d6,"docker/pytest exit code 4: apper teardown.
+Plugin: helpconfig, Hook: pytest_cmdline_parse
+ConftestImportFailure: ModuleNotFoundError: No module named 'scrapy' (from /repo/conftest.py)
+For more information see https://pluggy.readthedocs.io/en/stable/api_reference.html#pluggy.PluggyTeardownRaisedWarning
+  config = pluginmanager.hook.pytest_cmdline_parse(
+ImportError while loading conftest '/repo/conftest.py'.
+conftest.py:2: in <module>
+    from scrapy.crawler import Crawler
+E   ModuleNotFoundError: No module named 'scrapy'
+"
+sergeyshk_ruts_af02f627,tests need uninstalled modules,NOD,1,1,1,1,0.5400574812490959,pymorphy2,https://github.com/SergeyShk/ruTS,af02f627d9022f0f4825d9bed4ffc97d3d329f2d,
+spulec_freezegun_89945582,flake not reproduced,NOD,1,0,0,0,0.7688114770542598,,https://github.com/spulec/freezegun,8994558274161b527ab83a3b13ea5969e9ebd144,
+spulec_freezegun_b46da782,flake not reproduced,OD,15,0,0,0,0.5443305081978906,,https://github.com/spulec/freezegun,b46da782a7a051081fd51577749cfc0074db0cc6,
+sputt_qer_c77e6777,p0 > 0.05 without the flaky tests,OD,9,1,1,1,0.7257923500554171,,https://github.com/sputt/qer,c77e6777967ee660447beb9522c867a7233ef78d,
+sputt_req_compile_c77e6777,p0 > 0.05 without the flaky tests,OD,9,1,1,1,0.7984865918493597,,https://github.com/sputt/req-compile,c77e6777967ee660447beb9522c867a7233ef78d,
+stratoscale_skipper_dde3194b,p0 > 0.05 without the flaky tests,OD,3,1,1,1,2.27279025829921,,https://github.com/Stratoscale/skipper,dde3194bf6cf227b30c6e54b18c37317d2e0647e,
+strizhechenko_netutils_linux_dfcb0900,no tests left without the flaky ones,OD,1,1,1,,0.9682479146373225,,https://github.com/strizhechenko/netutils-linux,dfcb0900ffffa3020656338bbab123f6da00a168,
+swstephe_py2jdbc_issues_8_515d06a4,build failed,OD,1,,,,,,https://github.com/swstephe/py2jdbc/issues/8,515d06a48e54ca9f690f94fd795e49ba7758fcd4,"1
+   3 | >>> RUN git clone -q https://github.com/swstephe/py2jdbc/issues/8 /repo && git -C /repo checkout -q 515d06a48e54ca9f690f94fd795e49ba7758fcd4
+   4 |     WORKDIR /repo
+   5 |     RUN pip install --no-cache-dir -e . || true
+--------------------
+ERROR: failed to build: failed to solve: process ""/bin/sh -c git clone -q https://github.com/swstephe/py2jdbc/issues/8 /repo && git -C /repo checkout -q 515d06a48e54ca9f690f94fd795e49ba7758fcd4"" did not complete successfully: exit code: 128
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/ar3ip0t9d7b6bs24xcetgf71t
+"
+uriyyo_instapi_6f972e2a,tests do not run,NOD,1,,,,,,https://github.com/uriyyo/instapi,6f972e2ae1ccc9a21eb6b18136ee677667cd4ba5,"docker/pytest exit code 4: __main__.py: error: unrecognized arguments: --cov=instapi --cov-report=term-missing
+  inifile: /repo/pytest.ini
+  rootdir: /repo
+For more information see https://pluggy.readthedocs.io/en/stable/api_reference.html#pluggy.PluggyTeardownRaisedWarning
+  config = pluginmanager.hook.pytest_cmdline_parse(
+ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]
+__main__.py: error: unrecognized arguments: --cov=instapi --cov-report=term-missing
+  inifile: /repo/pytest.ini
+  rootdir: /repo
+
+"
+verdan_pyatlasclient_issues_12_afb4bb6c,build failed,OD,1,,,,,,https://github.com/verdan/pyatlasclient/issues/12,afb4bb6c169c7aedefaac91f12e150ad9c1da8db,">> RUN git clone -q https://github.com/verdan/pyatlasclient/issues/12 /repo && git -C /repo checkout -q afb4bb6c169c7aedefaac91f12e150ad9c1da8db
+   4 |     WORKDIR /repo
+   5 |     RUN pip install --no-cache-dir -e . || true
+--------------------
+ERROR: failed to build: failed to solve: process ""/bin/sh -c git clone -q https://github.com/verdan/pyatlasclient/issues/12 /repo && git -C /repo checkout -q afb4bb6c169c7aedefaac91f12e150ad9c1da8db"" did not complete successfully: exit code: 128
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/twiesp2k4nrz4nn9efw8wqq2l
+"
+vilkasgroup_verifone_5509c087,p0 > 0.05 without the flaky tests,OD,1,1,1,1,0.9372142895386787,,https://github.com/vilkasgroup/Verifone,5509c08767a9b482cfe5a9572854cf4c73ad6c02,
+voxpupuli_puppetboard_issues_646_88401f64,build failed,OD,1,,,,,,https://github.com/voxpupuli/puppetboard/issues/646,88401f64b20da20edaf14558d6c0e9bdc697de3b,"UN git clone -q https://github.com/voxpupuli/puppetboard/issues/646 /repo && git -C /repo checkout -q 88401f64b20da20edaf14558d6c0e9bdc697de3b
+   4 |     WORKDIR /repo
+   5 |     RUN pip install --no-cache-dir -e . || true
+--------------------
+ERROR: failed to build: failed to solve: process ""/bin/sh -c git clone -q https://github.com/voxpupuli/puppetboard/issues/646 /repo && git -C /repo checkout -q 88401f64b20da20edaf14558d6c0e9bdc697de3b"" did not complete successfully: exit code: 128
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/kh75atfhja1ywpk7f3580l5hi
+"
+voytekresearch_fooof_7a520c4f,tests need uninstalled modules,OD,11,1,1,1,0.9307011875498574,py.test,https://github.com/voytekresearch/fooof,7a520c4f8ac3a44f4f18dc025b5e5d40049c9f2b,
+willforde_urlquick_db765372,p0 > 0.05 without the flaky tests,OD,1,1,1,1,0.8925456479482818,,https://github.com/willforde/urlquick,db765372b73800cfa056047a3f3331820abd4ae8,
+ww_tech_primrose_bd9bb8d5,build failed,OD,1,,,,,,https://github.com/ww-tech/primrose,bd9bb8d5d5aaf31d473d01645a862ac9d5fc6f8e,"OM seqaccept/base:1
+   3 | >>> RUN git clone -q https://github.com/ww-tech/primrose /repo && git -C /repo checkout -q bd9bb8d5d5aaf31d473d01645a862ac9d5fc6f8e
+   4 |     WORKDIR /repo
+   5 |     RUN pip install --no-cache-dir -e . || true
+--------------------
+ERROR: failed to build: failed to solve: process ""/bin/sh -c git clone -q https://github.com/ww-tech/primrose /repo && git -C /repo checkout -q bd9bb8d5d5aaf31d473d01645a862ac9d5fc6f8e"" did not complete successfully: exit code: 128
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/tda9bdrkmpr5se6op8fvwqe9f
+"
+zabamund_wellpathpy_f29b14a9,p0 > 0.05 without the flaky tests,OD,1,1,1,1,1.5781395376397995,,https://github.com/Zabamund/wellpathpy,f29b14a9a1c46e77ea98b141e3cdc43674654ea2,

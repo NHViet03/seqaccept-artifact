@@ -1,0 +1,14 @@
+{
+ "slug": "parsely_serpextract_e156430b",
+ "url": "https://github.com/Parsely/serpextract",
+ "sha": "e156430b32eb833686820f490dbcdd989f27baa2",
+ "kinds": "NOD",
+ "idoft_tests": 1,
+ "tests": [
+  "test_serps.py::TestSERPs::test_mojeek"
+ ],
+ "image": "seqaccept-screen/parsely_serpextract_e156430b:1",
+ "screened_at": "2026-10-24T22:58:28+00:00",
+ "verdict": "tests do not run",
+ "detail": "docker/pytest exit code 4: ERROR: file or directory not found: test_serps.py\n\n"
+}

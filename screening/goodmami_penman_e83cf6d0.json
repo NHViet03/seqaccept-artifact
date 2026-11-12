@@ -1,0 +1,21 @@
+{
+ "slug": "goodmami_penman_e83cf6d0",
+ "url": "https://github.com/goodmami/penman",
+ "sha": "e83cf6d006724d72a3e19a955aad94412da912b7",
+ "kinds": "NOD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/test_layout.py::test_rearrange"
+ ],
+ "image": "seqaccept-screen/goodmami_penman_e83cf6d0:1",
+ "screened_at": "2026-10-24T22:56:53+00:00",
+ "flaky_rate": 0.85,
+ "default_order_failed": 0,
+ "seconds_per_block": 0.40673056049563455,
+ "failing_tests": [
+  "tests/test_layout.py::test_rearrange"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "candidate"
+}

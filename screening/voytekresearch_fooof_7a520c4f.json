@@ -1,0 +1,31 @@
+{
+ "slug": "voytekresearch_fooof_7a520c4f",
+ "url": "https://github.com/voytekresearch/fooof",
+ "sha": "7a520c4f8ac3a44f4f18dc025b5e5d40049c9f2b",
+ "kinds": "OD",
+ "idoft_tests": 11,
+ "tests": [
+  "fooof/tests/core/test_io.py::test_load_file_contents",
+  "fooof/tests/core/test_io.py::test_load_jsonlines",
+  "fooof/tests/core/test_io.py::test_load_json_fobj",
+  "fooof/tests/core/test_io.py::test_load_json_str",
+  "fooof/tests/objs/test_fit.py::test_fooof_fit_knee",
+  "fooof/tests/objs/test_fit.py::test_fooof_fit_nk",
+  "fooof/tests/objs/test_fit.py::test_fooof_load",
+  "fooof/tests/objs/test_group.py::test_fg_load",
+  "fooof/tests/utils/test_download.py::test_check_data_file",
+  "fooof/tests/utils/test_io.py::test_load_fooof",
+  "fooof/tests/utils/test_io.py::test_load_fooofgroup"
+ ],
+ "image": "seqaccept-screen/voytekresearch_fooof_7a520c4f:1",
+ "screened_at": "2026-10-24T22:43:09+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 1,
+ "seconds_per_block": 0.9307011875498574,
+ "failing_tests": [],
+ "missing_modules": [
+  "py.test"
+ ],
+ "p0_estimate": 1,
+ "verdict": "tests need uninstalled modules"
+}

@@ -1,0 +1,57 @@
+ob_creation = <tests.factories.RequestsMock object at 0xffff996d5790>
+
+    def test_create_from_mapping(mock_from_mapping_runner, mock_requests_for_job_creation):
+        """Try from-mapping, creating jobs based on a mapping"""
+    
+        # Run and answer are you sure 'N'
+        result = mock_from_mapping_runner.invoke(
+            main, "from-mapping", input="N", catch_exceptions=False
+        )
+        assert result.exit_code == 0
+        assert "Cancelled" in result.output
+        assert mock_requests_for_job_creation.requests.post.call_count == 0
+    
+        # Now answer Y
+        result = mock_from_mapping_runner.invoke(
+            main, "from-mapping", input="Y", catch_exceptions=False
+        )
+        assert result.exit_code == 0
+>       assert mock_requests_for_job_creation.requests.post.call_count == 20
+E       AssertionError: assert 0 == 20
+E        +  where 0 = <Mock name='mock.post' id='281473255824448'>.call_count
+E        +    where <Mock name='mock.post' id='281473255824448'> = <Mock id='281473255823152'>.post
+E        +      where <Mock id='281473255823152'> = <tests.factories.RequestsMock object at 0xffff996d5790>.requests
+
+tests/test_cli_create.py:61: AssertionError
+___________________ test_create_from_mapping_folder_and_pacs ___________________
+
+mock_from_mapping_runner = <tests.conftest.AnonAPIContextRunner object at 0xffff99623850>
+a_folder_with_mapping_diverse = local('/tmp/pytest-of-root/pytest-0/test_create_from_mapping_folde0')
+mock_requests_for_job_creation = <tests.factories.RequestsMock object at 0xffff99623a90>
+
+    def test_create_from_mapping_folder_and_pacs(
+        mock_from_mapping_runner,
+        a_folder_with_mapping_diverse,
+        mock_requests_for_job_creation,
+    ):
+        """PACS identifiers should generate slightly different jobs then Folder identifiers."""
+        mock_requests = mock_requests_for_job_creation
+        mock_from_mapping_runner.set_mock_current_dir(a_folder_with_mapping_diverse)
+    
+        result = mock_from_mapping_runner.invoke(
+            main, "from-mapping", input="Y", catch_exceptions=False
+        )
+        assert result.exit_code == 0
+        assert "Error:" not in result.output
+>       assert mock_requests.requests.post.call_count == 4
+E       AssertionError: assert 0 == 4
+E        +  where 0 = <Mock name='mock.post' id='281473255824496'>.call_count
+E        +    where <Mock name='mock.post' id='281473255824496'> = <Mock id='281473255094880'>.post
+E        +      where <Mock id='281473255094880'> = <tests.factories.RequestsMock object at 0xffff99623a90>.requests
+
+tests/test_cli_create.py:185: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_cli_create.py::test_create_from_mapping_server_error - Asse...
+FAILED tests/test_cli_create.py::test_create_from_mapping - AssertionError: a...
+FAILED tests/test_cli_create.py::test_create_from_mapping_folder_and_pacs - A...
+3 failed, 125 passed, 4 deselected in 0.83s

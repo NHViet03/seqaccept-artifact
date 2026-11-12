@@ -1,0 +1,14 @@
+{
+ "slug": "scrapinghub_spidermon_d58090de",
+ "url": "https://github.com/scrapinghub/spidermon",
+ "sha": "d58090de7c0fcb656fc4daa19b6119df95df57d6",
+ "kinds": "NOD",
+ "idoft_tests": 1,
+ "tests": [
+  "test_validators_schematics.py::test_choices"
+ ],
+ "image": "seqaccept-screen/scrapinghub_spidermon_d58090de:1",
+ "screened_at": "2026-10-24T23:00:12+00:00",
+ "verdict": "tests do not run",
+ "detail": "docker/pytest exit code 4: apper teardown.\nPlugin: helpconfig, Hook: pytest_cmdline_parse\nConftestImportFailure: ModuleNotFoundError: No module named 'scrapy' (from /repo/conftest.py)\nFor more information see https://pluggy.readthedocs.io/en/stable/api_reference.html#pluggy.PluggyTeardownRaisedWarning\n  config = pluginmanager.hook.pytest_cmdline_parse(\nImportError while loading conftest '/repo/conftest.py'.\nconftest.py:2: in <module>\n    from scrapy.crawler import Crawler\nE   ModuleNotFoundError: No module named 'scrapy'\n"
+}

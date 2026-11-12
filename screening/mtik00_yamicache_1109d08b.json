@@ -1,0 +1,28 @@
+{
+ "slug": "mtik00_yamicache_1109d08b",
+ "url": "https://github.com/mtik00/yamicache",
+ "sha": "1109d08b18be94bdee55e113309f7be29f25d840",
+ "kinds": "NOD+OD",
+ "idoft_tests": 5,
+ "tests": [
+  "tests/test_class.py::test_cached",
+  "tests/test_class.py::test_keyed_cached",
+  "tests/test_class.py::test_utility",
+  "tests/test_gc.py::test_deco_timeout",
+  "tests/test_noclass.py::test_main"
+ ],
+ "image": "seqaccept-screen/mtik00_yamicache_1109d08b:1",
+ "screened_at": "2026-10-24T22:39:06+00:00",
+ "flaky_rate": 0.65,
+ "default_order_failed": 0,
+ "seconds_per_block": 13.499271466737264,
+ "failing_tests": [
+  "tests/test_class.py::test_cached",
+  "tests/test_class.py::test_keyed_cached",
+  "tests/test_class.py::test_utility",
+  "tests/test_noclass.py::test_main"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "candidate"
+}

@@ -1,0 +1,22 @@
+{
+ "slug": "bwohlberg_sporco_efd9237e",
+ "url": "https://github.com/bwohlberg/sporco",
+ "sha": "efd9237ec0d254e2ff630ad0ac17eb8dc566c586",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/test_plot.py::TestSet01::test_09"
+ ],
+ "image": "seqaccept-screen/bwohlberg_sporco_efd9237e:1",
+ "screened_at": "2026-10-24T22:50:44+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 1,
+ "seconds_per_block": 3.799807527201483,
+ "failing_tests": [
+  "tests/test_plot.py::TestSet01::test_03",
+  "tests/test_plot.py::TestSet01::test_09"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 1,
+ "verdict": "p0 > 0.05 without the flaky tests"
+}

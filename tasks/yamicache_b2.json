@@ -1,0 +1,33 @@
+{
+  "repo": "mtik00/yamicache",
+  "repo_kind": "NOD",
+  "bug_kind": "order",
+  "image": "seqaccept/yamicache:1",
+  "relpath": "yamicache/yamicache.py",
+  "tests": [
+    "tests/test_class.py",
+    "tests/test_gc.py",
+    "--deselect=tests/test_class.py::test_cached",
+    "--deselect=tests/test_class.py::test_keyed_cached",
+    "--deselect=tests/test_class.py::test_utility"
+  ],
+  "report": "After clearing the cache, calling a cached method on my class object doesn't seem to put anything into the cache: the cache stays empty, there are no keys, and with debug mode on the counters dictionary is empty even after calling the same method ten times. I expected each distinct call to be stored as one entry (with its key using the configured prefix), so later calls hit the cache and the entry is still there until its timeout expires.",
+  "report_status": "written 2026-11-05 by an independent agent from failing test output only (no access to the original file, the diff or the library source)",
+  "buggy": "bugs/yamicache_b2/yamicache.py",
+  "original": "bugs/yamicache_b2/yamicache.orig.py",
+  "test_ids": [
+    "tests/test_class.py::test_counters",
+    "tests/test_class.py::test_nocache",
+    "tests/test_class.py::test_timeout",
+    "tests/test_class.py::test_prefix",
+    "tests/test_gc.py::test_deco_timeout",
+    "tests/test_gc.py::test_gc",
+    "tests/test_gc.py::test_gc2"
+  ],
+  "block_size": 3,
+  "p0_full_suite": null,
+  "p0": 0.0,
+  "p0_blocks": 400,
+  "p0_workers": 8,
+  "p0_measured_at": "2026-11-05T11:11:32+00:00"
+}

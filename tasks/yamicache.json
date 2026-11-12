@@ -1,0 +1,33 @@
+{
+  "repo": "mtik00/yamicache",
+  "repo_kind": "NOD",
+  "bug_kind": "order",
+  "image": "seqaccept/yamicache:1",
+  "relpath": "yamicache/yamicache.py",
+  "tests": [
+    "tests/test_class.py",
+    "tests/test_gc.py",
+    "--deselect=tests/test_class.py::test_cached",
+    "--deselect=tests/test_class.py::test_keyed_cached",
+    "--deselect=tests/test_class.py::test_utility"
+  ],
+  "report": "I turned on debug mode to keep an eye on cache hits, and the hit counts don't add up: after emptying the cache and repeating the same cached call several times, the reported number of hits is higher than the number of repeat calls I actually made. The statistics also don't seem to start from zero after I empty the cache, so counts from earlier work show up again. It doesn't happen every time; whether it shows up seems to depend on what else ran before.",
+  "report_status": "written 2026-10-25 by an independent agent from failing test output only (no access to the original file, the diff or the library source)",
+  "buggy": "bugs/yamicache/yamicache.py",
+  "original": "bugs/yamicache/yamicache.orig.py",
+  "p0": 0.01,
+  "p0_blocks": 400,
+  "p0_workers": 8,
+  "p0_measured_at": "2026-10-25T07:47:46+00:00",
+  "test_ids": [
+    "tests/test_class.py::test_counters",
+    "tests/test_class.py::test_nocache",
+    "tests/test_class.py::test_timeout",
+    "tests/test_class.py::test_prefix",
+    "tests/test_gc.py::test_deco_timeout",
+    "tests/test_gc.py::test_gc",
+    "tests/test_gc.py::test_gc2"
+  ],
+  "block_size": 3,
+  "p0_full_suite": 0.0025
+}

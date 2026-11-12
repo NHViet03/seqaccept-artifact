@@ -1,0 +1,23 @@
+{
+ "slug": "ericmjl_nxviz_d2a2a622",
+ "url": "https://github.com/ericmjl/nxviz",
+ "sha": "d2a2a622e834148a9f4337dbe1021a05c5f18548",
+ "kinds": "NOD",
+ "idoft_tests": 2,
+ "tests": [
+  "tests/test_geometry.py::test_correct_negative_angle",
+  "tests/test_plots.py::test_matrix_plot"
+ ],
+ "image": "seqaccept-screen/ericmjl_nxviz_d2a2a622:1",
+ "screened_at": "2026-10-24T22:47:21+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 1,
+ "seconds_per_block": 0.4947621374594746,
+ "failing_tests": [],
+ "missing_modules": [
+  "matplotlib",
+  "numpy"
+ ],
+ "p0_estimate": 1,
+ "verdict": "tests need uninstalled modules"
+}

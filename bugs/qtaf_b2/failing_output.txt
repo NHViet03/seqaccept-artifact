@@ -1,0 +1,39 @@
+______
+
+self = <tests.test_testbase.test_loader.TestLoaderTest testMethod=test_load_filter>
+
+    def test_load_filter(self):
+        filtered_test = 'tests.sampletest.hellotest.HelloTest'
+    
+        def filter_func(test):
+            if test.test_class_name == filtered_test:
+                return "hello filtered"
+    
+        loader = TestLoader(filter_func)
+        tests = loader.load("tests.sampletest")
+        testnames = [ it.test_class_name for it in tests ]
+        self.assertNotIn(filtered_test, testnames)
+        tests = loader.get_filtered_tests()
+>       self.assertEqual(len(tests), 1)
+E       AssertionError: 57 != 1
+
+tests/test_testbase/test_loader.py:65: AssertionError
+----------------------------- Captured stdout call -----------------------------
+------------------------------ Captured log call -------------------------------
+WARNING  QTA_LOGGER:logger.py:75 [WARNING]<class 'tests.sampletest.datatest.BadCharCaseTest'>'s drive data key should use "foo_test" instead of "foo test"
+WARNING  QTA_LOGGER:logger.py:75 [WARNING]<class 'tests.sampletest.datatest.BadCharCaseTest'>'s drive data key should use "a_b" instead of "a&b"
+WARNING  QTA_LOGGER:logger.py:75 [WARNING]<class 'tests.sampletest.datatest.BadCharCaseTest'>'s drive data key should use "2_2" instead of "2*2"
+WARNING  QTA_LOGGER:logger.py:75 [WARNING]<class 'tests.sampletest.datatest.BadCharCaseTest'>'s drive data key should use "5_1" instead of "5-1"
+WARNING  QTA_LOGGER:logger.py:75 [WARNING]<class 'tests.sampletest.datatest.BadCharCaseTest'>'s drive data key should use "foo_bar" instead of "foo|bar"
+WARNING  QTA_LOGGER:logger.py:75 [WARNING]<class 'tests.sampletest.datatest.BadCharCaseTest'>'s drive data key should use "ok_" instead of "ok?"
+WARNING  QTA_LOGGER:logger.py:75 [WARNING]<class 'tests.sampletest.datatest.BadCharCaseTest'>'s drive data key should use "about_xxx_" instead of "about<xxx>"
+WARNING  QTA_LOGGER:logger.py:75 [WARNING]<class 'tests.sampletest.datatest.BadCharCaseTest'>'s drive data key should use "10_2" instead of "10/2"
+WARNING  QTA_LOGGER:logger.py:75 [WARNING]<class 'tests.sampletest.datatest.BadCharCaseTest'>'s drive data key should use "go_" instead of "go~"
+WARNING  QTA_LOGGER:logger.py:75 [WARNING]<class 'tests.sampletest.datatest.BadCharCaseTest'>'s drive data key should use "a_1" instead of "a=1"
+WARNING  QTA_LOGGER:logger.py:75 [WARNING]<class 'tests.sampletest.datatest.BadCharCaseTest'>'s drive data key should use "a_good_" instead of "a(good)"
+WARNING  QTA_LOGGER:logger.py:75 [WARNING]<class 'tests.sampletest.datatest.BadCharCaseTest'>'s drive data key should use "b_bad_" instead of "b[bad]"
+=========================== short test summary info ============================
+FAILED tests/test_testbase/test_loader.py::TestLoaderTest::test_load_filter
+=========================== short test summary info ============================
+FAILED tests/test_testbase/test_loader.py::TestLoaderTest::test_load_filter
+1 failed, 82 passed, 1 deselected in 16.04s

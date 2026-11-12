@@ -1,0 +1,73 @@
+s_amr_codec _______________________
+
+    def test_canonicalize_roles_amr_codec():
+        parse = amr_codec.parse
+        norm = make_norm(canonicalize_roles, amr_model)
+        form = make_form(amr_codec.format)
+    
+        t = norm(parse('(a / alpha :ARG1 (b / beta))'))
+        assert form(t) == '(a / alpha :ARG1 (b / beta))'
+    
+        t = norm(parse('(a / alpha :ARG1-of-of (b / beta))'))
+        assert form(t) == '(a / alpha :ARG1 (b / beta))'
+    
+        t = norm(parse('(a / alpha :mod-of (b / beta))'))
+        assert form(t) == '(a / alpha :domain (b / beta))'
+    
+>       t = norm(parse('(a / alpha :mod-of~1 (b / beta))'))
+
+tests/test_transform.py:64: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+penman/codec.py:101: in parse
+    return parse(s)
+penman/_parse.py:36: in parse
+    return _parse(tokens)
+penman/_parse.py:83: in _parse
+    node = _parse_node(tokens)
+penman/_parse.py:132: in _parse_node
+    edges.append(_parse_edge(tokens))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tokens = <penman._lexer.TokenIterator object at 0xffff7fc83ac0>
+
+    def _parse_edge(tokens: TokenIterator):
+        """
+        Parse a PENMAN edge from *tokens*.
+    
+        Edges have the following pattern::
+    
+            Edge := Role (Constant | Node)
+        """
+        role_token = tokens.expect('ROLE')
+        role = role_token.text
+    
+        target = None
+        _next = tokens.peek()
+        next_type = _next.type
+        if next_type in ('SYMBOL', 'STRING'):
+            target = tokens.next().text
+            if tokens.peek().type == 'ALIGNMENT':
+                target += tokens.next().text
+        elif next_type == 'LPAREN':
+            target = _parse_node(tokens)
+        # for robustness in parsing, allow edges with no target:
+        #    (x :ROLE :ROLE2...  <- followed by another role
+        #    (x :ROLE )          <- end of node
+        elif next_type not in ('ROLE', 'RPAREN'):
+>           raise tokens.error('Expected: SYMBOL, STRING, LPAREN', token=_next)
+E           penman.exceptions.DecodeError: 
+E             line 1
+E               (a / alpha :mod-of~1 (b / beta))
+E                                 ^
+E           DecodeError: Expected: SYMBOL, STRING, LPAREN
+
+penman/_parse.py:163: DecodeError
+=========================== short test summary info ============================
+FAILED tests/test_codec.py::TestPENMANCodec::test_decode_alignments - penman....
+FAILED tests/test_surface.py::test_alignments - penman.exceptions.DecodeError: 
+FAILED tests/test_penman.py::test_parse - penman.exceptions.DecodeError: 
+FAILED tests/test_transform.py::test_reify_edges_amr_codec - penman.exception...
+FAILED tests/test_transform.py::test_reify_attributes - penman.exceptions.Dec...
+FAILED tests/test_transform.py::test_dereify_edges_amr_codec - penman.excepti...
+FAILED tests/test_transform.py::test_canonicalize_roles_amr_codec - penman.ex...
+7 failed, 78 passed, 1 deselected in 0.36s

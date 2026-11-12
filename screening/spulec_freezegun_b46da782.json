@@ -1,0 +1,33 @@
+{
+ "slug": "spulec_freezegun_b46da782",
+ "url": "https://github.com/spulec/freezegun",
+ "sha": "b46da782a7a051081fd51577749cfc0074db0cc6",
+ "kinds": "OD",
+ "idoft_tests": 15,
+ "tests": [
+  "tests/test_class_import.py::test_can_ignore_email_module",
+  "tests/test_class_import.py::test_fake_uses_real_when_ignored",
+  "tests/test_class_import.py::test_import_after_start",
+  "tests/test_datetimes.py::test_context_manager",
+  "tests/test_datetimes.py::test_min_and_max",
+  "tests/test_datetimes.py::test_nested_context_manager",
+  "tests/test_datetimes.py::test_nested_context_manager_with_tz_offsets",
+  "tests/test_datetimes.py::test_simple_api",
+  "tests/test_datetimes.py::test_time_localtime",
+  "tests/test_datetimes.py::test_time_ns",
+  "tests/test_errors.py::test_ignore_errors_in_start[ImportError]",
+  "tests/test_errors.py::test_ignore_errors_in_start[TypeError]",
+  "tests/test_uuid.py::test_uuid1_future",
+  "tests/test_warnings.py::test_ignore_warnings_in_start",
+  "tests/test_warnings.py::test_ignore_warnings_in_stop"
+ ],
+ "image": "seqaccept-screen/spulec_freezegun_b46da782:1",
+ "screened_at": "2026-10-24T22:40:56+00:00",
+ "flaky_rate": 0,
+ "default_order_failed": 0,
+ "seconds_per_block": 0.5443305081978906,
+ "failing_tests": [],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "flake not reproduced"
+}

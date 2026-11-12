@@ -1,0 +1,14 @@
+{
+ "slug": "gmggroup_omf_bf0cfaa4",
+ "url": "https://github.com/gmggroup/omf",
+ "sha": "bf0cfaa4d05c438606d7b4561166bf12d2c1be74",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/test_base.py::test_deserialize"
+ ],
+ "image": "seqaccept-screen/gmggroup_omf_bf0cfaa4:1",
+ "screened_at": "2026-10-24T22:56:40+00:00",
+ "verdict": "build failed",
+ "detail": "|     FROM seqaccept/base:1\n   3 | >>> RUN git clone -q https://github.com/gmggroup/omf /repo && git -C /repo checkout -q bf0cfaa4d05c438606d7b4561166bf12d2c1be74\n   4 |     WORKDIR /repo\n   5 |     RUN pip install --no-cache-dir -e . || true\n--------------------\nERROR: failed to build: failed to solve: process \"/bin/sh -c git clone -q https://github.com/gmggroup/omf /repo && git -C /repo checkout -q bf0cfaa4d05c438606d7b4561166bf12d2c1be74\" did not complete successfully: exit code: 128\n\nView build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/9svirb0887q9bpx0lx9c9019n\n"
+}

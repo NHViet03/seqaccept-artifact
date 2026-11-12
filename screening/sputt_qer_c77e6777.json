@@ -1,0 +1,29 @@
+{
+ "slug": "sputt_qer_c77e6777",
+ "url": "https://github.com/sputt/qer",
+ "sha": "c77e6777967ee660447beb9522c867a7233ef78d",
+ "kinds": "OD",
+ "idoft_tests": 9,
+ "tests": [
+  "tests/repos/test_pypi.py::test_no_candidates",
+  "tests/repos/test_pypi.py::test_pypi_500",
+  "tests/repos/test_pypi.py::test_python_requires_wheel_tags[https://pypi.org/numpy-1.16.3-cp37-cp37m-manylinux1_x86_64.whl#sha256=HASH]",
+  "tests/repos/test_pypi.py::test_python_requires_wheel_tags[https://pypi.org/numpy-1.16.3-cp37-cp37m-win_amd64.whl#sha256=HASH]",
+  "tests/repos/test_pypi.py::test_python_requires_wheel_tags[https://pypi.org/numpy-1.16.3.zip#sha256=HASH]",
+  "tests/repos/test_pypi.py::test_successful_numpy",
+  "tests/test_extractor.py::test_extractor[mock_targz]",
+  "tests/test_extractor.py::test_extractor[mock_zip0]",
+  "tests/test_extractor.py::test_extractor[mock_zip1]"
+ ],
+ "image": "seqaccept-screen/sputt_qer_c77e6777:1",
+ "screened_at": "2026-10-24T22:44:00+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 1,
+ "seconds_per_block": 0.7257923500554171,
+ "failing_tests": [
+  "tests/repos/test_pypi.py::test_resolve_new_numpy"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 1,
+ "verdict": "p0 > 0.05 without the flaky tests"
+}

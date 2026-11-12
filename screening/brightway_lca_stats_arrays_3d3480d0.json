@@ -1,0 +1,16 @@
+{
+ "slug": "brightway_lca_stats_arrays_3d3480d0",
+ "url": "https://github.com/brightway-lca/stats_arrays",
+ "sha": "3d3480d064365571e64e736dcbd778badb1210db",
+ "kinds": "OD",
+ "idoft_tests": 3,
+ "tests": [
+  "extreme.py::GeneralizedExtremeValueUncertaintyTestCase::test_random_variables",
+  "gama.py::GeneralizedExtremeValueUncertaintyTestCase::pretty_close",
+  "student.py::GeneralizedExtremeValueUncertaintyTestCase::test_scale_matters/pretty_close"
+ ],
+ "image": "seqaccept-screen/brightway_lca_stats_arrays_3d3480d0:1",
+ "screened_at": "2026-10-24T22:45:38+00:00",
+ "verdict": "tests do not run",
+ "detail": "docker/pytest exit code 4: ERROR: file or directory not found: extreme.py\n\n"
+}

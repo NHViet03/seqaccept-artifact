@@ -1,0 +1,23 @@
+{
+ "slug": "martyni_autoyaml_be3f4506",
+ "url": "https://github.com/martyni/autoyaml",
+ "sha": "be3f450667bcca477683e63bcc49c67c5d170855",
+ "kinds": "OD",
+ "idoft_tests": 2,
+ "tests": [
+  "tests/autoyaml_test.py::TestAutoyamlMethods::test_b_decrypt_config",
+  "tests/autoyaml_test.py::TestEncryptorMethods::test_b_decrypt"
+ ],
+ "image": "seqaccept-screen/martyni_autoyaml_be3f4506:1",
+ "screened_at": "2026-10-24T22:48:12+00:00",
+ "flaky_rate": 0.95,
+ "default_order_failed": 0,
+ "seconds_per_block": 0.4319314000982558,
+ "failing_tests": [
+  "tests/autoyaml_test.py::TestAutoyamlMethods::test_b_decrypt_config",
+  "tests/autoyaml_test.py::TestEncryptorMethods::test_b_decrypt"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "candidate"
+}

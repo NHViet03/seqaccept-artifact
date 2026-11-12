@@ -1,0 +1,14 @@
+{
+ "slug": "voxpupuli_puppetboard_issues_646_88401f64",
+ "url": "https://github.com/voxpupuli/puppetboard/issues/646",
+ "sha": "88401f64b20da20edaf14558d6c0e9bdc697de3b",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "test/test_app.py"
+ ],
+ "image": "seqaccept-screen/voxpupuli_puppetboard_issues_646_88401f64:1",
+ "screened_at": "2026-10-24T23:04:02+00:00",
+ "verdict": "build failed",
+ "detail": "UN git clone -q https://github.com/voxpupuli/puppetboard/issues/646 /repo && git -C /repo checkout -q 88401f64b20da20edaf14558d6c0e9bdc697de3b\n   4 |     WORKDIR /repo\n   5 |     RUN pip install --no-cache-dir -e . || true\n--------------------\nERROR: failed to build: failed to solve: process \"/bin/sh -c git clone -q https://github.com/voxpupuli/puppetboard/issues/646 /repo && git -C /repo checkout -q 88401f64b20da20edaf14558d6c0e9bdc697de3b\" did not complete successfully: exit code: 128\n\nView build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/kh75atfhja1ywpk7f3580l5hi\n"
+}

@@ -1,0 +1,23 @@
+{
+ "slug": "netflix_skunkworks_policyuniverse_b633e572",
+ "url": "https://github.com/Netflix-Skunkworks/policyuniverse",
+ "sha": "b633e572ecdba45d70398ac034fb44e0e4e7dbf8",
+ "kinds": "OD",
+ "idoft_tests": 2,
+ "tests": [
+  "policyuniverse/tests/test_expander_minimizer.py::TestMethods::test_expand_1",
+  "policyuniverse/tests/test_expander_minimizer.py::TestMethods::test_expand_minimize_over_policies"
+ ],
+ "image": "seqaccept-screen/netflix_skunkworks_policyuniverse_b633e572:1",
+ "screened_at": "2026-10-24T22:49:08+00:00",
+ "flaky_rate": 0.7,
+ "default_order_failed": 0,
+ "seconds_per_block": 0.5752822937385644,
+ "failing_tests": [
+  "policyuniverse/tests/test_expander_minimizer.py::TestMethods::test_expand_1",
+  "policyuniverse/tests/test_expander_minimizer.py::TestMethods::test_expand_minimize_over_policies"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "candidate"
+}

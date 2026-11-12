@@ -1,0 +1,19 @@
+{
+ "slug": "pawelzny_dotty_dict_ae87e3fb",
+ "url": "https://github.com/pawelzny/dotty_dict",
+ "sha": "ae87e3fb76cbec5bfb9c885ccfb942afc3f0c9b5",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/test_dotty_cache.py::test_getitem_cache"
+ ],
+ "image": "seqaccept-screen/pawelzny_dotty_dict_ae87e3fb:1",
+ "screened_at": "2026-10-24T22:58:38+00:00",
+ "flaky_rate": 0,
+ "default_order_failed": 0,
+ "seconds_per_block": 0.45426314999931494,
+ "failing_tests": [],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "flake not reproduced"
+}

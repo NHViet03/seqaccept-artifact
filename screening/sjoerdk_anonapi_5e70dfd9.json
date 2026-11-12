@@ -1,0 +1,21 @@
+{
+ "slug": "sjoerdk_anonapi_5e70dfd9",
+ "url": "https://github.com/sjoerdk/anonapi",
+ "sha": "5e70dfd9fcb7dcc4e2345a6a153d9530f4886e73",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/test_cli_create.py::test_job_parameter_set"
+ ],
+ "image": "seqaccept-screen/sjoerdk_anonapi_5e70dfd9:1",
+ "screened_at": "2026-10-24T23:01:32+00:00",
+ "flaky_rate": 0.8,
+ "default_order_failed": 0,
+ "seconds_per_block": 1.2286308521957836,
+ "failing_tests": [
+  "tests/test_cli_create.py::test_job_parameter_set"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "candidate"
+}

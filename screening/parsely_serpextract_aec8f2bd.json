@@ -1,0 +1,25 @@
+{
+ "slug": "parsely_serpextract_aec8f2bd",
+ "url": "https://github.com/Parsely/serpextract/",
+ "sha": "aec8f2bd79c66953938569a24b05c693ab70b4ce",
+ "kinds": "OD",
+ "idoft_tests": 3,
+ "tests": [
+  "tests/test_serps.py::TestSERPs::test_custom_parser_explicit",
+  "tests/test_serps.py::TestSERPs::test_custom_parser_implicit",
+  "tests/test_serps.py::TestSERPs::test_naive_detection"
+ ],
+ "image": "seqaccept-screen/parsely_serpextract_aec8f2bd:1",
+ "screened_at": "2026-10-24T22:46:01+00:00",
+ "flaky_rate": 0.1,
+ "default_order_failed": 0,
+ "seconds_per_block": 0.5499681647110265,
+ "failing_tests": [
+  "tests/test_serps.py::TestSERPs::test_custom_parser_explicit",
+  "tests/test_serps.py::TestSERPs::test_custom_parser_implicit",
+  "tests/test_serps.py::TestSERPs::test_naive_detection"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "candidate"
+}

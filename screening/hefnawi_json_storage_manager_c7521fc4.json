@@ -1,0 +1,33 @@
+{
+ "slug": "hefnawi_json_storage_manager_c7521fc4",
+ "url": "https://github.com/hefnawi/json-storage-manager",
+ "sha": "c7521fc4a576cf23a8c2454106bed6fb8c951b8d",
+ "kinds": "OD",
+ "idoft_tests": 7,
+ "tests": [
+  "tests/test_main.py::test_get_item",
+  "tests/test_main.py::test_get_no_item",
+  "tests/test_main.py::test_read_json",
+  "tests/test_main.py::test_set_item",
+  "tests/test_main.py::test_set_item_fail",
+  "tests/test_main.py::test_update_item",
+  "tests/test_main.py::test_write_json"
+ ],
+ "image": "seqaccept-screen/hefnawi_json_storage_manager_c7521fc4:1",
+ "screened_at": "2026-10-24T22:44:34+00:00",
+ "flaky_rate": 0.95,
+ "default_order_failed": 0,
+ "seconds_per_block": 0.3711348124576034,
+ "failing_tests": [
+  "tests/test_main.py::test_get_item",
+  "tests/test_main.py::test_get_no_item",
+  "tests/test_main.py::test_read_json",
+  "tests/test_main.py::test_set_item",
+  "tests/test_main.py::test_set_item_fail",
+  "tests/test_main.py::test_update_item",
+  "tests/test_main.py::test_write_json"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "candidate"
+}

@@ -1,0 +1,21 @@
+{
+ "slug": "benjaminp_six_c0be8815",
+ "url": "https://github.com/benjaminp/six",
+ "sha": "c0be8815d13df45b6ae471c4c436cce8c192245d",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "test_six.py::test_lazy"
+ ],
+ "image": "seqaccept-screen/benjaminp_six_c0be8815:1",
+ "screened_at": "2026-10-24T22:50:29+00:00",
+ "flaky_rate": 0.4,
+ "default_order_failed": 0,
+ "seconds_per_block": 0.6179099770553875,
+ "failing_tests": [
+  "test_six.py::test_lazy"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "candidate"
+}

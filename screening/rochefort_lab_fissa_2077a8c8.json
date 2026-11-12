@@ -1,0 +1,43 @@
+{
+ "slug": "rochefort_lab_fissa_2077a8c8",
+ "url": "https://github.com/rochefort-lab/fissa",
+ "sha": "2077a8c8a029948dcf1d4c352f785700f42aff9f",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "fissa/tests/test_core.py::TestExperimentA::test_imagelistloaded_roizip"
+ ],
+ "image": "seqaccept-screen/rochefort_lab_fissa_2077a8c8:1",
+ "screened_at": "2026-10-24T22:59:29+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 1,
+ "seconds_per_block": 5.815688252105611,
+ "failing_tests": [
+  "fissa/tests/test_core.py::TestExperimentA::test_calcdeltaf",
+  "fissa/tests/test_core.py::TestExperimentA::test_calcdeltaf_notacrosstrials",
+  "fissa/tests/test_core.py::TestExperimentA::test_calcdeltaf_notrawf0",
+  "fissa/tests/test_core.py::TestExperimentA::test_calcdeltaf_notrawf0_notacrosstrials",
+  "fissa/tests/test_core.py::TestExperimentA::test_imagedir_roizip",
+  "fissa/tests/test_core.py::TestExperimentA::test_imagelist_roizip",
+  "fissa/tests/test_core.py::TestExperimentA::test_imagelistloaded_roizip",
+  "fissa/tests/test_core.py::TestExperimentA::test_lowmemorymode",
+  "fissa/tests/test_core.py::TestExperimentA::test_manualhandler",
+  "fissa/tests/test_core.py::TestExperimentA::test_matlab",
+  "fissa/tests/test_core.py::TestExperimentA::test_matlab_custom_fname",
+  "fissa/tests/test_core.py::TestExperimentA::test_matlab_deltaf",
+  "fissa/tests/test_core.py::TestExperimentA::test_matlab_no_cache_no_fname",
+  "fissa/tests/test_core.py::TestExperimentA::test_ncores_preparation_1",
+  "fissa/tests/test_core.py::TestExperimentA::test_ncores_preparation_2",
+  "fissa/tests/test_core.py::TestExperimentA::test_ncores_separate_1",
+  "fissa/tests/test_core.py::TestExperimentA::test_ncores_separate_2",
+  "fissa/tests/test_core.py::TestExperimentA::test_nocache",
+  "fissa/tests/test_core.py::TestExperimentA::test_nofolder",
+  "fissa/tests/test_core.py::TestExperimentA::test_noredo",
+  "fissa/tests/test_core.py::TestExperimentA::test_prepfirst",
+  "fissa/tests/test_core.py::TestExperimentA::test_previousprep",
+  "fissa/tests/test_core.py::TestExperimentA::test_redo"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 1,
+ "verdict": "p0 > 0.05 without the flaky tests"
+}

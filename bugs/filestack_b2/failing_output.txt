@@ -1,0 +1,46 @@
+colorspace:input,compress:true,density:50,docinfo:true,format:png,page:1,pageformat:legal,pageorientation:landscape,quality:80,secure:true,strip:true/SOMEEXTERNALURL
+
+tests/transformation_test.py:299: AssertionError
+____________________________ test_partial_pixelate _____________________________
+
+transform = <filestack.models.transformation.Transformation object at 0xffff803743a0>
+
+    def test_partial_pixelate(transform):
+        target_url = (
+            '{}/{}/partial_pixelate=amount:10,blur:10,'
+            'objects:[[x,y,width,height],[x,y,width,height]],type:rect/{}'
+        ).format(config.CDN_URL, APIKEY, EXTERNAL_URL)
+    
+        partial_pixelate = transform.partial_pixelate(
+            amount=10, blur=10, type='rect', objects='[[x,y,width,height],[x,y,width,height]]'
+        )
+>       assert partial_pixelate.url == target_url
+E       AssertionError: assert 'https://cdn....MEEXTERNALURL' == 'https://cdn.f...MEEXTERNALURL'
+E         Skipping 69 identical leading characters in diff, use -v to show
+E         - 0,blur:10,type:rect,objects:[[x,y,width,height],[x,y,width,height]]/SOMEEXTERNALURL
+E         ?          ----------
+E         + 0,blur:10,objects:[[x,y,width,height],[x,y,width,height]],type:rect/SOMEEXTERNALURL
+E         ?                                                          ++++++++++
+
+tests/transformation_test.py:184: AssertionError
+=============================== warnings summary ===============================
+/usr/local/lib/python3.8/site-packages/_pytest/config/__init__.py:784
+  /usr/local/lib/python3.8/site-packages/_pytest/config/__init__.py:784: PytestAssertRewriteWarning: Module already imported so cannot be rewritten: pytest_randomly
+    self._mark_plugins_for_rewrite(hook)
+
+/usr/local/lib/python3.8/site-packages/trafaret/base.py:7
+  /usr/local/lib/python3.8/site-packages/trafaret/base.py:7: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated since Python 3.3, and in 3.10 it will stop working
+    from collections import Mapping as AbcMapping
+
+-- Docs: https://docs.pytest.org/en/latest/warnings.html
+=========================== short test summary info ============================
+FAILED tests/transformation_test.py::test_fallback - AssertionError: assert '...
+FAILED tests/transformation_test.py::test_resize - AssertionError: assert 'ht...
+FAILED tests/transformation_test.py::test_collage - AssertionError: assert 'h...
+FAILED tests/transformation_test.py::test_chain_tasks_and_store - AssertionEr...
+FAILED tests/transformation_test.py::test_ascii - AssertionError: assert 'htt...
+FAILED tests/transformation_test.py::test_partial_blur - AssertionError: asse...
+FAILED tests/transformation_test.py::test_minify_css_with_params - AssertionE...
+FAILED tests/transformation_test.py::test_filetype_conversion - AssertionErro...
+FAILED tests/transformation_test.py::test_partial_pixelate - AssertionError: ...
+9 failed, 95 passed, 2 deselected, 2 warnings in 0.35 seconds

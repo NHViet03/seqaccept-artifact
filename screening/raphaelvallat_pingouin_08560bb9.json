@@ -1,0 +1,19 @@
+{
+ "slug": "raphaelvallat_pingouin_08560bb9",
+ "url": "https://github.com/raphaelvallat/pingouin",
+ "sha": "08560bb978949e97653b203f7374e90b022b88fb",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "pingouin/tests/test_regression.py::TestRegression::test_logistic_regression"
+ ],
+ "image": "seqaccept-screen/raphaelvallat_pingouin_08560bb9:1",
+ "screened_at": "2026-10-24T22:59:08+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 1,
+ "seconds_per_block": 0.5668158207437954,
+ "failing_tests": [],
+ "missing_modules": [],
+ "p0_estimate": 1,
+ "verdict": "p0 > 0.05 without the flaky tests"
+}

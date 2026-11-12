@@ -1,0 +1,23 @@
+{
+ "slug": "mirkorossini_zanna_4c28b5ea",
+ "url": "https://github.com/MirkoRossini/zanna",
+ "sha": "4c28b5ea3940fba69bee3fdf965a039c9b8f45c5",
+ "kinds": "OD",
+ "idoft_tests": 2,
+ "tests": [
+  "tests/test_decorators.py::TestDecorators::test_class_decorated",
+  "tests/test_decorators.py::TestDecorators::test_provider_decorated"
+ ],
+ "image": "seqaccept-screen/mirkorossini_zanna_4c28b5ea:1",
+ "screened_at": "2026-10-24T22:48:31+00:00",
+ "flaky_rate": 0.8,
+ "default_order_failed": 0,
+ "seconds_per_block": 0.44188995625299865,
+ "failing_tests": [
+  "tests/test_decorators.py::TestDecorators::test_class_decorated",
+  "tests/test_decorators.py::TestDecorators::test_provider_decorated"
+ ],
+ "missing_modules": [],
+ "p0_estimate": null,
+ "verdict": "no tests left without the flaky ones"
+}

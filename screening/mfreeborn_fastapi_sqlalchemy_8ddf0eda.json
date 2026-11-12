@@ -1,0 +1,15 @@
+{
+ "slug": "mfreeborn_fastapi_sqlalchemy_8ddf0eda",
+ "url": "https://github.com/mfreeborn/fastapi-sqlalchemy",
+ "sha": "8ddf0edab22873365441757107ce21234bc09f8f",
+ "kinds": "OD",
+ "idoft_tests": 2,
+ "tests": [
+  "tests/test_session.py::test_inside_route_without_middleware_fails",
+  "tests/test_session.py::test_outside_of_route_without_middleware_fails"
+ ],
+ "image": "seqaccept-screen/mfreeborn_fastapi_sqlalchemy_8ddf0eda:1",
+ "screened_at": "2026-10-24T22:48:16+00:00",
+ "verdict": "tests do not run",
+ "detail": "docker/pytest exit code 4: n.\nPlugin: helpconfig, Hook: pytest_cmdline_parse\nConftestImportFailure: ModuleNotFoundError: No module named 'fastapi' (from /repo/tests/conftest.py)\nFor more information see https://pluggy.readthedocs.io/en/stable/api_reference.html#pluggy.PluggyTeardownRaisedWarning\n  config = pluginmanager.hook.pytest_cmdline_parse(\nImportError while loading conftest '/repo/tests/conftest.py'.\ntests/conftest.py:4: in <module>\n    from fastapi import FastAPI\nE   ModuleNotFoundError: No module named 'fastapi'\n"
+}

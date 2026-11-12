@@ -1,0 +1,14 @@
+{
+ "slug": "juntossomosmais_regex4ocr_a140c62e",
+ "url": "https://github.com/juntossomosmais/regex4ocr",
+ "sha": "a140c62e01b378ef9fc334e66eaf3450da70feed",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "test_drm_scanner.py::test_scan_drms_folder"
+ ],
+ "image": "seqaccept-screen/juntossomosmais_regex4ocr_a140c62e:1",
+ "screened_at": "2026-10-24T22:57:04+00:00",
+ "verdict": "tests do not run",
+ "detail": "docker/pytest exit code 4: ERROR: file or directory not found: test_drm_scanner.py\n\n"
+}

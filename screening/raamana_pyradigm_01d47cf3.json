@@ -1,0 +1,33 @@
+{
+ "slug": "raamana_pyradigm_01d47cf3",
+ "url": "https://github.com/raamana/pyradigm",
+ "sha": "01d47cf34a9af4bb104e2891559059a522221b4d",
+ "kinds": "OD",
+ "idoft_tests": 15,
+ "tests": [
+  "pyradigm/tests/test_BaseDataset_common_behaviours.py::test_save_load",
+  "pyradigm/tests/test_classify_dataset.py::test_add",
+  "pyradigm/tests/test_classify_dataset.py::test_cant_write_to_nonexisting_dir",
+  "pyradigm/tests/test_classify_dataset.py::test_init_with_dict",
+  "pyradigm/tests/test_classify_dataset.py::test_num_targets",
+  "pyradigm/tests/test_classify_dataset.py::test_return_data_labels",
+  "pyradigm/tests/test_old_pyradigm.py::test_add",
+  "pyradigm/tests/test_old_pyradigm.py::test_init_with_dict",
+  "pyradigm/tests/test_old_pyradigm.py::test_num_classes",
+  "pyradigm/tests/test_old_pyradigm.py::test_return_data_labels",
+  "pyradigm/tests/test_regress_dataset.py::test_add",
+  "pyradigm/tests/test_regress_dataset.py::test_cant_write_to_nonexisting_dir",
+  "pyradigm/tests/test_regress_dataset.py::test_init_with_dict",
+  "pyradigm/tests/test_regress_dataset.py::test_num_targets",
+  "pyradigm/tests/test_regress_dataset.py::test_return_data_labels"
+ ],
+ "image": "seqaccept-screen/raamana_pyradigm_01d47cf3:1",
+ "screened_at": "2026-10-24T22:40:33+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 1,
+ "seconds_per_block": 0.6077814313030103,
+ "failing_tests": [],
+ "missing_modules": [],
+ "p0_estimate": 1,
+ "verdict": "p0 > 0.05 without the flaky tests"
+}

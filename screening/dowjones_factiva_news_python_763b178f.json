@@ -1,0 +1,14 @@
+{
+ "slug": "dowjones_factiva_news_python_763b178f",
+ "url": "https://github.com/dowjones/factiva-news-python",
+ "sha": "763b178fe7fd3716e5542cf098600ef56c6fbd62",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "__init__.py"
+ ],
+ "image": "seqaccept-screen/dowjones_factiva_news_python_763b178f:1",
+ "screened_at": "2026-10-24T22:54:47+00:00",
+ "verdict": "tests do not run",
+ "detail": "docker/pytest exit code 4: ERROR: file or directory not found: __init__.py\n\n"
+}

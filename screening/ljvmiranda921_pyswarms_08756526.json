@@ -1,0 +1,27 @@
+{
+ "slug": "ljvmiranda921_pyswarms_08756526",
+ "url": "https://github.com/ljvmiranda921/pyswarms",
+ "sha": "08756526f39699eef28e515cac2ead17cef55710",
+ "kinds": "NOD+OD",
+ "idoft_tests": 7,
+ "tests": [
+  "tests/optimizers/test_local_best.py::TestLocalBestOptimizer::test_obj_with_kwargs",
+  "tests/optimizers/test_tolerance.py::TestToleranceOptions::test_ftol_effect[GeneralOptimizerPSO]",
+  "tests/optimizers/test_tolerance.py::TestToleranceOptions::test_ftol_effect[GlobalBestPSO]",
+  "tests/optimizers/test_tolerance.py::TestToleranceOptions::test_ftol_effect[LocalBestPSO]",
+  "tests/optimizers/test_tolerance.py::TestToleranceOptions::test_no_ftol[GeneralOptimizerPSO]",
+  "tests/optimizers/test_tolerance.py::TestToleranceOptions::test_no_ftol[GlobalBestPSO]",
+  "tests/optimizers/test_tolerance.py::TestToleranceOptions::test_no_ftol[LocalBestPSO]"
+ ],
+ "image": "seqaccept-screen/ljvmiranda921_pyswarms_08756526:1",
+ "screened_at": "2026-10-24T22:39:06+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 1,
+ "seconds_per_block": 0.5209748832101468,
+ "failing_tests": [],
+ "missing_modules": [
+  "yaml"
+ ],
+ "p0_estimate": 1,
+ "verdict": "tests need uninstalled modules"
+}

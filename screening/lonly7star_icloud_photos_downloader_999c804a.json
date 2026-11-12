@@ -1,0 +1,14 @@
+{
+ "slug": "lonly7star_icloud_photos_downloader_999c804a",
+ "url": "https://github.com/lonly7star/icloud_photos_downloader",
+ "sha": "999c804a02c6db420aeb517700d09d9ba1c5a9df",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "test_logger.py::LoggerTestCase::test_logger_tqdm_fallback"
+ ],
+ "image": "seqaccept-screen/lonly7star_icloud_photos_downloader_999c804a:1",
+ "screened_at": "2026-10-24T22:57:21+00:00",
+ "verdict": "tests do not run",
+ "detail": "docker/pytest exit code 4: ERROR: file or directory not found: test_logger.py\n\n"
+}

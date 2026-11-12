@@ -1,0 +1,21 @@
+{
+ "slug": "pythological_kanren_bacc7eb5",
+ "url": "https://github.com/pythological/kanren",
+ "sha": "bacc7eb5895c348e348c1b5291ddf188f88c5c88",
+ "kinds": "NOD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/test_assoccomm.py::test_eq_assoccomm"
+ ],
+ "image": "seqaccept-screen/pythological_kanren_bacc7eb5:1",
+ "screened_at": "2026-10-24T22:58:56+00:00",
+ "flaky_rate": 0.1,
+ "default_order_failed": 0,
+ "seconds_per_block": 0.6786217290471541,
+ "failing_tests": [
+  "tests/test_assoccomm.py::test_eq_assoccomm"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "candidate"
+}

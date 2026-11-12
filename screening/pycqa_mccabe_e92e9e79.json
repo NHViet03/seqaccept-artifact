@@ -1,0 +1,21 @@
+{
+ "slug": "pycqa_mccabe_e92e9e79",
+ "url": "https://github.com/pycqa/mccabe",
+ "sha": "e92e9e79799c5796f76f3da821dbb5aa56e41028",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "test_mccabe.py::RegressionTests::test_max_complexity_is_always_an_int"
+ ],
+ "image": "seqaccept-screen/pycqa_mccabe_e92e9e79:1",
+ "screened_at": "2026-10-24T22:58:54+00:00",
+ "flaky_rate": 0.45,
+ "default_order_failed": 0,
+ "seconds_per_block": 0.4939887978602201,
+ "failing_tests": [
+  "test_mccabe.py::RegressionTests::test_max_complexity_is_always_an_int"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "candidate"
+}

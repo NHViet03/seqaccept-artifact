@@ -1,0 +1,60 @@
+r
+_________________ TestMdUtils.test_new_italics_reference_link __________________
+
+self = <tests.test_mdutils.TestMdUtils testMethod=test_new_italics_reference_link>
+
+    def test_new_italics_reference_link(self):
+        md_file = MdUtils(file_name="Test_file", title="")
+        text = "mdutils library"
+        reference_tag = "mdutils library"
+        expected_value = '[*' + text + '*][' + reference_tag + ']'
+        created_value = md_file.new_reference_link(
+            link="https://github.com/didix21/mdutils",
+            text=text,
+            reference_tag=reference_tag, bold_italics_code='i')
+    
+>       self.assertEqual(expected_value, created_value)
+E       AssertionError: '[*mdutils library*][mdutils library]' != '[_mdutils library_][mdutils library]'
+E       - [*mdutils library*][mdutils library]
+E       ?  ^               ^
+E       + [_mdutils library_][mdutils library]
+E       ?  ^               ^
+
+tests/test_mdutils.py:291: AssertionError
+=============================== warnings summary ===============================
+tests/test_mdutils.py:83
+  /repo/tests/test_mdutils.py:83: DeprecationWarning: invalid escape sequence \-
+    + re.sub('[^a-z0-9_\-]', '', list_headers[0].lower().replace(' ', '-')) + ')' \
+
+tests/test_mdutils.py:85
+  /repo/tests/test_mdutils.py:85: DeprecationWarning: invalid escape sequence \-
+    + re.sub('[^a-z0-9_\-]', '', list_headers[2].lower().replace(' ', '-')) + ')\n'
+
+tests/test_mdutils.py:111
+  /repo/tests/test_mdutils.py:111: DeprecationWarning: invalid escape sequence \-
+    + re.sub('[^a-z0-9_\-]', '', list_headers[x].lower().replace(' ', '-')) \
+
+tests/test_mdutils.py:115
+  /repo/tests/test_mdutils.py:115: DeprecationWarning: invalid escape sequence \-
+    + re.sub('[^a-z0-9_\-]', '', list_headers[x].lower().replace(' ', '-')) \
+
+mdutils/tools/TableOfContents.py:35
+  /repo/mdutils/tools/TableOfContents.py:35: DeprecationWarning: invalid escape sequence \-
+    + re.sub('[^a-z0-9_\-]', '', item.lower().replace(' ', '-')) + ')'
+
+tests/test_tools/test_table_of_contents.py:44
+  /repo/tests/test_tools/test_table_of_contents.py:44: DeprecationWarning: invalid escape sequence \h
+    array_of_contents = ['My\header 1']
+
+tests/test_tools/test_table_of_contents.py:45
+  /repo/tests/test_tools/test_table_of_contents.py:45: DeprecationWarning: invalid escape sequence \h
+    expects = '\n* [My\header 1](#myheader-1)\n'
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_tools/test_textutils.py::TestTextUtils::test_italics - Asse...
+FAILED tests/test_mdutils.py::TestMdUtils::test_new_inline_link_bold_italic_code_format
+FAILED tests/test_mdutils.py::TestMdUtils::test_new_inline_link_italic_format
+FAILED tests/test_mdutils.py::TestMdUtils::test_new_inline_link_bold_italic_format
+FAILED tests/test_mdutils.py::TestMdUtils::test_new_italics_reference_link - ...
+5 failed, 90 passed, 7 warnings in 0.14s

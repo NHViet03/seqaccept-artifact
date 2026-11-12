@@ -1,0 +1,70 @@
+.s................s......s........s...s.......s......s.............FF... [ 74%]
+.........................                                                [100%]
+=================================== FAILURES ===================================
+__________________________ test_time_freeze_coroutine __________________________
+
+    def test_time_freeze_coroutine():
+        if not asyncio:
+            raise SkipTest('asyncio required')
+    
+        @freeze_time('1970-01-01')
+        async def frozen_coroutine():
+            assert datetime.date.today() == datetime.date(1970, 1, 1)
+    
+>       asyncio.get_event_loop().run_until_complete(frozen_coroutine())
+
+tests/test_asyncio.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/local/lib/python3.8/asyncio/base_events.py:616: in run_until_complete
+    return future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (), kwargs = {}
+time_factory = <freezegun.api.FrozenDateTimeFactory object at 0xffff91628490>
+
+    @functools.wraps(coroutine)
+    async def wrapper(*args, **kwargs):
+        with api as time_factory:
+            if not api.as_arg:
+>               result = await coroutine(time_factory, *args, **kwargs)
+E               TypeError: frozen_coroutine() takes 0 positional arguments but 1 was given
+
+freezegun/_async.py:9: TypeError
+__________________________ test_time_freeze_async_def __________________________
+
+    def test_time_freeze_async_def():
+        try:
+            exec('async def foo(): pass')
+        except SyntaxError:
+            raise SkipTest('async def not supported')
+        else:
+>           exec(dedent('''
+            @freeze_time('1970-01-01')
+            async def frozen_coroutine():
+                assert datetime.date.today() == datetime.date(1970, 1, 1)
+            asyncio.get_event_loop().run_until_complete(frozen_coroutine())
+            '''))
+
+tests/test_asyncio.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+<string>:5: in <module>
+    ???
+/usr/local/lib/python3.8/asyncio/base_events.py:616: in run_until_complete
+    return future.result()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (), kwargs = {}
+time_factory = <freezegun.api.FrozenDateTimeFactory object at 0xffff91c7eb50>
+
+    @functools.wraps(coroutine)
+    async def wrapper(*args, **kwargs):
+        with api as time_factory:
+            if not api.as_arg:
+>               result = await coroutine(time_factory, *args, **kwargs)
+E               TypeError: frozen_coroutine() takes 0 positional arguments but 1 was given
+
+freezegun/_async.py:9: TypeError
+=========================== short test summary info ============================
+FAILED tests/test_asyncio.py::test_time_freeze_coroutine - TypeError: frozen_...
+FAILED tests/test_asyncio.py::test_time_freeze_async_def - TypeError: frozen_...
+2 failed, 88 passed, 7 skipped, 15 deselected in 0.58s

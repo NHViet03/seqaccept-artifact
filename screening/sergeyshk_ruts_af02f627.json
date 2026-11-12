@@ -1,0 +1,21 @@
+{
+ "slug": "sergeyshk_ruts_af02f627",
+ "url": "https://github.com/SergeyShk/ruTS",
+ "sha": "af02f627d9022f0f4825d9bed4ffc97d3d329f2d",
+ "kinds": "NOD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/test_utils.py::test_extract_archive"
+ ],
+ "image": "seqaccept-screen/sergeyshk_ruts_af02f627:1",
+ "screened_at": "2026-10-24T23:00:44+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 1,
+ "seconds_per_block": 0.5400574812490959,
+ "failing_tests": [],
+ "missing_modules": [
+  "pymorphy2"
+ ],
+ "p0_estimate": 1,
+ "verdict": "tests need uninstalled modules"
+}

@@ -1,0 +1,14 @@
+{
+ "slug": "codespell_project_codespell_4f2325ec",
+ "url": "https://github.com/codespell-project/codespell",
+ "sha": "4f2325ec18ccef64ed8062f63dc63d360fa33f47",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "test_dictionary.py::test_dictionary_looping"
+ ],
+ "image": "seqaccept-screen/codespell_project_codespell_4f2325ec:1",
+ "screened_at": "2026-10-24T22:53:46+00:00",
+ "verdict": "tests do not run",
+ "detail": "docker/pytest exit code 4: or_dir] [...]\n__main__.py: error: unrecognized arguments: --cov=codespell_lib --cov-report=\n  inifile: /repo/setup.cfg\n  rootdir: /repo\nFor more information see https://pluggy.readthedocs.io/en/stable/api_reference.html#pluggy.PluggyTeardownRaisedWarning\n  config = pluginmanager.hook.pytest_cmdline_parse(\nERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]\n__main__.py: error: unrecognized arguments: --cov=codespell_lib --cov-report=\n  inifile: /repo/setup.cfg\n  rootdir: /repo\n\n"
+}

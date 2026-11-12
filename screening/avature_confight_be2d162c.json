@@ -1,0 +1,22 @@
+{
+ "slug": "avature_confight_be2d162c",
+ "url": "https://github.com/avature/confight",
+ "sha": "be2d162c99cc3c709289913de137f8d8bfbd35d5",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "test_confight.py::TestLoad::test_it_should_load_and_merge_lists_of_paths"
+ ],
+ "image": "seqaccept-screen/avature_confight_be2d162c:1",
+ "screened_at": "2026-10-24T22:50:11+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 1,
+ "seconds_per_block": 0.6408580166898901,
+ "failing_tests": [
+  "test_confight.py::TestFind::test_it_should_ignore_unreadable_files",
+  "test_confight.py::TestLoad::test_it_should_load_and_merge_lists_of_paths"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 1,
+ "verdict": "p0 > 0.05 without the flaky tests"
+}

@@ -1,0 +1,23 @@
+{
+ "slug": "agile4you_bottle_neck_ebc670a4",
+ "url": "https://github.com/agile4you/bottle-neck",
+ "sha": "ebc670a4b178255473d68e9b4122ba04e38f4810",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "test/test_routing.py::test_router_mount_pass"
+ ],
+ "image": "seqaccept-screen/agile4you_bottle_neck_ebc670a4:1",
+ "screened_at": "2026-10-24T22:49:55+00:00",
+ "flaky_rate": 0.65,
+ "default_order_failed": 0,
+ "seconds_per_block": 0.4260412126488518,
+ "failing_tests": [
+  "test/test_routing.py::test_router_mount_pass",
+  "test/test_routing.py::test_router_register_handler_cbv_pass",
+  "test/test_routing.py::test_router_register_handler_fn_pass"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 0.55,
+ "verdict": "p0 > 0.05 without the flaky tests"
+}

@@ -1,0 +1,29 @@
+{
+ "slug": "vilkasgroup_verifone_5509c087",
+ "url": "https://github.com/vilkasgroup/Verifone",
+ "sha": "5509c08767a9b482cfe5a9572854cf4c73ad6c02",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/test_verifone.py::TestVerifone::test_001_create_object_with_defaults"
+ ],
+ "image": "seqaccept-screen/vilkasgroup_verifone_5509c087:1",
+ "screened_at": "2026-10-24T23:03:51+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 1,
+ "seconds_per_block": 0.9372142895386787,
+ "failing_tests": [
+  "tests/test_verifone.py::TestVerifone::test_001_create_object_with_defaults",
+  "tests/test_verifone.py::TestVerifone::test_010_generate_payment_data",
+  "tests/test_verifone.py::TestVerifone::test_011_generate_payment_data",
+  "tests/test_verifone.py::TestVerifone::test_023_get_endpoint",
+  "tests/test_verifone.py::TestVerifone::test_025_verify_response",
+  "tests/test_verifone.py::TestVerifone::test_026_verify_incorrect_signature",
+  "tests/test_verifone.py::TestVerifone::test_029_generate_payment_data",
+  "tests/test_verifone.py::TestVerifone::test_030_generate_payment_data",
+  "tests/test_verifone.py::TestVerifone::test_031_generate_payment_data"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 1,
+ "verdict": "p0 > 0.05 without the flaky tests"
+}

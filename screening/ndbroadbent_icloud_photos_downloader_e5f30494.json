@@ -1,0 +1,19 @@
+{
+ "slug": "ndbroadbent_icloud_photos_downloader_e5f30494",
+ "url": "https://github.com/ndbroadbent/icloud_photos_downloader",
+ "sha": "e5f304941e2a74b1fbda06c4270ec2fc100e6a49",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/test_cli.py::CliTestCase::test_tqdm"
+ ],
+ "image": "seqaccept-screen/ndbroadbent_icloud_photos_downloader_e5f30494:1",
+ "screened_at": "2026-10-24T22:57:58+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 1,
+ "seconds_per_block": 0.41660955639381425,
+ "failing_tests": [],
+ "missing_modules": [],
+ "p0_estimate": 1,
+ "verdict": "p0 > 0.05 without the flaky tests"
+}

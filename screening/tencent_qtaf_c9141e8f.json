@@ -1,0 +1,21 @@
+{
+ "slug": "tencent_qtaf_c9141e8f",
+ "url": "https://github.com/Tencent/QTAF",
+ "sha": "c9141e8fbdfd89f5f13dd59dfab17f9e8193dcf8",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/test_testbase/test_assert.py::AssertionTest::test_assert_failure"
+ ],
+ "image": "seqaccept-screen/tencent_qtaf_c9141e8f:1",
+ "screened_at": "2026-10-24T23:03:04+00:00",
+ "flaky_rate": 0.45,
+ "default_order_failed": 0,
+ "seconds_per_block": 0.811124070698861,
+ "failing_tests": [
+  "tests/test_testbase/test_assert.py::AssertionTest::test_assert_failure"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "candidate"
+}

@@ -1,0 +1,27 @@
+{
+ "slug": "crumpstrr33_utter_more_418cf5f5",
+ "url": "https://github.com/crumpstrr33/Utter-More",
+ "sha": "418cf5f5ef337700bf0897e746eff8bb275e6da6",
+ "kinds": "OD",
+ "idoft_tests": 4,
+ "tests": [
+  "test/test_utter_more.py::test_saving_utterances[alexa_test-csv-None]",
+  "test/test_utter_more.py::test_saving_utterances[csv_test-csv-None]",
+  "test/test_utter_more.py::test_saving_utterances[file_override_test-txt-csv]",
+  "test/test_utter_more.py::test_saving_utterances[txt_test-txt-None]"
+ ],
+ "image": "seqaccept-screen/crumpstrr33_utter_more_418cf5f5:1",
+ "screened_at": "2026-10-24T22:45:06+00:00",
+ "flaky_rate": 0.8,
+ "default_order_failed": 0,
+ "seconds_per_block": 0.3991059436521027,
+ "failing_tests": [
+  "test/test_utter_more.py::test_saving_utterances[alexa_test-csv-None]",
+  "test/test_utter_more.py::test_saving_utterances[csv_test-csv-None]",
+  "test/test_utter_more.py::test_saving_utterances[file_override_test-txt-csv]",
+  "test/test_utter_more.py::test_saving_utterances[txt_test-txt-None]"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "candidate"
+}

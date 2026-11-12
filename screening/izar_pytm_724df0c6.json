@@ -1,0 +1,20 @@
+{
+ "slug": "izar_pytm_724df0c6",
+ "url": "https://github.com/izar/pytm",
+ "sha": "724df0c6346706e9c3678bee11e23d9609d8fa4c",
+ "kinds": "OD",
+ "idoft_tests": 2,
+ "tests": [
+  "tests/test_private_func.py::TestMethod::test_defaults",
+  "tests/test_private_func.py::TestUniqueNames::test_duplicate_boundary_names_have_different_unique_names"
+ ],
+ "image": "seqaccept-screen/izar_pytm_724df0c6:1",
+ "screened_at": "2026-10-24T22:47:51+00:00",
+ "flaky_rate": 0,
+ "default_order_failed": 0,
+ "seconds_per_block": 0.3680806935473811,
+ "failing_tests": [],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "flake not reproduced"
+}

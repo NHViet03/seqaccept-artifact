@@ -1,0 +1,14 @@
+{
+ "slug": "chinapnr_fishbase_73ae6701",
+ "url": "https://github.com/chinapnr/fishbase",
+ "sha": "73ae6701eee5d1bdd31a3e7b4d86fa11de9b6522",
+ "kinds": "NOD",
+ "idoft_tests": 1,
+ "tests": [
+  "test_common.py::TestFishCommon::test_yaml_conf_as_dict_01"
+ ],
+ "image": "seqaccept-screen/chinapnr_fishbase_73ae6701:1",
+ "screened_at": "2026-10-24T22:53:37+00:00",
+ "verdict": "tests do not run",
+ "detail": "docker/pytest exit code 4: ERROR: file or directory not found: test_common.py\n\n"
+}

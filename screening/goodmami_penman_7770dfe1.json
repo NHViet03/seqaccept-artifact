@@ -1,0 +1,19 @@
+{
+ "slug": "goodmami_penman_7770dfe1",
+ "url": "https://github.com/goodmami/penman",
+ "sha": "7770dfe14b3d0d197cedc6640f3ff7e3bd695726",
+ "kinds": "NOD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/test_layout.py::test_rearrange"
+ ],
+ "image": "seqaccept-screen/goodmami_penman_7770dfe1:1",
+ "screened_at": "2026-10-24T22:56:41+00:00",
+ "flaky_rate": 0,
+ "default_order_failed": 0,
+ "seconds_per_block": 0.5359650251513812,
+ "failing_tests": [],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "flake not reproduced"
+}

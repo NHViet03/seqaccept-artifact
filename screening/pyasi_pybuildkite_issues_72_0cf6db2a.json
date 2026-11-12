@@ -1,0 +1,14 @@
+{
+ "slug": "pyasi_pybuildkite_issues_72_0cf6db2a",
+ "url": "https://github.com/pyasi/pybuildkite/issues/72",
+ "sha": "0cf6db2adcc01bf3014b84da5e15f6e1bc50b46b",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/test_client.py::TestClientRequest"
+ ],
+ "image": "seqaccept-screen/pyasi_pybuildkite_issues_72_0cf6db2a:1",
+ "screened_at": "2026-10-24T22:58:53+00:00",
+ "verdict": "build failed",
+ "detail": " 3 | >>> RUN git clone -q https://github.com/pyasi/pybuildkite/issues/72 /repo && git -C /repo checkout -q 0cf6db2adcc01bf3014b84da5e15f6e1bc50b46b\n   4 |     WORKDIR /repo\n   5 |     RUN pip install --no-cache-dir -e . || true\n--------------------\nERROR: failed to build: failed to solve: process \"/bin/sh -c git clone -q https://github.com/pyasi/pybuildkite/issues/72 /repo && git -C /repo checkout -q 0cf6db2adcc01bf3014b84da5e15f6e1bc50b46b\" did not complete successfully: exit code: 128\n\nView build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/jlrbtonnrjis9kf43wcmqicvl\n"
+}

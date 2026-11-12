@@ -1,0 +1,14 @@
+{
+ "slug": "scrapinghub_shub_7297d6b0",
+ "url": "https://github.com/scrapinghub/shub",
+ "sha": "7297d6b05b487749d99a4d94eea2f2de3e558f8a",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "test_utils.py::ReleaseUtilsTes::test_get_docker_client"
+ ],
+ "image": "seqaccept-screen/scrapinghub_shub_7297d6b0:1",
+ "screened_at": "2026-10-24T22:59:59+00:00",
+ "verdict": "tests do not run",
+ "detail": "docker/pytest exit code 4: ERROR: file or directory not found: test_utils.py\n\n"
+}

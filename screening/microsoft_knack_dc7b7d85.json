@@ -1,0 +1,26 @@
+{
+ "slug": "microsoft_knack_dc7b7d85",
+ "url": "https://github.com/microsoft/knack",
+ "sha": "dc7b7d857ce3c11b2a3155b81f2470b3b579e7c9",
+ "kinds": "OD",
+ "idoft_tests": 8,
+ "tests": [
+  "tests/test_cli_scenarios.py::TestCLIScenarios::test_case_insensitive_command_path",
+  "tests/test_command_with_configured_defaults.py::TestCommandWithConfiguredDefaults::test_no_configured_default_on_required_arg",
+  "tests/test_deprecation.py::TestArgumentDeprecation::test_deprecate_arguments_execute_expired",
+  "tests/test_deprecation.py::TestArgumentDeprecation::test_deprecate_options_execute_expired",
+  "tests/test_deprecation.py::TestCommandDeprecation::test_deprecate_command_expired_execute",
+  "tests/test_deprecation.py::TestCommandDeprecation::test_deprecate_command_expired_execute_no_color",
+  "tests/test_help.py::TestHelp::test_help_extra_params",
+  "tests/test_help.py::TestHelp::test_help_missing_params"
+ ],
+ "image": "seqaccept-screen/microsoft_knack_dc7b7d85:1",
+ "screened_at": "2026-10-24T22:44:29+00:00",
+ "flaky_rate": 0,
+ "default_order_failed": 0,
+ "seconds_per_block": 0.5340318561473396,
+ "failing_tests": [],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "flake not reproduced"
+}

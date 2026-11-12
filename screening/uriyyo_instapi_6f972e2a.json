@@ -1,0 +1,14 @@
+{
+ "slug": "uriyyo_instapi_6f972e2a",
+ "url": "https://github.com/uriyyo/instapi",
+ "sha": "6f972e2ae1ccc9a21eb6b18136ee677667cd4ba5",
+ "kinds": "NOD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/unit_tests/models/test_media.py::test_media_info"
+ ],
+ "image": "seqaccept-screen/uriyyo_instapi_6f972e2a:1",
+ "screened_at": "2026-10-24T23:03:29+00:00",
+ "verdict": "tests do not run",
+ "detail": "docker/pytest exit code 4: __main__.py: error: unrecognized arguments: --cov=instapi --cov-report=term-missing\n  inifile: /repo/pytest.ini\n  rootdir: /repo\nFor more information see https://pluggy.readthedocs.io/en/stable/api_reference.html#pluggy.PluggyTeardownRaisedWarning\n  config = pluginmanager.hook.pytest_cmdline_parse(\nERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]\n__main__.py: error: unrecognized arguments: --cov=instapi --cov-report=term-missing\n  inifile: /repo/pytest.ini\n  rootdir: /repo\n\n"
+}

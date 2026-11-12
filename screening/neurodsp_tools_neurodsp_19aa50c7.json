@@ -1,0 +1,23 @@
+{
+ "slug": "neurodsp_tools_neurodsp_19aa50c7",
+ "url": "https://github.com/neurodsp-tools/neurodsp",
+ "sha": "19aa50c71deaa19e4ed85efa192afa8ab63d0bf1",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "neurodsp/tests/utils/test_download.py::test_check_data_file"
+ ],
+ "image": "seqaccept-screen/neurodsp_tools_neurodsp_19aa50c7:1",
+ "screened_at": "2026-10-24T22:58:03+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 1,
+ "seconds_per_block": 1.6600814104895107,
+ "failing_tests": [
+  "neurodsp/tests/utils/test_download.py::test_check_data_file",
+  "neurodsp/tests/utils/test_download.py::test_fetch_ndsp_data",
+  "neurodsp/tests/utils/test_download.py::test_load_ndsp_data"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 1,
+ "verdict": "p0 > 0.05 without the flaky tests"
+}

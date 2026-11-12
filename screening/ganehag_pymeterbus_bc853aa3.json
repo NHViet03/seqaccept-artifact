@@ -1,0 +1,21 @@
+{
+ "slug": "ganehag_pymeterbus_bc853aa3",
+ "url": "https://github.com/ganehag/pyMeterBus",
+ "sha": "bc853aa38ac6b10301bdf97f13ac25b36985316f",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/test_globals.py::TestSequenceFunctions::test_debug_default_value"
+ ],
+ "image": "seqaccept-screen/ganehag_pymeterbus_bc853aa3:1",
+ "screened_at": "2026-10-24T22:56:23+00:00",
+ "flaky_rate": 0.35,
+ "default_order_failed": 0,
+ "seconds_per_block": 0.3782001125131501,
+ "failing_tests": [
+  "tests/test_globals.py::TestSequenceFunctions::test_debug_default_value"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "candidate"
+}

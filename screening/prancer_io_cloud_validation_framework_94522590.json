@@ -1,0 +1,28 @@
+{
+ "slug": "prancer_io_cloud_validation_framework_94522590",
+ "url": "https://github.com/prancer-io/cloud-validation-framework",
+ "sha": "94522590d9881a5125d81da701a65f7f63383c0d",
+ "kinds": "NOD",
+ "idoft_tests": 10,
+ "tests": [
+  "tests/processor/connector/test_snapshot_azure.py::test_get_node_happy",
+  "tests/processor/connector/test_snapshot_azure.py::test_get_version_for_type",
+  "tests/processor/helper/config/test_config_utils.py::test_framework_config",
+  "tests/processor/helper/config/test_config_utils.py::test_framework_dir",
+  "tests/processor/helper/config/test_config_utils.py::test_get_config_data",
+  "tests/processor/helper/config/test_config_utils.py::test_get_solution_dir",
+  "tests/processor/helper/config/test_config_utils.py::test_get_test_json_dir",
+  "tests/processor/helper/config/test_rundata_utils.py::test_init_config",
+  "tests/processor/helper/httpapi/test_restapi_azure.py::test_web_client_data",
+  "tests/processor/template_processor/base/test_base_template_processor.py::test_populate_template_snapshot_false"
+ ],
+ "image": "seqaccept-screen/prancer_io_cloud_validation_framework_94522590:1",
+ "screened_at": "2026-10-24T22:43:32+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 0,
+ "seconds_per_block": 0.3707636583480053,
+ "failing_tests": [],
+ "missing_modules": [],
+ "p0_estimate": 1,
+ "verdict": "p0 > 0.05 without the flaky tests"
+}

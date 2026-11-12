@@ -1,0 +1,22 @@
+{
+ "slug": "napalm_automation_napalm_0e23a55f",
+ "url": "https://github.com/napalm-automation/napalm",
+ "sha": "0e23a55f52221e528be66c1f06a141f937e842f7",
+ "kinds": "OD",
+ "idoft_tests": 2,
+ "tests": [
+  "test/pyiosxr/test_iosxr.py::TestIOSXRDevice::test_lock_raises_LockError",
+  "test/pyiosxr/test_iosxr.py::TestIOSXRDevice::test_mock_lock_connection_open"
+ ],
+ "image": "seqaccept-screen/napalm_automation_napalm_0e23a55f:1",
+ "screened_at": "2026-10-24T22:48:52+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 1,
+ "seconds_per_block": 0.4581253187934635,
+ "failing_tests": [],
+ "missing_modules": [
+  "lxml"
+ ],
+ "p0_estimate": 1,
+ "verdict": "tests need uninstalled modules"
+}

@@ -1,0 +1,14 @@
+{
+ "slug": "dgilland_pydash_issues_170_24ad0e43",
+ "url": "https://github.com/dgilland/pydash/issues/170",
+ "sha": "24ad0e43b51b367d00447c45baa68c9c03ad1a52",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "tests/test_utilities.py::test_unique_id"
+ ],
+ "image": "seqaccept-screen/dgilland_pydash_issues_170_24ad0e43:1",
+ "screened_at": "2026-10-24T22:54:46+00:00",
+ "verdict": "build failed",
+ "detail": "   3 | >>> RUN git clone -q https://github.com/dgilland/pydash/issues/170 /repo && git -C /repo checkout -q 24ad0e43b51b367d00447c45baa68c9c03ad1a52\n   4 |     WORKDIR /repo\n   5 |     RUN pip install --no-cache-dir -e . || true\n--------------------\nERROR: failed to build: failed to solve: process \"/bin/sh -c git clone -q https://github.com/dgilland/pydash/issues/170 /repo && git -C /repo checkout -q 24ad0e43b51b367d00447c45baa68c9c03ad1a52\" did not complete successfully: exit code: 128\n\nView build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/uah7477mapjtkz45vnvwgk505\n"
+}

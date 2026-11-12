@@ -1,0 +1,25 @@
+{
+ "slug": "grabbles_grabbit_83ff93df",
+ "url": "https://github.com/grabbles/grabbit",
+ "sha": "83ff93df36019eaaee9d4e31f816a518e46cae07",
+ "kinds": "NOD",
+ "idoft_tests": 5,
+ "tests": [
+  "grabbit/tests/test_core.py::TestLayout::test_init_with_exclude_arg[local]",
+  "grabbit/tests/test_core.py::TestLayout::test_init_with_include_arg[local]",
+  "grabbit/tests/test_core.py::TestLayout::test_natsort[local]",
+  "grabbit/tests/test_core.py::TestLayout::test_querying[local]",
+  "grabbit/tests/test_core.py::TestLayout::test_unique_and_count[local]"
+ ],
+ "image": "seqaccept-screen/grabbles_grabbit_83ff93df:1",
+ "screened_at": "2026-10-24T22:44:55+00:00",
+ "flaky_rate": 1,
+ "default_order_failed": 1,
+ "seconds_per_block": 0.3784732832486043,
+ "failing_tests": [],
+ "missing_modules": [
+  "six"
+ ],
+ "p0_estimate": 1,
+ "verdict": "tests need uninstalled modules"
+}

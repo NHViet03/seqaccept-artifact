@@ -1,0 +1,21 @@
+{
+ "slug": "tianocore_edk2_pytool_library_ab6bac82",
+ "url": "https://github.com/tianocore/edk2-pytool-library",
+ "sha": "ab6bac82f297b4e8fe0a0d4dcde4711b3cb1bc88",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "edk2toollib/acpi/ivrs_parser_test.py::IvrsParserTest::test_ivrs_parser_ivrs_full"
+ ],
+ "image": "seqaccept-screen/tianocore_edk2_pytool_library_ab6bac82:1",
+ "screened_at": "2026-10-24T23:03:28+00:00",
+ "flaky_rate": 0.95,
+ "default_order_failed": 0,
+ "seconds_per_block": 0.8201247834047536,
+ "failing_tests": [
+  "edk2toollib/acpi/ivrs_parser_test.py::IvrsParserTest::test_ivrs_parser_ivrs_full"
+ ],
+ "missing_modules": [],
+ "p0_estimate": 0,
+ "verdict": "candidate"
+}

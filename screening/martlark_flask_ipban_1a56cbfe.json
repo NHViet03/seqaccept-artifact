@@ -1,0 +1,14 @@
+{
+ "slug": "martlark_flask_ipban_1a56cbfe",
+ "url": "https://github.com/Martlark/flask-ipban",
+ "sha": "1a56cbfee501da36a3c86c7f38882381a14f45bb",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "blob/master/flask_ipban/test_persistence.py"
+ ],
+ "image": "seqaccept-screen/martlark_flask_ipban_1a56cbfe:1",
+ "screened_at": "2026-10-24T22:57:31+00:00",
+ "verdict": "tests do not run",
+ "detail": "docker/pytest exit code 4: ERROR: file or directory not found: blob/master/flask_ipban/test_persistence.py\n\n"
+}

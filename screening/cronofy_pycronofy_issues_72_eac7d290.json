@@ -1,0 +1,14 @@
+{
+ "slug": "cronofy_pycronofy_issues_72_eac7d290",
+ "url": "https://github.com/cronofy/pycronofy/issues/72",
+ "sha": "eac7d290e3f3638d82c84d1c51a46c10257a6e20",
+ "kinds": "OD",
+ "idoft_tests": 1,
+ "tests": [
+  "pycronofy/tests/test_client.py::test_refresh"
+ ],
+ "image": "seqaccept-screen/cronofy_pycronofy_issues_72_eac7d290:1",
+ "screened_at": "2026-10-24T22:54:45+00:00",
+ "verdict": "build failed",
+ "detail": " 3 | >>> RUN git clone -q https://github.com/cronofy/pycronofy/issues/72 /repo && git -C /repo checkout -q eac7d290e3f3638d82c84d1c51a46c10257a6e20\n   4 |     WORKDIR /repo\n   5 |     RUN pip install --no-cache-dir -e . || true\n--------------------\nERROR: failed to build: failed to solve: process \"/bin/sh -c git clone -q https://github.com/cronofy/pycronofy/issues/72 /repo && git -C /repo checkout -q eac7d290e3f3638d82c84d1c51a46c10257a6e20\" did not complete successfully: exit code: 128\n\nView build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/k5i2dv2w0yix2tgswuvrlf5j2\n"
+}

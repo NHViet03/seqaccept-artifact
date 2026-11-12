@@ -1,0 +1,1 @@
+{"task": "tasks/freezegun.json", "model": "grok-4.7", "temperature": 0.8, "max_attempts": 15, "flakiness": "natural", "repo": "spulec/freezegun", "started": "2026-11-06T10:45:51+00:00", "finished": null}

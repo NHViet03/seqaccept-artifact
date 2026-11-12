@@ -1,0 +1,290 @@
+{
+  "eps": 0.05,
+  "rules": [
+    "B1 stop at first pass",
+    "B2 rerun-3 all green",
+    "B3 majority of 5",
+    "B4 peeking Clopper-Pearson",
+    "B5 naive confidence sequence",
+    "B6 SeqAccept, no refund",
+    "SeqAccept"
+  ],
+  "rows": [
+    {
+      "p": 0.051,
+      "n": 1,
+      "reps": 1000,
+      "far": {
+        "B1 stop at first pass": 0.947,
+        "B2 rerun-3 all green": 0.867,
+        "B3 majority of 5": 0.996,
+        "B4 peeking Clopper-Pearson": 0.184,
+        "B5 naive confidence sequence": 0.025,
+        "B6 SeqAccept, no refund": 0.014,
+        "SeqAccept": 0.014
+      },
+      "blocks": {
+        "B1 stop at first pass": 1.0,
+        "B2 rerun-3 all green": 2.851,
+        "B3 majority of 5": 5.0,
+        "B4 peeking Clopper-Pearson": 515.966,
+        "B5 naive confidence sequence": 769.587,
+        "B6 SeqAccept, no refund": 781.587,
+        "SeqAccept": 781.587
+      }
+    },
+    {
+      "p": 0.051,
+      "n": 5,
+      "reps": 1000,
+      "far": {
+        "B1 stop at first pass": 1.0,
+        "B2 rerun-3 all green": 1.0,
+        "B3 majority of 5": 1.0,
+        "B4 peeking Clopper-Pearson": 0.654,
+        "B5 naive confidence sequence": 0.099,
+        "B6 SeqAccept, no refund": 0.02,
+        "SeqAccept": 0.022
+      },
+      "blocks": {
+        "B1 stop at first pass": 1.053,
+        "B2 rerun-3 all green": 3.308,
+        "B3 majority of 5": 5.02,
+        "B4 peeking Clopper-Pearson": 1711.978,
+        "B5 naive confidence sequence": 3737.747,
+        "B6 SeqAccept, no refund": 3878.974,
+        "SeqAccept": 3870.974
+      }
+    },
+    {
+      "p": 0.051,
+      "n": 15,
+      "reps": 1000,
+      "far": {
+        "B1 stop at first pass": 1.0,
+        "B2 rerun-3 all green": 1.0,
+        "B3 majority of 5": 1.0,
+        "B4 peeking Clopper-Pearson": 0.959,
+        "B5 naive confidence sequence": 0.259,
+        "B6 SeqAccept, no refund": 0.016,
+        "SeqAccept": 0.015
+      },
+      "blocks": {
+        "B1 stop at first pass": 1.053,
+        "B2 rerun-3 all green": 3.308,
+        "B3 majority of 5": 5.02,
+        "B4 peeking Clopper-Pearson": 2527.94,
+        "B5 naive confidence sequence": 10184.113,
+        "B6 SeqAccept, no refund": 11632.58,
+        "SeqAccept": 11644.58
+      }
+    },
+    {
+      "p": 0.051,
+      "n": 50,
+      "reps": 400,
+      "far": {
+        "B1 stop at first pass": 1.0,
+        "B2 rerun-3 all green": 1.0,
+        "B3 majority of 5": 1.0,
+        "B4 peeking Clopper-Pearson": 1.0,
+        "B5 naive confidence sequence": 0.6275,
+        "B6 SeqAccept, no refund": 0.015,
+        "SeqAccept": 0.015
+      },
+      "blocks": {
+        "B1 stop at first pass": 1.05,
+        "B2 rerun-3 all green": 3.315,
+        "B3 majority of 5": 5.025,
+        "B4 peeking Clopper-Pearson": 2685.0775,
+        "B5 naive confidence sequence": 24757.56,
+        "B6 SeqAccept, no refund": 38740.33,
+        "SeqAccept": 38740.33
+      }
+    },
+    {
+      "p": 0.06,
+      "n": 1,
+      "reps": 1000,
+      "far": {
+        "B1 stop at first pass": 0.941,
+        "B2 rerun-3 all green": 0.844,
+        "B3 majority of 5": 0.996,
+        "B4 peeking Clopper-Pearson": 0.089,
+        "B5 naive confidence sequence": 0.005,
+        "B6 SeqAccept, no refund": 0.001,
+        "SeqAccept": 0.001
+      },
+      "blocks": {
+        "B1 stop at first pass": 1.0,
+        "B2 rerun-3 all green": 2.821,
+        "B3 majority of 5": 5.0,
+        "B4 peeking Clopper-Pearson": 381.815,
+        "B5 naive confidence sequence": 757.455,
+        "B6 SeqAccept, no refund": 759.187,
+        "SeqAccept": 759.187
+      }
+    },
+    {
+      "p": 0.06,
+      "n": 5,
+      "reps": 1000,
+      "far": {
+        "B1 stop at first pass": 1.0,
+        "B2 rerun-3 all green": 1.0,
+        "B3 majority of 5": 1.0,
+        "B4 peeking Clopper-Pearson": 0.319,
+        "B5 naive confidence sequence": 0.024,
+        "B6 SeqAccept, no refund": 0.003,
+        "SeqAccept": 0.003
+      },
+      "blocks": {
+        "B1 stop at first pass": 1.059,
+        "B2 rerun-3 all green": 3.355,
+        "B3 majority of 5": 5.02,
+        "B4 peeking Clopper-Pearson": 1774.882,
+        "B5 naive confidence sequence": 3767.538,
+        "B6 SeqAccept, no refund": 3812.034,
+        "SeqAccept": 3812.034
+      }
+    },
+    {
+      "p": 0.06,
+      "n": 15,
+      "reps": 1000,
+      "far": {
+        "B1 stop at first pass": 1.0,
+        "B2 rerun-3 all green": 1.0,
+        "B3 majority of 5": 1.0,
+        "B4 peeking Clopper-Pearson": 0.669,
+        "B5 naive confidence sequence": 0.093,
+        "B6 SeqAccept, no refund": 0.003,
+        "SeqAccept": 0.003
+      },
+      "blocks": {
+        "B1 stop at first pass": 1.059,
+        "B2 rerun-3 all green": 3.355,
+        "B3 majority of 5": 5.02,
+        "B4 peeking Clopper-Pearson": 3962.786,
+        "B5 naive confidence sequence": 10904.847,
+        "B6 SeqAccept, no refund": 11422.018,
+        "SeqAccept": 11422.018
+      }
+    },
+    {
+      "p": 0.06,
+      "n": 50,
+      "reps": 400,
+      "far": {
+        "B1 stop at first pass": 1.0,
+        "B2 rerun-3 all green": 1.0,
+        "B3 majority of 5": 1.0,
+        "B4 peeking Clopper-Pearson": 0.9725,
+        "B5 naive confidence sequence": 0.27,
+        "B6 SeqAccept, no refund": 0.0025,
+        "SeqAccept": 0.0025
+      },
+      "blocks": {
+        "B1 stop at first pass": 1.055,
+        "B2 rerun-3 all green": 3.3225,
+        "B3 majority of 5": 5.025,
+        "B4 peeking Clopper-Pearson": 5616.96,
+        "B5 naive confidence sequence": 32913.5975,
+        "B6 SeqAccept, no refund": 38117.5475,
+        "SeqAccept": 38117.5475
+      }
+    },
+    {
+      "p": 0.08,
+      "n": 1,
+      "reps": 1000,
+      "far": {
+        "B1 stop at first pass": 0.921,
+        "B2 rerun-3 all green": 0.791,
+        "B3 majority of 5": 0.992,
+        "B4 peeking Clopper-Pearson": 0.007,
+        "B5 naive confidence sequence": 0.001,
+        "B6 SeqAccept, no refund": 0.001,
+        "SeqAccept": 0.001
+      },
+      "blocks": {
+        "B1 stop at first pass": 1.0,
+        "B2 rerun-3 all green": 2.751,
+        "B3 majority of 5": 5.0,
+        "B4 peeking Clopper-Pearson": 153.033,
+        "B5 naive confidence sequence": 528.5,
+        "B6 SeqAccept, no refund": 527.995,
+        "SeqAccept": 527.995
+      }
+    },
+    {
+      "p": 0.08,
+      "n": 5,
+      "reps": 1000,
+      "far": {
+        "B1 stop at first pass": 1.0,
+        "B2 rerun-3 all green": 1.0,
+        "B3 majority of 5": 1.0,
+        "B4 peeking Clopper-Pearson": 0.039,
+        "B5 naive confidence sequence": 0.004,
+        "B6 SeqAccept, no refund": 0.0,
+        "SeqAccept": 0.0
+      },
+      "blocks": {
+        "B1 stop at first pass": 1.082,
+        "B2 rerun-3 all green": 3.491,
+        "B3 majority of 5": 5.04,
+        "B4 peeking Clopper-Pearson": 791.726,
+        "B5 naive confidence sequence": 2653.697,
+        "B6 SeqAccept, no refund": 2658.148,
+        "SeqAccept": 2658.148
+      }
+    },
+    {
+      "p": 0.08,
+      "n": 15,
+      "reps": 1000,
+      "far": {
+        "B1 stop at first pass": 1.0,
+        "B2 rerun-3 all green": 1.0,
+        "B3 majority of 5": 1.0,
+        "B4 peeking Clopper-Pearson": 0.14,
+        "B5 naive confidence sequence": 0.01,
+        "B6 SeqAccept, no refund": 0.0,
+        "SeqAccept": 0.0
+      },
+      "blocks": {
+        "B1 stop at first pass": 1.082,
+        "B2 rerun-3 all green": 3.491,
+        "B3 majority of 5": 5.04,
+        "B4 peeking Clopper-Pearson": 2244.083,
+        "B5 naive confidence sequence": 7961.719,
+        "B6 SeqAccept, no refund": 7994.58,
+        "SeqAccept": 7994.58
+      }
+    },
+    {
+      "p": 0.08,
+      "n": 50,
+      "reps": 400,
+      "far": {
+        "B1 stop at first pass": 1.0,
+        "B2 rerun-3 all green": 1.0,
+        "B3 majority of 5": 1.0,
+        "B4 peeking Clopper-Pearson": 0.405,
+        "B5 naive confidence sequence": 0.0375,
+        "B6 SeqAccept, no refund": 0.0,
+        "SeqAccept": 0.0
+      },
+      "blocks": {
+        "B1 stop at first pass": 1.0825,
+        "B2 rerun-3 all green": 3.4625,
+        "B3 majority of 5": 5.025,
+        "B4 peeking Clopper-Pearson": 6435.78,
+        "B5 naive confidence sequence": 26165.7525,
+        "B6 SeqAccept, no refund": 26640.425,
+        "SeqAccept": 26640.425
+      }
+    }
+  ]
+}

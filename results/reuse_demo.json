@@ -1,0 +1,30 @@
+{
+  "reps": 2000,
+  "params": {
+    "alpha": 0.05,
+    "eps": 0.05,
+    "gamma": 0.5,
+    "K": 100,
+    "n_bad": 6,
+    "stop_at": 0.9,
+    "max_blocks": 800,
+    "reject_at": 20
+  },
+  "rows": [
+    {
+      "alpha": 0.05,
+      "fresh": 0.0015,
+      "reused": 0.371
+    },
+    {
+      "alpha": 0.01,
+      "fresh": 0.0,
+      "reused": 0.353
+    },
+    {
+      "alpha": 0.001,
+      "fresh": 0.0,
+      "reused": 0.3585
+    }
+  ]
+}

@@ -1,0 +1,3132 @@
+{
+  "k_match": 105,
+  "main": {
+    "Harmonic spending": {
+      "calibration": 0.0,
+      "far": 0.0,
+      "far_ci": [
+        0.0,
+        0.0
+      ],
+      "far_upper": {
+        "episodes": [
+          0,
+          220,
+          0.013524673398400524
+        ],
+        "repos": [
+          0,
+          10,
+          0.2588655508930523
+        ]
+      },
+      "frr": 0.0,
+      "marginal_accept": 0.027134146341463414,
+      "blocks_per_accept": 275.3193832599119,
+      "late_accept": 0.8,
+      "budget_seconds": 386.71500142568465,
+      "time_to_accept_min": 5.917253895451248
+    },
+    "Discard spending": {
+      "calibration": 0.0,
+      "far": 0.0,
+      "far_ci": [
+        0.0,
+        0.0
+      ],
+      "far_upper": {
+        "episodes": [
+          0,
+          220,
+          0.013524673398400524
+        ],
+        "repos": [
+          0,
+          10,
+          0.2588655508930523
+        ]
+      },
+      "frr": 0.0,
+      "marginal_accept": 0.027134146341463414,
+      "blocks_per_accept": 281.9541850220264,
+      "late_accept": 0.8,
+      "budget_seconds": 403.80981345121813,
+      "time_to_accept_min": 6.411055252942077
+    },
+    "Bonferroni-15 spending": {
+      "calibration": 0.0,
+      "far": 0.0,
+      "far_ci": [
+        0.0,
+        0.0
+      ],
+      "far_upper": {
+        "episodes": [
+          0,
+          220,
+          0.013524673398400524
+        ],
+        "repos": [
+          0,
+          10,
+          0.2588655508930523
+        ]
+      },
+      "frr": 0.0,
+      "marginal_accept": 0.027134146341463414,
+      "blocks_per_accept": 333.62400881057266,
+      "late_accept": 0.8,
+      "budget_seconds": 472.2985261825444,
+      "time_to_accept_min": 8.040609197042643
+    },
+    "Fixed-n Bonferroni-15 (1n0)": {
+      "calibration": 0.0,
+      "far": 0.0,
+      "far_ci": [
+        0.0,
+        0.0
+      ],
+      "far_upper": {
+        "episodes": [
+          0,
+          220,
+          0.013524673398400524
+        ],
+        "repos": [
+          0,
+          10,
+          0.2588655508930523
+        ]
+      },
+      "frr": 0.07790178571428572,
+      "marginal_accept": 0.03582317073170732,
+      "blocks_per_accept": 162.67630195891064,
+      "late_accept": 0.76,
+      "budget_seconds": 213.83172845503054,
+      "time_to_accept_min": 4.711753492143341
+    },
+    "Fixed-n Bonferroni-15 (2n0)": {
+      "calibration": 0.0,
+      "far": 0.0,
+      "far_ci": [
+        0.0,
+        0.0
+      ],
+      "far_upper": {
+        "episodes": [
+          0,
+          220,
+          0.013524673398400524
+        ],
+        "repos": [
+          0,
+          10,
+          0.2588655508930523
+        ]
+      },
+      "frr": 0.03504464285714286,
+      "marginal_accept": 0.031402439024390244,
+      "blocks_per_accept": 315.19100867183937,
+      "late_accept": 0.78,
+      "budget_seconds": 438.3950617374238,
+      "time_to_accept_min": 9.155954910350816
+    },
+    "Fixed-n Bonferroni-15 (4n0)": {
+      "calibration": 0.0,
+      "far": 0.0,
+      "far_ci": [
+        0.0,
+        0.0
+      ],
+      "far_upper": {
+        "episodes": [
+          0,
+          220,
+          0.013524673398400524
+        ],
+        "repos": [
+          0,
+          10,
+          0.2588655508930523
+        ]
+      },
+      "frr": 0.003348214285714286,
+      "marginal_accept": 0.02621951219512195,
+      "blocks_per_accept": 544.6844198895028,
+      "late_accept": 0.8,
+      "budget_seconds": 863.4649182099847,
+      "time_to_accept_min": 16.18749304710353
+    },
+    "Rerun-105 (all green)": {
+      "calibration": 0.0,
+      "far": 0.0,
+      "far_ci": [
+        0.0,
+        0.0
+      ],
+      "far_upper": {
+        "episodes": [
+          0,
+          220,
+          0.013524673398400524
+        ],
+        "repos": [
+          0,
+          10,
+          0.2588655508930523
+        ]
+      },
+      "frr": 0.17410714285714285,
+      "marginal_accept": 0.031097560975609756,
+      "blocks_per_accept": 239.408,
+      "late_accept": 0.7000000000000001,
+      "budget_seconds": 252.85538060022873,
+      "time_to_accept_min": 5.375829917524443
+    }
+  },
+  "late": {
+    "5": {
+      "Harmonic spending": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.029166666666666667,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": 313.03991416309015,
+        "late_accept": 0.9708333333333333,
+        "budget_seconds": 499.43047157916726,
+        "time_to_accept_min": 8.046828584370537
+      },
+      "Discard spending": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.010833333333333334,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": 231.42923336141533,
+        "late_accept": 0.9891666666666666,
+        "budget_seconds": 382.80427649895853,
+        "time_to_accept_min": 6.2863897185306135
+      },
+      "Bonferroni-15 spending": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.02,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": 277.19132653061223,
+        "late_accept": 0.98,
+        "budget_seconds": 449.05115240000043,
+        "time_to_accept_min": 7.275275376806979
+      },
+      "Fixed-n Bonferroni-15 (1n0)": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.4504166666666667,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": 139.52539802880972,
+        "late_accept": 0.5495833333333333,
+        "budget_seconds": 171.1831084135417,
+        "time_to_accept_min": 4.386983832701543
+      },
+      "Fixed-n Bonferroni-15 (2n0)": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.3279166666666667,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": 274.24674519528827,
+        "late_accept": 0.6720833333333334,
+        "budget_seconds": 401.23058495000004,
+        "time_to_accept_min": 8.532892602216368
+      },
+      "Fixed-n Bonferroni-15 (4n0)": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.08708333333333333,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": 489.9333637608398,
+        "late_accept": 0.9129166666666667,
+        "budget_seconds": 993.7908108760419,
+        "time_to_accept_min": 17.31842536345657
+      },
+      "Rerun-105 (all green)": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.5041666666666667,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": 155.81932773109244,
+        "late_accept": 0.49583333333333335,
+        "budget_seconds": 170.42937413854168,
+        "time_to_accept_min": 4.610926949719888
+      }
+    },
+    "10": {
+      "Harmonic spending": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.049166666666666664,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": 423.7528483786152,
+        "late_accept": 0.9508333333333333,
+        "budget_seconds": 836.4430579177091,
+        "time_to_accept_min": 13.494791865742778
+      },
+      "Discard spending": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.009583333333333334,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": 284.9856962557846,
+        "late_accept": 0.9904166666666666,
+        "budget_seconds": 607.0720729177087,
+        "time_to_accept_min": 9.980971661758524
+      },
+      "Bonferroni-15 spending": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.0175,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": 334.5356234096692,
+        "late_accept": 0.9825,
+        "budget_seconds": 696.6153212656254,
+        "time_to_accept_min": 11.384964015832631
+      },
+      "Fixed-n Bonferroni-15 (1n0)": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.4483333333333333,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": 153.56948640483384,
+        "late_accept": 0.5516666666666666,
+        "budget_seconds": 260.40681944062504,
+        "time_to_accept_min": 6.570668109957201
+      },
+      "Fixed-n Bonferroni-15 (2n0)": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.35875,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": 322.1345029239766,
+        "late_accept": 0.64125,
+        "budget_seconds": 606.955114461459,
+        "time_to_accept_min": 13.141252325996334
+      },
+      "Fixed-n Bonferroni-15 (4n0)": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.12041666666666667,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": 610.7555660824254,
+        "late_accept": 0.8795833333333334,
+        "budget_seconds": 1557.4982025093725,
+        "time_to_accept_min": 27.29244858728087
+      },
+      "Rerun-105 (all green)": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.48875,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": 167.03015484922577,
+        "late_accept": 0.51125,
+        "budget_seconds": 256.83928430937505,
+        "time_to_accept_min": 6.761764887734312
+      }
+    },
+    "20": {
+      "Harmonic spending": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.059166666666666666,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": 611.6585473870682,
+        "late_accept": 0.9408333333333333,
+        "budget_seconds": 1265.6971714156243,
+        "time_to_accept_min": 20.860654594220545
+      },
+      "Discard spending": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.007083333333333333,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": 429.75786823331936,
+        "late_accept": 0.9929166666666667,
+        "budget_seconds": 957.6472180614576,
+        "time_to_accept_min": 15.919158827755616
+      },
+      "Bonferroni-15 spending": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 1.0,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": null,
+        "late_accept": 0.0,
+        "budget_seconds": 2545.8477899291647,
+        "time_to_accept_min": null
+      },
+      "Fixed-n Bonferroni-15 (1n0)": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 1.0,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": null,
+        "late_accept": 0.0,
+        "budget_seconds": 102.37691209166667,
+        "time_to_accept_min": null
+      },
+      "Fixed-n Bonferroni-15 (2n0)": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 1.0,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": null,
+        "late_accept": 0.0,
+        "budget_seconds": 303.2285250447916,
+        "time_to_accept_min": null
+      },
+      "Fixed-n Bonferroni-15 (4n0)": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 1.0,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": null,
+        "late_accept": 0.0,
+        "budget_seconds": 1109.8743780187492,
+        "time_to_accept_min": null
+      },
+      "Rerun-105 (all green)": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.4791666666666667,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": 203.1488,
+        "late_accept": 0.5208333333333334,
+        "budget_seconds": 347.2091399677083,
+        "time_to_accept_min": 8.4136886384
+      }
+    },
+    "40": {
+      "Harmonic spending": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.08791666666666667,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": 857.3522156235724,
+        "late_accept": 0.9120833333333334,
+        "budget_seconds": 1736.4690684958357,
+        "time_to_accept_min": 27.946366651362897
+      },
+      "Discard spending": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.008333333333333333,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": 594.3117647058823,
+        "late_accept": 0.9916666666666667,
+        "budget_seconds": 1372.0485759406265,
+        "time_to_accept_min": 22.641562667086855
+      },
+      "Bonferroni-15 spending": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 1.0,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": null,
+        "late_accept": 0.0,
+        "budget_seconds": 2688.3953638812495,
+        "time_to_accept_min": null
+      },
+      "Fixed-n Bonferroni-15 (1n0)": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 1.0,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": null,
+        "late_accept": 0.0,
+        "budget_seconds": 101.019045025,
+        "time_to_accept_min": null
+      },
+      "Fixed-n Bonferroni-15 (2n0)": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 1.0,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": null,
+        "late_accept": 0.0,
+        "budget_seconds": 300.04656444270836,
+        "time_to_accept_min": null
+      },
+      "Fixed-n Bonferroni-15 (4n0)": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 1.0,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": null,
+        "late_accept": 0.0,
+        "budget_seconds": 1116.0437322677085,
+        "time_to_accept_min": null
+      },
+      "Rerun-105 (all green)": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            120,
+            0.024655401055656393
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.485,
+        "marginal_accept": 0.0,
+        "blocks_per_accept": 265.87216828478967,
+        "late_accept": 0.515,
+        "budget_seconds": 406.27994814479166,
+        "time_to_accept_min": 8.790125068399409
+      }
+    }
+  },
+  "worst": [
+    {
+      "p": 0.051,
+      "n": 1,
+      "reps": 1000,
+      "far": {
+        "Harmonic spending": 0.014,
+        "Discard spending": 0.008,
+        "Bonferroni-15 spending": 0.003,
+        "Fixed-n Bonferroni-15 (1n0)": 0.002,
+        "Fixed-n Bonferroni-15 (2n0)": 0.0,
+        "Fixed-n Bonferroni-15 (4n0)": 0.004,
+        "Rerun-105 (all green)": 0.002
+      }
+    },
+    {
+      "p": 0.051,
+      "n": 5,
+      "reps": 1000,
+      "far": {
+        "Harmonic spending": 0.013,
+        "Discard spending": 0.013,
+        "Bonferroni-15 spending": 0.008,
+        "Fixed-n Bonferroni-15 (1n0)": 0.009,
+        "Fixed-n Bonferroni-15 (2n0)": 0.003,
+        "Fixed-n Bonferroni-15 (4n0)": 0.013,
+        "Rerun-105 (all green)": 0.014
+      }
+    },
+    {
+      "p": 0.051,
+      "n": 15,
+      "reps": 1000,
+      "far": {
+        "Harmonic spending": 0.013,
+        "Discard spending": 0.026,
+        "Bonferroni-15 spending": 0.019,
+        "Fixed-n Bonferroni-15 (1n0)": 0.037,
+        "Fixed-n Bonferroni-15 (2n0)": 0.012,
+        "Fixed-n Bonferroni-15 (4n0)": 0.029,
+        "Rerun-105 (all green)": 0.052
+      }
+    },
+    {
+      "p": 0.051,
+      "n": 50,
+      "reps": 400,
+      "far": {
+        "Harmonic spending": 0.0075,
+        "Discard spending": 0.02,
+        "Bonferroni-15 spending": 0.03,
+        "Fixed-n Bonferroni-15 (1n0)": 0.0375,
+        "Fixed-n Bonferroni-15 (2n0)": 0.01,
+        "Fixed-n Bonferroni-15 (4n0)": 0.0325,
+        "Rerun-105 (all green)": 0.17
+      }
+    },
+    {
+      "p": 0.06,
+      "n": 1,
+      "reps": 1000,
+      "far": {
+        "Harmonic spending": 0.001,
+        "Discard spending": 0.001,
+        "Bonferroni-15 spending": 0.001,
+        "Fixed-n Bonferroni-15 (1n0)": 0.002,
+        "Fixed-n Bonferroni-15 (2n0)": 0.0,
+        "Fixed-n Bonferroni-15 (4n0)": 0.0,
+        "Rerun-105 (all green)": 0.002
+      }
+    },
+    {
+      "p": 0.06,
+      "n": 5,
+      "reps": 1000,
+      "far": {
+        "Harmonic spending": 0.002,
+        "Discard spending": 0.004,
+        "Bonferroni-15 spending": 0.001,
+        "Fixed-n Bonferroni-15 (1n0)": 0.004,
+        "Fixed-n Bonferroni-15 (2n0)": 0.002,
+        "Fixed-n Bonferroni-15 (4n0)": 0.002,
+        "Rerun-105 (all green)": 0.006
+      }
+    },
+    {
+      "p": 0.06,
+      "n": 15,
+      "reps": 1000,
+      "far": {
+        "Harmonic spending": 0.002,
+        "Discard spending": 0.012,
+        "Bonferroni-15 spending": 0.003,
+        "Fixed-n Bonferroni-15 (1n0)": 0.013,
+        "Fixed-n Bonferroni-15 (2n0)": 0.004,
+        "Fixed-n Bonferroni-15 (4n0)": 0.002,
+        "Rerun-105 (all green)": 0.02
+      }
+    },
+    {
+      "p": 0.06,
+      "n": 50,
+      "reps": 400,
+      "far": {
+        "Harmonic spending": 0.0025,
+        "Discard spending": 0.0125,
+        "Bonferroni-15 spending": 0.0075,
+        "Fixed-n Bonferroni-15 (1n0)": 0.01,
+        "Fixed-n Bonferroni-15 (2n0)": 0.0075,
+        "Fixed-n Bonferroni-15 (4n0)": 0.005,
+        "Rerun-105 (all green)": 0.0725
+      }
+    },
+    {
+      "p": 0.08,
+      "n": 1,
+      "reps": 1000,
+      "far": {
+        "Harmonic spending": 0.001,
+        "Discard spending": 0.0,
+        "Bonferroni-15 spending": 0.0,
+        "Fixed-n Bonferroni-15 (1n0)": 0.0,
+        "Fixed-n Bonferroni-15 (2n0)": 0.0,
+        "Fixed-n Bonferroni-15 (4n0)": 0.0,
+        "Rerun-105 (all green)": 0.001
+      }
+    },
+    {
+      "p": 0.08,
+      "n": 5,
+      "reps": 1000,
+      "far": {
+        "Harmonic spending": 0.0,
+        "Discard spending": 0.001,
+        "Bonferroni-15 spending": 0.0,
+        "Fixed-n Bonferroni-15 (1n0)": 0.0,
+        "Fixed-n Bonferroni-15 (2n0)": 0.0,
+        "Fixed-n Bonferroni-15 (4n0)": 0.0,
+        "Rerun-105 (all green)": 0.001
+      }
+    },
+    {
+      "p": 0.08,
+      "n": 15,
+      "reps": 1000,
+      "far": {
+        "Harmonic spending": 0.0,
+        "Discard spending": 0.0,
+        "Bonferroni-15 spending": 0.0,
+        "Fixed-n Bonferroni-15 (1n0)": 0.0,
+        "Fixed-n Bonferroni-15 (2n0)": 0.0,
+        "Fixed-n Bonferroni-15 (4n0)": 0.0,
+        "Rerun-105 (all green)": 0.002
+      }
+    },
+    {
+      "p": 0.08,
+      "n": 50,
+      "reps": 400,
+      "far": {
+        "Harmonic spending": 0.0,
+        "Discard spending": 0.0,
+        "Bonferroni-15 spending": 0.0,
+        "Fixed-n Bonferroni-15 (1n0)": 0.0,
+        "Fixed-n Bonferroni-15 (2n0)": 0.0,
+        "Fixed-n Bonferroni-15 (4n0)": 0.0,
+        "Rerun-105 (all green)": 0.005
+      }
+    }
+  ],
+  "stress": {
+    "alt-0.10": {
+      "ps": [
+        0.1,
+        0.051
+      ],
+      "n": 50,
+      "reps": 1000,
+      "far": {
+        "SeqAccept": 0.013,
+        "SeqAccept, uncapped refund": 0.011,
+        "B6 SeqAccept, no refund": 0.004,
+        "Harmonic spending": 0.004,
+        "Discard spending": 0.02,
+        "B5 naive confidence sequence": 0.389,
+        "B4 peeking Clopper-Pearson": 0.992
+      }
+    },
+    "alt-0.08": {
+      "ps": [
+        0.08,
+        0.051
+      ],
+      "n": 50,
+      "reps": 1000,
+      "far": {
+        "SeqAccept": 0.012,
+        "SeqAccept, uncapped refund": 0.013,
+        "B6 SeqAccept, no refund": 0.009,
+        "Harmonic spending": 0.008,
+        "Discard spending": 0.028,
+        "B5 naive confidence sequence": 0.422,
+        "B4 peeking Clopper-Pearson": 0.999
+      }
+    }
+  },
+  "first_green": {
+    "natural": {
+      "gpt-4.1-mini": {
+        "episodes": 34,
+        "broken": 6,
+        "correct": 26,
+        "marginal": 0,
+        "none": 2
+      },
+      "gpt-4o": {
+        "episodes": 34,
+        "broken": 9,
+        "correct": 23,
+        "marginal": 0,
+        "none": 2
+      },
+      "grok-4.7": {
+        "episodes": 34,
+        "broken": 1,
+        "correct": 32,
+        "marginal": 1,
+        "none": 0
+      },
+      "llama3.1:8b": {
+        "episodes": 34,
+        "broken": 17,
+        "correct": 8,
+        "marginal": 0,
+        "none": 9
+      }
+    }
+  },
+  "truncated": {
+    "episodes": 295,
+    "dropped_no_green": 33,
+    "table": {
+      "B1 stop at first pass": {
+        "calibration": 4.52906976744186,
+        "far": 0.21966101694915255,
+        "far_ci": [
+          0.14574074074074073,
+          0.29172413793103447
+        ],
+        "far_upper": {
+          "episodes": [
+            108,
+            130,
+            0.8825635767072846
+          ],
+          "repos": [
+            9,
+            10,
+            0.9948838031081764
+          ]
+        },
+        "frr": 0.011835748792270532,
+        "marginal_accept": 0.02135593220338983,
+        "blocks_per_accept": 1.6712276700874191,
+        "late_accept": 0.31666666666666665,
+        "budget_seconds": 3.1020987580508472,
+        "time_to_accept_min": 0.04942849450954862
+      },
+      "B2 rerun-3 all green": {
+        "calibration": 1.9593023255813953,
+        "far": 0.09508474576271186,
+        "far_ci": [
+          0.05649819494584837,
+          0.14007633587786258
+        ],
+        "far_upper": {
+          "episodes": [
+            80,
+            130,
+            0.6868615412489543
+          ],
+          "repos": [
+            8,
+            10,
+            0.9632285621125349
+          ]
+        },
+        "frr": 0.03816425120772947,
+        "marginal_accept": 0.022203389830508475,
+        "blocks_per_accept": 4.384076990376203,
+        "late_accept": 0.7166666666666667,
+        "budget_seconds": 7.307459666101694,
+        "time_to_accept_min": 0.1332422378114261
+      },
+      "B3 majority of 5": {
+        "calibration": 4.372093023255814,
+        "far": 0.2140677966101695,
+        "far_ci": [
+          0.13411764705882354,
+          0.2987692307692308
+        ],
+        "far_upper": {
+          "episodes": [
+            98,
+            130,
+            0.8149637723682251
+          ],
+          "repos": [
+            9,
+            10,
+            0.9948838031081764
+          ]
+        },
+        "frr": 0.0,
+        "marginal_accept": 0.022033898305084745,
+        "blocks_per_accept": 8.691059977367031,
+        "late_accept": 0.33333333333333337,
+        "budget_seconds": 15.892014758474575,
+        "time_to_accept_min": 0.24778428988658652
+      },
+      "B4 peeking Clopper-Pearson": {
+        "calibration": 0.005813953488372093,
+        "far": 0.00016949152542372882,
+        "far_ci": [
+          0.0,
+          0.000493421052631579
+        ],
+        "far_upper": {
+          "episodes": [
+            1,
+            130,
+            0.035969998781921815
+          ],
+          "repos": [
+            1,
+            10,
+            0.3941633024365049
+          ]
+        },
+        "frr": 0.0036231884057971015,
+        "marginal_accept": 0.023728813559322035,
+        "blocks_per_accept": 77.89568682606657,
+        "late_accept": 1.0,
+        "budget_seconds": 123.73056562500001,
+        "time_to_accept_min": 2.631617669949495
+      },
+      "B5 naive confidence sequence": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            130,
+            0.022780607091229255
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.0019323671497584543,
+        "marginal_accept": 0.023728813559322035,
+        "blocks_per_accept": 152.24859550561797,
+        "late_accept": 1.0,
+        "budget_seconds": 225.00715451610176,
+        "time_to_accept_min": 4.680306931399243
+      },
+      "B6 SeqAccept, no refund": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            130,
+            0.022780607091229255
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.003381642512077295,
+        "marginal_accept": 0.023728813559322035,
+        "blocks_per_accept": 187.17205813408344,
+        "late_accept": 0.95,
+        "budget_seconds": 269.8937501500001,
+        "time_to_accept_min": 5.676769214877203
+      },
+      "SeqAccept": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            130,
+            0.022780607091229255
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.002898550724637681,
+        "marginal_accept": 0.023728813559322035,
+        "blocks_per_accept": 177.06701030927834,
+        "late_accept": 1.0,
+        "budget_seconds": 260.2987957118645,
+        "time_to_accept_min": 5.478817794593833
+      },
+      "Harmonic spending": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            130,
+            0.022780607091229255
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.004106280193236715,
+        "marginal_accept": 0.023728813559322035,
+        "blocks_per_accept": 189.6556415669716,
+        "late_accept": 0.95,
+        "budget_seconds": 272.75627587584756,
+        "time_to_accept_min": 5.727648856142375
+      },
+      "Discard spending": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            130,
+            0.022780607091229255
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.004830917874396135,
+        "marginal_accept": 0.023728813559322035,
+        "blocks_per_accept": 201.62981220657278,
+        "late_accept": 1.0,
+        "budget_seconds": 297.0558689237289,
+        "time_to_accept_min": 6.235266779399274
+      },
+      "Bonferroni-15 spending": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            130,
+            0.022780607091229255
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.0142512077294686,
+        "marginal_accept": 0.023728813559322035,
+        "blocks_per_accept": 249.61525704809287,
+        "late_accept": 0.9833333333333333,
+        "budget_seconds": 363.1468159762712,
+        "time_to_accept_min": 7.718078708649841
+      },
+      "Fixed-n Bonferroni-15 (1n0)": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            130,
+            0.022780607091229255
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.4270531400966184,
+        "marginal_accept": 0.006779661016949152,
+        "blocks_per_accept": 130.26077943615257,
+        "late_accept": 0.5,
+        "budget_seconds": 150.20889470677972,
+        "time_to_accept_min": 5.533224372997474
+      },
+      "Fixed-n Bonferroni-15 (2n0)": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            130,
+            0.022780607091229255
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.31183574879227055,
+        "marginal_accept": 0.013220338983050847,
+        "blocks_per_accept": 249.34642979159548,
+        "late_accept": 0.5833333333333334,
+        "budget_seconds": 324.6738515161018,
+        "time_to_accept_min": 9.765941704633208
+      },
+      "Fixed-n Bonferroni-15 (4n0)": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            130,
+            0.022780607091229255
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.10362318840579711,
+        "marginal_accept": 0.023728813559322035,
+        "blocks_per_accept": 430.5177875876396,
+        "late_accept": 0.9,
+        "budget_seconds": 703.3839085872879,
+        "time_to_accept_min": 16.820114580481448
+      },
+      "Rerun-105 (all green)": {
+        "calibration": 0.0,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            130,
+            0.022780607091229255
+          ],
+          "repos": [
+            0,
+            10,
+            0.2588655508930523
+          ]
+        },
+        "frr": 0.46570048309178746,
+        "marginal_accept": 0.003728813559322034,
+        "blocks_per_accept": 141.1101163831692,
+        "late_accept": 0.3833333333333333,
+        "budget_seconds": 147.2539915754238,
+        "time_to_accept_min": 5.575855035243373
+      }
+    }
+  },
+  "margin_relabel": {
+    "margin": 0.1,
+    "table": {
+      "B1 stop at first pass": {
+        "far": 0.26204268292682925
+      },
+      "B2 rerun-3 all green": {
+        "far": 0.17103658536585367
+      },
+      "B3 majority of 5": {
+        "far": 0.23597560975609755
+      },
+      "B4 peeking Clopper-Pearson": {
+        "far": 0.009451219512195122
+      },
+      "B5 naive confidence sequence": {
+        "far": 0.00045731707317073173
+      },
+      "B6 SeqAccept, no refund": {
+        "far": 0.0
+      },
+      "SeqAccept": {
+        "far": 0.0001524390243902439
+      }
+    }
+  },
+  "boundary_pool": {
+    "0.8": {
+      "B1 stop at first pass": {
+        "far": 0.36205882352941177,
+        "false_accepts": 9848
+      },
+      "B2 rerun-3 all green": {
+        "far": 0.3378308823529412,
+        "false_accepts": 9189
+      },
+      "B3 majority of 5": {
+        "far": 0.3719485294117647,
+        "false_accepts": 10117
+      },
+      "B4 peeking Clopper-Pearson": {
+        "far": 0.019963235294117646,
+        "false_accepts": 543
+      },
+      "B5 naive confidence sequence": {
+        "far": 0.0027573529411764708,
+        "false_accepts": 75
+      },
+      "B6 SeqAccept, no refund": {
+        "far": 0.00014705882352941178,
+        "false_accepts": 4
+      },
+      "SeqAccept": {
+        "far": 0.0002573529411764706,
+        "false_accepts": 7
+      }
+    },
+    "0.9": {
+      "B1 stop at first pass": {
+        "far": 0.33856617647058823,
+        "false_accepts": 9209
+      },
+      "B2 rerun-3 all green": {
+        "far": 0.3243014705882353,
+        "false_accepts": 8821
+      },
+      "B3 majority of 5": {
+        "far": 0.345,
+        "false_accepts": 9384
+      },
+      "B4 peeking Clopper-Pearson": {
+        "far": 0.026580882352941176,
+        "false_accepts": 723
+      },
+      "B5 naive confidence sequence": {
+        "far": 0.003713235294117647,
+        "false_accepts": 101
+      },
+      "B6 SeqAccept, no refund": {
+        "far": 0.00040441176470588236,
+        "false_accepts": 11
+      },
+      "SeqAccept": {
+        "far": 0.00047794117647058826,
+        "false_accepts": 13
+      }
+    },
+    "0.94": {
+      "B1 stop at first pass": {
+        "far": 0.26786764705882354,
+        "false_accepts": 7286
+      },
+      "B2 rerun-3 all green": {
+        "far": 0.25930147058823527,
+        "false_accepts": 7053
+      },
+      "B3 majority of 5": {
+        "far": 0.27194852941176473,
+        "false_accepts": 7397
+      },
+      "B4 peeking Clopper-Pearson": {
+        "far": 0.106875,
+        "false_accepts": 2907
+      },
+      "B5 naive confidence sequence": {
+        "far": 0.014595588235294117,
+        "false_accepts": 397
+      },
+      "B6 SeqAccept, no refund": {
+        "far": 0.0017279411764705883,
+        "false_accepts": 47
+      },
+      "SeqAccept": {
+        "far": 0.001875,
+        "false_accepts": 51
+      }
+    }
+  },
+  "correlated": {
+    "p": 0.06,
+    "rows": [
+      {
+        "rho": 0.0,
+        "n": 1,
+        "reps": 1000,
+        "far": {
+          "SeqAccept": 0.002,
+          "B6 SeqAccept, no refund": 0.002,
+          "Harmonic spending": 0.002,
+          "B5 naive confidence sequence": 0.007,
+          "B4 peeking Clopper-Pearson": 0.068
+        }
+      },
+      {
+        "rho": 0.0,
+        "n": 15,
+        "reps": 1000,
+        "far": {
+          "SeqAccept": 0.0,
+          "B6 SeqAccept, no refund": 0.0,
+          "Harmonic spending": 0.0,
+          "B5 naive confidence sequence": 0.09,
+          "B4 peeking Clopper-Pearson": 0.662
+        }
+      },
+      {
+        "rho": 0.2,
+        "n": 1,
+        "reps": 1000,
+        "far": {
+          "SeqAccept": 0.006,
+          "B6 SeqAccept, no refund": 0.006,
+          "Harmonic spending": 0.006,
+          "B5 naive confidence sequence": 0.017,
+          "B4 peeking Clopper-Pearson": 0.16
+        }
+      },
+      {
+        "rho": 0.2,
+        "n": 15,
+        "reps": 1000,
+        "far": {
+          "SeqAccept": 0.02,
+          "B6 SeqAccept, no refund": 0.021,
+          "Harmonic spending": 0.016,
+          "B5 naive confidence sequence": 0.277,
+          "B4 peeking Clopper-Pearson": 0.918
+        }
+      },
+      {
+        "rho": 0.5,
+        "n": 1,
+        "reps": 1000,
+        "far": {
+          "SeqAccept": 0.074,
+          "B6 SeqAccept, no refund": 0.074,
+          "Harmonic spending": 0.074,
+          "B5 naive confidence sequence": 0.125,
+          "B4 peeking Clopper-Pearson": 0.337
+        }
+      },
+      {
+        "rho": 0.5,
+        "n": 15,
+        "reps": 1000,
+        "far": {
+          "SeqAccept": 0.305,
+          "B6 SeqAccept, no refund": 0.215,
+          "Harmonic spending": 0.23,
+          "B5 naive confidence sequence": 0.842,
+          "B4 peeking Clopper-Pearson": 0.998
+        }
+      },
+      {
+        "rho": 0.8,
+        "n": 1,
+        "reps": 1000,
+        "far": {
+          "SeqAccept": 0.393,
+          "B6 SeqAccept, no refund": 0.393,
+          "Harmonic spending": 0.393,
+          "B5 naive confidence sequence": 0.456,
+          "B4 peeking Clopper-Pearson": 0.602
+        }
+      },
+      {
+        "rho": 0.8,
+        "n": 15,
+        "reps": 1000,
+        "far": {
+          "SeqAccept": 0.99,
+          "B6 SeqAccept, no refund": 0.956,
+          "Harmonic spending": 0.978,
+          "B5 naive confidence sequence": 0.999,
+          "B4 peeking Clopper-Pearson": 1.0
+        }
+      }
+    ]
+  },
+  "serial": {
+    "tested": 1179,
+    "rejected": 94,
+    "lag1_median": -0.012689873417721518,
+    "lag1_mean": -0.0004041043200936001,
+    "lag1_abs_over_02": 17
+  },
+  "near_eps": {
+    "broken": 501,
+    "within_003": 1,
+    "within_005": 3,
+    "pool_below_eps": 0
+  },
+  "mixed_late": {
+    "5": {
+      "SeqAccept": {
+        "far": 0.002,
+        "frr": 0.0,
+        "correct_accept": 0.998,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 1679484,
+        "accepts": 1000,
+        "blocks_per_accept": 1679.484,
+        "seconds": 0.0,
+        "correct_accepts": 998,
+        "seconds_to_correct": 0.0
+      },
+      "B6 SeqAccept, no refund": {
+        "far": 0.001,
+        "frr": 0.0,
+        "correct_accept": 0.999,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 1716129,
+        "accepts": 1000,
+        "blocks_per_accept": 1716.129,
+        "seconds": 0.0,
+        "correct_accepts": 999,
+        "seconds_to_correct": 0.0
+      },
+      "Harmonic spending": {
+        "far": 0.001,
+        "frr": 0.0,
+        "correct_accept": 0.999,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 1708255,
+        "accepts": 1000,
+        "blocks_per_accept": 1708.255,
+        "seconds": 0.0,
+        "correct_accepts": 999,
+        "seconds_to_correct": 0.0
+      },
+      "Discard spending": {
+        "far": 0.001,
+        "frr": 0.0,
+        "correct_accept": 0.999,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 1658972,
+        "accepts": 1000,
+        "blocks_per_accept": 1658.972,
+        "seconds": 0.0,
+        "correct_accepts": 999,
+        "seconds_to_correct": 0.0
+      },
+      "Bonferroni-15 spending": {
+        "far": 0.0,
+        "frr": 0.0,
+        "correct_accept": 1.0,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 1684229,
+        "accepts": 1000,
+        "blocks_per_accept": 1684.229,
+        "seconds": 0.0,
+        "correct_accepts": 1000,
+        "seconds_to_correct": 0.0
+      },
+      "Fixed-n Bonferroni-15 (1n0)": {
+        "far": 0.002,
+        "frr": 0.0,
+        "correct_accept": 0.998,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 152258,
+        "accepts": 1000,
+        "blocks_per_accept": 152.258,
+        "seconds": 0.0,
+        "correct_accepts": 998,
+        "seconds_to_correct": 0.0
+      },
+      "Fixed-n Bonferroni-15 (2n0)": {
+        "far": 0.0,
+        "frr": 0.0,
+        "correct_accept": 1.0,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 342442,
+        "accepts": 1000,
+        "blocks_per_accept": 342.442,
+        "seconds": 0.0,
+        "correct_accepts": 1000,
+        "seconds_to_correct": 0.0
+      },
+      "Fixed-n Bonferroni-15 (4n0)": {
+        "far": 0.0,
+        "frr": 0.0,
+        "correct_accept": 1.0,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 877643,
+        "accepts": 1000,
+        "blocks_per_accept": 877.643,
+        "seconds": 0.0,
+        "correct_accepts": 1000,
+        "seconds_to_correct": 0.0
+      }
+    },
+    "10": {
+      "SeqAccept": {
+        "far": 0.003,
+        "frr": 0.0,
+        "correct_accept": 0.997,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 4016062,
+        "accepts": 1000,
+        "blocks_per_accept": 4016.062,
+        "seconds": 0.0,
+        "correct_accepts": 997,
+        "seconds_to_correct": 0.0
+      },
+      "B6 SeqAccept, no refund": {
+        "far": 0.003,
+        "frr": 0.0,
+        "correct_accept": 0.997,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 4097822,
+        "accepts": 1000,
+        "blocks_per_accept": 4097.822,
+        "seconds": 0.0,
+        "correct_accepts": 997,
+        "seconds_to_correct": 0.0
+      },
+      "Harmonic spending": {
+        "far": 0.0,
+        "frr": 0.0,
+        "correct_accept": 1.0,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 4040575,
+        "accepts": 1000,
+        "blocks_per_accept": 4040.575,
+        "seconds": 0.0,
+        "correct_accepts": 1000,
+        "seconds_to_correct": 0.0
+      },
+      "Discard spending": {
+        "far": 0.002,
+        "frr": 0.0,
+        "correct_accept": 0.998,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 3982215,
+        "accepts": 1000,
+        "blocks_per_accept": 3982.215,
+        "seconds": 0.0,
+        "correct_accepts": 998,
+        "seconds_to_correct": 0.0
+      },
+      "Bonferroni-15 spending": {
+        "far": 0.0,
+        "frr": 0.0,
+        "correct_accept": 1.0,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 3999241,
+        "accepts": 1000,
+        "blocks_per_accept": 3999.241,
+        "seconds": 0.0,
+        "correct_accepts": 1000,
+        "seconds_to_correct": 0.0
+      },
+      "Fixed-n Bonferroni-15 (1n0)": {
+        "far": 0.006,
+        "frr": 0.0,
+        "correct_accept": 0.994,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 205544,
+        "accepts": 1000,
+        "blocks_per_accept": 205.544,
+        "seconds": 0.0,
+        "correct_accepts": 994,
+        "seconds_to_correct": 0.0
+      },
+      "Fixed-n Bonferroni-15 (2n0)": {
+        "far": 0.002,
+        "frr": 0.0,
+        "correct_accept": 0.998,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 504067,
+        "accepts": 1000,
+        "blocks_per_accept": 504.067,
+        "seconds": 0.0,
+        "correct_accepts": 998,
+        "seconds_to_correct": 0.0
+      },
+      "Fixed-n Bonferroni-15 (4n0)": {
+        "far": 0.0,
+        "frr": 0.0,
+        "correct_accept": 1.0,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 1475749,
+        "accepts": 1000,
+        "blocks_per_accept": 1475.749,
+        "seconds": 0.0,
+        "correct_accepts": 1000,
+        "seconds_to_correct": 0.0
+      }
+    },
+    "15": {
+      "SeqAccept": {
+        "far": 0.0,
+        "frr": 0.0,
+        "correct_accept": 1.0,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 5588622,
+        "accepts": 1000,
+        "blocks_per_accept": 5588.622,
+        "seconds": 0.0,
+        "correct_accepts": 1000,
+        "seconds_to_correct": 0.0
+      },
+      "B6 SeqAccept, no refund": {
+        "far": 0.001,
+        "frr": 0.0,
+        "correct_accept": 0.999,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 5730785,
+        "accepts": 1000,
+        "blocks_per_accept": 5730.785,
+        "seconds": 0.0,
+        "correct_accepts": 999,
+        "seconds_to_correct": 0.0
+      },
+      "Harmonic spending": {
+        "far": 0.001,
+        "frr": 0.0,
+        "correct_accept": 0.999,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 5587019,
+        "accepts": 1000,
+        "blocks_per_accept": 5587.019,
+        "seconds": 0.0,
+        "correct_accepts": 999,
+        "seconds_to_correct": 0.0
+      },
+      "Discard spending": {
+        "far": 0.005,
+        "frr": 0.0,
+        "correct_accept": 0.995,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 5499505,
+        "accepts": 1000,
+        "blocks_per_accept": 5499.505,
+        "seconds": 0.0,
+        "correct_accepts": 995,
+        "seconds_to_correct": 0.0
+      },
+      "Bonferroni-15 spending": {
+        "far": 0.001,
+        "frr": 0.999,
+        "correct_accept": 0.0,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 6183248,
+        "accepts": 1,
+        "blocks_per_accept": 6183248.0,
+        "seconds": 0.0,
+        "correct_accepts": 0,
+        "seconds_to_correct": 0.0
+      },
+      "Fixed-n Bonferroni-15 (1n0)": {
+        "far": 0.005,
+        "frr": 0.995,
+        "correct_accept": 0.0,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 134228,
+        "accepts": 5,
+        "blocks_per_accept": 26845.6,
+        "seconds": 0.0,
+        "correct_accepts": 0,
+        "seconds_to_correct": 0.0
+      },
+      "Fixed-n Bonferroni-15 (2n0)": {
+        "far": 0.001,
+        "frr": 0.999,
+        "correct_accept": 0.0,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 396627,
+        "accepts": 1,
+        "blocks_per_accept": 396627.0,
+        "seconds": 0.0,
+        "correct_accepts": 0,
+        "seconds_to_correct": 0.0
+      },
+      "Fixed-n Bonferroni-15 (4n0)": {
+        "far": 0.001,
+        "frr": 0.999,
+        "correct_accept": 0.0,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 1461516,
+        "accepts": 1,
+        "blocks_per_accept": 1461516.0,
+        "seconds": 0.0,
+        "correct_accepts": 0,
+        "seconds_to_correct": 0.0
+      }
+    }
+  },
+  "fullsuite": {
+    "table": {
+      "B1 stop at first pass": {
+        "far": 0.04298780487804878,
+        "far_ci": [
+          0.019166666666666665,
+          0.0779296875
+        ]
+      },
+      "B2 rerun-3 all green": {
+        "far": 0.008079268292682927,
+        "far_ci": [
+          0.00234375,
+          0.016826923076923076
+        ]
+      },
+      "B3 majority of 5": {
+        "far": 0.02301829268292683,
+        "far_ci": [
+          0.009722222222222222,
+          0.044444444444444446
+        ]
+      }
+    },
+    "natural": {
+      "B1 stop at first pass": 0.03970588235294118,
+      "B2 rerun-3 all green": 0.009926470588235295,
+      "B3 majority of 5": 0.026838235294117645
+    },
+    "injected-bernoulli": {
+      "B1 stop at first pass": 0.0890625,
+      "B2 rerun-3 all green": 0.013541666666666667,
+      "B3 majority of 5": 0.040625
+    },
+    "injected-markov": {
+      "B1 stop at first pass": 0.0015624999999999999,
+      "B2 rerun-3 all green": 0.0,
+      "B3 majority of 5": 0.0
+    },
+    "default_first_pass": {
+      "episodes": 136,
+      "broken": 2,
+      "correct": 94,
+      "marginal": 1,
+      "none": 39
+    },
+    "natural_false_pass_bugs": {
+      "anonapi_b2": "order",
+      "yamicache": "order"
+    },
+    "broken_passes": {
+      "0": 465,
+      "1": 11,
+      "2": 5,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "cost": {
+      "full_seconds": 2.9932088273474684,
+      "block_seconds": 3.6913046819558635,
+      "full_median": 0.949,
+      "block_median": 0.99,
+      "tests_per_block": 4.174459677826592
+    }
+  },
+  "realflaky": {
+    "episodes": 104,
+    "bugs": 13,
+    "p0": {
+      "anonapi": 0.0575,
+      "anonapi_b2": 0.0575,
+      "filestack": 0.065,
+      "filestack_b2": 0.065,
+      "freezegun_b2": 0.105,
+      "kanren": 0.015,
+      "penman": 0.2375,
+      "penman_b2": 0.2375,
+      "pymeterbus": 0.01,
+      "pymeterbus_b2": 0.01,
+      "qtaf": 0.03,
+      "yamicache": 0.2,
+      "yamicache_b2": 0.2025
+    },
+    "table": {
+      "B1 stop at first pass": {
+        "calibration": null,
+        "far": 0.32403846153846155,
+        "far_ci": [
+          0.2375,
+          0.4008333333333333
+        ],
+        "far_upper": {
+          "episodes": [
+            53,
+            73,
+            0.8104573444720939
+          ],
+          "repos": [
+            8,
+            8,
+            1.0
+          ]
+        },
+        "frr": 0.0007462686567164179,
+        "marginal_accept": 0.06923076923076923,
+        "blocks_per_accept": 2.9648293963254595,
+        "late_accept": 0.09999999999999999,
+        "budget_seconds": 4.201705825721154,
+        "time_to_accept_min": 0.03901342682459368
+      },
+      "B2 rerun-3 all green": {
+        "calibration": null,
+        "far": 0.24134615384615385,
+        "far_ci": [
+          0.1471590909090909,
+          0.3229166666666667
+        ],
+        "far_upper": {
+          "episodes": [
+            42,
+            73,
+            0.6736037164888515
+          ],
+          "repos": [
+            7,
+            8,
+            0.9936088490454551
+          ]
+        },
+        "frr": 0.011940298507462687,
+        "marginal_accept": 0.10961538461538461,
+        "blocks_per_accept": 7.7862857142857145,
+        "late_accept": 0.3333333333333333,
+        "budget_seconds": 12.366531973557693,
+        "time_to_accept_min": 0.11549852638888887
+      },
+      "B3 majority of 5": {
+        "calibration": null,
+        "far": 0.29375,
+        "far_ci": [
+          0.19602272727272727,
+          0.3926136363636364
+        ],
+        "far_upper": {
+          "episodes": [
+            44,
+            73,
+            0.6992093650726139
+          ],
+          "repos": [
+            8,
+            8,
+            1.0
+          ]
+        },
+        "frr": 0.0,
+        "marginal_accept": 0.05673076923076923,
+        "blocks_per_accept": 15.680127523910734,
+        "late_accept": 0.21666666666666667,
+        "budget_seconds": 21.7732840625,
+        "time_to_accept_min": 0.19391371350101183
+      },
+      "B4 peeking Clopper-Pearson": {
+        "calibration": null,
+        "far": 0.020673076923076922,
+        "far_ci": [
+          0.0013392857142857143,
+          0.042578125
+        ],
+        "far_upper": {
+          "episodes": [
+            10,
+            73,
+            0.22127571453298386
+          ],
+          "repos": [
+            3,
+            8,
+            0.7107591834981907
+          ]
+        },
+        "frr": 0.0014925373134328358,
+        "marginal_accept": 0.09375,
+        "blocks_per_accept": 313.7823652904129,
+        "late_accept": 0.65,
+        "budget_seconds": 394.6987517367791,
+        "time_to_accept_min": 5.356824125104972
+      },
+      "B5 naive confidence sequence": {
+        "calibration": null,
+        "far": 0.010576923076923078,
+        "far_ci": [
+          0.0,
+          0.029017857142857144
+        ],
+        "far_upper": {
+          "episodes": [
+            8,
+            73,
+            0.18905635320693634
+          ],
+          "repos": [
+            2,
+            8,
+            0.599689389190833
+          ]
+        },
+        "frr": 0.048507462686567165,
+        "marginal_accept": 0.09759615384615385,
+        "blocks_per_accept": 1546.840807174888,
+        "late_accept": 0.6833333333333333,
+        "budget_seconds": 2142.3916126693903,
+        "time_to_accept_min": 17.237710122716287
+      },
+      "B6 SeqAccept, no refund": {
+        "calibration": null,
+        "far": 0.002403846153846154,
+        "far_ci": [
+          0.0,
+          0.006696428571428572
+        ],
+        "far_upper": {
+          "episodes": [
+            4,
+            73,
+            0.1210149981094258
+          ],
+          "repos": [
+            1,
+            8,
+            0.4706794086011316
+          ]
+        },
+        "frr": 0.11194029850746269,
+        "marginal_accept": 0.08076923076923077,
+        "blocks_per_accept": 2643.985221674877,
+        "late_accept": 0.6666666666666666,
+        "budget_seconds": 3251.0486088988937,
+        "time_to_accept_min": 19.560811194856246
+      },
+      "SeqAccept": {
+        "calibration": null,
+        "far": 0.002403846153846154,
+        "far_ci": [
+          0.0,
+          0.006696428571428572
+        ],
+        "far_upper": {
+          "episodes": [
+            4,
+            73,
+            0.1210149981094258
+          ],
+          "repos": [
+            1,
+            8,
+            0.4706794086011316
+          ]
+        },
+        "frr": 0.10895522388059702,
+        "marginal_accept": 0.08125,
+        "blocks_per_accept": 2552.1735941320294,
+        "late_accept": 0.6666666666666666,
+        "budget_seconds": 3200.567931038319,
+        "time_to_accept_min": 19.076377231679125
+      }
+    },
+    "same_loops_without": {
+      "B1 stop at first pass": {
+        "calibration": null,
+        "far": 0.30865384615384617,
+        "far_ci": [
+          0.21923076923076923,
+          0.39375
+        ],
+        "far_upper": {
+          "episodes": [
+            41,
+            66,
+            0.7212146319975808
+          ],
+          "repos": [
+            8,
+            8,
+            1.0
+          ]
+        },
+        "frr": 0.0,
+        "marginal_accept": 0.0038461538461538464,
+        "blocks_per_accept": 2.722106360792492,
+        "late_accept": 0.175,
+        "budget_seconds": 5.136130802884615,
+        "time_to_accept_min": 0.08202878230152472
+      },
+      "B2 rerun-3 all green": {
+        "calibration": null,
+        "far": 0.21153846153846154,
+        "far_ci": [
+          0.13125,
+          0.29010416666666666
+        ],
+        "far_upper": {
+          "episodes": [
+            34,
+            66,
+            0.6217362220949525
+          ],
+          "repos": [
+            8,
+            8,
+            1.0
+          ]
+        },
+        "frr": 0.0,
+        "marginal_accept": 0.008173076923076924,
+        "blocks_per_accept": 6.462736373748609,
+        "late_accept": 0.425,
+        "budget_seconds": 13.070042098557693,
+        "time_to_accept_min": 0.2255349994407159
+      },
+      "B3 majority of 5": {
+        "calibration": null,
+        "far": 0.28701923076923075,
+        "far_ci": [
+          0.1971153846153846,
+          0.37884615384615383
+        ],
+        "far_upper": {
+          "episodes": [
+            40,
+            66,
+            0.7072880507900431
+          ],
+          "repos": [
+            8,
+            8,
+            1.0
+          ]
+        },
+        "frr": 0.0,
+        "marginal_accept": 0.004807692307692308,
+        "blocks_per_accept": 14.989395546129375,
+        "late_accept": 0.225,
+        "budget_seconds": 27.14134724158654,
+        "time_to_accept_min": 0.4113379502215272
+      },
+      "B4 peeking Clopper-Pearson": {
+        "calibration": null,
+        "far": 0.0014423076923076924,
+        "far_ci": [
+          0.0,
+          0.0033333333333333335
+        ],
+        "far_upper": {
+          "episodes": [
+            3,
+            66,
+            0.11330819953922318
+          ],
+          "repos": [
+            2,
+            8,
+            0.599689389190833
+          ]
+        },
+        "frr": 0.0,
+        "marginal_accept": 0.009615384615384616,
+        "blocks_per_accept": 116.18780318780318,
+        "late_accept": 1.0,
+        "budget_seconds": 249.31546857812526,
+        "time_to_accept_min": 4.0573755831572775
+      },
+      "B5 naive confidence sequence": {
+        "calibration": null,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            66,
+            0.04437517261818431
+          ],
+          "repos": [
+            0,
+            8,
+            0.3123439780663679
+          ]
+        },
+        "frr": 0.0,
+        "marginal_accept": 0.009615384615384616,
+        "blocks_per_accept": 236.4013888888889,
+        "late_accept": 1.0,
+        "budget_seconds": 502.7143554002364,
+        "time_to_accept_min": 6.251426009477702
+      },
+      "B6 SeqAccept, no refund": {
+        "calibration": null,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            66,
+            0.04437517261818431
+          ],
+          "repos": [
+            0,
+            8,
+            0.3123439780663679
+          ]
+        },
+        "frr": 0.0,
+        "marginal_accept": 0.009615384615384616,
+        "blocks_per_accept": 260.60069444444446,
+        "late_accept": 1.0,
+        "budget_seconds": 557.3149627079288,
+        "time_to_accept_min": 7.481716121625591
+      },
+      "SeqAccept": {
+        "calibration": null,
+        "far": 0.0,
+        "far_ci": [
+          0.0,
+          0.0
+        ],
+        "far_upper": {
+          "episodes": [
+            0,
+            66,
+            0.04437517261818431
+          ],
+          "repos": [
+            0,
+            8,
+            0.3123439780663679
+          ]
+        },
+        "frr": 0.0,
+        "marginal_accept": 0.009615384615384616,
+        "blocks_per_accept": 251.96597222222223,
+        "late_accept": 1.0,
+        "budget_seconds": 546.0658969843711,
+        "time_to_accept_min": 7.261752844512914
+      }
+    },
+    "near_eps": {
+      "broken": 431,
+      "within_003": 22,
+      "within_005": 25,
+      "pool_below_eps": 15
+    },
+    "near_eps_without": {
+      "broken": 406,
+      "within_003": 1,
+      "within_005": 3,
+      "pool_below_eps": 0
+    },
+    "seqaccept_false_accept_bugs": [
+      "yamicache",
+      "yamicache_b2"
+    ],
+    "p0_high": {
+      "episodes": 32,
+      "table": {
+        "B1 stop at first pass": {
+          "calibration": null,
+          "far": 0.278125,
+          "far_ci": [
+            0.1875,
+            0.36875
+          ],
+          "far_upper": {
+            "episodes": [
+              21,
+              24,
+              0.965046665166282
+            ],
+            "repos": [
+              2,
+              2,
+              1.0
+            ]
+          },
+          "frr": 0.0,
+          "marginal_accept": 0.15,
+          "blocks_per_accept": 3.3612565445026177,
+          "late_accept": 0.0,
+          "budget_seconds": 6.3293265390624995,
+          "time_to_accept_min": 0.05874263029542921
+        },
+        "B2 rerun-3 all green": {
+          "calibration": null,
+          "far": 0.2296875,
+          "far_ci": [
+            0.10625,
+            0.353125
+          ],
+          "far_upper": {
+            "episodes": [
+              18,
+              24,
+              0.8850894294356578
+            ],
+            "repos": [
+              2,
+              2,
+              1.0
+            ]
+          },
+          "frr": 0.030952380952380953,
+          "marginal_accept": 0.24375,
+          "blocks_per_accept": 9.348837209302326,
+          "late_accept": 0.05,
+          "budget_seconds": 21.4340424375,
+          "time_to_accept_min": 0.21382374471830984
+        },
+        "B3 majority of 5": {
+          "calibration": null,
+          "far": 0.21875,
+          "far_ci": [
+            0.146875,
+            0.290625
+          ],
+          "far_upper": {
+            "episodes": [
+              15,
+              24,
+              0.7884344428029715
+            ],
+            "repos": [
+              2,
+              2,
+              1.0
+            ]
+          },
+          "frr": 0.0,
+          "marginal_accept": 0.121875,
+          "blocks_per_accept": 17.54025044722719,
+          "late_accept": 0.0,
+          "budget_seconds": 30.25925703125,
+          "time_to_accept_min": 0.2783940408113393
+        },
+        "B4 peeking Clopper-Pearson": {
+          "calibration": null,
+          "far": 0.040625,
+          "far_ci": [
+            0.009375,
+            0.07187500000000001
+          ],
+          "far_upper": {
+            "episodes": [
+              6,
+              24,
+              0.4346913789010109
+            ],
+            "repos": [
+              2,
+              2,
+              1.0
+            ]
+          },
+          "frr": 0.004761904761904762,
+          "marginal_accept": 0.2359375,
+          "blocks_per_accept": 450.03586497890296,
+          "late_accept": 0.1,
+          "budget_seconds": 761.8858593125022,
+          "time_to_accept_min": 12.56705514590355
+        },
+        "B5 naive confidence sequence": {
+          "calibration": null,
+          "far": 0.0328125,
+          "far_ci": [
+            0.0,
+            0.065625
+          ],
+          "far_upper": {
+            "episodes": [
+              7,
+              24,
+              0.4787279058719695
+            ],
+            "repos": [
+              1,
+              2,
+              0.9746794344808964
+            ]
+          },
+          "frr": 0.15476190476190477,
+          "marginal_accept": 0.253125,
+          "blocks_per_accept": 3453.984886649874,
+          "late_accept": 0.05,
+          "budget_seconds": 5479.596644468531,
+          "time_to_accept_min": 53.60262264271759
+        },
+        "B6 SeqAccept, no refund": {
+          "calibration": null,
+          "far": 0.0078125,
+          "far_ci": [
+            0.0,
+            0.015625
+          ],
+          "far_upper": {
+            "episodes": [
+              4,
+              24,
+              0.3418073494041162
+            ],
+            "repos": [
+              1,
+              2,
+              0.9746794344808964
+            ]
+          },
+          "frr": 0.3380952380952381,
+          "marginal_accept": 0.1859375,
+          "blocks_per_accept": 8065.353146853146,
+          "late_accept": 0.0,
+          "budget_seconds": 8628.030777390206,
+          "time_to_accept_min": 60.18585033050277
+        },
+        "SeqAccept": {
+          "calibration": null,
+          "far": 0.0078125,
+          "far_ci": [
+            0.0,
+            0.015625
+          ],
+          "far_upper": {
+            "episodes": [
+              4,
+              24,
+              0.3418073494041162
+            ],
+            "repos": [
+              1,
+              2,
+              0.9746794344808964
+            ]
+          },
+          "frr": 0.33571428571428574,
+          "marginal_accept": 0.1953125,
+          "blocks_per_accept": 7780.708904109589,
+          "late_accept": 0.0,
+          "budget_seconds": 8571.74342054647,
+          "time_to_accept_min": 61.03524968672711
+        }
+      }
+    },
+    "p0_low": {
+      "episodes": 72,
+      "table": {
+        "B1 stop at first pass": {
+          "calibration": null,
+          "far": 0.34444444444444444,
+          "far_ci": [
+            0.2421875,
+            0.425
+          ],
+          "far_upper": {
+            "episodes": [
+              32,
+              49,
+              0.7654535811923913
+            ],
+            "repos": [
+              6,
+              6,
+              1.0
+            ]
+          },
+          "frr": 0.0010869565217391304,
+          "marginal_accept": 0.03333333333333333,
+          "blocks_per_accept": 2.794294294294294,
+          "late_accept": 0.15,
+          "budget_seconds": 3.2560966197916668,
+          "time_to_accept_min": 0.03152734581218274
+        },
+        "B2 rerun-3 all green": {
+          "calibration": null,
+          "far": 0.2465277777777778,
+          "far_ci": [
+            0.1234375,
+            0.33046875
+          ],
+          "far_upper": {
+            "episodes": [
+              24,
+              49,
+              0.6153099658152612
+            ],
+            "repos": [
+              5,
+              6,
+              0.9914875553891529
+            ]
+          },
+          "frr": 0.0032608695652173916,
+          "marginal_accept": 0.05,
+          "blocks_per_accept": 7.13290113452188,
+          "late_accept": 0.475,
+          "budget_seconds": 8.336527322916668,
+          "time_to_accept_min": 0.08954651709004542
+        },
+        "B3 majority of 5": {
+          "calibration": null,
+          "far": 0.32708333333333334,
+          "far_ci": [
+            0.1859375,
+            0.43011363636363636
+          ],
+          "far_upper": {
+            "episodes": [
+              29,
+              49,
+              0.7106379112908684
+            ],
+            "repos": [
+              6,
+              6,
+              1.0
+            ]
+          },
+          "frr": 0.0,
+          "marginal_accept": 0.027777777777777776,
+          "blocks_per_accept": 14.894179894179894,
+          "late_accept": 0.325,
+          "budget_seconds": 18.001740520833334,
+          "time_to_accept_min": 0.1584361376231527
+        },
+        "B4 peeking Clopper-Pearson": {
+          "calibration": null,
+          "far": 0.011805555555555557,
+          "far_ci": [
+            0.0,
+            0.031875
+          ],
+          "far_upper": {
+            "episodes": [
+              4,
+              49,
+              0.17714788196748063
+            ],
+            "repos": [
+              1,
+              6,
+              0.581803409252026
+            ]
+          },
+          "frr": 0.0,
+          "marginal_accept": 0.030555555555555555,
+          "blocks_per_accept": 246.15497382198953,
+          "late_accept": 0.925,
+          "budget_seconds": 231.50448170312436,
+          "time_to_accept_min": 2.9614789202088
+        },
+        "B5 naive confidence sequence": {
+          "calibration": null,
+          "far": 0.0006944444444444445,
+          "far_ci": [
+            0.0,
+            0.0018750000000000001
+          ],
+          "far_upper": {
+            "episodes": [
+              1,
+              49,
+              0.09319247143420124
+            ],
+            "repos": [
+              1,
+              6,
+              0.581803409252026
+            ]
+          },
+          "frr": 0.0,
+          "marginal_accept": 0.02847222222222222,
+          "blocks_per_accept": 742.2327311370882,
+          "late_accept": 1.0,
+          "budget_seconds": 659.1893763142164,
+          "time_to_accept_min": 8.581323827632552
+        },
+        "B6 SeqAccept, no refund": {
+          "calibration": null,
+          "far": 0.0,
+          "far_ci": [
+            0.0,
+            0.0
+          ],
+          "far_upper": {
+            "episodes": [
+              0,
+              49,
+              0.059306014189697116
+            ],
+            "repos": [
+              0,
+              6,
+              0.3930377689970827
+            ]
+          },
+          "frr": 0.008695652173913044,
+          "marginal_accept": 0.034027777777777775,
+          "blocks_per_accept": 980.3465665236051,
+          "late_accept": 1.0,
+          "budget_seconds": 861.2787562360877,
+          "time_to_accept_min": 12.10751975660626
+        },
+        "SeqAccept": {
+          "calibration": null,
+          "far": 0.0,
+          "far_ci": [
+            0.0,
+            0.0
+          ],
+          "far_upper": {
+            "episodes": [
+              0,
+              49,
+              0.059306014189697116
+            ],
+            "repos": [
+              0,
+              6,
+              0.3930377689970827
+            ]
+          },
+          "frr": 0.005434782608695653,
+          "marginal_accept": 0.030555555555555555,
+          "blocks_per_accept": 919.3048128342245,
+          "late_accept": 1.0,
+          "budget_seconds": 813.378824590252,
+          "time_to_accept_min": 11.447491330761308
+        }
+      }
+    },
+    "repos": 8,
+    "frr_ci_seqaccept": [
+      0.0,
+      0.21953125
+    ],
+    "p0_se": {
+      "anonapi": 0.011639775556255371,
+      "anonapi_b2": 0.011639775556255371,
+      "filestack": 0.01232629303562105,
+      "filestack_b2": 0.01232629303562105,
+      "freezegun_b2": 0.015327671055969333,
+      "kanren": 0.006077622890571609,
+      "penman": 0.0212775556631865,
+      "penman_b2": 0.0212775556631865,
+      "pymeterbus": 0.0049749371855331,
+      "pymeterbus_b2": 0.0049749371855331,
+      "qtaf": 0.00852936105461599,
+      "yamicache": 0.02,
+      "yamicache_b2": 0.02009314248692822
+    },
+    "margin_010": {
+      "B1 stop at first pass": {
+        "calibration": null,
+        "far": 0.3019230769230769,
+        "far_ci": [
+          0.22395833333333334,
+          0.385
+        ],
+        "far_upper": {
+          "episodes": [
+            44,
+            73,
+            0.6992093650726139
+          ],
+          "repos": [
+            8,
+            8,
+            1.0
+          ]
+        },
+        "frr": 0.0007462686567164179,
+        "marginal_accept": 0.09134615384615384,
+        "blocks_per_accept": 2.9648293963254595,
+        "late_accept": 0.09999999999999999,
+        "budget_seconds": 4.201705825721154,
+        "time_to_accept_min": 0.03901342682459368
+      },
+      "B2 rerun-3 all green": {
+        "calibration": null,
+        "far": 0.20576923076923076,
+        "far_ci": [
+          0.12291666666666667,
+          0.2890625
+        ],
+        "far_upper": {
+          "episodes": [
+            32,
+            73,
+            0.5412698999509136
+          ],
+          "repos": [
+            7,
+            8,
+            0.9936088490454551
+          ]
+        },
+        "frr": 0.011940298507462687,
+        "marginal_accept": 0.1451923076923077,
+        "blocks_per_accept": 7.7862857142857145,
+        "late_accept": 0.3333333333333333,
+        "budget_seconds": 12.366531973557692,
+        "time_to_accept_min": 0.11549852638888888
+      },
+      "B3 majority of 5": {
+        "calibration": null,
+        "far": 0.28028846153846154,
+        "far_ci": [
+          0.18221153846153845,
+          0.38125
+        ],
+        "far_upper": {
+          "episodes": [
+            38,
+            73,
+            0.6215197036026618
+          ],
+          "repos": [
+            8,
+            8,
+            1.0
+          ]
+        },
+        "frr": 0.0,
+        "marginal_accept": 0.07019230769230769,
+        "blocks_per_accept": 15.680127523910734,
+        "late_accept": 0.21666666666666667,
+        "budget_seconds": 21.7732840625,
+        "time_to_accept_min": 0.19391371350101186
+      },
+      "B4 peeking Clopper-Pearson": {
+        "calibration": null,
+        "far": 0.03798076923076923,
+        "far_ci": [
+          0.0031249999999999997,
+          0.09711538461538462
+        ],
+        "far_upper": {
+          "episodes": [
+            9,
+            73,
+            0.2052790964960026
+          ],
+          "repos": [
+            3,
+            8,
+            0.7107591834981907
+          ]
+        },
+        "frr": 0.0007462686567164179,
+        "marginal_accept": 0.07596153846153846,
+        "blocks_per_accept": 202.23045822102426,
+        "late_accept": 0.4166666666666667,
+        "budget_seconds": 236.9128844579327,
+        "time_to_accept_min": 1.877519488906709
+      },
+      "B5 naive confidence sequence": {
+        "calibration": null,
+        "far": 0.011538461538461539,
+        "far_ci": [
+          0.0,
+          0.03214285714285715
+        ],
+        "far_upper": {
+          "episodes": [
+            6,
+            73,
+            0.1557854648560501
+          ],
+          "repos": [
+            2,
+            8,
+            0.599689389190833
+          ]
+        },
+        "frr": 0.0,
+        "marginal_accept": 0.08413461538461539,
+        "blocks_per_accept": 627.4437543133196,
+        "late_accept": 0.6166666666666667,
+        "budget_seconds": 716.9380087079154,
+        "time_to_accept_min": 5.831025054699983
+      },
+      "B6 SeqAccept, no refund": {
+        "calibration": null,
+        "far": 0.003365384615384615,
+        "far_ci": [
+          0.0,
+          0.010096153846153847
+        ],
+        "far_upper": {
+          "episodes": [
+            2,
+            73,
+            0.08374086267128907
+          ],
+          "repos": [
+            1,
+            8,
+            0.4706794086011316
+          ]
+        },
+        "frr": 0.0007462686567164179,
+        "marginal_accept": 0.08846153846153847,
+        "blocks_per_accept": 753.0279916025193,
+        "late_accept": 0.65,
+        "budget_seconds": 836.7289726778563,
+        "time_to_accept_min": 6.935440172253616
+      },
+      "SeqAccept": {
+        "calibration": null,
+        "far": 0.003846153846153846,
+        "far_ci": [
+          0.0,
+          0.011538461538461537
+        ],
+        "far_upper": {
+          "episodes": [
+            2,
+            73,
+            0.08374086267128907
+          ],
+          "repos": [
+            1,
+            8,
+            0.4706794086011316
+          ]
+        },
+        "frr": 0.0007462686567164179,
+        "marginal_accept": 0.08990384615384615,
+        "blocks_per_accept": 730.5568736915561,
+        "late_accept": 0.65,
+        "budget_seconds": 816.9911669771368,
+        "time_to_accept_min": 6.861775095685224
+      }
+    }
+  }
+}

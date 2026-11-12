@@ -1,0 +1,205 @@
+{
+  "alpha": 0.05,
+  "eps": 0.05,
+  "mix_k": 10,
+  "operating": [
+    {
+      "p": 0.0,
+      "kl_bound": 71.91738214828473,
+      "kelly": {
+        "accept": 1.0,
+        "blocks_per_accept": 105.0
+      },
+      "mixture": {
+        "accept": 1.0,
+        "blocks_per_accept": 110.0
+      }
+    },
+    {
+      "p": 0.02,
+      "kl_bound": 303.78748214208,
+      "kelly": {
+        "accept": 0.934,
+        "blocks_per_accept": 418.89186295503214
+      },
+      "mixture": {
+        "accept": 0.96,
+        "blocks_per_accept": 357.2135416666667
+      }
+    },
+    {
+      "p": 0.03,
+      "kl_bound": 755.2531151311991,
+      "kelly": {
+        "accept": 0.4305,
+        "blocks_per_accept": 1506.389082462253
+      },
+      "mixture": {
+        "accept": 0.529,
+        "blocks_per_accept": 1138.2826086956522
+      }
+    },
+    {
+      "p": 0.04,
+      "kl_bound": 3274.039583818437,
+      "kelly": {
+        "accept": 0.075,
+        "blocks_per_accept": 10226.2
+      },
+      "mixture": {
+        "accept": 0.1155,
+        "blocks_per_accept": 6478.320346320346
+      }
+    },
+    {
+      "p": 0.05,
+      "kl_bound": null,
+      "kelly": {
+        "accept": 0.0085,
+        "blocks_per_accept": 92216.23529411765
+      },
+      "mixture": {
+        "accept": 0.012,
+        "blocks_per_accept": 64777.041666666664
+      }
+    }
+  ],
+  "worst": {
+    "15": {
+      "kelly": 0.015,
+      "mixture": 0.026
+    },
+    "50": {
+      "kelly": 0.015,
+      "mixture": 0.025
+    }
+  },
+  "recorded_mixture": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 256.5105726872247,
+    "late_accept": 0.8
+  },
+  "sweep": [
+    {
+      "gamma": 0.25,
+      "rho": 20,
+      "recorded": {
+        "far": 0.0,
+        "frr": 0.0,
+        "blocks_per_accept": 283.0848017621145,
+        "late_accept": 0.8
+      },
+      "late": {
+        "10": {
+          "far": 0.0,
+          "frr": 0.010833333333333334,
+          "blocks_per_accept": 287.63437236731255,
+          "late_accept": 0.9891666666666666
+        },
+        "40": {
+          "far": 0.0,
+          "frr": 0.0075,
+          "blocks_per_accept": 595.9105793450882,
+          "late_accept": 0.9925
+        }
+      }
+    },
+    {
+      "gamma": 0.5,
+      "rho": 10,
+      "recorded": {
+        "far": 0.0,
+        "frr": 0.0,
+        "blocks_per_accept": 244.3193832599119,
+        "late_accept": 0.8
+      },
+      "late": {
+        "10": {
+          "far": 0.0,
+          "frr": 0.00625,
+          "blocks_per_accept": 250.01719077568134,
+          "late_accept": 0.99375
+        },
+        "40": {
+          "far": 0.0,
+          "frr": 0.009166666666666667,
+          "blocks_per_accept": 536.4697224558453,
+          "late_accept": 0.9908333333333333
+        }
+      }
+    },
+    {
+      "gamma": 0.5,
+      "rho": 20,
+      "recorded": {
+        "far": 0.0,
+        "frr": 0.0,
+        "blocks_per_accept": 258.2394273127753,
+        "late_accept": 0.8
+      },
+      "late": {
+        "10": {
+          "far": 0.0,
+          "frr": 0.004583333333333333,
+          "blocks_per_accept": 262.7580577647551,
+          "late_accept": 0.9954166666666666
+        },
+        "40": {
+          "far": 0.0,
+          "frr": 0.0075,
+          "blocks_per_accept": 586.4966414777498,
+          "late_accept": 0.9925
+        }
+      }
+    },
+    {
+      "gamma": 0.5,
+      "rho": 50,
+      "recorded": {
+        "far": 0.0,
+        "frr": 0.0,
+        "blocks_per_accept": 276.3671806167401,
+        "late_accept": 0.8
+      },
+      "late": {
+        "10": {
+          "far": 0.0,
+          "frr": 0.005416666666666667,
+          "blocks_per_accept": 281.43485546711355,
+          "late_accept": 0.9945833333333334
+        },
+        "40": {
+          "far": 0.0,
+          "frr": 0.011666666666666667,
+          "blocks_per_accept": 663.7065767284992,
+          "late_accept": 0.9883333333333333
+        }
+      }
+    },
+    {
+      "gamma": 0.75,
+      "rho": 20,
+      "recorded": {
+        "far": 0.0001524390243902439,
+        "frr": 0.0,
+        "blocks_per_accept": 243.1372246696035,
+        "late_accept": 0.8
+      },
+      "late": {
+        "10": {
+          "far": 0.0,
+          "frr": 0.004166666666666667,
+          "blocks_per_accept": 255.0673640167364,
+          "late_accept": 0.9958333333333333
+        },
+        "40": {
+          "far": 0.0,
+          "frr": 0.01,
+          "blocks_per_accept": 591.7175925925926,
+          "late_accept": 0.99
+        }
+      }
+    }
+  ]
+}

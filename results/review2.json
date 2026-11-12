@@ -1,0 +1,91 @@
+{
+  "short_pool": 100,
+  "pool": {
+    "SeqAccept": {
+      "full": {
+        "far": 0.0,
+        "frr": 0.0,
+        "blocks_per_accept": 258.2394273127753,
+        "evaluations": 34176,
+        "over_pool": 1297,
+        "over_half_pool": 4784
+      },
+      "short": {
+        "far": 0.0,
+        "frr": 0.0,
+        "blocks_per_accept": 258.4603524229075,
+        "evaluations": 34236,
+        "over_pool": 4418,
+        "over_half_pool": 6990
+      }
+    },
+    "B4 peeking Clopper-Pearson": {
+      "full": {
+        "far": 0.0006097560975609756,
+        "frr": 0.0,
+        "blocks_per_accept": 112.07373981950253,
+        "evaluations": 34158,
+        "over_pool": 140,
+        "over_half_pool": 725
+      },
+      "short": {
+        "far": 0.0007621951219512195,
+        "frr": 0.00022321428571428573,
+        "blocks_per_accept": 111.97731277533039,
+        "evaluations": 34163,
+        "over_pool": 616,
+        "over_half_pool": 3749
+      }
+    }
+  },
+  "labels": {
+    "natural": {
+      "broken": 481,
+      "broken_risk05": 1,
+      "broken_risk50": 0,
+      "correct": 468,
+      "correct_risk05": 0,
+      "correct_risk50": 0
+    },
+    "realflaky": {
+      "broken": 419,
+      "broken_risk05": 23,
+      "broken_risk50": 0,
+      "correct": 252,
+      "correct_risk05": 26,
+      "correct_risk50": 0
+    }
+  },
+  "planning": [
+    {
+      "p0": 0.0,
+      "margin": 0.05,
+      "blocks": 71.91738214828473
+    },
+    {
+      "p0": 0.0,
+      "margin": 0.1,
+      "blocks": 35.01197228470399
+    },
+    {
+      "p0": 0.05,
+      "margin": 0.05,
+      "blocks": 220.8050276142074
+    },
+    {
+      "p0": 0.05,
+      "margin": 0.1,
+      "blocks": 72.71057746868804
+    },
+    {
+      "p0": 0.2,
+      "margin": 0.05,
+      "blocks": 526.8242316162303
+    },
+    {
+      "p0": 0.2,
+      "margin": 0.1,
+      "blocks": 143.3571505026223
+    }
+  ]
+}

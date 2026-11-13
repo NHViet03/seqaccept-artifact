@@ -33,7 +33,7 @@ uv run bash scripts/run_smoke.sh                   # with pip: activate the venv
 
 Runs the tests and regenerates the paper's numbers, tables and figures into `paper_out/` (set `SEQACCEPT_PAPER_DIR` to write elsewhere).
 
-## Reproduce all results (about half an hour, no Docker, no LLM)
+## Reproduce all results (about 15 to 20 minutes, no Docker, no LLM)
 
 ```sh
 uv run bash scripts/run_full.sh

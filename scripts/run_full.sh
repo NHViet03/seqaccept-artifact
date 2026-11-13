@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Recompute every result in results/ from the recorded data (episodes/, fullsuite/, episodes_flaky/,
-# runs/exec_order/). Takes roughly half an hour, needs no Docker and no LLM. It OVERWRITES results/*.json;
+# runs/exec_order/). Takes roughly 15 to 20 minutes, needs no Docker and no LLM. It OVERWRITES results/*.json;
 # the numbers are deterministic (seeded), only the "generated" timestamps change.
 set -euo pipefail
 cd "$(dirname "$0")/.."

@@ -825,7 +825,8 @@ def extra(res):
     for label_, s_, late_, key_, worst_, stress_ in rows:
         la = " / ".join(pct(late_[str(k)]["table"][key_]["late_accept"], 0) for k in (10, 20, 40))
         wf = " / ".join(pct(worst_[(0.051, n)][key_]) for n in (15, 50))
-        body += (f"{label_} & {num(s_['blocks_per_accept'])} & {pct(s_['frr'])} & {la} & "
+        valid_ = {"Discard spending": "unproved", rr: "no"}.get(key_, "yes")
+        body += (f"{label_} & {valid_} & {num(s_['blocks_per_accept'])} & {pct(s_['frr'])} & {la} & "
                  f"{num(late_[str(40)]['table'][key_]['blocks_per_accept'] or 0, 0) if late_[str(40)]['table'][key_]['blocks_per_accept'] else '--'} & {wf} & "
                  f"{pct(stress_) if stress_ is not None else '--'}\\\\\n")
         tag = {"B6 SeqAccept, no refund": "Geo", "Harmonic spending": "Harm", "Bonferroni-15 spending": "Bonf", "Fixed-n Bonferroni-15 (1n0)": "FixnOne", "Fixed-n Bonferroni-15 (2n0)": "FixnTwo", "Fixed-n Bonferroni-15 (4n0)": "FixnFour",
@@ -841,10 +842,10 @@ def extra(res):
         for n, nn in ((15, "Fifteen"), (50, "Fifty")):
             m(f"spendWorst{tag}{nn}", pct(worst_[(0.051, n)][key_]))
     write("tab_spending.tex",
-          "\\begin{tabular}{@{}lrrcrcr@{}}\n\\toprule\n"
-          "& \\multicolumn{2}{c}{\\textbf{Recorded loops}} & \\multicolumn{2}{c}{\\textbf{Late streams}} & "
-          "\\textbf{Worst case} & \\textbf{Mixed}\\\\\n\\cmidrule(lr){2-3}\\cmidrule(lr){4-5}\n"
-          "\\textbf{Rule} & \\textbf{Blk/acc.} & \\textbf{FRR \\%} & \\textbf{Late acc.\\ \\%} & "
+          "\\begin{tabular}{@{}llrrcrcr@{}}\n\\toprule\n"
+          "& & \\multicolumn{2}{c}{\\textbf{Recorded loops}} & \\multicolumn{2}{c}{\\textbf{Late streams}} & "
+          "\\textbf{Worst case} & \\textbf{Mixed}\\\\\n\\cmidrule(lr){3-4}\\cmidrule(lr){5-6}\n"
+          "\\textbf{Rule} & \\textbf{Valid} & \\textbf{Blk/acc.} & \\textbf{FRR \\%} & \\textbf{Late acc.\\ \\%} & "
           "\\textbf{Blk/acc.\\ ($k$=40)} & \\textbf{FAR \\% ($n$=15/50)} & \\textbf{FAR \\%}\\\\\n\\midrule\n"
           + body + "\\bottomrule\n\\end{tabular}\n")
 
@@ -922,6 +923,264 @@ def exec_order():
     m("execPenmanZ", f"{d['penman@realflaky-serial_vs_parallel_z']:.1f}")
 
 
+def wilson(k, n, z=1.96):
+    """95% Wilson interval for k events in n runs (Monte Carlo uncertainty of a simulated rate)."""
+    if n == 0:
+        return 0.0, 1.0
+    ph = k / n
+    d = 1 + z * z / n
+    c = (ph + z * z / (2 * n)) / d
+    h = z * (ph * (1 - ph) / n + z * z / (4 * n * n)) ** 0.5 / d
+    return max(0.0, c - h), min(1.0, c + h)
+
+
+def ease():
+    """EASE 2027 mentor review: results/ease.json (ease_analyses.py)."""
+    d = load("results/ease.json")
+    # 1. refund ablation
+    tag = {"none": "None", "max": "Max", "capped": "Capped", "uncapped": "Uncapped"}
+    for k, t in tag.items():
+        r = d["refund"][k]
+        m(f"refBpa{t}", num(r["recorded"]["blocks_per_accept"]))
+        m(f"refFrr{t}", pct(r["recorded"]["frr"]))
+        m(f"refFar{t}", pct(r["recorded"]["far"], 2))
+        for kk, kt in (("10", "Ten"), ("40", "Forty")):
+            m(f"refLate{t}{kt}", pct(r["late"][kk]["late_accept"]))
+        m(f"refLateBpa{t}Forty", num(r["late"]["40"]["blocks_per_accept"] or 0, 0))
+        m(f"refStress{t}Ten", pct(r["stress"]["alt-0.10"]))
+        m(f"refStress{t}Eight", pct(r["stress"]["alt-0.08"]))
+        m(f"refWorst{t}Fifteen", pct(r["worst"]["15"]))
+    # 2. shortcut
+    sc = d["shortcut"]
+    m("shortSlots", word_int(sc["candidate_slots"]))
+    m("shortDistinct", word_int(sc["distinct"]))
+    m("shortBrokenDistinct", word_int(sc["broken_distinct"]))
+    for name in RULES:
+        m(f"shortFar{KEY[name]}", pct(sc["table"][name], 1 if sc["table"][name] >= 0.01 else 2))
+        m(f"shortFarNat{KEY[name]}", pct(sc["natural"][name], 1 if sc["natural"][name] >= 0.01 else 2))
+    # 3. truth vs pool
+    for arm, t in (("natural", "Nat"), ("realflaky", "Rf")):
+        rs = d["rates"][arm]
+        m(f"ratesN{t}", word_int(len(rs)))
+        m(f"ratesSplit{t}", word_int(sum((r["pool"] > r["eps"]) != (r["truth"] > r["eps"]) for r in rs)))
+    # 4. units and bug-level intervals
+    u = d["units"]
+    for k, t in (("repositories", "Repos"), ("bugs", "Bugs"), ("loops", "Loops"), ("episodes", "Episodes"),
+                 ("distinct_candidates", "Cands"), ("candidate_positions", "Positions"), ("blocks", "Blocks")):
+        m(f"unit{t}", word_int(u[k]))
+    m("unitBern", u["episodes_by_flakiness"]["injected-bernoulli"])
+    m("unitMarkov", u["episodes_by_flakiness"]["injected-markov"])
+    for name in RULES:
+        nf = d["natural_far"][name]
+        m(f"natBugLo{KEY[name]}", pct(nf["ci_bug"][0]))
+        m(f"natBugHi{KEY[name]}", pct(nf["ci_bug"][1]))
+    # 5. cost
+    c = d["cost"]
+    m("calibBlocks", c["p0_blocks_per_task"])
+    m("calibPerLoop", num(c["p0_blocks_per_task"] / c["loops_per_task"], 0))
+    for name in RULES:
+        r = c["rules"][name]
+        m(f"costBlocks{KEY[name]}", num(r["blocks_per_episode"]))
+        m(f"costMin{KEY[name]}", num(r["seconds_per_episode"] / 60))
+    for name in RULES[:3]:
+        r = c["rules"][f"{name} (full suite)"]
+        m(f"costFullRuns{KEY[name]}", num(r["runs_per_episode"]))
+        m(f"costFullFar{KEY[name]}", pct(r["far"]))
+        m(f"costFullFrr{KEY[name]}", pct(r["frr"]))
+    # 6. operating curve at high p0
+    for r in d["operating"]:
+        if r["p0"] == 0.2:
+            key = {0.0: "Zero", 0.01: "One", 0.02: "Two", 0.03: "Three", 0.04: "Four", 0.05: "Five"}[round(r["p"] - r["p0"], 2)]
+            m(f"opHighKellyAccept{key}", pct(r["kelly"]["accept"]))
+            m(f"opHighMixAccept{key}", pct(r["mixture"]["accept"]))
+            if r["kelly"]["blocks_per_accept"]:
+                m(f"opHighKellyBlocks{key}", num(r["kelly"]["blocks_per_accept"], 0))
+
+    # Table 2 (EASE): outcome and coverage panel, natural loops first, then all episodes; cost panel
+    res = load("results/results.json")
+    per = res["per_episode"]
+    nat = [e for e in per if e["flakiness"] == "natural"]
+    t = res["table"]
+    rows = ""
+    for name in RULES:
+        if name == "SeqAccept":
+            rows += "\\midrule\n"
+        nf = d["natural_far"][name]
+        hit = {}
+        for e in nat:
+            if "broken" in e["labels"]:
+                b = e["file"].split("-")[0]
+                hit[b] = hit.get(b, False) or e["rules"][name]["far"] > 0
+        kb, nb = sum(hit.values()), len(hit)
+        with_c = [e["rules"][name]["frr"] for e in nat if "correct" in e["labels"]]
+        marg = sum(e["rules"][name]["marginal_accept"] for e in nat) / len(nat)
+        ci = "" if nf["far"] == 0 else f" {{\\scriptsize[{pct(nf['ci_bug'][0])}, {pct(nf['ci_bug'][1])}]}}"
+        sa = t[name]
+        ci_all = "" if sa["far"] == 0 else f" {{\\scriptsize[{pct(sa['far_ci'][0])}, {pct(sa['far_ci'][1])}]}}"
+        c = d["cost"]["rules"][name]
+        rows += (f"{SHOW[name]} & {pct(nf['far'])}{ci} & {kb}/{nb} & {pct(replay.cp_upper(kb, nb))} & "
+                 f"{pct(sum(with_c) / len(with_c))} & {pct(marg)} & {pct(sa['far'])}{ci_all} & {sa['calibration']:.2f} & "
+                 f"{num(sa['blocks_per_accept'])} & {num(c['blocks_per_episode'])} & {num(sa['budget_x_b1'])}\\\\\n")
+        m(f"natFrr{KEY[name]}", pct(sum(with_c) / len(with_c)))
+        m(f"natBugHits{KEY[name]}", f"{kb}")
+    m("natBugsWithBroken", nb)
+    write("tab_outcome.tex",
+          "\\begin{tabular}{@{}lrrrrrrr|rrr@{}}\n\\toprule\n"
+          "& \\multicolumn{5}{c}{\\textbf{Natural loops (" + str(len(nat)) + ")}} & \\multicolumn{2}{c|}{\\textbf{All " + str(len(per)) + " episodes}} & \\multicolumn{3}{c}{\\textbf{Cost}}\\\\\n"
+          "\\cmidrule(lr){2-6}\\cmidrule(lr){7-8}\\cmidrule(lr){9-11}\n"
+          "\\textbf{Rule} & \\textbf{FAR \\%} {\\scriptsize[bug CI]} & \\textbf{Bugs hit} & \\textbf{UB \\%} & \\textbf{FRR \\%} & \\textbf{Marg.\\ \\%} & "
+          "\\textbf{FAR \\%} {\\scriptsize[repo CI]} & \\textbf{Inj./$\\alpha$} & \\textbf{Blk/acc.} & \\textbf{Blk/loop} & \\textbf{$\\times$B1}\\\\\n\\midrule\n"
+          + rows + "\\bottomrule\n\\end{tabular}\n")
+    # refund ablation table
+    proof = {"none": "yes ($r_j=0$)", "max": "yes", "capped": "yes", "uncapped": "unproved"}
+    show = {"none": "No refund (B6)", "max": "Maximal, $\\alpha_j\\min(E,1)$", "capped": "Capped (\\sa{})",
+            "uncapped": "Uncapped, $\\alpha_j(1-\\alpha_jG_j)$"}
+    body = ""
+    for k in ("none", "max", "capped", "uncapped"):
+        r = d["refund"][k]
+        body += (f"{show[k]} & {proof[k]} & {num(r['recorded']['blocks_per_accept'])} & {pct(r['late']['10']['late_accept'])} & "
+                 f"{pct(r['late']['40']['late_accept'])} & {num(r['late']['40']['blocks_per_accept'], 0)} & "
+                 f"{pct(r['stress']['alt-0.10'])} / {pct(r['stress']['alt-0.08'])} & {pct(r['worst']['15'])}\\\\\n")
+    write("tab_refund.tex",
+          "\\begin{tabular}{@{}llrrrrrr@{}}\n\\toprule\n"
+          "& & \\textbf{Rec.} & \\multicolumn{3}{c}{\\textbf{Late streams}} & \\textbf{Stress} & \\textbf{Worst}\\\\\n"
+          "\\cmidrule(lr){4-6}\n"
+          "\\textbf{Refund} & \\textbf{Valid} & \\textbf{Blk/acc.} & \\textbf{$k$=10 \\%} & \\textbf{$k$=40 \\%} & \\textbf{Blk/acc.} & \\textbf{FAR \\%} & \\textbf{FAR \\%}\\\\\n\\midrule\n"
+          + body + "\\bottomrule\n\\end{tabular}\n")
+    figure_ease(d)
+
+
+def figure_ease(d):
+    plt.rcParams.update({"pdf.fonttype": 42, "font.size": 7, "axes.edgecolor": MUTED, "axes.labelcolor": INK,
+                         "xtick.color": MUTED, "ytick.color": MUTED, "axes.spines.top": False, "axes.spines.right": False})
+    # truth vs pool (both arms)
+    fig, axes = plt.subplots(1, 2, figsize=(3.4, 1.75), sharey=True)
+    colors = {"correct": "#2a78d6", "marginal": "#8a8984", "broken": "#e34948"}
+    for ax, (arm, title) in zip(axes, (("natural", "natural loops"), ("realflaky", "real flaky tests kept"))):
+        for lab in ("correct", "marginal", "broken"):
+            rs = [r for r in d["rates"][arm] if r["label"] == lab]
+            ax.scatter([r["truth"] - r["eps"] for r in rs], [r["pool"] - r["eps"] for r in rs], s=4, alpha=0.55,
+                       color=colors[lab], label=lab.capitalize(), linewidths=0)
+        ax.axhline(0, color=MUTED, lw=0.6, ls=(0, (2, 2)))
+        ax.axvline(0, color=MUTED, lw=0.6, ls=(0, (2, 2)))
+        ax.set_xlim(-0.31, 0.35)
+        ax.set_ylim(-0.31, 0.35)
+        ax.set_title(title, fontsize=7, color=INK)
+        ax.set_xlabel(r"truth rate $-\ \varepsilon$")
+        # two binomial standard errors of a 200-block rate at p = eps, around the diagonal
+        xs = [i / 100 for i in range(-31, 36)]
+        ax.plot(xs, xs, color="#c9c8c4", lw=0.5)
+    axes[0].set_ylabel(r"pool rate $-\ \varepsilon$")
+    axes[1].legend(frameon=False, fontsize=5.5, loc="lower right", handletextpad=0.2, markerscale=2)
+    fig.tight_layout(pad=0.3)
+    fig.savefig(FIGS / "truthpool.pdf", bbox_inches="tight")
+    plt.close(fig)
+    # operating curve near eps at p0 = 0 and 0.2
+    fig, axes = plt.subplots(1, 2, figsize=(3.4, 1.6))
+    for p0, mk in ((0.0, "o"), (0.2, "s")):
+        rows = [r for r in d["operating"] if r["p0"] == p0]
+        gaps = [r["eps"] - r["p"] for r in rows]
+        for b, ls in (("kelly", "-"), ("mixture", "--")):
+            axes[0].plot(gaps, [100 * r[b]["accept"] for r in rows], ls, marker=mk, ms=2.5, lw=1,
+                         color=COLOR["SeqAccept"] if b == "kelly" else "#6250d6", label=f"{b}, $p_0={p0:g}$")
+            axes[1].plot([g for g, r in zip(gaps, rows) if r[b]["blocks_per_accept"] and g > 0],
+                         [r[b]["blocks_per_accept"] for g, r in zip(gaps, rows) if r[b]["blocks_per_accept"] and g > 0],
+                         ls, marker=mk, ms=2.5, lw=1, color=COLOR["SeqAccept"] if b == "kelly" else "#6250d6")
+        axes[1].plot([r["eps"] - r["p"] for r in rows if r["kl_floor"]], [r["kl_floor"] for r in rows if r["kl_floor"]],
+                     ":", marker=mk, ms=2, lw=0.8, color=MUTED)
+    axes[0].set_xlabel(r"$\varepsilon - p$")
+    axes[0].set_ylabel("accepted (%)")
+    axes[1].set_xlabel(r"$\varepsilon - p$")
+    axes[1].set_ylabel("blocks per accept")
+    axes[1].set_yscale("log")
+    handles, labels = axes[0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="upper center", ncol=4, frameon=False, fontsize=5.3, bbox_to_anchor=(0.5, 1.07),
+               handlelength=1.6, columnspacing=0.8)
+    axes[1].text(0.97, 0.92, "dotted: KL floor", transform=axes[1].transAxes, fontsize=5.5, color=MUTED, ha="right")
+    fig.tight_layout(pad=0.3)
+    fig.subplots_adjust(top=0.84)
+    fig.savefig(FIGS / "operating.pdf", bbox_inches="tight")
+    plt.close(fig)
+    # risk-coverage-cost frontier on natural loops (blocks or full-suite runs per episode)
+    fig, ax = plt.subplots(figsize=(3.3, 1.9))
+    for name in RULES:
+        r = d["cost"]["rules"][name]
+        ax.scatter(r["blocks_per_episode"], 100 * r["far"], s=10 + 300 * r["frr"], color=COLOR[name], marker=MARK[name],
+                   edgecolors="none", zorder=3)
+        if name not in ("B5 naive confidence sequence", "B6 SeqAccept, no refund", "SeqAccept"):
+            ax.annotate(SHOW[name].split(" ")[0], (r["blocks_per_episode"], 100 * r["far"]),
+                        textcoords="offset points", xytext=(3, 3), fontsize=5.5, color=INK)
+    sa = d["cost"]["rules"]["SeqAccept"]
+    ax.annotate("B5, B6, SeqAccept", (sa["blocks_per_episode"], 0), textcoords="offset points", xytext=(-28, 9),
+                fontsize=5.5, color=INK, arrowprops={"arrowstyle": "-", "color": MUTED, "lw": 0.5})
+    for name in RULES[:3]:
+        r = d["cost"]["rules"][f"{name} (full suite)"]
+        ax.scatter(r["runs_per_episode"], 100 * r["far"], s=10 + 300 * r["frr"], facecolors="none",
+                   edgecolors=COLOR[name], marker=MARK[name], zorder=3)
+        ax.annotate(SHOW[name].split(" ")[0] + " full", (r["runs_per_episode"], 100 * r["far"]),
+                    textcoords="offset points", xytext=(3, -7), fontsize=5.5, color=MUTED)
+    ax.axhline(5, color=MUTED, lw=0.6, ls=(0, (2, 2)))
+    ax.set_xscale("log")
+    ax.set_xlabel("blocks (filled) or full-suite runs (open) per loop")
+    ax.set_ylabel("FAR, natural loops (%)")
+    ax.grid(axis="y", color="#e6e5e1", lw=0.5)
+    fig.tight_layout(pad=0.3)
+    fig.savefig(FIGS / "frontier.pdf", bbox_inches="tight")
+    plt.close(fig)
+    # persistence with bug-level bands
+    pers = d["persistence"]
+    order = ["llama3.1:8b", "gpt-4o", "gpt-4.1-mini", "grok-4.7"]
+    shown = ["B1 stop at first pass", "B3 majority of 5", "B2 rerun-3 all green", "SeqAccept"]
+    fig, axes = plt.subplots(1, 4, figsize=(6.8, 1.6), sharey=True)
+    for ax, model in zip(axes, order):
+        for name in shown:
+            rows = pers[model][name]
+            ks = [r["k"] for r in rows]
+            ax.plot(ks, [100 * r["far"] for r in rows], LINE[name], color=COLOR[name], marker=MARK[name], ms=3, lw=1.1,
+                    label=SHOW[name].replace("\\sa{}", "SeqAccept").replace("\\ ", " "))
+            if name == "B1 stop at first pass":  # bug-level 95% band for B1; the others are in the supplement
+                ax.fill_between(ks, [100 * r["ci"][0] for r in rows], [100 * r["ci"][1] for r in rows],
+                                color=COLOR[name], alpha=0.15, lw=0)
+        ax.axhline(5, color=MUTED, lw=0.6, ls=(0, (2, 2)))
+        ax.set_title(MODEL_SHOW[model], fontsize=7, color=INK)
+        ax.set_xticks(replay.PREFIXES)
+        ax.set_ylim(-2, 62)
+        ax.grid(axis="y", color="#e6e5e1", lw=0.5)
+        ax.set_xlabel("candidates tried")
+    axes[0].set_ylabel("FAR (%)")
+    handles, labels = axes[0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="upper center", ncol=4, frameon=False, fontsize=6.2, bbox_to_anchor=(0.5, 1.06))
+    fig.tight_layout(pad=0.3)
+    fig.subplots_adjust(top=0.78)
+    fig.savefig(FIGS / "persistence.pdf", bbox_inches="tight")
+    plt.close(fig)
+    # worst case heatmap: FAR by stream length and p, per eps-based rule, with Monte Carlo intervals in the table
+    w = load("results/worst_case.json")
+    shown = ["B4 peeking Clopper-Pearson", "B5 naive confidence sequence", "B6 SeqAccept, no refund", "SeqAccept"]
+    ps, ns = (0.051, 0.06, 0.08), (1, 5, 15, 50)
+    fig, axes = plt.subplots(1, 4, figsize=(6.8, 1.35))
+    for ax, name in zip(axes, shown):
+        grid = [[next(r["far"][name] for r in w["rows"] if r["p"] == p and r["n"] == n) for n in ns] for p in ps]
+        ax.imshow(grid, cmap="Reds", vmin=0, vmax=1, aspect="auto")
+        for i, p in enumerate(ps):
+            for j, n in enumerate(ns):
+                v = 100 * grid[i][j]
+                ax.text(j, i, f"{v:.0f}" if v >= 10 else f"{v:.1f}", ha="center", va="center", fontsize=6,
+                        color="white" if v > 50 else (INK if v <= 5 else "#7a1f1f"), fontweight="bold" if v > 5 else "normal")
+        ax.set_xticks(range(len(ns)), [str(n) for n in ns])
+        ax.set_yticks(range(len(ps)), [f"{p:.3f}" for p in ps])
+        ax.set_title(SHOW[name].replace("\\sa{}", "SeqAccept").replace("\\ ", " "), fontsize=6.5, color=INK)
+        ax.set_xlabel("broken candidates $n$")
+        for sp in ax.spines.values():
+            sp.set_visible(False)
+    axes[0].set_ylabel("failure rate $p$")
+    fig.tight_layout(pad=0.3)
+    fig.savefig(FIGS / "worstheat.pdf", bbox_inches="tight")
+    plt.close(fig)
+    worst_hi = max(wilson(round(r["far"]["SeqAccept"] * r["reps"]), r["reps"])[1] for r in w["rows"])
+    m("worstSaUpperMC", pct(worst_hi))
+
+
 if __name__ == "__main__":
     GEN.mkdir(parents=True, exist_ok=True)
     FIGS.mkdir(parents=True, exist_ok=True)
@@ -940,6 +1199,7 @@ if __name__ == "__main__":
     extra(res)
     power_tuning()
     review2()
+    ease()
     exec_order()
     (GEN / "numbers.tex").write_text(
         "% generated by intern1/impl/paper_numbers.py; do not edit\n"

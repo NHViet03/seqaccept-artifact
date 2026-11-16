@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Recompute every result in results/ from the recorded data (episodes/, fullsuite/, episodes_flaky/,
-# runs/exec_order/). Takes roughly 15 to 20 minutes, needs no Docker and no LLM. It OVERWRITES results/*.json;
+# runs/exec_order/). Takes roughly 45 to 60 minutes, needs no Docker and no LLM. It OVERWRITES results/*.json;
 # the numbers are deterministic (seeded), only the "generated" timestamps change.
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -22,6 +22,8 @@ step "replay-pool and label-uncertainty checks             -> results/review2.js
 "$PY" review2.py
 step "independence in execution order                      -> results/exec_order.json"
 "$PY" exec_order.py analyze
+step "refund ablation, shortcut, truth vs pool, cost, operating curve -> results/ease.json"
+"$PY" ease_analyses.py
 step "paper numbers, tables and figures                    -> ${SEQACCEPT_PAPER_DIR:-paper_out}"
 "$PY" paper_numbers.py
 echo; echo "done"

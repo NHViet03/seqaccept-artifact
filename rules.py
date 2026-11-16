@@ -96,7 +96,9 @@ def seq_accept(n, block, alpha=0.05, eps=0.05, gamma=0.5, refund=True, max_block
             if E >= 1 / alpha_j:
                 return Result(j, blocks)
             if R >= reject_at:  # Alg. 1 line 9: rejected
-                if refund == "uncapped":  # the refund the online subset ran (D20, D24): not covered by Theorem 6
+                if refund == "max":  # the largest refund Theorem 6 allows: alpha_j * min(E, 1), no near-miss discount
+                    pool += alpha_j * min(E, 1.0)
+                elif refund == "uncapped":  # the refund the online subset ran (D20, D24): not covered by Theorem 6
                     pool += alpha_j * (1 - alpha_j * peak)
                 elif refund:  # line 11: refund the unspent part, s_j = alpha_j * peak, never more than the wallet
                     pool += alpha_j * min(E, 1 - alpha_j * peak)  # holds (D24): W + alpha_j E stays a supermartingale

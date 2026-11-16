@@ -9,13 +9,13 @@ SeqAccept decides when an LLM repair loop may stop at a passing test run, with a
 | Path | What it holds |
 |---|---|
 | `rules.py`, `sim.py` | acceptance rules (B1-B6, SeqAccept, spending baselines) and simulated streams |
-| `replay.py`, `extra_analyses.py`, `power_tuning.py`, `review2.py`, `exec_order.py` | offline replay and analyses |
+| `replay.py`, `extra_analyses.py`, `power_tuning.py`, `review2.py`, `ease_analyses.py`, `exec_order.py` | offline replay and analyses |
 | `paper_numbers.py` | every number, table and figure of the paper, generated from `results/` |
 | `run_block.py`, `collect.py`, `agent.py`, `llm.py`, `build_episode.py`, `run_all.py`, `online.py`, `fullsuite.py`, `flaky_arm.py` | Docker and LLM harness that recorded the data |
 | `tasks/`, `bugs/`, `repos/`, `screening/` | task definitions, original and planted-bug sources, subject Dockerfiles, IDoFT screening |
 | `streams/`, `episodes/`, `episodes_flaky/`, `fullsuite/`, `online/`, `runs/exec_order/` | recorded data |
 | `results/` | recorded results |
-| `tests/`, `scripts/` | 269 tests, run scripts |
+| `tests/`, `scripts/` | tests, run scripts |
 
 ## Setup
 
@@ -33,7 +33,7 @@ uv run bash scripts/run_smoke.sh                   # with pip: activate the venv
 
 Runs the tests and regenerates the paper's numbers, tables and figures into `paper_out/` (set `SEQACCEPT_PAPER_DIR` to write elsewhere).
 
-## Reproduce all results (about 15 to 20 minutes, no Docker, no LLM)
+## Reproduce all results (about 45 to 60 minutes, no Docker, no LLM)
 
 ```sh
 uv run bash scripts/run_full.sh

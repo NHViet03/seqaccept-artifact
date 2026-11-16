@@ -52,6 +52,14 @@ TRACE = {  # every public function/class in impl/*.py -> where the paper or the 
     "review2.beta_cdf": "external review 2: Beta posterior tail for label uncertainty",
     "review2.label_risk": "external review 2: labels whose posterior puts p on the other side of eps",
     "review2.kl": "external review 2: KL divergence for the margin-planning table",
+    "ease_analyses.bug_of": "EASE review: the independent bug of an episode (cluster unit)",
+    "ease_analyses.is_shortcut": "EASE review: a clearly broken candidate whose probe blocks are truth and pool",
+    "ease_analyses.kl": "EASE review: KL floor for the operating curve",
+    "ease_analyses.run_rule": "EASE review: replay one rule on every episode",
+    "ease_analyses.resplit": "EASE review: split shortcut blocks 20/20 into independent truth and pool",
+    "ease_analyses.shortcut": "EASE review: the shortcut candidates of an episode",
+    "ease_analyses.rates": "EASE review: truth and pool rates of every distinct candidate",
+    "ease_analyses.single": "EASE review: one-candidate operating point",
     "exec_order.done_seeds": "external review 2: resumable execution-order log",
     "exec_order.run_task": "external review 2: blocks of the original code with start/end time, worker and load",
     "exec_order.summarize": "external review 2: independence in execution order vs seed order, busy vs quiet host",
@@ -535,3 +543,22 @@ def test_exec_order_summary_and_disjoint_seed_loops():  # external review 2
                                      lambda code, seed: (seen.append(seed), type("R", (), {"failed": 0, "seconds": 0.0})())[1],
                                      n_truth=2, n_pool=2, probe=2, first_seed=5_000_001)
     assert seen == [5_000_001, 5_000_002, 5_000_003, 5_000_004] and ep["fixes"]["a"]["seeds"] == seen
+
+
+def test_max_refund_returns_alpha_j_min_wallet_one():  # EASE review: the maximal refund Theorem 4.2 admits
+    # a candidate rejected at once keeps wallet 1 and peak 1: max returns the whole slice, capped returns alpha_j (1 - alpha_j)
+    seq = iter([1] * 60 + [0] * 5000)
+    r_max = rules.seq_accept(2, lambda j: next(seq) if j == 0 else 0, refund="max")
+    seq = iter([1] * 60 + [0] * 5000)
+    r_cap = rules.seq_accept(2, lambda j: next(seq) if j == 0 else 0)
+    assert r_max.accepted == r_cap.accepted == 1 and r_max.blocks <= r_cap.blocks
+
+
+def test_ease_shortcut_detection_and_resplit():  # EASE review
+    import ease_analyses
+    ep = {"name": "t-m-1", "p0": 0.0, "params": {"probe": 4}, "stream": ["a", "b"],
+          "fixes": {"a": {"truth": [1, 1, 1, 0], "pool": [1, 1, 1, 0]}, "b": {"truth": [0] * 8, "pool": [0] * 8}}}
+    ep["fixes"]["a"]["pool"] = ep["fixes"]["a"]["truth"]
+    assert ease_analyses.shortcut(ep) == ["a"]  # b has identical all-pass truth and pool but is not a probe stop
+    sp = ease_analyses.resplit(ep)["fixes"]
+    assert sp["a"]["truth"] == [1, 1] and sp["a"]["pool"] == [1, 0] and sp["b"] == ep["fixes"]["b"]

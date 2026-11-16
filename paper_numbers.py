@@ -546,6 +546,9 @@ def reuse():
     m_ = math.ceil(math.log(1 / (s_ * (1 - gamma_))) / math.log(1 + eps_ / 2))
     m("reuseM", m_)
     m("reuseC", f"{(1 - 2 * eps_) ** m_:.3f}")
+    eta_ = 0.01  # sharper constant: p_2 <= eps + 1/K <= eps + eta once K >= 1/eta
+    m("reuseEta", f"{eta_:.2f}")
+    m("reuseCeta", f"{(1 - eps_ - eta_) ** m_:.2f}")
 
 
 def online():
@@ -777,6 +780,7 @@ def extra(res):
     m("rfFarLoBfour", pct(rf["table"]["B4 peeking Clopper-Pearson"]["far_ci"][0], 2))
     m("rfFarHiBfour", pct(rf["table"]["B4 peeking Clopper-Pearson"]["far_ci"][1]))
     m("rfPzeroSeMax", f"{max(rf['p0_se'].values()):.3f}")
+    m("deltaEffRf", f"{0.05 + 1.645 * max(rf['p0_se'].values()):.3f}")  # eps = p0hat + 0.05 = L + delta_eff, one-sided 95% normal bound
     mt = rf["margin_010"]
     m("rfMarginFrrSa", pct(mt["SeqAccept"]["frr"]))
     m("rfMarginBpaSa", num(mt["SeqAccept"]["blocks_per_accept"], 0))
@@ -1087,11 +1091,13 @@ def figure_ease(d):
         rows = [r for r in d["operating"] if r["p0"] == p0]
         gaps = [r["eps"] - r["p"] for r in rows]
         for b, ls in (("kelly", "-"), ("mixture", "--")):
-            axes[0].plot(gaps, [100 * r[b]["accept"] for r in rows], ls, marker=mk, ms=2.5, lw=1,
-                         color=COLOR["SeqAccept"] if b == "kelly" else "#6250d6", label=f"{b}, $p_0={p0:g}$")
+            col = COLOR["SeqAccept"] if b == "kelly" else "#6250d6"
+            mfc = col if p0 == 0 else "white"  # hollow markers for p0 = 0.2: separable in greyscale
+            axes[0].plot(gaps, [100 * r[b]["accept"] for r in rows], ls, marker=mk, ms=3, lw=1, mfc=mfc, mew=0.7,
+                         color=col, label=f"{b}, $p_0={p0:g}$")
             axes[1].plot([g for g, r in zip(gaps, rows) if r[b]["blocks_per_accept"] and g > 0],
                          [r[b]["blocks_per_accept"] for g, r in zip(gaps, rows) if r[b]["blocks_per_accept"] and g > 0],
-                         ls, marker=mk, ms=2.5, lw=1, color=COLOR["SeqAccept"] if b == "kelly" else "#6250d6")
+                         ls, marker=mk, ms=3, lw=1, mfc=mfc, mew=0.7, color=col)
         axes[1].plot([r["eps"] - r["p"] for r in rows if r["kl_floor"]], [r["kl_floor"] for r in rows if r["kl_floor"]],
                      ":", marker=mk, ms=2, lw=0.8, color=MUTED)
     axes[0].set_xlabel(r"$\varepsilon - p$")
@@ -1219,14 +1225,21 @@ def ease2():
         m(f"sampledKind{t}Bone", pct(fk[kind]["sampled_B1"]))
     m("pzeroSeNat", f"{d['p0_se']['natural_max']:.3f}")
     m("pzeroSeInj", f"{d['p0_se']['injected_max']:.3f}")
+    m("deltaEffNat", f"{0.05 + 1.645 * d['p0_se']['natural_max']:.3f}")
     nr = d["natural_rules"]
     m("secPerAcceptSa", num(nr["SeqAccept"]["seconds_per_accept"] / 60))
     m("secPerAcceptBone", num(nr["B1 stop at first pass"]["seconds_per_accept"]))
     # deployment envelope: a block of b tests from N; a regression breaking k always-failing tests fails it w.p. ~ 1-(1-k/N)^b
     frac = 1 - (1 - 0.05) ** (1 / 32)
     m("envFrac", f"{100 * frac:.2f}")
-    m("envOneTestSuite", f"{int(1 / frac)}")
-    m("envThreeK", f"{int(3000 * frac) + 1}")
+    # blocks sample 32 tests without replacement: P(block hits one of k broken tests of N) = 1 - C(N-k,32)/C(N,32)
+    def hit(n_, k_, b_=32):
+        q = 1.0
+        for i in range(b_):
+            q *= (n_ - k_ - i) / (n_ - i)
+        return 1 - q
+    m("envOneTestSuite", f"{max(n_ for n_ in range(32, 5000) if hit(n_, 1) > 0.05 + 1e-12)}")
+    m("envThreeK", f"{min(k_ for k_ in range(1, 3000) if hit(3000, k_) > 0.05 + 1e-12)}")
     # operating curve: 2,000 runs per point (ease_analyses.OP_REPS); widest 95% Wilson half-width is at 50%
     lo, hi = wilson(1000, 2000)
     m("opHalfWidth", f"{100 * (hi - lo) / 2:.1f}")
@@ -1266,7 +1279,7 @@ def ease2():
           "\\begin{tabular}{@{}lrrrrrr|rrr@{}}\n\\toprule\n"
           "& \\multicolumn{4}{c}{\\textbf{Natural loops (" + str(len(nat)) + ")}} & \\multicolumn{2}{c|}{\\textbf{Injected FAR \\%}} & \\multicolumn{3}{c}{\\textbf{Cost, natural loops}}\\\\\n"
           "\\cmidrule(lr){2-5}\\cmidrule(lr){6-7}\\cmidrule(lr){8-10}\n"
-          "\\textbf{Rule} & \\textbf{FAR \\%} {\\scriptsize[bug CI]} & \\textbf{Bugs hit} & \\textbf{UB bugs \\%} & \\textbf{FRR \\%} & "
+          "\\textbf{Rule} & \\textbf{FAR \\%} {\\scriptsize[bug CI]} & \\textbf{Bugs hit} & \\textbf{Bugs UB \\%} & \\textbf{FRR \\%} & "
           "\\textbf{Bern.} & \\textbf{Markov} & \\textbf{Blk/acc.} & \\textbf{Blk/loop} & \\textbf{Min/acc.}\\\\\n\\midrule\n"
           + rows + "\\bottomrule\n\\end{tabular}\n")
 

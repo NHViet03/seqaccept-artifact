@@ -473,6 +473,9 @@ def worst_case():
     reps = sorted({r["reps"] for r in w["rows"]})
     m("worstRepsSmall", word_int(reps[-1]))
     m("worstRepsLarge", word_int(reps[0]))
+    half = max((wilson(round(r["far"][n] * r["reps"]), r["reps"])[1] - wilson(round(r["far"][n] * r["reps"]), r["reps"])[0]) / 2
+               for r in w["rows"] for n in shown)
+    m("worstHalfWidth", f"{100 * half:.1f}")
     for r in w["rows"]:
         if r["p"] == 0.051 or (r["p"] == 0.06 and r["n"] in (15, 50)):
             pk = {0.051: "Edge", 0.06: "Six"}[r["p"]]
@@ -987,6 +990,9 @@ def ease():
         m(f"costFullRuns{KEY[name]}", num(r["runs_per_episode"]))
         m(f"costFullFar{KEY[name]}", pct(r["far"]))
         m(f"costFullFrr{KEY[name]}", pct(r["frr"]))
+    for r in d["operating"]:
+        if r["p0"] == 0.0 and round(r["p"], 2) == 0.03:
+            m("opLowKellyAcceptThree", pct(r["kelly"]["accept"]))
     # 6. operating curve at high p0
     for r in d["operating"]:
         if r["p0"] == 0.2:
@@ -1105,7 +1111,7 @@ def figure_ease(d):
     fig, ax = plt.subplots(figsize=(3.3, 1.9))
     for name in RULES:
         r = d["cost"]["rules"][name]
-        ax.scatter(r["blocks_per_episode"], 100 * r["far"], s=10 + 300 * r["frr"], color=COLOR[name], marker=MARK[name],
+        ax.scatter(r["blocks_per_episode"], 100 * r["far"], s=18, color=COLOR[name], marker=MARK[name],
                    edgecolors="none", zorder=3)
         if name not in ("B5 naive confidence sequence", "B6 SeqAccept, no refund", "SeqAccept"):
             ax.annotate(SHOW[name].split(" ")[0], (r["blocks_per_episode"], 100 * r["far"]),
@@ -1115,7 +1121,7 @@ def figure_ease(d):
                 fontsize=5.5, color=INK, arrowprops={"arrowstyle": "-", "color": MUTED, "lw": 0.5})
     for name in RULES[:3]:
         r = d["cost"]["rules"][f"{name} (full suite)"]
-        ax.scatter(r["runs_per_episode"], 100 * r["far"], s=10 + 300 * r["frr"], facecolors="none",
+        ax.scatter(r["runs_per_episode"], 100 * r["far"], s=18, facecolors="none",
                    edgecolors=COLOR[name], marker=MARK[name], zorder=3)
         ax.annotate(SHOW[name].split(" ")[0] + " full", (r["runs_per_episode"], 100 * r["far"]),
                     textcoords="offset points", xytext=(3, -7), fontsize=5.5, color=MUTED)
@@ -1130,7 +1136,7 @@ def figure_ease(d):
     # persistence with bug-level bands
     pers = d["persistence"]
     order = ["llama3.1:8b", "gpt-4o", "gpt-4.1-mini", "grok-4.7"]
-    shown = ["B1 stop at first pass", "B3 majority of 5", "B2 rerun-3 all green", "SeqAccept"]
+    shown = ["B1 stop at first pass", "B2 rerun-3 all green", "B3 majority of 5", "SeqAccept"]
     fig, axes = plt.subplots(1, 4, figsize=(6.8, 1.6), sharey=True)
     for ax, model in zip(axes, order):
         for name in shown:
@@ -1181,6 +1187,90 @@ def figure_ease(d):
     m("worstSaUpperMC", pct(worst_hi))
 
 
+def ease2():
+    """EASE round-1 follow-ups: results/ease2.json (ease_round2.py)."""
+    d = load("results/ease2.json")
+    v = d["variants"]
+    for name, t in (("SeqAccept", "Base"), ("set-aside refund", "Setaside"), ("prefilter 1", "Prefilter"),
+                    ("prefilter 1 + set-aside refund", "Both")):
+        for arm, at in (("natural", "Nat"), ("realflaky", "Rf"), ("realflaky_high", "RfHigh")):
+            r = v[name][arm]
+            m(f"var{t}{at}Frr", pct(r["frr"]))
+            m(f"var{t}{at}Far", pct(r["far"], 2))
+            m(f"var{t}{at}Bpl", num(r["blocks_per_loop"]))
+            m(f"var{t}{at}Bpa", num(r["blocks_per_accept"], 0))
+    m("prefilterSaving", pct(1 - v["prefilter 1"]["natural"]["blocks_per_loop"] / v["SeqAccept"]["natural"]["blocks_per_loop"], 0))
+    w = d["worst010"]
+    for n, nk in (("15", "Fifteen"), ("50", "Fifty")):
+        for name in ("B4 peeking Clopper-Pearson", "B5 naive confidence sequence", "SeqAccept"):
+            m(f"worstTen{KEY[name]}{nk}", pct(w[n][name]))
+    lo = d["leave_one_repo_out"]
+    for name in RULES[:3]:
+        m(f"loroLo{KEY[name]}", pct(lo[name][0]))
+        m(f"loroHi{KEY[name]}", pct(lo[name][1]))
+    pb = d["per_bug"]
+    m("bugsWithBoneError", sum(1 for b in pb.values() if b["B1 stop at first pass"] > 0))
+    m("bugsBoneMax", pct(max(b["B1 stop at first pass"] for b in pb.values())))
+    fk = d["fullsuite_kind"]
+    for kind, t in (("ordinary", "Ordinary"), ("order", "Order")):
+        for name in RULES[:3]:
+            m(f"fullKind{t}{KEY[name]}", pct(fk[kind][name]))
+        m(f"fullKind{t}Loops", fk[kind]["loops"])
+        m(f"sampledKind{t}Bone", pct(fk[kind]["sampled_B1"]))
+    m("pzeroSeNat", f"{d['p0_se']['natural_max']:.3f}")
+    m("pzeroSeInj", f"{d['p0_se']['injected_max']:.3f}")
+    nr = d["natural_rules"]
+    m("secPerAcceptSa", num(nr["SeqAccept"]["seconds_per_accept"] / 60))
+    m("secPerAcceptBone", num(nr["B1 stop at first pass"]["seconds_per_accept"]))
+    # deployment envelope: a block of b tests from N; a regression breaking k always-failing tests fails it w.p. ~ 1-(1-k/N)^b
+    frac = 1 - (1 - 0.05) ** (1 / 32)
+    m("envFrac", f"{100 * frac:.2f}")
+    m("envOneTestSuite", f"{int(1 / frac)}")
+    m("envThreeK", f"{int(3000 * frac) + 1}")
+    # operating curve: 2,000 runs per point (ease_analyses.OP_REPS); widest 95% Wilson half-width is at 50%
+    lo, hi = wilson(1000, 2000)
+    m("opHalfWidth", f"{100 * (hi - lo) / 2:.1f}")
+    # main table: natural loops (all rules), injected modes, natural cost
+    res = load("results/results.json")
+    per = res["per_episode"]
+    nat = [e for e in per if e["flakiness"] == "natural"]
+    e1 = load("results/ease.json")
+    rows = ""
+    bm = d["by_mode"]
+    for name in RULES:
+        if name == "SeqAccept":
+            rows += "\\midrule\n"
+        nf = e1["natural_far"][name]
+        hit = {}
+        for e in nat:
+            if "broken" in e["labels"]:
+                b = e["file"].split("-")[0]
+                hit[b] = hit.get(b, False) or e["rules"][name]["far"] > 0
+        kb, nb = sum(hit.values()), len(hit)
+        ci = "" if nf["far"] == 0 else f" {{\\scriptsize[{pct(nf['ci_bug'][0])}, {pct(nf['ci_bug'][1])}]}}"
+        ub = pct(replay.cp_upper(kb, nb)) if kb == 0 else "--"
+        r = nr[name]
+        rows += (f"{SHOW[name]} & {pct(nf['far'])}{ci} & {kb}/{nb} & {ub} & {pct(r['frr'])} & "
+                 f"{pct(bm['injected-bernoulli'][name])} & {pct(bm['injected-markov'][name])} & "
+                 f"{num(r['blocks_per_accept'])} & {num(r['blocks_per_loop'])} & {num(r['seconds_per_accept'] / 60, 2)}\\\\\n")
+    rows += "\\midrule\n"
+    comp = {"Harmonic spending": "Harmonic spending", "Discard spending": "Discarding (unproved)",
+            "Fixed-n Bonferroni-15 (1n0)": "Fixed-$n$ Bonf.-15 ($n_0$)", "Fixed-n Bonferroni-15 (4n0)": "Fixed-$n$ Bonf.-15 ($4n_0$)"}
+    rr = next(k for k in nr if k.startswith("Rerun-"))
+    comp[rr] = rr.replace(" (all green)", " (no guarantee)")
+    for key, label in comp.items():
+        r = nr[key]
+        rows += (f"{label} & {pct(r['far'])} & & & {pct(r['frr'])} & & & {num(r['blocks_per_accept'])} & "
+                 f"{num(r['blocks_per_loop'])} & {num(r['seconds_per_accept'] / 60, 2)}\\\\\n")
+    write("tab_outcome.tex",
+          "\\begin{tabular}{@{}lrrrrrr|rrr@{}}\n\\toprule\n"
+          "& \\multicolumn{4}{c}{\\textbf{Natural loops (" + str(len(nat)) + ")}} & \\multicolumn{2}{c|}{\\textbf{Injected FAR \\%}} & \\multicolumn{3}{c}{\\textbf{Cost, natural loops}}\\\\\n"
+          "\\cmidrule(lr){2-5}\\cmidrule(lr){6-7}\\cmidrule(lr){8-10}\n"
+          "\\textbf{Rule} & \\textbf{FAR \\%} {\\scriptsize[bug CI]} & \\textbf{Bugs hit} & \\textbf{UB bugs \\%} & \\textbf{FRR \\%} & "
+          "\\textbf{Bern.} & \\textbf{Markov} & \\textbf{Blk/acc.} & \\textbf{Blk/loop} & \\textbf{Min/acc.}\\\\\n\\midrule\n"
+          + rows + "\\bottomrule\n\\end{tabular}\n")
+
+
 if __name__ == "__main__":
     GEN.mkdir(parents=True, exist_ok=True)
     FIGS.mkdir(parents=True, exist_ok=True)
@@ -1200,6 +1290,7 @@ if __name__ == "__main__":
     power_tuning()
     review2()
     ease()
+    ease2()
     exec_order()
     (GEN / "numbers.tex").write_text(
         "% generated by intern1/impl/paper_numbers.py; do not edit\n"

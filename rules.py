@@ -63,7 +63,8 @@ def mix_lambdas(eps, k=MIX_K):
     return [(i / k) * 0.9 / (1 - eps) for i in range(1, k + 1)]
 
 
-def seq_accept(n, block, alpha=0.05, eps=0.05, gamma=0.5, refund=True, max_blocks=800, reject_at=20, bet="kelly"):
+def seq_accept(n, block, alpha=0.05, eps=0.05, gamma=0.5, refund=True, max_blocks=800, reject_at=20, bet="kelly",
+               setaside_refund=False, prefilter=0):
     """SeqAccept (refund=False gives B6). One betting wallet per candidate, error spent from a shared pool.
 
     Accept j when its wallet E >= 1/alpha_j; reject when the opposing wallet R >= reject_at (an anytime-valid
@@ -71,9 +72,23 @@ def seq_accept(n, block, alpha=0.05, eps=0.05, gamma=0.5, refund=True, max_block
     alpha_j * min(E, 1 - s_j). Every candidate starts from wallet 1: evidence is never carried between candidates.
     bet="mixture" replaces the plug-in Kelly accept wallet by the average of fixed-bet wallets (mix_lambdas); each is a
     nonnegative supermartingale under p > eps, so their average is too, and Theorem 6 applies unchanged.
+    setaside_refund=True also refunds alpha_j * min(E, 1 - s_j) when a candidate reaches the block cap: capped by the
+    wallet, so the proof's step (c) covers it (unlike the uncapped give-up refund of Alg. 1 line 14).
+    prefilter=k runs k blocks first and skips a candidate that fails any of them, before it gets a slice: the skip
+    depends only on blocks drawn after the candidate is fixed, so the stream it leaves is still adaptive, and the
+    accept decision uses fresh blocks.
     """
     pool, blocks = alpha, 0
     for j in range(n):
+        if prefilter:
+            failed = False
+            for _ in range(prefilter):
+                blocks += 1
+                if block(j):
+                    failed = True
+                    break
+            if failed:
+                continue  # skipped before it gets a slice: no budget spent
         alpha_j = gamma * pool  # slice of the error budget this candidate may spend
         pool -= alpha_j
         E = R = 1.0  # E: bets the candidate is fine (p <= eps); R: bets it is broken (p > eps)
@@ -103,7 +118,10 @@ def seq_accept(n, block, alpha=0.05, eps=0.05, gamma=0.5, refund=True, max_block
                 elif refund:  # line 11: refund the unspent part, s_j = alpha_j * peak, never more than the wallet
                     pool += alpha_j * min(E, 1 - alpha_j * peak)  # holds (D24): W + alpha_j E stays a supermartingale
                 break
-        # out of blocks: NO refund, unlike Alg. 1 line 14 (it lifts FAR above alpha, see test_paper_conformance)
+        else:
+            if setaside_refund:  # capped refund at the block cap (EASE review); the default keeps none
+                pool += alpha_j * min(E, 1 - alpha_j * peak)
+        # out of blocks: by default NO refund, unlike Alg. 1 line 14 (uncapped; it lifts FAR above alpha)
     return Result(None, blocks)
 
 

@@ -1,0 +1,465 @@
+{
+ "variants": {
+  "SeqAccept": {
+   "natural": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 219.45894736842106,
+    "blocks_per_loop": 153.29852941176472,
+    "seconds_per_accept": 658.1459094697325
+   },
+   "realflaky": {
+    "far": 0.002403846153846154,
+    "frr": 0.10895522388059702,
+    "blocks_per_accept": 2552.1735941320294,
+    "blocks_per_loop": 1505.5370192307691,
+    "seconds_per_accept": 5425.575628818015
+   },
+   "realflaky_high": {
+    "far": 0.0078125,
+    "frr": 0.33571428571428574,
+    "blocks_per_accept": 7780.708904109589,
+    "blocks_per_loop": 3549.9484375,
+    "seconds_per_accept": 18787.382839553906
+   }
+  },
+  "set-aside refund": {
+   "natural": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 219.45894736842106,
+    "blocks_per_loop": 153.29852941176472,
+    "seconds_per_accept": 658.1459094697325
+   },
+   "realflaky": {
+    "far": 0.004326923076923077,
+    "frr": 0.09925373134328358,
+    "blocks_per_accept": 2377.768243785084,
+    "blocks_per_loop": 1425.5177884615384,
+    "seconds_per_accept": 5089.583041687832
+   },
+   "realflaky_high": {
+    "far": 0.0140625,
+    "frr": 0.3119047619047619,
+    "blocks_per_accept": 6971.857605177994,
+    "blocks_per_loop": 3366.1,
+    "seconds_per_accept": 16904.33960597009
+   }
+  },
+  "prefilter 1": {
+   "natural": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 199.68736842105264,
+    "blocks_per_loop": 139.4875,
+    "seconds_per_accept": 613.3501966302598
+   },
+   "realflaky": {
+    "far": 0.0033653846153846156,
+    "frr": 0.13432835820895522,
+    "blocks_per_accept": 2219.8273260687342,
+    "blocks_per_loop": 1273.1990384615385,
+    "seconds_per_accept": 5083.171232552215
+   },
+   "realflaky_high": {
+    "far": 0.009375000000000001,
+    "frr": 0.3952380952380952,
+    "blocks_per_accept": 6907.582706766917,
+    "blocks_per_loop": 2870.9640625,
+    "seconds_per_accept": 18613.676074444833
+   }
+  },
+  "prefilter 1 + set-aside refund": {
+   "natural": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 199.68736842105264,
+    "blocks_per_loop": 139.4875,
+    "seconds_per_accept": 613.3501966302598
+   },
+   "realflaky": {
+    "far": 0.0038461538461538464,
+    "frr": 0.11865671641791045,
+    "blocks_per_accept": 2054.500408830744,
+    "blocks_per_loop": 1208.0067307692307,
+    "seconds_per_accept": 4812.635543765177
+   },
+   "realflaky_high": {
+    "far": 0.010937500000000001,
+    "frr": 0.36428571428571427,
+    "blocks_per_accept": 6047.701388888889,
+    "blocks_per_loop": 2721.465625,
+    "seconds_per_accept": 16693.034038549795
+   }
+  }
+ },
+ "worst010": {
+  "1": {
+   "B4 peeking Clopper-Pearson": 0.003,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  },
+  "15": {
+   "B4 peeking Clopper-Pearson": 0.033,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  },
+  "50": {
+   "B4 peeking Clopper-Pearson": 0.09,
+   "B5 naive confidence sequence": 0.0025,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  }
+ },
+ "per_bug": {
+  "anonapi": {
+   "B1 stop at first pass": 0.11875,
+   "B2 rerun-3 all green": 0.08125,
+   "B3 majority of 5": 0.125,
+   "B4 peeking Clopper-Pearson": 0.0,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  },
+  "anonapi_b2": {
+   "B1 stop at first pass": 0.6,
+   "B2 rerun-3 all green": 0.5375,
+   "B3 majority of 5": 0.61875,
+   "B4 peeking Clopper-Pearson": 0.0125,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  },
+  "filestack": {
+   "B1 stop at first pass": 0.68125,
+   "B2 rerun-3 all green": 0.48125,
+   "B3 majority of 5": 0.55,
+   "B4 peeking Clopper-Pearson": 0.0,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  },
+  "filestack_b2": {
+   "B1 stop at first pass": 0.0,
+   "B2 rerun-3 all green": 0.0,
+   "B3 majority of 5": 0.0,
+   "B4 peeking Clopper-Pearson": 0.0,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  },
+  "freezegun_b2": {
+   "B1 stop at first pass": 0.175,
+   "B2 rerun-3 all green": 0.03125,
+   "B3 majority of 5": 0.16875,
+   "B4 peeking Clopper-Pearson": 0.0,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  },
+  "kanren": {
+   "B1 stop at first pass": 0.5,
+   "B2 rerun-3 all green": 0.4375,
+   "B3 majority of 5": 0.49375,
+   "B4 peeking Clopper-Pearson": 0.0,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  },
+  "mdutils": {
+   "B1 stop at first pass": 0.0,
+   "B2 rerun-3 all green": 0.0,
+   "B3 majority of 5": 0.0,
+   "B4 peeking Clopper-Pearson": 0.0,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  },
+  "mdutils_b2": {
+   "B1 stop at first pass": 0.0,
+   "B2 rerun-3 all green": 0.0,
+   "B3 majority of 5": 0.0,
+   "B4 peeking Clopper-Pearson": 0.0,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  },
+  "pdir2": {
+   "B1 stop at first pass": 0.0875,
+   "B2 rerun-3 all green": 0.01875,
+   "B3 majority of 5": 0.0375,
+   "B4 peeking Clopper-Pearson": 0.0,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  },
+  "pdir2_b2": {
+   "B1 stop at first pass": 0.21875,
+   "B2 rerun-3 all green": 0.0375,
+   "B3 majority of 5": 0.125,
+   "B4 peeking Clopper-Pearson": 0.0,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  },
+  "penman": {
+   "B1 stop at first pass": 0.325,
+   "B2 rerun-3 all green": 0.23125,
+   "B3 majority of 5": 0.35625,
+   "B4 peeking Clopper-Pearson": 0.0,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  },
+  "penman_b2": {
+   "B1 stop at first pass": 0.075,
+   "B2 rerun-3 all green": 0.0125,
+   "B3 majority of 5": 0.018750000000000003,
+   "B4 peeking Clopper-Pearson": 0.0,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  },
+  "pymeterbus": {
+   "B1 stop at first pass": 0.875,
+   "B2 rerun-3 all green": 0.58125,
+   "B3 majority of 5": 0.85,
+   "B4 peeking Clopper-Pearson": 0.0,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  },
+  "pymeterbus_b2": {
+   "B1 stop at first pass": 0.1,
+   "B2 rerun-3 all green": 0.05625,
+   "B3 majority of 5": 0.1,
+   "B4 peeking Clopper-Pearson": 0.0,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  },
+  "qtaf": {
+   "B1 stop at first pass": 0.1625,
+   "B2 rerun-3 all green": 0.0125,
+   "B3 majority of 5": 0.06875,
+   "B4 peeking Clopper-Pearson": 0.0,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  },
+  "yamicache": {
+   "B1 stop at first pass": 0.3125,
+   "B2 rerun-3 all green": 0.26875,
+   "B3 majority of 5": 0.31875,
+   "B4 peeking Clopper-Pearson": 0.00625,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  },
+  "yamicache_b2": {
+   "B1 stop at first pass": 0.0875,
+   "B2 rerun-3 all green": 0.01875,
+   "B3 majority of 5": 0.0625,
+   "B4 peeking Clopper-Pearson": 0.0,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  }
+ },
+ "leave_one_repo_out": {
+  "B1 stop at first pass": [
+   0.22291666666666668,
+   0.28791666666666665
+  ],
+  "B2 rerun-3 all green": [
+   0.14458333333333334,
+   0.18708333333333332
+  ],
+  "B3 majority of 5": [
+   0.19625,
+   0.25958333333333333
+  ],
+  "B4 peeking Clopper-Pearson": [
+   0.0004166666666666667,
+   0.0012500000000000002
+  ],
+  "B5 naive confidence sequence": [
+   0.0,
+   0.0
+  ],
+  "B6 SeqAccept, no refund": [
+   0.0,
+   0.0
+  ],
+  "SeqAccept": [
+   0.0,
+   0.0
+  ]
+ },
+ "bug_kind": {
+  "anonapi": "order",
+  "anonapi_b2": "order",
+  "filestack": "ordinary",
+  "filestack_b2": "ordinary",
+  "freezegun_b2": "ordinary",
+  "kanren": "ordinary",
+  "mdutils": "ordinary",
+  "mdutils_b2": "ordinary",
+  "pdir2": "ordinary",
+  "pdir2_b2": "ordinary",
+  "penman": "ordinary",
+  "penman_b2": "ordinary",
+  "pymeterbus": "ordinary",
+  "pymeterbus_b2": "ordinary",
+  "qtaf": "order",
+  "yamicache": "order",
+  "yamicache_b2": "order"
+ },
+ "fullsuite_kind": {
+  "ordinary": {
+   "loops": 96,
+   "B1 stop at first pass": 0.0,
+   "B2 rerun-3 all green": 0.0,
+   "B3 majority of 5": 0.0,
+   "sampled_B1": 0.253125
+  },
+  "order": {
+   "loops": 40,
+   "B1 stop at first pass": 0.135,
+   "B2 rerun-3 all green": 0.03375,
+   "B3 majority of 5": 0.09125,
+   "sampled_B1": 0.25625
+  }
+ },
+ "by_mode": {
+  "natural": {
+   "episodes": 136,
+   "B1 stop at first pass": 0.2540441176470588,
+   "B2 rerun-3 all green": 0.1650735294117647,
+   "B3 majority of 5": 0.22904411764705881,
+   "B4 peeking Clopper-Pearson": 0.0011029411764705884,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  },
+  "injected-bernoulli": {
+   "episodes": 96,
+   "B1 stop at first pass": 0.28229166666666666,
+   "B2 rerun-3 all green": 0.196875,
+   "B3 majority of 5": 0.2552083333333333,
+   "B4 peeking Clopper-Pearson": 0.0005208333333333333,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  },
+  "injected-markov": {
+   "episodes": 96,
+   "B1 stop at first pass": 0.26406250000000003,
+   "B2 rerun-3 all green": 0.16718750000000002,
+   "B3 majority of 5": 0.23697916666666666,
+   "B4 peeking Clopper-Pearson": 0.0,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  }
+ },
+ "natural_rules": {
+  "B1 stop at first pass": {
+   "far": 0.2540441176470588,
+   "frr": 0.0,
+   "blocks_per_accept": 3.4310129220508547,
+   "blocks_per_loop": 3.0261029411764704,
+   "seconds_per_accept": 9.610013980825343
+  },
+  "B2 rerun-3 all green": {
+   "far": 0.1650735294117647,
+   "frr": 0.0,
+   "blocks_per_accept": 6.969455511288181,
+   "blocks_per_loop": 5.788235294117647,
+   "seconds_per_accept": 18.381590209163345
+  },
+  "B3 majority of 5": {
+   "far": 0.22904411764705881,
+   "frr": 0.0,
+   "blocks_per_accept": 18.592687074829932,
+   "blocks_per_loop": 16.077205882352942,
+   "seconds_per_accept": 50.53613565582483
+  },
+  "B4 peeking Clopper-Pearson": {
+   "far": 0.0011029411764705882,
+   "frr": 0.0,
+   "blocks_per_accept": 105.31003678402523,
+   "blocks_per_loop": 73.6783088235294,
+   "seconds_per_accept": 311.73237758145063
+  },
+  "B5 naive confidence sequence": {
+   "far": 0.0,
+   "frr": 0.0,
+   "blocks_per_accept": 203.96526315789473,
+   "blocks_per_loop": 142.47573529411764,
+   "seconds_per_accept": 603.8052816302588
+  },
+  "B6 SeqAccept, no refund": {
+   "far": 0.0,
+   "frr": 0.0,
+   "blocks_per_accept": 228.1863157894737,
+   "blocks_per_loop": 159.39485294117648,
+   "seconds_per_accept": 672.4783144171009
+  },
+  "SeqAccept": {
+   "far": 0.0,
+   "frr": 0.0,
+   "blocks_per_accept": 219.45894736842106,
+   "blocks_per_loop": 153.29852941176472,
+   "seconds_per_accept": 658.1459094697325
+  },
+  "Harmonic spending": {
+   "far": 0.0,
+   "frr": 0.0,
+   "blocks_per_accept": 229.15578947368422,
+   "blocks_per_loop": 160.0720588235294,
+   "seconds_per_accept": 675.7135318328903
+  },
+  "Discard spending": {
+   "far": 0.0,
+   "frr": 0.0,
+   "blocks_per_accept": 234.2821052631579,
+   "blocks_per_loop": 163.6529411764706,
+   "seconds_per_accept": 712.1209422736799
+  },
+  "Fixed-n Bonferroni-15 (1n0)": {
+   "far": 0.0,
+   "frr": 0.0,
+   "blocks_per_accept": 125.7057894736842,
+   "blocks_per_loop": 87.80919117647059,
+   "seconds_per_accept": 425.2052325750002
+  },
+  "Fixed-n Bonferroni-15 (2n0)": {
+   "far": 0.0,
+   "frr": 0.0,
+   "blocks_per_accept": 263.96210526315787,
+   "blocks_per_loop": 184.38529411764705,
+   "seconds_per_accept": 869.4729177828948
+  },
+  "Fixed-n Bonferroni-15 (4n0)": {
+   "far": 0.0,
+   "frr": 0.0,
+   "blocks_per_accept": 595.0836842105264,
+   "blocks_per_loop": 415.6834558823529,
+   "seconds_per_accept": 1859.6830838105254
+  },
+  "Rerun-105 (all green)": {
+   "far": 0.0,
+   "frr": 0.0,
+   "blocks_per_accept": 119.50631578947369,
+   "blocks_per_loop": 83.47867647058824,
+   "seconds_per_accept": 404.60918606973706
+  }
+ },
+ "p0_se": {
+  "natural_max": 0.0049749371855331,
+  "injected_max": 0.010086345968684596
+ }
+}

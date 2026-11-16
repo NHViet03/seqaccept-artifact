@@ -60,6 +60,9 @@ TRACE = {  # every public function/class in impl/*.py -> where the paper or the 
     "ease_analyses.shortcut": "EASE review: the shortcut candidates of an episode",
     "ease_analyses.rates": "EASE review: truth and pool rates of every distinct candidate",
     "ease_analyses.single": "EASE review: one-candidate operating point",
+    "ease_round2.bug_of": "EASE round 1: the independent bug of an episode",
+    "ease_round2.run": "EASE round 1: replay one rule on every episode",
+    "ease_round2.row": "EASE round 1: FAR, FRR, blocks and seconds per accept, blocks per loop",
     "exec_order.done_seeds": "external review 2: resumable execution-order log",
     "exec_order.run_task": "external review 2: blocks of the original code with start/end time, worker and load",
     "exec_order.summarize": "external review 2: independence in execution order vs seed order, busy vs quiet host",
@@ -268,7 +271,8 @@ def test_paper_constants():
     d = {k: v.default for k, v in inspect.signature(seq_accept).parameters.items() if v.default is not inspect._empty}
     assert d == {"alpha": 0.05, "eps": 0.05, "gamma": 0.5,  # §5.5
                  "refund": True,
-                 "max_blocks": 800, "reject_at": 20, "bet": "kelly"}  # D1, D2; the paper's wallet is Kelly
+                 "max_blocks": 800, "reject_at": 20, "bet": "kelly",  # D1, D2; the paper's wallet is Kelly
+                 "setaside_refund": False, "prefilter": 0}  # EASE-review variants are off by default
     assert list(rules.all_rules()) == ["B1 stop at first pass", "B2 rerun-3 all green", "B3 majority of 5",
                                        "B4 peeking Clopper-Pearson", "B5 naive confidence sequence",
                                        "B6 SeqAccept, no refund", "SeqAccept"]  # §9.2, "we report k=3"; SKIPPED
@@ -562,3 +566,17 @@ def test_ease_shortcut_detection_and_resplit():  # EASE review
     assert ease_analyses.shortcut(ep) == ["a"]  # b has identical all-pass truth and pool but is not a probe stop
     sp = ease_analyses.resplit(ep)["fixes"]
     assert sp["a"]["truth"] == [1, 1] and sp["a"]["pool"] == [1, 0] and sp["b"] == ep["fixes"]["b"]
+
+
+def test_capped_setaside_refund_stays_valid_where_the_uncapped_one_fails():  # EASE review, D3 scenario
+    def far(rule):
+        rng = random.Random(0)
+        return sum(rule(20, lambda j: int(rng.random() < 0.11), eps=0.10).accepted is not None for _ in range(300)) / 300
+    assert far(lambda n, b, **kw: seq_accept(n, b, setaside_refund=True, **kw)) <= 0.05
+
+
+def test_prefilter_skips_a_candidate_that_fails_its_first_block_without_spending_budget():  # EASE review
+    outcomes = {0: iter([1] + [0] * 5000), 1: iter([0] * 5000)}
+    r = seq_accept(2, lambda j: next(outcomes[j]), prefilter=1)
+    perfect = seq_accept(1, lambda j: 0).blocks
+    assert r.accepted == 1 and r.blocks == 1 + 1 + perfect  # c0: one failed prefilter block; c1: one pass + full slice

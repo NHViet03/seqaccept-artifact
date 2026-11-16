@@ -24,6 +24,8 @@ step "independence in execution order                      -> results/exec_order
 "$PY" exec_order.py analyze
 step "refund ablation, shortcut, truth vs pool, cost, operating curve -> results/ease.json"
 "$PY" ease_analyses.py
+step "prefilter, refund at cap, per bug, competitors      -> results/ease2.json"
+"$PY" ease_round2.py
 step "paper numbers, tables and figures                    -> ${SEQACCEPT_PAPER_DIR:-paper_out}"
 "$PY" paper_numbers.py
 echo; echo "done"

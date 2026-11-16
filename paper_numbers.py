@@ -1280,9 +1280,11 @@ def ease4():
         policy, n, refund = key.split("-")
         m(f"adv{policy.capitalize()}{W[int(n)]}{refund.capitalize()}", pct(v["far"], 1))
     worst = max(v["far"] for k, v in adv.items() if k.endswith("-max") or k.endswith("-capped"))
-    reps = min(v["reps"] for v in adv.values())
     m("advProvedMax", pct(worst, 1))
-    m("advProvedUpper", pct(wilson(round(worst * reps), reps)[1], 1))
+    big = [v for k, v in adv.items() if (k.endswith("-max") or k.endswith("-capped")) and v["reps"] == 1000]
+    top = max(big, key=lambda v: v["far"])  # widest 95% Wilson upper bound among the 1,000-run cells
+    m("advProvedUpper", pct(wilson(round(top["far"] * top["reps"]), top["reps"])[1], 1))
+    m("advFiftyReps", min(v["reps"] for v in adv.values()))
     dep = d["dependence"]
     m("depPhiQninety", f"{dep['q90']:.2f}")
     m("depPhiCands", word_int(dep["candidates"]))
@@ -1317,7 +1319,7 @@ def ease4():
     rates = sorted(b["rate"] for b in pr["bugs"].values())
     m("preBugs", len(rates))
     m("preMinRate", pct(rates[0]))
-    m("preMedianRate", pct(rates[len(rates) // 2]))
+    m("preMedianRate", pct(__import__("statistics").median(rates)))
     m("preBelowSix", sum(1 for r in rates if r <= 0.10))
     bm = pr["broken_minus_eps"]
     m("preBrokenN", word_int(bm["n"]))

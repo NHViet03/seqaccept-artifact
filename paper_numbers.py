@@ -171,6 +171,10 @@ def benchmark(res, episodes):
     from_screen = {r for r in repos if r.replace("/", "_").replace("-", "_").lower() in cand}
     m("nReposFromScreen", len(from_screen))
     m("nReposByHand", len(repos) - len(from_screen))
+    chosen = {r.replace("/", "_").replace("-", "_").lower() for r in repos}
+    unchosen = sorted(c for c in cand if c not in chosen)
+    m("nUnchosen", len(unchosen))
+    m("unchosenList", ", ".join("\\texttt{" + c.replace("_", "\\_") + "}" for c in unchosen))
     m("nBlocksRun", word_int(blocks))
     m("nFixesGraded", word_int(fixes))
     m("nClearlyBroken", word_int(clearly))
@@ -763,7 +767,6 @@ def extra(res):
         m(f"rfFrrHigh{k}", pct(rf["p0_high"]["table"][name]["frr"]))
         m(f"rfFrrLow{k}", pct(rf["p0_low"]["table"][name]["frr"]))
     assert all(rf["same_loops_without"][n]["frr"] == 0 for n in RULES[3:]), "text: no eps-based rule loses a correct patch without them"
-    assert rf["table"]["SeqAccept"]["far"] == rf["table"]["B6 SeqAccept, no refund"]["far"], "text: SeqAccept and B6 share one FAR"
     hit = rf["table"]["SeqAccept"]["far_upper"]
     m("rfSaEpHits", word_int(hit["episodes"][0]))
     m("rfWithBroken", hit["episodes"][1])
@@ -1042,8 +1045,8 @@ def ease():
           "\\textbf{FAR \\%} {\\scriptsize[repo CI]} & \\textbf{Inj./$\\alpha$} & \\textbf{Blk/acc.} & \\textbf{Blk/loop} & \\textbf{$\\times$B1}\\\\\n\\midrule\n"
           + rows + "\\bottomrule\n\\end{tabular}\n")
     # refund ablation table
-    proof = {"none": "yes ($r_j=0$)", "max": "yes", "capped": "yes", "uncapped": "unproved"}
-    show = {"none": "No refund (B6)", "max": "Maximal, $\\alpha_j\\min(E,1)$", "capped": "Capped (\\sa{})",
+    proof = {"none": "yes ($r_j=0$)", "max": "yes", "capped": "yes", "uncapped": "no"}
+    show = {"none": "No refund (B6)", "max": "Maximal (\\sa{}), $\\alpha_j\\min(E,1)$", "capped": "Discounted, $\\alpha_j\\min(E,1-\\alpha_jG_j)$",
             "uncapped": "Uncapped, $\\alpha_j(1-\\alpha_jG_j)$"}
     body = ""
     for k in ("none", "max", "capped", "uncapped"):
@@ -1169,18 +1172,25 @@ def figure_ease(d):
     # worst case heatmap: FAR by stream length and p, per eps-based rule, with Monte Carlo intervals in the table
     w = load("results/worst_case.json")
     shown = ["B4 peeking Clopper-Pearson", "B5 naive confidence sequence", "B6 SeqAccept, no refund", "SeqAccept"]
-    ps, ns = (0.051, 0.06, 0.08), (1, 5, 15, 50)
-    fig, axes = plt.subplots(1, 4, figsize=(6.8, 1.35))
+    ps, ns = (0.051, 0.06, 0.08, 0.10), (1, 5, 15, 50)
+    w10 = load("results/ease4.json")["worst010"]  # p = 0.10 row (ease_round4.py)
+
+    def cell(p, n, name):  # (FAR, runs) of one heatmap cell
+        if p == 0.10:
+            return w10[str(n)][name], (1000 if n < 50 else 400)
+        r = next(r for r in w["rows"] if r["p"] == p and r["n"] == n)
+        return r["far"][name], r["reps"]
+    fig, axes = plt.subplots(1, 4, figsize=(6.8, 1.6))
     for ax, name in zip(axes, shown):
-        grid = [[next(r["far"][name] for r in w["rows"] if r["p"] == p and r["n"] == n) for n in ns] for p in ps]
+        grid = [[cell(p, n, name)[0] for n in ns] for p in ps]
         ax.imshow(grid, cmap="Reds", vmin=0, vmax=1, aspect="auto")
         for i, p in enumerate(ps):
             for j, n in enumerate(ns):
                 v = 100 * grid[i][j]
                 txt = f"{v:.0f}" if v >= 10 else f"{v:.1f}"
                 if name in ("B6 SeqAccept, no refund", "SeqAccept"):  # valid rules: add the 95% Wilson upper bound
-                    r = next(r for r in w["rows"] if r["p"] == p and r["n"] == n)
-                    txt += f"\n\u2264{100 * wilson(round(r['far'][name] * r['reps']), r['reps'])[1]:.1f}"
+                    far, reps = cell(p, n, name)
+                    txt += f"\n\u2264{100 * wilson(round(far * reps), reps)[1]:.1f}"
                 ax.text(j, i, txt, ha="center", va="center", fontsize=6 if "\n" not in txt else 5, linespacing=0.9,
                         color="white" if v > 50 else (INK if v <= 5 else "#7a1f1f"), fontweight="bold" if v > 5 else "normal")
         ax.set_xticks(range(len(ns)), [str(n) for n in ns])
@@ -1239,12 +1249,93 @@ def ease3():
     m("calMinBoneExact", f"{c['B1 stop at first pass']['minutes_per_accept']:.2f}")
 
 
+def ease4():
+    """Round-3 review follow-ups: results/ease4.json (ease_round4.py)."""
+    d = load("results/ease4.json")
+    W = {1: "One", 5: "Five", 10: "Ten", 15: "Fifteen", 20: "Twenty", 40: "Forty", 50: "Fifty", 100: "Hundred"}
+    nat, late = d["caps"]["natural"], d["caps"]["late"]
+    m("capBpaSa", num(nat["SeqAccept"]["blocks_per_accept"]))
+    for k in (10, 20, 40):
+        m(f"capLateSa{W[k]}", pct(late[str(k)]["SeqAccept"]["accept"]))
+    for n in (15, 40, 100):
+        for rule, tag in ((f"Bonferroni-{n} spending", "Spend"), (f"Fixed-n Bonferroni-{n}", "Fixn")):
+            m(f"capBpa{tag}{W[n]}", num(nat[rule]["blocks_per_accept"]))
+            m(f"capFrr{tag}{W[n]}", pct(nat[rule]["frr"]))
+            for k in (10, 20, 40):
+                m(f"capLate{tag}{W[n]}{W[k]}", pct(late[str(k)][rule]["accept"]))
+    rows = ""
+    for n in (15, 40, 100):
+        for rule, label in ((f"Bonferroni-{n} spending", f"Bonferroni-{n} spending"), (f"Fixed-n Bonferroni-{n}", f"Fixed-$n$ Bonferroni-{n}")):
+            rows += (f"{label} & {num(nat[rule]['blocks_per_accept'])} & {pct(nat[rule]['frr'])} & "
+                     + " & ".join(pct(late[str(k)][rule]["accept"]) for k in (10, 20, 40)) + "\\\\\n")
+    rows += ("\\midrule\n\\sa{} & " + num(nat["SeqAccept"]["blocks_per_accept"]) + " & " + pct(nat["SeqAccept"]["frr"]) + " & "
+             + " & ".join(pct(late[str(k)]["SeqAccept"]["accept"]) for k in (10, 20, 40)) + "\\\\\n")
+    write("tab_caps.tex", "\\begin{tabular}{@{}lrrrrr@{}}\n\\toprule\n"
+          "& \\multicolumn{2}{c}{\\textbf{Natural loops}} & \\multicolumn{3}{c}{\\textbf{Late: accepted \\% after $k$}}\\\\\n"
+          "\\cmidrule(lr){2-3}\\cmidrule(lr){4-6}\n"
+          "\\textbf{Rule} & \\textbf{Blk/acc.} & \\textbf{FRR \\%} & $k=10$ & $k=20$ & $k=40$\\\\\n\\midrule\n" + rows
+          + "\\bottomrule\n\\end{tabular}\n")
+    adv = d["adversary"]
+    for key, v in adv.items():
+        policy, n, refund = key.split("-")
+        m(f"adv{policy.capitalize()}{W[int(n)]}{refund.capitalize()}", pct(v["far"], 1))
+    worst = max(v["far"] for k, v in adv.items() if k.endswith("-max") or k.endswith("-capped"))
+    reps = min(v["reps"] for v in adv.values())
+    m("advProvedMax", pct(worst, 1))
+    m("advProvedUpper", pct(wilson(round(worst * reps), reps)[1], 1))
+    dep = d["dependence"]
+    m("depPhiQninety", f"{dep['q90']:.2f}")
+    m("depPhiCands", word_int(dep["candidates"]))
+    for tag, key in (("zero", "Zero"), ("q90", "Qninety")):
+        for n in (1, 15):
+            m(f"depFar{key}{W[n]}", pct(dep["far"][tag][str(n)], 1))
+    be = d["breakeven"]
+    m("beBlockSec", f"{be['block_s']:.1f}")
+    m("beFullSec", f"{be['full_s']:.1f}")
+    for k, t in (("B1", "Bone"), ("B2", "Btwo")):
+        m(f"be{t}Ratio", f"{be[k]['ratio']:.0f}")
+        m(f"be{t}Tests", word_int(int(round(be[k]["suite_tests"], -2))))
+    am = d["amortised"]
+    for name, t in (("SeqAccept", "Sa"), ("B4 peeking Clopper-Pearson", "Bfour")):
+        m(f"am{t}None", num(am[name]["none"], 0))
+        m(f"am{t}Task", num(am[name]["per_task"], 0))
+        m(f"am{t}Loop", num(am[name]["per_loop"], 0))
+    u = d["realflaky_unamb"]
+    for name, t in (("SeqAccept", "Sa"), ("B4 peeking Clopper-Pearson", "Bfour")):
+        m(f"unambFar{t}", pct(u[name]["far"], 2))
+        m(f"plainFar{t}", pct(u[name]["far_plain"], 2))
+    rows = ""
+    for task, r in d["realflaky_tasks"].items():
+        rows += (f"{task.replace('@realflaky', '').replace('_', '\\_')} & {r['p0']:.3f} & {r['loops']} & {r['near_broken']} & "
+                 f"{pct(r['far_b4'], 2)} & {pct(r['far_b4_unamb'], 2)} & {pct(r['far_sa'], 2)} & {pct(r['far_sa_unamb'], 2)} & {pct(r['frr_sa'])}\\\\\n")
+    write("tab_rf_tasks.tex", "\\begin{tabular}{@{}lrrrrrrrr@{}}\n\\toprule\n"
+          "& & & & \\multicolumn{2}{c}{\\textbf{B4 FAR \\%}} & \\multicolumn{2}{c}{\\textbf{\\sa{} FAR \\%}} & \\\\\n"
+          "\\cmidrule(lr){5-6}\\cmidrule(lr){7-8}\n"
+          "\\textbf{Task} & $p_0$ & \\textbf{Loops} & \\textbf{Near} & all & unamb. & all & unamb. & \\textbf{FRR \\%}\\\\\n\\midrule\n"
+          + rows + "\\bottomrule\n\\end{tabular}\n")
+    pr = d["prefilter_rates"]
+    rates = sorted(b["rate"] for b in pr["bugs"].values())
+    m("preBugs", len(rates))
+    m("preMinRate", pct(rates[0]))
+    m("preMedianRate", pct(rates[len(rates) // 2]))
+    m("preBelowSix", sum(1 for r in rates if r <= 0.10))
+    bm = pr["broken_minus_eps"]
+    m("preBrokenN", word_int(bm["n"]))
+    m("preBrokenLeFive", bm["le_005"])
+    m("preBrokenLeTwentyFive", word_int(bm["le_025"]))
+    m("preBrokenMedian", f"{bm['median']:.2f}")
+    cf = d["conditional_far"]
+    m("condLoops", cf["loops"])
+    for name in RULES:
+        m(f"condFar{KEY[name]}", pct(cf[name]))
+
+
 def ease2():
     """EASE round-1 follow-ups: results/ease2.json (ease_round2.py)."""
     d = load("results/ease2.json")
     v = d["variants"]
-    for name, t in (("SeqAccept", "Base"), ("set-aside refund", "Setaside"), ("prefilter 1", "Prefilter"),
-                    ("prefilter 1 + set-aside refund", "Both")):
+    for name, t in (("SeqAccept", "Base"), ("no refund at cap", "Nocap"), ("prefilter 1", "Prefilter"),
+                    ("earlier default", "Old")):
         for arm, at in (("natural", "Nat"), ("realflaky", "Rf"), ("realflaky_high", "RfHigh")):
             r = v[name][arm]
             m(f"var{t}{at}Frr", pct(r["frr"]))
@@ -1309,23 +1400,25 @@ def ease2():
         ci = "" if nf["far"] == 0 else f" {{\\scriptsize[{pct(nf['ci_bug'][0])}, {pct(nf['ci_bug'][1])}]}}"
         ub = pct(replay.cp_upper(kb, nb)) if kb == 0 else "--"
         r = nr[name]
-        rows += (f"{SHOW[name]} & {pct(nf['far'])}{ci} & {kb}/{nb} & {ub} & {pct(r['frr'])} & "
+        valid = {"B5 naive confidence sequence": "per cand.", "B6 SeqAccept, no refund": "yes", "SeqAccept": "yes"}.get(name, "no")
+        rows += (f"{SHOW[name]} & {valid} & {pct(nf['far'])}{ci} & {kb}/{nb} & {ub} & {pct(r['frr'])} & "
                  f"{pct(bm['injected-bernoulli'][name])} & {pct(bm['injected-markov'][name])} & "
                  f"{num(r['blocks_per_accept'])} & {num(r['blocks_per_loop'])} & {num(r['seconds_per_accept'] / 60, 2)}\\\\\n")
     rows += "\\midrule\n"
-    comp = {"Harmonic spending": "Harmonic spending", "Discard spending": "Discarding (unproved)",
+    comp = {"Harmonic spending": "Harmonic spending", "Discard spending": "Discarding",
             "Fixed-n Bonferroni-15 (1n0)": "Fixed-$n$ Bonf.-15 ($n_0$)", "Fixed-n Bonferroni-15 (4n0)": "Fixed-$n$ Bonf.-15 ($4n_0$)"}
     rr = next(k for k in nr if k.startswith("Rerun-"))
-    comp[rr] = rr.replace(" (all green)", " (no guarantee)")
+    comp[rr] = rr.replace(" (all green)", "")
+    cvalid = {"Discard spending": "unproved", rr: "no"}
     for key, label in comp.items():
         r = nr[key]
-        rows += (f"{label} & {pct(r['far'])} & & & {pct(r['frr'])} & & & {num(r['blocks_per_accept'])} & "
+        rows += (f"{label} & {cvalid.get(key, 'yes')} & {pct(r['far'])} & -- & -- & {pct(r['frr'])} & -- & -- & {num(r['blocks_per_accept'])} & "
                  f"{num(r['blocks_per_loop'])} & {num(r['seconds_per_accept'] / 60, 2)}\\\\\n")
     write("tab_outcome.tex",
-          "\\begin{tabular}{@{}lrrrrrr|rrr@{}}\n\\toprule\n"
-          "& \\multicolumn{4}{c}{\\textbf{Natural loops (" + str(len(nat)) + ")}} & \\multicolumn{2}{c|}{\\textbf{Injected FAR \\%}} & \\multicolumn{3}{c}{\\textbf{Cost, natural loops}}\\\\\n"
-          "\\cmidrule(lr){2-5}\\cmidrule(lr){6-7}\\cmidrule(lr){8-10}\n"
-          "\\textbf{Rule} & \\textbf{FAR \\%} {\\scriptsize[bug CI]} & \\textbf{Bugs hit} & \\textbf{Bugs UB \\%} & \\textbf{FRR \\%} & "
+          "\\begin{tabular}{@{}llrrrrrr|rrr@{}}\n\\toprule\n"
+          "& & \\multicolumn{4}{c}{\\textbf{Natural loops (" + str(len(nat)) + ")}} & \\multicolumn{2}{c|}{\\textbf{Injected FAR \\%}} & \\multicolumn{3}{c}{\\textbf{Cost, natural loops}}\\\\\n"
+          "\\cmidrule(lr){3-6}\\cmidrule(lr){7-8}\\cmidrule(lr){9-11}\n"
+          "\\textbf{Rule} & \\textbf{Valid} & \\textbf{FAR \\%} {\\scriptsize[bug CI]} & \\textbf{Bugs hit} & \\textbf{Bugs UB \\%} & \\textbf{FRR \\%} & "
           "\\textbf{Bern.} & \\textbf{Markov} & \\textbf{Blk/acc.} & \\textbf{Blk/loop} & \\textbf{Min/acc.}\\\\\n\\midrule\n"
           + rows + "\\bottomrule\n\\end{tabular}\n")
 
@@ -1351,6 +1444,7 @@ if __name__ == "__main__":
     ease()
     ease2()
     ease3()
+    ease4()
     exec_order()
     (GEN / "numbers.tex").write_text(
         "% generated by intern1/impl/paper_numbers.py; do not edit\n"

@@ -2,8 +2,8 @@
 
   uv run python ease_round2.py
 
-1. Refund at set-aside (capped) and a one-block prefilter before SeqAccept, on the recorded loops and the
-   real-flaky arm.
+1. SeqAccept (maximal refund at rejection and at the cap) against no refund at the cap, the earlier default
+   (capped refund, none at the cap) and a one-block prefilter, on the recorded loops and the real-flaky arm.
 2. Constructed worst case at p = 0.10 (eps + 0.05), the margin a practitioner cares about.
 3. Per-bug FAR on natural loops and the leave-one-repository-out range.
 4. Full-suite FAR by bug kind (natural loops).
@@ -21,8 +21,8 @@ from extra_analyses import extra_rules, fullsuite_episodes, replay_rules_fixed
 from rules import all_rules, seq_accept
 from sim import experiment
 
-VARIANTS = {"SeqAccept": {}, "set-aside refund": {"setaside_refund": True}, "prefilter 1": {"prefilter": 1},
-            "prefilter 1 + set-aside refund": {"prefilter": 1, "setaside_refund": True}}
+VARIANTS = {"SeqAccept": {}, "no refund at cap": {"setaside_refund": False}, "prefilter 1": {"prefilter": 1},
+            "earlier default": {"refund": True, "setaside_refund": False}}  # capped refund, none at the cap
 
 
 def bug_of(ep):

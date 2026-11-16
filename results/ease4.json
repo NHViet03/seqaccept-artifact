@@ -1,0 +1,554 @@
+{
+ "caps": {
+  "natural": {
+   "SeqAccept": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 219.31526315789475
+   },
+   "Bonferroni-15 spending": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 263.6226315789474
+   },
+   "Fixed-n Bonferroni-15": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 125.7057894736842
+   },
+   "Bonferroni-40 spending": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 284.6352631578947
+   },
+   "Fixed-n Bonferroni-40": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 144.8225381779884
+   },
+   "Bonferroni-100 spending": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 305.0678947368421
+   },
+   "Fixed-n Bonferroni-100": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 162.74618220115852
+   }
+  },
+  "late": {
+   "10": {
+    "SeqAccept": {
+     "accept": 0.9958333333333333,
+     "blocks_per_accept": 258.4573221757322
+    },
+    "Bonferroni-15 spending": {
+     "accept": 0.9825,
+     "blocks_per_accept": 334.5356234096692
+    },
+    "Fixed-n Bonferroni-15": {
+     "accept": 0.5516666666666666,
+     "blocks_per_accept": 153.56948640483384
+    },
+    "Bonferroni-40 spending": {
+     "accept": 0.97,
+     "blocks_per_accept": 374.7465635738832
+    },
+    "Fixed-n Bonferroni-40": {
+     "accept": 0.5320833333333334,
+     "blocks_per_accept": 176.62646828504307
+    },
+    "Bonferroni-100 spending": {
+     "accept": 0.95875,
+     "blocks_per_accept": 410.1116905693177
+    },
+    "Fixed-n Bonferroni-100": {
+     "accept": 0.51625,
+     "blocks_per_accept": 199.17594834543988
+    }
+   },
+   "20": {
+    "SeqAccept": {
+     "accept": 0.9958333333333333,
+     "blocks_per_accept": 410.9
+    },
+    "Bonferroni-15 spending": {
+     "accept": 0.0,
+     "blocks_per_accept": null
+    },
+    "Fixed-n Bonferroni-15": {
+     "accept": 0.0,
+     "blocks_per_accept": null
+    },
+    "Bonferroni-40 spending": {
+     "accept": 0.9754166666666667,
+     "blocks_per_accept": 515.2016232379325
+    },
+    "Fixed-n Bonferroni-40": {
+     "accept": 0.5429166666666667,
+     "blocks_per_accept": 211.46584804297774
+    },
+    "Bonferroni-100 spending": {
+     "accept": 0.9654166666666667,
+     "blocks_per_accept": 549.404833836858
+    },
+    "Fixed-n Bonferroni-100": {
+     "accept": 0.5266666666666666,
+     "blocks_per_accept": 235.53006329113924
+    }
+   },
+   "40": {
+    "SeqAccept": {
+     "accept": 0.9933333333333333,
+     "blocks_per_accept": 574.4920302013422
+    },
+    "Bonferroni-15 spending": {
+     "accept": 0.0,
+     "blocks_per_accept": null
+    },
+    "Fixed-n Bonferroni-15": {
+     "accept": 0.0,
+     "blocks_per_accept": null
+    },
+    "Bonferroni-40 spending": {
+     "accept": 0.0,
+     "blocks_per_accept": null
+    },
+    "Fixed-n Bonferroni-40": {
+     "accept": 0.0,
+     "blocks_per_accept": null
+    },
+    "Bonferroni-100 spending": {
+     "accept": 0.96375,
+     "blocks_per_accept": 722.5495028102032
+    },
+    "Fixed-n Bonferroni-100": {
+     "accept": 0.5195833333333333,
+     "blocks_per_accept": 297.1002405773857
+    }
+   }
+  }
+ },
+ "adversary": {
+  "near-15-none": {
+   "far": 0.019,
+   "reps": 1000
+  },
+  "near-15-max": {
+   "far": 0.043,
+   "reps": 1000
+  },
+  "near-15-capped": {
+   "far": 0.042,
+   "reps": 1000
+  },
+  "near-15-uncapped": {
+   "far": 0.109,
+   "reps": 1000
+  },
+  "near-15-online": {
+   "far": 0.019,
+   "reps": 1000
+  },
+  "switch-15-none": {
+   "far": 0.016,
+   "reps": 1000
+  },
+  "switch-15-max": {
+   "far": 0.029,
+   "reps": 1000
+  },
+  "switch-15-capped": {
+   "far": 0.028,
+   "reps": 1000
+  },
+  "switch-15-uncapped": {
+   "far": 0.112,
+   "reps": 1000
+  },
+  "switch-15-online": {
+   "far": 0.02,
+   "reps": 1000
+  },
+  "near-50-none": {
+   "far": 0.02666666666666667,
+   "reps": 300
+  },
+  "near-50-max": {
+   "far": 0.03666666666666667,
+   "reps": 300
+  },
+  "near-50-capped": {
+   "far": 0.023333333333333334,
+   "reps": 300
+  },
+  "near-50-uncapped": {
+   "far": 0.23333333333333334,
+   "reps": 300
+  },
+  "near-50-online": {
+   "far": 0.016666666666666666,
+   "reps": 300
+  },
+  "switch-50-none": {
+   "far": 0.013333333333333334,
+   "reps": 300
+  },
+  "switch-50-max": {
+   "far": 0.03,
+   "reps": 300
+  },
+  "switch-50-capped": {
+   "far": 0.04,
+   "reps": 300
+  },
+  "switch-50-uncapped": {
+   "far": 0.25333333333333335,
+   "reps": 300
+  },
+  "switch-50-online": {
+   "far": 0.016666666666666666,
+   "reps": 300
+  }
+ },
+ "dependence": {
+  "candidates": 324,
+  "q90": 0.07032385085181614,
+  "upper_mean": 0.003240251724156229,
+  "far": {
+   "zero": {
+    "1": 0.0015,
+    "15": 0.0075
+   },
+   "upper_mean": {
+    "1": 0.002,
+    "15": 0.009
+   },
+   "q90": {
+    "1": 0.0045,
+    "15": 0.018
+   }
+  }
+ },
+ "breakeven": {
+  "block_s": 3.1122400467699505,
+  "full_s": 3.64377002997003,
+  "sa_blocks_per_accept": 290.8942105263158,
+  "B1": {
+   "runs_per_accept": 6.428786359077232,
+   "ratio": 45.2486976979073,
+   "suite_tests": 1447.9583263330337
+  },
+  "B2": {
+   "runs_per_accept": 9.217436429683445,
+   "ratio": 31.559123053947225,
+   "suite_tests": 1009.8919377263112
+  }
+ },
+ "amortised": {
+  "B4 peeking Clopper-Pearson": {
+   "none": 105.31003678402523,
+   "per_task": 176.7761429322123,
+   "per_loop": 677.0388859695219
+  },
+  "B5 naive confidence sequence": {
+   "none": 203.96526315789473,
+   "per_task": 275.5442105263158,
+   "per_loop": 776.5968421052631
+  },
+  "SeqAccept": {
+   "none": 219.31526315789475,
+   "per_task": 290.8942105263158,
+   "per_loop": 791.9468421052632
+  }
+ },
+ "realflaky_tasks": {
+  "anonapi@realflaky": {
+   "p0": 0.0575,
+   "loops": 8,
+   "near_broken": 0,
+   "far_sa": 0.0,
+   "far_b4": 0.0,
+   "frr_sa": 0.0,
+   "far_sa_unamb": 0.0,
+   "far_b4_unamb": 0.0
+  },
+  "anonapi_b2@realflaky": {
+   "p0": 0.0575,
+   "loops": 8,
+   "near_broken": 0,
+   "far_sa": 0.0,
+   "far_b4": 0.10625000000000001,
+   "frr_sa": 0.0,
+   "far_sa_unamb": 0.0,
+   "far_b4_unamb": 0.10625000000000001
+  },
+  "filestack@realflaky": {
+   "p0": 0.065,
+   "loops": 8,
+   "near_broken": 0,
+   "far_sa": 0.0,
+   "far_b4": 0.0,
+   "frr_sa": 0.0,
+   "far_sa_unamb": 0.0,
+   "far_b4_unamb": 0.0
+  },
+  "filestack_b2@realflaky": {
+   "p0": 0.065,
+   "loops": 8,
+   "near_broken": 0,
+   "far_sa": 0.0,
+   "far_b4": 0.0,
+   "frr_sa": 0.0,
+   "far_sa_unamb": 0.0,
+   "far_b4_unamb": 0.0
+  },
+  "freezegun_b2@realflaky": {
+   "p0": 0.105,
+   "loops": 8,
+   "near_broken": 0,
+   "far_sa": 0.0,
+   "far_b4": 0.0,
+   "frr_sa": 0.00625,
+   "far_sa_unamb": 0.0,
+   "far_b4_unamb": 0.0
+  },
+  "kanren@realflaky": {
+   "p0": 0.015,
+   "loops": 8,
+   "near_broken": 0,
+   "far_sa": 0.0,
+   "far_b4": 0.0,
+   "frr_sa": 0.0,
+   "far_sa_unamb": 0.0,
+   "far_b4_unamb": 0.0
+  },
+  "penman@realflaky": {
+   "p0": 0.2375,
+   "loops": 8,
+   "near_broken": 0,
+   "far_sa": 0.0,
+   "far_b4": 0.01875,
+   "frr_sa": 0.09375,
+   "far_sa_unamb": 0.0,
+   "far_b4_unamb": 0.01875
+  },
+  "penman_b2@realflaky": {
+   "p0": 0.2375,
+   "loops": 8,
+   "near_broken": 0,
+   "far_sa": 0.0,
+   "far_b4": 0.0,
+   "frr_sa": 0.2875,
+   "far_sa_unamb": 0.0,
+   "far_b4_unamb": 0.0
+  },
+  "pymeterbus@realflaky": {
+   "p0": 0.01,
+   "loops": 8,
+   "near_broken": 0,
+   "far_sa": 0.0,
+   "far_b4": 0.0,
+   "frr_sa": 0.0,
+   "far_sa_unamb": 0.0,
+   "far_b4_unamb": 0.0
+  },
+  "pymeterbus_b2@realflaky": {
+   "p0": 0.01,
+   "loops": 8,
+   "near_broken": 0,
+   "far_sa": 0.0,
+   "far_b4": 0.0,
+   "frr_sa": 0.0,
+   "far_sa_unamb": 0.0,
+   "far_b4_unamb": 0.0
+  },
+  "qtaf@realflaky": {
+   "p0": 0.03,
+   "loops": 8,
+   "near_broken": 0,
+   "far_sa": 0.0,
+   "far_b4": 0.0,
+   "frr_sa": 0.0,
+   "far_sa_unamb": 0.0,
+   "far_b4_unamb": 0.0
+  },
+  "yamicache@realflaky": {
+   "p0": 0.2,
+   "loops": 8,
+   "near_broken": 20,
+   "far_sa": 0.03125,
+   "far_b4": 0.125,
+   "frr_sa": 0.29375,
+   "far_sa_unamb": 0.0,
+   "far_b4_unamb": 0.00625
+  },
+  "yamicache_b2@realflaky": {
+   "p0": 0.2025,
+   "loops": 8,
+   "near_broken": 18,
+   "far_sa": 0.018750000000000003,
+   "far_b4": 0.018750000000000003,
+   "frr_sa": 0.11875,
+   "far_sa_unamb": 0.0,
+   "far_b4_unamb": 0.0
+  }
+ },
+ "realflaky_unamb": {
+  "B4 peeking Clopper-Pearson": {
+   "far": 0.010096153846153847,
+   "far_plain": 0.020673076923076922
+  },
+  "SeqAccept": {
+   "far": 0.0,
+   "far_plain": 0.0038461538461538464
+  }
+ },
+ "prefilter_rates": {
+  "bugs": {
+   "anonapi": {
+    "rate": 0.3,
+    "blocks": 100,
+    "p0": 0.0
+   },
+   "anonapi_b2": {
+    "rate": 0.15,
+    "blocks": 100,
+    "p0": 0.0
+   },
+   "filestack": {
+    "rate": 0.25,
+    "blocks": 100,
+    "p0": 0.0
+   },
+   "filestack_b2": {
+    "rate": 0.95,
+    "blocks": 100,
+    "p0": 0.0
+   },
+   "freezegun": {
+    "rate": 0.68,
+    "blocks": 100,
+    "p0": 0.0
+   },
+   "freezegun_b2": {
+    "rate": 0.38,
+    "blocks": 100,
+    "p0": 0.0
+   },
+   "kanren": {
+    "rate": 0.24,
+    "blocks": 100,
+    "p0": 0.0
+   },
+   "kanren_b2": {
+    "rate": 1,
+    "blocks": 100,
+    "p0": 0.0
+   },
+   "mdutils": {
+    "rate": 0.47,
+    "blocks": 100,
+    "p0": 0.0
+   },
+   "mdutils_b2": {
+    "rate": 0.79,
+    "blocks": 100,
+    "p0": 0.0
+   },
+   "pdir2": {
+    "rate": 0.35,
+    "blocks": 100,
+    "p0": 0.0
+   },
+   "pdir2_b2": {
+    "rate": 1,
+    "blocks": 100,
+    "p0": 0.0
+   },
+   "penman": {
+    "rate": 0.26,
+    "blocks": 100,
+    "p0": 0.0
+   },
+   "penman_b2": {
+    "rate": 0.87,
+    "blocks": 100,
+    "p0": 0.0
+   },
+   "pymeterbus": {
+    "rate": 0.51,
+    "blocks": 100,
+    "p0": 0.0
+   },
+   "pymeterbus_b2": {
+    "rate": 1,
+    "blocks": 100,
+    "p0": 0.0
+   },
+   "qtaf": {
+    "rate": 0.17,
+    "blocks": 100,
+    "p0": 0.0
+   },
+   "qtaf_b2": {
+    "rate": 0.04,
+    "blocks": 100,
+    "p0": 0.0
+   },
+   "yamicache": {
+    "rate": 0.17,
+    "blocks": 100,
+    "p0": 0.01
+   },
+   "yamicache_b2": {
+    "rate": 0.22,
+    "blocks": 100,
+    "p0": 0.0
+   }
+  },
+  "broken_minus_eps": {
+   "n": 481,
+   "le_005": 3,
+   "le_025": 64,
+   "median": 0.95
+  }
+ },
+ "worst010": {
+  "1": {
+   "B4 peeking Clopper-Pearson": 0.003,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  },
+  "5": {
+   "B4 peeking Clopper-Pearson": 0.009,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  },
+  "15": {
+   "B4 peeking Clopper-Pearson": 0.033,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  },
+  "50": {
+   "B4 peeking Clopper-Pearson": 0.09,
+   "B5 naive confidence sequence": 0.0025,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  }
+ },
+ "conditional_far": {
+  "loops": 90,
+  "B1 stop at first pass": 0.3838888888888889,
+  "B2 rerun-3 all green": 0.24944444444444444,
+  "B3 majority of 5": 0.3461111111111111,
+  "B4 peeking Clopper-Pearson": 0.0016666666666666668,
+  "B5 naive confidence sequence": 0.0,
+  "B6 SeqAccept, no refund": 0.0,
+  "SeqAccept": 0.0
+ }
+}

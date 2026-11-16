@@ -66,18 +66,18 @@
   ],
   "worst": {
     "15": {
-      "kelly": 0.015,
+      "kelly": 0.039,
       "mixture": 0.026
     },
     "50": {
-      "kelly": 0.015,
-      "mixture": 0.025
+      "kelly": 0.045,
+      "mixture": 0.0275
     }
   },
   "recorded_mixture": {
     "far": 0.0,
     "frr": 0.0,
-    "blocks_per_accept": 256.5105726872247,
+    "blocks_per_accept": 256.46916299559473,
     "late_accept": 0.8
   },
   "sweep": [
@@ -87,21 +87,21 @@
       "recorded": {
         "far": 0.0,
         "frr": 0.0,
-        "blocks_per_accept": 283.0848017621145,
+        "blocks_per_accept": 283.37665198237886,
         "late_accept": 0.8
       },
       "late": {
         "10": {
           "far": 0.0,
-          "frr": 0.010833333333333334,
-          "blocks_per_accept": 287.63437236731255,
-          "late_accept": 0.9891666666666666
+          "frr": 0.009583333333333334,
+          "blocks_per_accept": 286.381994110223,
+          "late_accept": 0.9904166666666666
         },
         "40": {
           "far": 0.0,
-          "frr": 0.0075,
-          "blocks_per_accept": 595.9105793450882,
-          "late_accept": 0.9925
+          "frr": 0.007083333333333333,
+          "blocks_per_accept": 594.3117918590012,
+          "late_accept": 0.9929166666666667
         }
       }
     },
@@ -111,21 +111,21 @@
       "recorded": {
         "far": 0.0,
         "frr": 0.0,
-        "blocks_per_accept": 244.3193832599119,
+        "blocks_per_accept": 244.0374449339207,
         "late_accept": 0.8
       },
       "late": {
         "10": {
           "far": 0.0,
-          "frr": 0.00625,
-          "blocks_per_accept": 250.01719077568134,
-          "late_accept": 0.99375
+          "frr": 0.005416666666666667,
+          "blocks_per_accept": 248.39840804356933,
+          "late_accept": 0.9945833333333334
         },
         "40": {
           "far": 0.0,
-          "frr": 0.009166666666666667,
-          "blocks_per_accept": 536.4697224558453,
-          "late_accept": 0.9908333333333333
+          "frr": 0.007916666666666667,
+          "blocks_per_accept": 518.4981100377993,
+          "late_accept": 0.9920833333333333
         }
       }
     },
@@ -135,21 +135,21 @@
       "recorded": {
         "far": 0.0,
         "frr": 0.0,
-        "blocks_per_accept": 258.2394273127753,
+        "blocks_per_accept": 257.9066079295154,
         "late_accept": 0.8
       },
       "late": {
         "10": {
           "far": 0.0,
-          "frr": 0.004583333333333333,
-          "blocks_per_accept": 262.7580577647551,
-          "late_accept": 0.9954166666666666
+          "frr": 0.004166666666666667,
+          "blocks_per_accept": 258.4573221757322,
+          "late_accept": 0.9958333333333333
         },
         "40": {
           "far": 0.0,
-          "frr": 0.0075,
-          "blocks_per_accept": 586.4966414777498,
-          "late_accept": 0.9925
+          "frr": 0.006666666666666667,
+          "blocks_per_accept": 574.4920302013422,
+          "late_accept": 0.9933333333333333
         }
       }
     },
@@ -159,21 +159,21 @@
       "recorded": {
         "far": 0.0,
         "frr": 0.0,
-        "blocks_per_accept": 276.3671806167401,
+        "blocks_per_accept": 276.10066079295154,
         "late_accept": 0.8
       },
       "late": {
         "10": {
           "far": 0.0,
-          "frr": 0.005416666666666667,
-          "blocks_per_accept": 281.43485546711355,
-          "late_accept": 0.9945833333333334
+          "frr": 0.004166666666666667,
+          "blocks_per_accept": 275.9284518828452,
+          "late_accept": 0.9958333333333333
         },
         "40": {
           "far": 0.0,
-          "frr": 0.011666666666666667,
-          "blocks_per_accept": 663.7065767284992,
-          "late_accept": 0.9883333333333333
+          "frr": 0.005416666666666667,
+          "blocks_per_accept": 648.412232928362,
+          "late_accept": 0.9945833333333334
         }
       }
     },
@@ -181,23 +181,23 @@
       "gamma": 0.75,
       "rho": 20,
       "recorded": {
-        "far": 0.0001524390243902439,
+        "far": 0.0,
         "frr": 0.0,
-        "blocks_per_accept": 243.1372246696035,
+        "blocks_per_accept": 243.3570484581498,
         "late_accept": 0.8
       },
       "late": {
         "10": {
           "far": 0.0,
           "frr": 0.004166666666666667,
-          "blocks_per_accept": 255.0673640167364,
+          "blocks_per_accept": 245.60502092050208,
           "late_accept": 0.9958333333333333
         },
         "40": {
           "far": 0.0,
-          "frr": 0.01,
-          "blocks_per_accept": 591.7175925925926,
-          "late_accept": 0.99
+          "frr": 0.00625,
+          "blocks_per_accept": 567.2092243186582,
+          "late_accept": 0.99375
         }
       }
     }

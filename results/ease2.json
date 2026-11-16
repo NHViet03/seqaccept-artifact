@@ -4,6 +4,75 @@
    "natural": {
     "far": 0.0,
     "frr": 0.0,
+    "blocks_per_accept": 219.31526315789475,
+    "blocks_per_loop": 153.19816176470587,
+    "seconds_per_accept": 657.9665055026273
+   },
+   "realflaky": {
+    "far": 0.0038461538461538464,
+    "frr": 0.0955223880597015,
+    "blocks_per_accept": 2279.0892430278886,
+    "blocks_per_loop": 1375.1235576923077,
+    "seconds_per_accept": 5009.272143350381
+   },
+   "realflaky_high": {
+    "far": 0.0125,
+    "frr": 0.30238095238095236,
+    "blocks_per_accept": 6520.680379746836,
+    "blocks_per_loop": 3219.5859375,
+    "seconds_per_accept": 16396.638384231836
+   }
+  },
+  "no refund at cap": {
+   "natural": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 219.31526315789475,
+    "blocks_per_loop": 153.19816176470587,
+    "seconds_per_accept": 657.9665055026273
+   },
+   "realflaky": {
+    "far": 0.002403846153846154,
+    "frr": 0.10895522388059702,
+    "blocks_per_accept": 2549.728606356968,
+    "blocks_per_loop": 1504.0947115384615,
+    "seconds_per_accept": 5419.865845792342
+   },
+   "realflaky_high": {
+    "far": 0.0078125,
+    "frr": 0.33571428571428574,
+    "blocks_per_accept": 7780.7054794520545,
+    "blocks_per_loop": 3549.946875,
+    "seconds_per_accept": 18787.380302079593
+   }
+  },
+  "prefilter 1": {
+   "natural": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 198.8278947368421,
+    "blocks_per_loop": 138.88713235294117,
+    "seconds_per_accept": 612.7465906144703
+   },
+   "realflaky": {
+    "far": 0.004326923076923077,
+    "frr": 0.11716417910447761,
+    "blocks_per_accept": 2012.7134693877551,
+    "blocks_per_loop": 1185.3721153846154,
+    "seconds_per_accept": 4692.588208934536
+   },
+   "realflaky_high": {
+    "far": 0.0125,
+    "frr": 0.3595238095238095,
+    "blocks_per_accept": 5926.568965517241,
+    "blocks_per_loop": 2685.4765625,
+    "seconds_per_accept": 16202.261362559775
+   }
+  },
+  "earlier default": {
+   "natural": {
+    "far": 0.0,
+    "frr": 0.0,
     "blocks_per_accept": 219.45894736842106,
     "blocks_per_loop": 153.29852941176472,
     "seconds_per_accept": 658.1459094697325
@@ -21,75 +90,6 @@
     "blocks_per_accept": 7780.708904109589,
     "blocks_per_loop": 3549.9484375,
     "seconds_per_accept": 18787.382839553906
-   }
-  },
-  "set-aside refund": {
-   "natural": {
-    "far": 0.0,
-    "frr": 0.0,
-    "blocks_per_accept": 219.45894736842106,
-    "blocks_per_loop": 153.29852941176472,
-    "seconds_per_accept": 658.1459094697325
-   },
-   "realflaky": {
-    "far": 0.004326923076923077,
-    "frr": 0.09925373134328358,
-    "blocks_per_accept": 2377.768243785084,
-    "blocks_per_loop": 1425.5177884615384,
-    "seconds_per_accept": 5089.583041687832
-   },
-   "realflaky_high": {
-    "far": 0.0140625,
-    "frr": 0.3119047619047619,
-    "blocks_per_accept": 6971.857605177994,
-    "blocks_per_loop": 3366.1,
-    "seconds_per_accept": 16904.33960597009
-   }
-  },
-  "prefilter 1": {
-   "natural": {
-    "far": 0.0,
-    "frr": 0.0,
-    "blocks_per_accept": 199.68736842105264,
-    "blocks_per_loop": 139.4875,
-    "seconds_per_accept": 613.3501966302598
-   },
-   "realflaky": {
-    "far": 0.0033653846153846156,
-    "frr": 0.13432835820895522,
-    "blocks_per_accept": 2219.8273260687342,
-    "blocks_per_loop": 1273.1990384615385,
-    "seconds_per_accept": 5083.171232552215
-   },
-   "realflaky_high": {
-    "far": 0.009375000000000001,
-    "frr": 0.3952380952380952,
-    "blocks_per_accept": 6907.582706766917,
-    "blocks_per_loop": 2870.9640625,
-    "seconds_per_accept": 18613.676074444833
-   }
-  },
-  "prefilter 1 + set-aside refund": {
-   "natural": {
-    "far": 0.0,
-    "frr": 0.0,
-    "blocks_per_accept": 199.68736842105264,
-    "blocks_per_loop": 139.4875,
-    "seconds_per_accept": 613.3501966302598
-   },
-   "realflaky": {
-    "far": 0.0038461538461538464,
-    "frr": 0.11865671641791045,
-    "blocks_per_accept": 2054.500408830744,
-    "blocks_per_loop": 1208.0067307692307,
-    "seconds_per_accept": 4812.635543765177
-   },
-   "realflaky_high": {
-    "far": 0.010937500000000001,
-    "frr": 0.36428571428571427,
-    "blocks_per_accept": 6047.701388888889,
-    "blocks_per_loop": 2721.465625,
-    "seconds_per_accept": 16693.034038549795
    }
   }
  },
@@ -411,9 +411,9 @@
   "SeqAccept": {
    "far": 0.0,
    "frr": 0.0,
-   "blocks_per_accept": 219.45894736842106,
-   "blocks_per_loop": 153.29852941176472,
-   "seconds_per_accept": 658.1459094697325
+   "blocks_per_accept": 219.31526315789475,
+   "blocks_per_loop": 153.19816176470587,
+   "seconds_per_accept": 657.9665055026273
   },
   "Harmonic spending": {
    "far": 0.0,

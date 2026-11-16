@@ -28,6 +28,8 @@ step "prefilter, refund at cap, per bug, competitors      -> results/ease2.json"
 "$PY" ease_round2.py
 step "clustered intervals, near-eps dependence, eps from L, calibrated cost -> results/ease3.json"
 "$PY" ease_round3.py
+step "attempt caps, adversary, dependence to FAR, break-even, per task -> results/ease4.json"
+"$PY" ease_round4.py
 step "paper numbers, tables and figures                    -> ${SEQACCEPT_PAPER_DIR:-paper_out}"
 "$PY" paper_numbers.py
 echo; echo "done"

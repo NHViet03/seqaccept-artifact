@@ -63,17 +63,31 @@ def mix_lambdas(eps, k=MIX_K):
     return [(i / k) * 0.9 / (1 - eps) for i in range(1, k + 1)]
 
 
-def seq_accept(n, block, alpha=0.05, eps=0.05, gamma=0.5, refund=True, max_blocks=800, reject_at=20, bet="kelly",
-               setaside_refund=False, prefilter=0):
+def _refund(mode, alpha_j, E, peak):
+    """r_j returned to the pool when a candidate is rejected or set aside."""
+    if mode == "max":  # Theorem 4.2's bound: W + alpha_j E stays a supermartingale
+        return alpha_j * min(E, 1.0)
+    if mode == "uncapped":  # the online subset's refund (D20, D24): can exceed the stake, outside the proof
+        return alpha_j * (1 - alpha_j * peak)
+    if mode:  # pre-round-3 default: s_j = alpha_j * peak, never more than the wallet (D24)
+        return alpha_j * min(E, 1 - alpha_j * peak)
+    return 0.0  # B6
+
+
+def seq_accept(n, block, alpha=0.05, eps=0.05, gamma=0.5, refund="max", max_blocks=800, reject_at=20, bet="kelly",
+               setaside_refund=True, prefilter=0):
     """SeqAccept (refund=False gives B6). One betting wallet per candidate, error spent from a shared pool.
 
     Accept j when its wallet E >= 1/alpha_j; reject when the opposing wallet R >= reject_at (an anytime-valid
-    "lower confidence bound > eps" at level 1/reject_at, Alg. 1 line 9). Only rejected candidates refund
-    alpha_j * min(E, 1 - s_j). Every candidate starts from wallet 1: evidence is never carried between candidates.
+    "lower confidence bound > eps" at level 1/reject_at, Alg. 1 line 9). A rejected candidate, and one set aside at the
+    block cap, refunds r_j = alpha_j * min(E, 1), the largest refund Theorem 4.2 admits (EASE round 3: the default).
+    refund=True is the earlier capped refund alpha_j * min(E, 1 - alpha_j G_j); refund="uncapped" is the online
+    subset's alpha_j (1 - alpha_j G_j), outside the proof; refund=False gives B6 (no refund anywhere).
+    Every candidate starts from wallet 1: evidence is never carried between candidates.
     bet="mixture" replaces the plug-in Kelly accept wallet by the average of fixed-bet wallets (mix_lambdas); each is a
     nonnegative supermartingale under p > eps, so their average is too, and Theorem 6 applies unchanged.
-    setaside_refund=True also refunds alpha_j * min(E, 1 - s_j) when a candidate reaches the block cap: capped by the
-    wallet, so the proof's step (c) covers it (unlike the uncapped give-up refund of Alg. 1 line 14).
+    setaside_refund=True also refunds at the block cap, with the same formula as at rejection (for "max" and the capped
+    refund the proof's step (d) covers it); setaside_refund=False with refund=True is the pre-round-3 default.
     prefilter=k runs k blocks first and skips a candidate that fails any of them, before it gets a slice: the skip
     depends only on blocks drawn after the candidate is fixed, so the stream it leaves is still adaptive, and the
     accept decision uses fresh blocks.
@@ -111,17 +125,11 @@ def seq_accept(n, block, alpha=0.05, eps=0.05, gamma=0.5, refund=True, max_block
             if E >= 1 / alpha_j:
                 return Result(j, blocks)
             if R >= reject_at:  # Alg. 1 line 9: rejected
-                if refund == "max":  # the largest refund Theorem 6 allows: alpha_j * min(E, 1), no near-miss discount
-                    pool += alpha_j * min(E, 1.0)
-                elif refund == "uncapped":  # the refund the online subset ran (D20, D24): not covered by Theorem 6
-                    pool += alpha_j * (1 - alpha_j * peak)
-                elif refund:  # line 11: refund the unspent part, s_j = alpha_j * peak, never more than the wallet
-                    pool += alpha_j * min(E, 1 - alpha_j * peak)  # holds (D24): W + alpha_j E stays a supermartingale
+                pool += _refund(refund, alpha_j, E, peak)
                 break
-        else:
-            if setaside_refund:  # capped refund at the block cap (EASE review); the default keeps none
-                pool += alpha_j * min(E, 1 - alpha_j * peak)
-        # out of blocks: by default NO refund, unlike Alg. 1 line 14 (uncapped; it lifts FAR above alpha)
+        else:  # set aside at the block cap
+            if setaside_refund:
+                pool += _refund(refund, alpha_j, E, peak)
     return Result(None, blocks)
 
 

@@ -69,6 +69,10 @@ TRACE = {  # every public function/class in impl/*.py -> where the paper or the 
     "ease_round3.run": "EASE round 2: replay one rule per episode",
     "ease_round3.ordered_replay": "EASE round 2: replay that keeps each pool's execution order",
     "ease_round3.near_eps_dependence": "EASE round 2: runs test and lag-1 on candidates failing in (p0, 0.5]",
+    "ease_round4.cap_rules": "EASE round 3: Bonferroni with attempt caps 15, 40, 100 against SeqAccept",
+    "ease_round4.adversary": "EASE round 3: white-box adaptive adversary against the refund variants",
+    "ease_round4.ambiguous_labels": "EASE round 3: labels with >5% posterior chance of being wrong set Marginal",
+    "ease_round4.ols": "EASE round 3: least-squares block cost model (overhead + per-test seconds)",
     "exec_order.done_seeds": "external review 2: resumable execution-order log",
     "exec_order.run_task": "external review 2: blocks of the original code with start/end time, worker and load",
     "exec_order.summarize": "external review 2: independence in execution order vs seed order, busy vs quiet host",
@@ -276,9 +280,9 @@ def test_every_public_function_and_class_is_traced_and_nothing_traced_is_missing
 def test_paper_constants():
     d = {k: v.default for k, v in inspect.signature(seq_accept).parameters.items() if v.default is not inspect._empty}
     assert d == {"alpha": 0.05, "eps": 0.05, "gamma": 0.5,  # §5.5
-                 "refund": True,
+                 "refund": "max",  # EASE round 3: r_j = alpha_j min(E, 1), Theorem 4.2's bound
                  "max_blocks": 800, "reject_at": 20, "bet": "kelly",  # D1, D2; the paper's wallet is Kelly
-                 "setaside_refund": False, "prefilter": 0}  # EASE-review variants are off by default
+                 "setaside_refund": True, "prefilter": 0}  # refund also at the block cap; prefilter off
     assert list(rules.all_rules()) == ["B1 stop at first pass", "B2 rerun-3 all green", "B3 majority of 5",
                                        "B4 peeking Clopper-Pearson", "B5 naive confidence sequence",
                                        "B6 SeqAccept, no refund", "SeqAccept"]  # §9.2, "we report k=3"; SKIPPED
@@ -296,9 +300,10 @@ def test_labels_are_section_8(p, want):  # Correct p < 0.01, Broken p > 0.05
     assert sim.label(p) == want
 
 
-def algorithm_1(n, block, alpha=0.05, eps=0.05, gamma=0.5, refund=True, cap=800, reject_at=20, line_14=False,
+def algorithm_1(n, block, alpha=0.05, eps=0.05, gamma=0.5, refund="max", cap=800, reject_at=20, line_14=True,
                 on_refund=None):
-    """Algorithm 1 transcribed from the paper; D1-D3 are marked. line_14=True is the paper's give-up refund."""
+    """Algorithm 1 transcribed from the paper (EASE round 3): r_j = alpha_j min(E, 1) at rejection (line 11) and at
+    the cap (line 14). refund=True is the earlier capped refund alpha_j min(E, 1 - alpha_j G_j)."""
     W, blocks = alpha, 0  # Require: budget pool W <- alpha
     for j in range(n):  # line 1
         a_j = gamma * W  # line 2
@@ -317,14 +322,14 @@ def algorithm_1(n, block, alpha=0.05, eps=0.05, gamma=0.5, refund=True, cap=800,
                 return Result(j, blocks)  # line 8
             if R >= reject_at:  # line 9 (D2)
                 if refund:
-                    r = a_j * min(E, 1 - a_j * G)  # line 11, s_j = alpha_j G_j, capped at the wallet (D24)
+                    r = a_j * min(E, 1.0) if refund == "max" else a_j * min(E, 1 - a_j * G)  # line 11
                     if on_refund:
                         on_refund(a_j, E, r)
                     W += r
                 break  # line 12
         else:
-            if refund and line_14:
-                W += a_j * (1 - a_j * G)  # line 14 (D3: off)
+            if refund and line_14:  # line 14: set aside at the cap, same refund
+                W += a_j * min(E, 1.0) if refund == "max" else a_j * min(E, 1 - a_j * G)
     return Result(None, blocks)
 
 
@@ -339,7 +344,7 @@ def scripted(outcomes):
 
 
 @pytest.mark.parametrize("seed", range(30))
-@pytest.mark.parametrize("refund", [True, False])
+@pytest.mark.parametrize("refund", ["max", True, False])
 def test_seq_accept_is_algorithm_1(seed, refund):
     rng = random.Random(seed)
     p0 = rng.choice([0.0, 0.02, 0.05])
@@ -472,8 +477,9 @@ def test_alg1_line_14_refund_breaks_validity():  # D3
         rng = random.Random(0)
         return sum(rule(20, lambda j: int(rng.random() < 0.11), eps=0.10).accepted is not None for _ in range(300)) / 300
 
-    assert far(seq_accept) <= 0.05
-    assert far(lambda n, b, **kw: algorithm_1(n, b, line_14=True, **kw)) > 0.05
+    assert far(seq_accept) <= 0.05  # the default: alpha_j min(E, 1) at rejection and at the cap
+    assert far(lambda n, b, **kw: algorithm_1(n, b, line_14=True, **kw)) <= 0.05
+    assert far(lambda n, b, **kw: seq_accept(n, b, refund="uncapped", **kw)) > 0.05  # the uncapped give-up refund
 
 
 def test_blocks_are_random_subsets_of_8_to_32_tests_drawn_from_the_seed():  # Def. 4, §5.5, D12
@@ -560,7 +566,7 @@ def test_max_refund_returns_alpha_j_min_wallet_one():  # EASE review: the maxima
     seq = iter([1] * 60 + [0] * 5000)
     r_max = rules.seq_accept(2, lambda j: next(seq) if j == 0 else 0, refund="max")
     seq = iter([1] * 60 + [0] * 5000)
-    r_cap = rules.seq_accept(2, lambda j: next(seq) if j == 0 else 0)
+    r_cap = rules.seq_accept(2, lambda j: next(seq) if j == 0 else 0, refund=True)
     assert r_max.accepted == r_cap.accepted == 1 and r_max.blocks <= r_cap.blocks
 
 
@@ -599,3 +605,12 @@ def test_ease3_cp_lower_and_ordered_replay():  # EASE round 2
     first = []
     ordered_replay(lambda n, block: first.append([block(0) for _ in range(4)]) or Result(None, 4), ep, 3, seed=1)
     assert all(sorted(f) == [0, 0, 1, 1] for f in first)  # each run reads the whole pool once, in circular order
+
+
+def test_ease4_adversary_cost_model_and_ambiguous_labels():  # EASE round 3
+    from ease_round4 import adversary, ambiguous_labels, ols
+    assert ols([0, 1, 2], [1, 3, 5]) == (1, 2)
+    assert adversary("max", "near", 3, 30, seed=1) <= 0.2 and adversary(False, "switch", 2, 10, seed=1) >= 0.0
+    ep = {"p0": 0.0, "stream": ["a", "b", "c"],
+          "fixes": {"a": {"truth": [0] * 200}, "b": {"truth": [1] * 100 + [0] * 100}, "c": {"truth": [1] * 11 + [0] * 189}}}
+    assert ambiguous_labels(ep) == ["correct", "broken", "marginal"]  # c: 5.5% fails, Broken but close to eps

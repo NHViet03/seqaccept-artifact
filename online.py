@@ -80,7 +80,7 @@ def online_episode(task, llm, run, max_attempts=MAX_ATTEMPTS, truth_blocks=TRUTH
         return res.failed
 
     try:
-        accepted = seq_accept(max_attempts, block, eps=eps, refund="uncapped").accepted  # the rule the recorded online runs used (D20, D24)
+        accepted = seq_accept(max_attempts, block, eps=eps, refund="uncapped", setaside_refund=False).accepted  # the rule the recorded online runs used (D20, D24)
     except OutOfAttempts:
         accepted = None
     out = {"p0": p0, "eps": eps, "attempts": attempts, "accepted": accepted, "label": None, "truth_rate": None,

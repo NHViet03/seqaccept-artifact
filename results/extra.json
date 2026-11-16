@@ -1101,8 +1101,8 @@
       "n": 50,
       "reps": 1000,
       "far": {
-        "SeqAccept": 0.013,
-        "SeqAccept, uncapped refund": 0.011,
+        "SeqAccept": 0.021,
+        "SeqAccept, uncapped refund": 0.143,
         "B6 SeqAccept, no refund": 0.004,
         "Harmonic spending": 0.004,
         "Discard spending": 0.02,
@@ -1118,8 +1118,8 @@
       "n": 50,
       "reps": 1000,
       "far": {
-        "SeqAccept": 0.012,
-        "SeqAccept, uncapped refund": 0.013,
+        "SeqAccept": 0.018,
+        "SeqAccept, uncapped refund": 0.137,
         "B6 SeqAccept, no refund": 0.009,
         "Harmonic spending": 0.008,
         "Discard spending": 0.028,
@@ -1339,12 +1339,12 @@
             0.2588655508930523
           ]
         },
-        "frr": 0.002898550724637681,
+        "frr": 0.0026570048309178746,
         "marginal_accept": 0.023728813559322035,
-        "blocks_per_accept": 177.06701030927834,
+        "blocks_per_accept": 177.15975638322791,
         "late_accept": 1.0,
-        "budget_seconds": 260.2987957118645,
-        "time_to_accept_min": 5.478817794593833
+        "budget_seconds": 260.43279437966106,
+        "time_to_accept_min": 5.480764454034473
       },
       "Harmonic spending": {
         "calibration": 0.0,
@@ -1583,8 +1583,8 @@
         "false_accepts": 4
       },
       "SeqAccept": {
-        "far": 0.0002573529411764706,
-        "false_accepts": 7
+        "far": 0.00040441176470588236,
+        "false_accepts": 11
       }
     },
     "0.9": {
@@ -1613,8 +1613,8 @@
         "false_accepts": 11
       },
       "SeqAccept": {
-        "far": 0.00047794117647058826,
-        "false_accepts": 13
+        "far": 0.0007352941176470588,
+        "false_accepts": 20
       }
     },
     "0.94": {
@@ -1643,8 +1643,8 @@
         "false_accepts": 47
       },
       "SeqAccept": {
-        "far": 0.001875,
-        "false_accepts": 51
+        "far": 0.0022426470588235293,
+        "false_accepts": 61
       }
     }
   },
@@ -1668,7 +1668,7 @@
         "n": 15,
         "reps": 1000,
         "far": {
-          "SeqAccept": 0.0,
+          "SeqAccept": 0.004,
           "B6 SeqAccept, no refund": 0.0,
           "Harmonic spending": 0.0,
           "B5 naive confidence sequence": 0.09,
@@ -1692,7 +1692,7 @@
         "n": 15,
         "reps": 1000,
         "far": {
-          "SeqAccept": 0.02,
+          "SeqAccept": 0.042,
           "B6 SeqAccept, no refund": 0.021,
           "Harmonic spending": 0.016,
           "B5 naive confidence sequence": 0.277,
@@ -1716,7 +1716,7 @@
         "n": 15,
         "reps": 1000,
         "far": {
-          "SeqAccept": 0.305,
+          "SeqAccept": 0.39,
           "B6 SeqAccept, no refund": 0.215,
           "Harmonic spending": 0.23,
           "B5 naive confidence sequence": 0.842,
@@ -1740,7 +1740,7 @@
         "n": 15,
         "reps": 1000,
         "far": {
-          "SeqAccept": 0.99,
+          "SeqAccept": 0.992,
           "B6 SeqAccept, no refund": 0.956,
           "Harmonic spending": 0.978,
           "B5 naive confidence sequence": 0.999,
@@ -1770,9 +1770,9 @@
         "correct_accept": 0.998,
         "marginal_accept": 0.0,
         "reps": 1000,
-        "blocks": 1679484,
+        "blocks": 1666017,
         "accepts": 1000,
-        "blocks_per_accept": 1679.484,
+        "blocks_per_accept": 1666.017,
         "seconds": 0.0,
         "correct_accepts": 998,
         "seconds_to_correct": 0.0
@@ -1871,16 +1871,16 @@
     },
     "10": {
       "SeqAccept": {
-        "far": 0.003,
+        "far": 0.006,
         "frr": 0.0,
-        "correct_accept": 0.997,
+        "correct_accept": 0.994,
         "marginal_accept": 0.0,
         "reps": 1000,
-        "blocks": 4016062,
+        "blocks": 3933245,
         "accepts": 1000,
-        "blocks_per_accept": 4016.062,
+        "blocks_per_accept": 3933.245,
         "seconds": 0.0,
-        "correct_accepts": 997,
+        "correct_accepts": 994,
         "seconds_to_correct": 0.0
       },
       "B6 SeqAccept, no refund": {
@@ -1977,16 +1977,16 @@
     },
     "15": {
       "SeqAccept": {
-        "far": 0.0,
+        "far": 0.011,
         "frr": 0.0,
-        "correct_accept": 1.0,
+        "correct_accept": 0.989,
         "marginal_accept": 0.0,
         "reps": 1000,
-        "blocks": 5588622,
+        "blocks": 5492605,
         "accepts": 1000,
-        "blocks_per_accept": 5588.622,
+        "blocks_per_accept": 5492.605,
         "seconds": 0.0,
-        "correct_accepts": 1000,
+        "correct_accepts": 989,
         "seconds_to_correct": 0.0
       },
       "B6 SeqAccept, no refund": {
@@ -2325,16 +2325,16 @@
       },
       "SeqAccept": {
         "calibration": null,
-        "far": 0.002403846153846154,
+        "far": 0.0038461538461538464,
         "far_ci": [
           0.0,
-          0.006696428571428572
+          0.010714285714285714
         ],
         "far_upper": {
           "episodes": [
-            4,
+            7,
             73,
-            0.1210149981094258
+            0.17257354413753742
           ],
           "repos": [
             1,
@@ -2342,12 +2342,12 @@
             0.4706794086011316
           ]
         },
-        "frr": 0.10895522388059702,
-        "marginal_accept": 0.08125,
-        "blocks_per_accept": 2552.1735941320294,
+        "frr": 0.0955223880597015,
+        "marginal_accept": 0.08605769230769231,
+        "blocks_per_accept": 2279.0892430278886,
         "late_accept": 0.6666666666666666,
-        "budget_seconds": 3200.567931038319,
-        "time_to_accept_min": 19.076377231679125
+        "budget_seconds": 3022.421413415735,
+        "time_to_accept_min": 18.87234956472355
       }
     },
     "same_loops_without": {
@@ -2528,10 +2528,10 @@
         },
         "frr": 0.0,
         "marginal_accept": 0.009615384615384616,
-        "blocks_per_accept": 251.96597222222223,
+        "blocks_per_accept": 251.8375,
         "late_accept": 1.0,
-        "budget_seconds": 546.0658969843711,
-        "time_to_accept_min": 7.261752844512914
+        "budget_seconds": 545.9335821105731,
+        "time_to_accept_min": 7.258580720070427
       }
     },
     "near_eps": {
@@ -2711,16 +2711,16 @@
         },
         "SeqAccept": {
           "calibration": null,
-          "far": 0.0078125,
+          "far": 0.0125,
           "far_ci": [
             0.0,
-            0.015625
+            0.025
           ],
           "far_upper": {
             "episodes": [
-              4,
+              7,
               24,
-              0.3418073494041162
+              0.4787279058719695
             ],
             "repos": [
               1,
@@ -2728,12 +2728,12 @@
               0.9746794344808964
             ]
           },
-          "frr": 0.33571428571428574,
-          "marginal_accept": 0.1953125,
-          "blocks_per_accept": 7780.708904109589,
+          "frr": 0.30238095238095236,
+          "marginal_accept": 0.215625,
+          "blocks_per_accept": 6520.680379746836,
           "late_accept": 0.0,
-          "budget_seconds": 8571.74342054647,
-          "time_to_accept_min": 61.03524968672711
+          "budget_seconds": 8095.840202214468,
+          "time_to_accept_min": 60.00950728284172
         }
       }
     },
@@ -2915,19 +2915,19 @@
               0.3930377689970827
             ]
           },
-          "frr": 0.005434782608695653,
-          "marginal_accept": 0.030555555555555555,
-          "blocks_per_accept": 919.3048128342245,
+          "frr": 0.0010869565217391304,
+          "marginal_accept": 0.02847222222222222,
+          "blocks_per_accept": 851.6741214057508,
           "late_accept": 1.0,
-          "budget_seconds": 813.378824590252,
-          "time_to_accept_min": 11.447491330761308
+          "budget_seconds": 767.5686183940755,
+          "time_to_accept_min": 11.084691644812539
         }
       }
     },
     "repos": 8,
     "frr_ci_seqaccept": [
       0.0,
-      0.21953125
+      0.19753086419753085
     ],
     "p0_se": {
       "anonapi": 0.011639775556255371,
@@ -3103,10 +3103,10 @@
       },
       "SeqAccept": {
         "calibration": null,
-        "far": 0.003846153846153846,
+        "far": 0.004807692307692308,
         "far_ci": [
           0.0,
-          0.011538461538461537
+          0.014423076923076924
         ],
         "far_upper": {
           "episodes": [
@@ -3121,11 +3121,11 @@
           ]
         },
         "frr": 0.0007462686567164179,
-        "marginal_accept": 0.08990384615384615,
-        "blocks_per_accept": 730.5568736915561,
-        "late_accept": 0.65,
-        "budget_seconds": 816.9911669771368,
-        "time_to_accept_min": 6.861775095685224
+        "marginal_accept": 0.0875,
+        "blocks_per_accept": 719.7200557103064,
+        "late_accept": 0.6666666666666666,
+        "budget_seconds": 808.4659039086289,
+        "time_to_accept_min": 6.930681604434598
       }
     }
   }

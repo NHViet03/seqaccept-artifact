@@ -31,7 +31,7 @@
    "recorded": {
     "far": 0.0,
     "frr": 0.0,
-    "blocks_per_accept": 258.31299559471364
+    "blocks_per_accept": 257.9066079295154
    },
    "late": {
     "10": {
@@ -41,71 +41,71 @@
     },
     "40": {
      "far": 0.0,
-     "late_accept": 0.9920833333333333,
-     "blocks_per_accept": 576.1931961360773
+     "late_accept": 0.9933333333333333,
+     "blocks_per_accept": 574.4920302013422
     }
    },
    "stress": {
-    "alt-0.10": 0.013,
-    "alt-0.08": 0.012
+    "alt-0.10": 0.021,
+    "alt-0.08": 0.018
    },
    "worst": {
-    "15": 0.015,
-    "50": 0.015
+    "15": 0.039,
+    "50": 0.045
    }
   },
   "capped": {
    "recorded": {
     "far": 0.0,
     "frr": 0.0,
-    "blocks_per_accept": 258.2394273127753
+    "blocks_per_accept": 257.99493392070485
    },
    "late": {
     "10": {
      "far": 0.0,
      "late_accept": 0.9954166666666666,
-     "blocks_per_accept": 262.7580577647551
+     "blocks_per_accept": 262.75177898702384
     },
     "40": {
      "far": 0.0,
-     "late_accept": 0.9925,
-     "blocks_per_accept": 586.4966414777498
+     "late_accept": 0.9933333333333333,
+     "blocks_per_accept": 584.79572147651
     }
    },
    "stress": {
-    "alt-0.10": 0.013,
-    "alt-0.08": 0.012
+    "alt-0.10": 0.021,
+    "alt-0.08": 0.017
    },
    "worst": {
-    "15": 0.015,
-    "50": 0.015
+    "15": 0.035,
+    "50": 0.035
    }
   },
   "uncapped": {
    "recorded": {
     "far": 0.0,
     "frr": 0.0,
-    "blocks_per_accept": 258.29405286343615
+    "blocks_per_accept": 258.0497797356828
    },
    "late": {
     "10": {
      "far": 0.0,
      "late_accept": 0.995,
-     "blocks_per_accept": 260.2399497487437
+     "blocks_per_accept": 260.2403685092127
     },
     "40": {
      "far": 0.0,
-     "late_accept": 0.9925,
-     "blocks_per_accept": 582.252308984047
+     "late_accept": 0.9929166666666667,
+     "blocks_per_accept": 580.5073436844314
     }
    },
    "stress": {
-    "alt-0.10": 0.011,
-    "alt-0.08": 0.013
+    "alt-0.10": 0.143,
+    "alt-0.08": 0.137
    },
    "worst": {
-    "15": 0.015,
-    "50": 0.015
+    "15": 0.109,
+    "50": 0.2375
    }
   }
  },
@@ -14126,8 +14126,8 @@
     "frr": 0.0
    },
    "SeqAccept": {
-    "blocks_per_episode": 153.29852941176472,
-    "seconds_per_episode": 459.73427499723965,
+    "blocks_per_episode": 153.19816176470587,
+    "seconds_per_episode": 459.6089560496294,
     "far": 0.0,
     "frr": 0.0
    },

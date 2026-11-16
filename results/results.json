@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-11T12:59:58+00:00",
+  "generated": "2026-11-16T19:40:46+00:00",
   "settings": {
     "reps": 20,
     "margin": 0.05,
@@ -206,11 +206,11 @@
       },
       "frr": 0.0,
       "marginal_accept": 0.027134146341463414,
-      "blocks_per_accept": 258.2394273127753,
+      "blocks_per_accept": 257.9066079295154,
       "late_accept": 0.8,
-      "budget_seconds": 369.8029168742365,
-      "time_to_accept_min": 5.5736092496274665,
-      "budget_x_b1": 51.24547004537509
+      "budget_seconds": 369.62822481097425,
+      "time_to_accept_min": 5.568466717742245,
+      "budget_x_b1": 51.22126207814018
     }
   },
   "primary": {
@@ -700,7 +700,7 @@
       "SeqAccept": [
         0.0,
         0.0,
-        0.0003048780487804878
+        0.0001524390243902439
       ]
     }
   },
@@ -889,32 +889,32 @@
           "false_accepts": 27
         },
         "SeqAccept": {
-          "calibration": 0.024999999999999998,
-          "far": 0.00125,
+          "calibration": 0.04044117647058824,
+          "far": 0.002022058823529412,
           "far_ci": [
-            0.0002777777777777778,
-            0.002578125
+            0.00047794117647058826,
+            0.003897058823529412
           ],
           "far_upper": {
             "episodes": [
-              9,
+              10,
               83,
-              0.1815905030069011
+              0.1957918218673697
             ],
             "repos": [
-              4,
+              5,
               10,
-              0.696462787435958
+              0.777558898991871
             ]
           },
           "frr": 0.0,
-          "marginal_accept": 0.05047794117647059,
-          "blocks_per_accept": 1038.7294182217342,
-          "late_accept": 0.5175,
-          "budget_seconds": 1198.2640807662538,
-          "time_to_accept_min": 8.413500991753887,
-          "budget_x_b1": 386.4795162665696,
-          "false_accepts": 34
+          "marginal_accept": 0.05268382352941176,
+          "blocks_per_accept": 1015.0229816445307,
+          "late_accept": 0.505,
+          "budget_seconds": 1173.6346982646937,
+          "time_to_accept_min": 8.343636128182931,
+          "budget_x_b1": 378.53573159678274,
+          "false_accepts": 55
         }
       }
     },
@@ -1102,11 +1102,11 @@
           "false_accepts": 11
         },
         "SeqAccept": {
-          "calibration": 0.009558823529411765,
-          "far": 0.00047794117647058826,
+          "calibration": 0.016911764705882352,
+          "far": 0.0008455882352941176,
           "far_ci": [
             3.90625e-05,
-            0.0012109375
+            0.0022794117647058822
           ],
           "far_upper": {
             "episodes": [
@@ -1121,13 +1121,13 @@
             ]
           },
           "frr": 0.0,
-          "marginal_accept": 0.1393014705882353,
-          "blocks_per_accept": 1621.8056613295407,
-          "late_accept": 0.33,
-          "budget_seconds": 2534.3212784758725,
-          "time_to_accept_min": 12.044179499041439,
-          "budget_x_b1": 833.7776550592074,
-          "false_accepts": 13
+          "marginal_accept": 0.14411764705882352,
+          "blocks_per_accept": 1582.9650410209663,
+          "late_accept": 0.33166666666666667,
+          "budget_seconds": 2511.8384297165894,
+          "time_to_accept_min": 12.017645768065544,
+          "budget_x_b1": 826.3809224204634,
+          "false_accepts": 23
         }
       }
     },
@@ -1315,32 +1315,32 @@
           "false_accepts": 47
         },
         "SeqAccept": {
-          "calibration": 0.0375,
-          "far": 0.001875,
+          "calibration": 0.04485294117647058,
+          "far": 0.0022426470588235293,
           "far_ci": [
-            0.0007083333333333334,
-            0.003298611111111111
+            0.0010416666666666667,
+            0.0034375
           ],
           "far_upper": {
             "episodes": [
-              28,
+              33,
               68,
-              0.51873123816425
+              0.5912571088810351
             ],
             "repos": [
-              8,
+              9,
               10,
-              0.9632285621125349
+              0.9948838031081764
             ]
           },
           "frr": 0.0,
-          "marginal_accept": 0.14933823529411763,
-          "blocks_per_accept": 2512.570568999346,
-          "late_accept": 0.91,
-          "budget_seconds": 5162.362377844773,
-          "time_to_accept_min": 14.7400003940668,
-          "budget_x_b1": 1710.3738242528955,
-          "false_accepts": 51
+          "marginal_accept": 0.16444852941176472,
+          "blocks_per_accept": 2368.8619726780653,
+          "late_accept": 0.67,
+          "budget_seconds": 5066.5563486454275,
+          "time_to_accept_min": 14.376921902797802,
+          "budget_x_b1": 1678.6317432917795,
+          "false_accepts": 61
         }
       }
     }
@@ -1524,12 +1524,12 @@
               0.2588655508930523
             ]
           },
-          "frr": 0.007916666666666667,
+          "frr": 0.007916666666666666,
           "marginal_accept": 0.0,
-          "blocks_per_accept": 210.46367072658546,
+          "blocks_per_accept": 209.06467870642587,
           "late_accept": 0.9920833333333333,
-          "budget_seconds": 352.26895861562514,
-          "time_to_accept_min": 5.791601852775448
+          "budget_seconds": 348.7348066666669,
+          "time_to_accept_min": 5.730427800573993
         }
       }
     },
@@ -1711,12 +1711,12 @@
               0.2588655508930523
             ]
           },
-          "frr": 0.004583333333333333,
+          "frr": 0.004166666666666667,
           "marginal_accept": 0.0,
-          "blocks_per_accept": 262.7580577647551,
-          "late_accept": 0.9954166666666666,
-          "budget_seconds": 572.2783468833335,
-          "time_to_accept_min": 9.443212239465607
+          "blocks_per_accept": 258.4573221757322,
+          "late_accept": 0.9958333333333333,
+          "budget_seconds": 563.1798399489585,
+          "time_to_accept_min": 9.292085332845192
         }
       }
     },
@@ -1898,12 +1898,12 @@
               0.2588655508930523
             ]
           },
-          "frr": 0.005416666666666667,
+          "frr": 0.004166666666666667,
           "marginal_accept": 0.0,
-          "blocks_per_accept": 418.01591956430667,
-          "late_accept": 0.9945833333333334,
-          "budget_seconds": 932.1151369135408,
-          "time_to_accept_min": 15.494805303798337
+          "blocks_per_accept": 410.9,
+          "late_accept": 0.9958333333333333,
+          "budget_seconds": 923.565263743749,
+          "time_to_accept_min": 15.372400970746149
         }
       }
     },
@@ -2085,12 +2085,12 @@
               0.2588655508930523
             ]
           },
-          "frr": 0.0075,
+          "frr": 0.006666666666666667,
           "marginal_accept": 0.0,
-          "blocks_per_accept": 586.4966414777498,
-          "late_accept": 0.9925,
-          "budget_seconds": 1346.3668868864606,
-          "time_to_accept_min": 22.208981153425025
+          "blocks_per_accept": 574.4920302013422,
+          "late_accept": 0.9933333333333333,
+          "budget_seconds": 1318.9365290989606,
+          "time_to_accept_min": 21.77512145394648
         }
       }
     }
@@ -2288,10 +2288,10 @@
           },
           "frr": 0.0,
           "marginal_accept": 0.06041666666666667,
-          "blocks_per_accept": 328.5796875,
+          "blocks_per_accept": 328.8765625,
           "late_accept": null,
-          "budget_seconds": 385.14629778124925,
-          "time_to_accept_min": 2.3395174725085903
+          "budget_seconds": 385.5185647968743,
+          "time_to_accept_min": 2.343966818800114
         }
       }
     },
@@ -2487,10 +2487,10 @@
           },
           "frr": 0.0,
           "marginal_accept": 0.0625,
-          "blocks_per_accept": 260.7203125,
+          "blocks_per_accept": 258.4109375,
           "late_accept": null,
-          "budget_seconds": 188.87121008593795,
-          "time_to_accept_min": 2.64777040905173
+          "budget_seconds": 187.2163569609379,
+          "time_to_accept_min": 2.60234613864943
         }
       }
     },
@@ -2685,11 +2685,11 @@
             ]
           },
           "frr": 0.0,
-          "marginal_accept": 0.059375,
-          "blocks_per_accept": 1036.9453125,
+          "marginal_accept": 0.058333333333333334,
+          "blocks_per_accept": 1038.35,
           "late_accept": null,
-          "budget_seconds": 732.2925976770888,
-          "time_to_accept_min": 3.2792202363493548
+          "budget_seconds": 733.5343698489636,
+          "time_to_accept_min": 3.4043544230165685
         }
       }
     }
@@ -3765,9 +3765,9 @@
           "blocks": 12539,
           "accepts": 20,
           "blocks_per_accept": 626.95,
-          "seconds": 15671.100719999851,
+          "seconds": 15663.570092499845,
           "correct_accepts": 20,
-          "seconds_to_correct": 15671.100719999851
+          "seconds_to_correct": 15663.570092499845
         }
       }
     },
@@ -4820,12 +4820,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 2271,
+          "blocks": 2246,
           "accepts": 20,
-          "blocks_per_accept": 113.55,
-          "seconds": 2474.755249999993,
+          "blocks_per_accept": 112.3,
+          "seconds": 2446.7762999999936,
           "correct_accepts": 20,
-          "seconds_to_correct": 2474.755249999993
+          "seconds_to_correct": 2446.7762999999936
         }
       }
     },
@@ -5177,12 +5177,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 2213,
+          "blocks": 2188,
           "accepts": 20,
-          "blocks_per_accept": 110.65,
-          "seconds": 2839.8939500000033,
+          "blocks_per_accept": 109.4,
+          "seconds": 2808.8485500000033,
           "correct_accepts": 20,
-          "seconds_to_correct": 2839.8939500000033
+          "seconds_to_correct": 2808.8485500000033
         }
       }
     },
@@ -5769,12 +5769,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 2734,
+          "blocks": 2755,
           "accepts": 20,
-          "blocks_per_accept": 136.7,
-          "seconds": 2786.165260000003,
+          "blocks_per_accept": 137.75,
+          "seconds": 2809.057945000003,
           "correct_accepts": 20,
-          "seconds_to_correct": 2786.165260000003
+          "seconds_to_correct": 2809.057945000003
         }
       }
     },
@@ -6126,12 +6126,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 2489,
+          "blocks": 2653,
           "accepts": 20,
-          "blocks_per_accept": 124.45,
-          "seconds": 2832.197537499994,
+          "blocks_per_accept": 132.65,
+          "seconds": 3016.054392499994,
           "correct_accepts": 20,
-          "seconds_to_correct": 2832.197537499994
+          "seconds_to_correct": 3016.054392499994
         }
       }
     },
@@ -6246,12 +6246,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 2684,
+          "blocks": 2685,
           "accepts": 20,
-          "blocks_per_accept": 134.2,
-          "seconds": 4117.180879999997,
+          "blocks_per_accept": 134.25,
+          "seconds": 4118.918752499997,
           "correct_accepts": 20,
-          "seconds_to_correct": 4117.180879999997
+          "seconds_to_correct": 4118.918752499997
         }
       }
     },
@@ -6718,12 +6718,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 4994,
+          "blocks": 4993,
           "accepts": 20,
-          "blocks_per_accept": 249.7,
-          "seconds": 5382.953580000015,
+          "blocks_per_accept": 249.65,
+          "seconds": 5381.101050000013,
           "correct_accepts": 20,
-          "seconds_to_correct": 5382.953580000015
+          "seconds_to_correct": 5381.101050000013
         }
       }
     },
@@ -7075,12 +7075,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 5452,
+          "blocks": 5206,
           "accepts": 20,
-          "blocks_per_accept": 272.6,
-          "seconds": 5925.230175000005,
+          "blocks_per_accept": 260.3,
+          "seconds": 5656.989900000003,
           "correct_accepts": 20,
-          "seconds_to_correct": 5925.230175000005
+          "seconds_to_correct": 5656.989900000003
         }
       }
     },
@@ -7195,12 +7195,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 4888,
+          "blocks": 4886,
           "accepts": 20,
-          "blocks_per_accept": 244.4,
-          "seconds": 7536.467679999994,
+          "blocks_per_accept": 244.3,
+          "seconds": 7533.383419999992,
           "correct_accepts": 20,
-          "seconds_to_correct": 7536.467679999994
+          "seconds_to_correct": 7533.383419999992
         }
       }
     },
@@ -9467,12 +9467,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 7825,
+          "blocks": 7719,
           "accepts": 20,
-          "blocks_per_accept": 391.25,
-          "seconds": 7318.585562500047,
+          "blocks_per_accept": 385.95,
+          "seconds": 7219.445617500052,
           "correct_accepts": 20,
-          "seconds_to_correct": 7318.585562500047
+          "seconds_to_correct": 7219.445617500052
         }
       }
     },
@@ -9830,9 +9830,9 @@
           "blocks": 7209,
           "accepts": 20,
           "blocks_per_accept": 360.45,
-          "seconds": 12577.830660000007,
+          "seconds": 12577.830660000001,
           "correct_accepts": 20,
-          "seconds_to_correct": 12577.830660000007
+          "seconds_to_correct": 12577.830660000001
         }
       }
     },
@@ -9947,12 +9947,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 6111,
+          "blocks": 5792,
           "accepts": 20,
-          "blocks_per_accept": 305.55,
-          "seconds": 8832.921527500055,
+          "blocks_per_accept": 289.6,
+          "seconds": 8372.540342500037,
           "correct_accepts": 20,
-          "seconds_to_correct": 8832.921527500055
+          "seconds_to_correct": 8372.540342500037
         }
       }
     },
@@ -11147,12 +11147,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 2535,
+          "blocks": 2475,
           "accepts": 20,
-          "blocks_per_accept": 126.75,
-          "seconds": 3030.7631874999956,
+          "blocks_per_accept": 123.75,
+          "seconds": 2962.2680374999954,
           "correct_accepts": 20,
-          "seconds_to_correct": 3030.7631874999956
+          "seconds_to_correct": 2962.2680374999954
         }
       }
     },
@@ -11267,12 +11267,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 2504,
+          "blocks": 2457,
           "accepts": 20,
-          "blocks_per_accept": 125.2,
-          "seconds": 2562.7361800000044,
+          "blocks_per_accept": 122.85,
+          "seconds": 2512.685065000005,
           "correct_accepts": 20,
-          "seconds_to_correct": 2562.7361800000044
+          "seconds_to_correct": 2512.685065000005
         }
       }
     },
@@ -12107,12 +12107,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 6018,
+          "blocks": 6024,
           "accepts": 20,
-          "blocks_per_accept": 300.9,
-          "seconds": 5853.564540000011,
+          "blocks_per_accept": 301.2,
+          "seconds": 5859.380150000011,
           "correct_accepts": 20,
-          "seconds_to_correct": 5853.564540000011
+          "seconds_to_correct": 5859.380150000011
         }
       }
     },
@@ -12227,12 +12227,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 4472,
+          "blocks": 4473,
           "accepts": 20,
-          "blocks_per_accept": 223.6,
-          "seconds": 4740.817737499992,
+          "blocks_per_accept": 223.65,
+          "seconds": 4736.695122499993,
           "correct_accepts": 20,
-          "seconds_to_correct": 4740.817737499992
+          "seconds_to_correct": 4736.695122499993
         }
       }
     },
@@ -12467,12 +12467,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 6909,
+          "blocks": 6549,
           "accepts": 20,
-          "blocks_per_accept": 345.45,
-          "seconds": 6199.100250000002,
+          "blocks_per_accept": 327.45,
+          "seconds": 5876.090250000003,
           "correct_accepts": 20,
-          "seconds_to_correct": 6199.100250000002
+          "seconds_to_correct": 5876.090250000003
         }
       }
     },
@@ -12587,12 +12587,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 7144,
+          "blocks": 6040,
           "accepts": 20,
-          "blocks_per_accept": 357.2,
-          "seconds": 10705.105400000059,
+          "blocks_per_accept": 302.0,
+          "seconds": 9050.789000000019,
           "correct_accepts": 20,
-          "seconds_to_correct": 10705.105400000059
+          "seconds_to_correct": 9050.789000000019
         }
       }
     },
@@ -13067,12 +13067,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 2846,
+          "blocks": 2777,
           "accepts": 20,
-          "blocks_per_accept": 142.3,
-          "seconds": 2767.1941999999963,
+          "blocks_per_accept": 138.85,
+          "seconds": 2700.0949624999976,
           "correct_accepts": 20,
-          "seconds_to_correct": 2767.1941999999963
+          "seconds_to_correct": 2700.0949624999976
         }
       }
     },
@@ -13187,12 +13187,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 6200,
+          "blocks": 6193,
           "accepts": 20,
-          "blocks_per_accept": 310.0,
-          "seconds": 6083.853574999981,
+          "blocks_per_accept": 309.65,
+          "seconds": 6076.998517499979,
           "correct_accepts": 20,
-          "seconds_to_correct": 6083.853574999981
+          "seconds_to_correct": 6076.998517499979
         }
       }
     },
@@ -13542,12 +13542,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 2888,
+          "blocks": 2881,
           "accepts": 20,
-          "blocks_per_accept": 144.4,
-          "seconds": 9838.338184999999,
+          "blocks_per_accept": 144.05,
+          "seconds": 9779.078837500003,
           "correct_accepts": 20,
-          "seconds_to_correct": 9838.338184999999
+          "seconds_to_correct": 9779.078837500003
         }
       }
     },
@@ -14493,10 +14493,10 @@
           "correct_accept": 0.0,
           "marginal_accept": 1.0,
           "reps": 20,
-          "blocks": 3635,
+          "blocks": 3634,
           "accepts": 20,
-          "blocks_per_accept": 181.75,
-          "seconds": 40697.32851249998,
+          "blocks_per_accept": 181.7,
+          "seconds": 40843.45484999998,
           "correct_accepts": 0,
           "seconds_to_correct": 0.0
         }
@@ -15447,9 +15447,9 @@
           "blocks": 5061,
           "accepts": 20,
           "blocks_per_accept": 253.05,
-          "seconds": 21949.33686000004,
+          "seconds": 22842.926672500045,
           "correct_accepts": 20,
-          "seconds_to_correct": 21949.33686000004
+          "seconds_to_correct": 22842.926672500045
         }
       }
     },
@@ -15680,12 +15680,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 5217,
+          "blocks": 5261,
           "accepts": 20,
-          "blocks_per_accept": 260.85,
-          "seconds": 5340.651712499956,
+          "blocks_per_accept": 263.05,
+          "seconds": 5383.409529999963,
           "correct_accepts": 20,
-          "seconds_to_correct": 5340.651712499956
+          "seconds_to_correct": 5383.409529999963
         }
       }
     },
@@ -18563,9 +18563,9 @@
           "blocks": 6455,
           "accepts": 20,
           "blocks_per_accept": 322.75,
-          "seconds": 5203.944557500019,
+          "seconds": 5205.919937500021,
           "correct_accepts": 20,
-          "seconds_to_correct": 5203.944557500019
+          "seconds_to_correct": 5205.919937500021
         }
       }
     },
@@ -20480,12 +20480,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 2375,
+          "blocks": 2374,
           "accepts": 20,
-          "blocks_per_accept": 118.75,
-          "seconds": 6973.728699999998,
+          "blocks_per_accept": 118.7,
+          "seconds": 6970.839079999998,
           "correct_accepts": 20,
-          "seconds_to_correct": 6973.728699999998
+          "seconds_to_correct": 6970.839079999998
         }
       }
     },
@@ -20600,12 +20600,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 2707,
+          "blocks": 2708,
           "accepts": 20,
-          "blocks_per_accept": 135.35,
-          "seconds": 6510.979407500012,
+          "blocks_per_accept": 135.4,
+          "seconds": 6513.346630000013,
           "correct_accepts": 20,
-          "seconds_to_correct": 6510.979407500012
+          "seconds_to_correct": 6513.346630000013
         }
       }
     },
@@ -21440,12 +21440,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 4524,
+          "blocks": 4720,
           "accepts": 20,
-          "blocks_per_accept": 226.2,
-          "seconds": 9837.433169999988,
+          "blocks_per_accept": 236.0,
+          "seconds": 10255.146899999987,
           "correct_accepts": 20,
-          "seconds_to_correct": 9837.433169999988
+          "seconds_to_correct": 10255.146899999987
         }
       }
     },
@@ -21560,12 +21560,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 4567,
+          "blocks": 4355,
           "accepts": 20,
-          "blocks_per_accept": 228.35,
-          "seconds": 9568.630914999992,
+          "blocks_per_accept": 217.75,
+          "seconds": 9129.230174999984,
           "correct_accepts": 20,
-          "seconds_to_correct": 9568.630914999992
+          "seconds_to_correct": 9129.230174999984
         }
       }
     },
@@ -22743,12 +22743,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 2384,
+          "blocks": 2379,
           "accepts": 20,
-          "blocks_per_accept": 119.2,
-          "seconds": 1699.8535799999972,
+          "blocks_per_accept": 118.95,
+          "seconds": 1696.972229999998,
           "correct_accepts": 20,
-          "seconds_to_correct": 1699.8535799999972
+          "seconds_to_correct": 1696.972229999998
         }
       }
     },
@@ -23686,12 +23686,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 5015,
+          "blocks": 5021,
           "accepts": 20,
-          "blocks_per_accept": 250.75,
-          "seconds": 3749.3382000000147,
+          "blocks_per_accept": 251.05,
+          "seconds": 3753.7353475000136,
           "correct_accepts": 20,
-          "seconds_to_correct": 3749.3382000000147
+          "seconds_to_correct": 3753.7353475000136
         }
       }
     },
@@ -24509,12 +24509,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 3071,
+          "blocks": 3073,
           "accepts": 20,
-          "blocks_per_accept": 153.55,
-          "seconds": 1747.1926949999963,
+          "blocks_per_accept": 153.65,
+          "seconds": 1748.331384999996,
           "correct_accepts": 20,
-          "seconds_to_correct": 1747.1926949999963
+          "seconds_to_correct": 1748.331384999996
         }
       }
     },
@@ -24629,12 +24629,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 3242,
+          "blocks": 3229,
           "accepts": 20,
-          "blocks_per_accept": 162.1,
-          "seconds": 2562.05543,
+          "blocks_per_accept": 161.45,
+          "seconds": 2551.0815274999995,
           "correct_accepts": 20,
-          "seconds_to_correct": 2562.05543
+          "seconds_to_correct": 2551.0815274999995
         }
       }
     },
@@ -24749,12 +24749,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 2201,
+          "blocks": 2180,
           "accepts": 20,
-          "blocks_per_accept": 110.05,
-          "seconds": 1246.120200000001,
+          "blocks_per_accept": 109.0,
+          "seconds": 1234.2300000000018,
           "correct_accepts": 20,
-          "seconds_to_correct": 1246.120200000001
+          "seconds_to_correct": 1234.2300000000018
         }
       }
     },
@@ -24869,12 +24869,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 2200,
+          "blocks": 2180,
           "accepts": 20,
-          "blocks_per_accept": 110.0,
-          "seconds": 1882.5354000000027,
+          "blocks_per_accept": 109.0,
+          "seconds": 1865.4460000000029,
           "correct_accepts": 20,
-          "seconds_to_correct": 1882.5354000000027
+          "seconds_to_correct": 1865.4460000000029
         }
       }
     },
@@ -25325,12 +25325,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 2400,
+          "blocks": 2358,
           "accepts": 20,
-          "blocks_per_accept": 120.0,
-          "seconds": 1898.5057600000014,
+          "blocks_per_accept": 117.9,
+          "seconds": 1864.714110000002,
           "correct_accepts": 20,
-          "seconds_to_correct": 1898.5057600000014
+          "seconds_to_correct": 1864.714110000002
         }
       }
     },
@@ -25679,12 +25679,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 2950,
+          "blocks": 2946,
           "accepts": 20,
-          "blocks_per_accept": 147.5,
-          "seconds": 4207.3323699999955,
+          "blocks_per_accept": 147.3,
+          "seconds": 4200.072664999995,
           "correct_accepts": 20,
-          "seconds_to_correct": 4207.3323699999955
+          "seconds_to_correct": 4200.072664999995
         }
       }
     },
@@ -25799,12 +25799,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 3013,
+          "blocks": 3011,
           "accepts": 20,
-          "blocks_per_accept": 150.65,
-          "seconds": 2593.112270000007,
+          "blocks_per_accept": 150.55,
+          "seconds": 2591.3814100000063,
           "correct_accepts": 20,
-          "seconds_to_correct": 2593.112270000007
+          "seconds_to_correct": 2591.3814100000063
         }
       }
     },
@@ -26255,12 +26255,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 4704,
+          "blocks": 4653,
           "accepts": 20,
-          "blocks_per_accept": 235.2,
-          "seconds": 3813.4055200000075,
+          "blocks_per_accept": 232.65,
+          "seconds": 3772.0477850000066,
           "correct_accepts": 20,
-          "seconds_to_correct": 3813.4055200000075
+          "seconds_to_correct": 3772.0477850000066
         }
       }
     },
@@ -26369,12 +26369,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 2767,
+          "blocks": 2766,
           "accepts": 20,
-          "blocks_per_accept": 138.35,
-          "seconds": 2285.9797275000083,
+          "blocks_per_accept": 138.3,
+          "seconds": 2285.153395000008,
           "correct_accepts": 20,
-          "seconds_to_correct": 2285.9797275000083
+          "seconds_to_correct": 2285.153395000008
         }
       }
     },
@@ -26609,12 +26609,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 3598,
+          "blocks": 3590,
           "accepts": 20,
-          "blocks_per_accept": 179.9,
-          "seconds": 7689.466229999989,
+          "blocks_per_accept": 179.5,
+          "seconds": 7672.420789999988,
           "correct_accepts": 20,
-          "seconds_to_correct": 7689.466229999989
+          "seconds_to_correct": 7672.420789999988
         }
       }
     },
@@ -26729,12 +26729,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 2975,
+          "blocks": 3037,
           "accepts": 20,
-          "blocks_per_accept": 148.75,
-          "seconds": 2462.2814175000035,
+          "blocks_per_accept": 151.85,
+          "seconds": 2513.5397625000032,
           "correct_accepts": 20,
-          "seconds_to_correct": 2462.2814175000035
+          "seconds_to_correct": 2513.5397625000032
         }
       }
     },
@@ -27185,12 +27185,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 3378,
+          "blocks": 3380,
           "accepts": 20,
-          "blocks_per_accept": 168.9,
-          "seconds": 2728.7317974999933,
+          "blocks_per_accept": 169.0,
+          "seconds": 2730.201477499993,
           "correct_accepts": 20,
-          "seconds_to_correct": 2728.7317974999933
+          "seconds_to_correct": 2730.201477499993
         }
       }
     },
@@ -27299,12 +27299,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 2702,
+          "blocks": 2701,
           "accepts": 20,
-          "blocks_per_accept": 135.1,
-          "seconds": 2179.3741800000003,
+          "blocks_per_accept": 135.05,
+          "seconds": 2178.56729,
           "correct_accepts": 20,
-          "seconds_to_correct": 2179.3741800000003
+          "seconds_to_correct": 2178.56729
         }
       }
     },
@@ -28491,12 +28491,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 5387,
+          "blocks": 5386,
           "accepts": 20,
-          "blocks_per_accept": 269.35,
-          "seconds": 4451.046632500014,
+          "blocks_per_accept": 269.3,
+          "seconds": 4450.396235000014,
           "correct_accepts": 20,
-          "seconds_to_correct": 4451.046632500014
+          "seconds_to_correct": 4450.396235000014
         }
       }
     },
@@ -28614,9 +28614,9 @@
           "blocks": 5146,
           "accepts": 20,
           "blocks_per_accept": 257.3,
-          "seconds": 4135.76985499999,
+          "seconds": 4135.796554999989,
           "correct_accepts": 20,
-          "seconds_to_correct": 4135.76985499999
+          "seconds_to_correct": 4135.796554999989
         }
       }
     },
@@ -29443,12 +29443,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 6339,
+          "blocks": 6344,
           "accepts": 20,
-          "blocks_per_accept": 316.95,
-          "seconds": 5248.160044999977,
+          "blocks_per_accept": 317.2,
+          "seconds": 5251.085124999978,
           "correct_accepts": 20,
-          "seconds_to_correct": 5248.160044999977
+          "seconds_to_correct": 5251.085124999978
         }
       }
     },
@@ -29563,12 +29563,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 5450,
+          "blocks": 5804,
           "accepts": 20,
-          "blocks_per_accept": 272.5,
-          "seconds": 4457.738885000006,
+          "blocks_per_accept": 290.2,
+          "seconds": 4744.496710000003,
           "correct_accepts": 20,
-          "seconds_to_correct": 4457.738885000006
+          "seconds_to_correct": 4744.496710000003
         }
       }
     },
@@ -32784,9 +32784,9 @@
           "blocks": 6321,
           "accepts": 20,
           "blocks_per_accept": 316.05,
-          "seconds": 6088.13159999999,
+          "seconds": 6088.2037649999875,
           "correct_accepts": 20,
-          "seconds_to_correct": 6088.13159999999
+          "seconds_to_correct": 6088.2037649999875
         }
       }
     },
@@ -33857,9 +33857,9 @@
           "blocks": 6475,
           "accepts": 20,
           "blocks_per_accept": 323.75,
-          "seconds": 5145.560647500019,
+          "seconds": 5151.770985000019,
           "correct_accepts": 20,
-          "seconds_to_correct": 5145.560647500019
+          "seconds_to_correct": 5151.770985000019
         }
       }
     },
@@ -34809,9 +34809,9 @@
           "blocks": 25298,
           "accepts": 20,
           "blocks_per_accept": 1264.9,
-          "seconds": 21748.575742499997,
+          "seconds": 21747.564877499994,
           "correct_accepts": 2,
-          "seconds_to_correct": 4065.4849574999653
+          "seconds_to_correct": 4008.595267499968
         }
       }
     },
@@ -35641,9 +35641,9 @@
           "blocks": 6431,
           "accepts": 20,
           "blocks_per_accept": 321.55,
-          "seconds": 5907.6917550000035,
+          "seconds": 5906.636730000005,
           "correct_accepts": 20,
-          "seconds_to_correct": 5907.6917550000035
+          "seconds_to_correct": 5906.636730000005
         }
       }
     },
@@ -35758,12 +35758,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 11725,
+          "blocks": 11724,
           "accepts": 20,
-          "blocks_per_accept": 586.25,
-          "seconds": 9987.086277500008,
+          "blocks_per_accept": 586.2,
+          "seconds": 9987.619402500008,
           "correct_accepts": 20,
-          "seconds_to_correct": 9987.086277500008
+          "seconds_to_correct": 9987.619402500008
         }
       }
     },
@@ -36236,12 +36236,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 2200,
+          "blocks": 2180,
           "accepts": 20,
-          "blocks_per_accept": 110.0,
-          "seconds": 3533.8845000000047,
+          "blocks_per_accept": 109.0,
+          "seconds": 3501.7697500000054,
           "correct_accepts": 20,
-          "seconds_to_correct": 3533.8845000000047
+          "seconds_to_correct": 3501.7697500000054
         }
       }
     },
@@ -37181,10 +37181,10 @@
           "correct_accept": 0.0,
           "marginal_accept": 1.0,
           "reps": 20,
-          "blocks": 2380,
+          "blocks": 2381,
           "accepts": 20,
-          "blocks_per_accept": 119.0,
-          "seconds": 3072.906499999992,
+          "blocks_per_accept": 119.05,
+          "seconds": 3074.195384999992,
           "correct_accepts": 0,
           "seconds_to_correct": 0.0
         }
@@ -37407,10 +37407,10 @@
           "correct_accept": 0.0,
           "marginal_accept": 1.0,
           "reps": 20,
-          "blocks": 2482,
+          "blocks": 2483,
           "accepts": 20,
-          "blocks_per_accept": 124.1,
-          "seconds": 3927.4476950000035,
+          "blocks_per_accept": 124.15,
+          "seconds": 3929.027092500004,
           "correct_accepts": 0,
           "seconds_to_correct": 0.0
         }
@@ -38126,12 +38126,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 4814,
+          "blocks": 5222,
           "accepts": 20,
-          "blocks_per_accept": 240.7,
-          "seconds": 6404.611800000009,
+          "blocks_per_accept": 261.1,
+          "seconds": 6947.037600000009,
           "correct_accepts": 20,
-          "seconds_to_correct": 6404.611800000009
+          "seconds_to_correct": 6947.037600000009
         }
       }
     },
@@ -38352,12 +38352,12 @@
           "correct_accept": 1.0,
           "marginal_accept": 0.0,
           "reps": 20,
-          "blocks": 4386,
+          "blocks": 4383,
           "accepts": 20,
-          "blocks_per_accept": 219.3,
-          "seconds": 6899.853235,
+          "blocks_per_accept": 219.15,
+          "seconds": 6895.1436925,
           "correct_accepts": 20,
-          "seconds_to_correct": 6899.853235
+          "seconds_to_correct": 6895.1436925
         }
       }
     },
@@ -41427,10 +41427,10 @@
           "correct_accept": 0.0,
           "marginal_accept": 1.0,
           "reps": 20,
-          "blocks": 4146,
+          "blocks": 4145,
           "accepts": 20,
-          "blocks_per_accept": 207.3,
-          "seconds": 21521.437909999957,
+          "blocks_per_accept": 207.25,
+          "seconds": 21516.487974999956,
           "correct_accepts": 0,
           "seconds_to_correct": 0.0
         }

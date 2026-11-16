@@ -1,0 +1,24 @@
+Data licence
+
+Copyright (c) 2026 The SeqAccept authors
+
+The recorded data in this repository are licensed under the Creative Commons
+Attribution 4.0 International licence (CC BY 4.0):
+https://creativecommons.org/licenses/by/4.0/
+
+This covers the episodes (episodes/, episodes_flaky/, episodes_flaky_seeds/),
+streams (streams/), full-suite runs (fullsuite/), online runs (online/),
+screening records (screening/), the execution-order logs (runs/exec_order/),
+results (results/), and the bug reports, prompts and planted-bug patches in
+tasks/ and bugs/.
+
+Exceptions:
+- Source files copied from the upstream projects (the "original" and "buggy"
+  file contents in tasks/*.json, and anything the Dockerfiles in repos/ fetch)
+  remain under each upstream project's own licence.
+- Bug reports, planted bugs and repair candidates were written by large
+  language models (Claude, gpt-4o, gpt-4.1-mini, grok-4.7, llama3.1:8b). They
+  are redistributed as research data; their use remains subject to the
+  respective providers' terms of use.
+
+The code is licensed separately under the MIT License (see LICENSE).

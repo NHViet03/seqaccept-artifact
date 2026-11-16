@@ -63,6 +63,12 @@ TRACE = {  # every public function/class in impl/*.py -> where the paper or the 
     "ease_round2.bug_of": "EASE round 1: the independent bug of an episode",
     "ease_round2.run": "EASE round 1: replay one rule on every episode",
     "ease_round2.row": "EASE round 1: FAR, FRR, blocks and seconds per accept, blocks per loop",
+    "ease_round3.cp_lower": "EASE round 2: one-sided Clopper-Pearson lower bound on p0 (Corollary 4.3)",
+    "ease_round3.ci": "EASE round 2: bug- or repository-clustered interval",
+    "ease_round3.summary": "EASE round 2: FAR with bug and repository intervals, FRR, blocks per accept",
+    "ease_round3.run": "EASE round 2: replay one rule per episode",
+    "ease_round3.ordered_replay": "EASE round 2: replay that keeps each pool's execution order",
+    "ease_round3.near_eps_dependence": "EASE round 2: runs test and lag-1 on candidates failing in (p0, 0.5]",
     "exec_order.done_seeds": "external review 2: resumable execution-order log",
     "exec_order.run_task": "external review 2: blocks of the original code with start/end time, worker and load",
     "exec_order.summarize": "external review 2: independence in execution order vs seed order, busy vs quiet host",
@@ -580,3 +586,16 @@ def test_prefilter_skips_a_candidate_that_fails_its_first_block_without_spending
     r = seq_accept(2, lambda j: next(outcomes[j]), prefilter=1)
     perfect = seq_accept(1, lambda j: 0).blocks
     assert r.accepted == 1 and r.blocks == 1 + 1 + perfect  # c0: one failed prefilter block; c1: one pass + full slice
+
+
+def test_ease3_cp_lower_and_ordered_replay():  # EASE round 2
+    import math
+    from ease_round3 import cp_lower, ordered_replay
+    assert cp_lower(0, 400) == 0.0
+    lo = cp_lower(80, 400)
+    sf = 1 - sum(math.comb(400, i) * lo ** i * (1 - lo) ** (400 - i) for i in range(80))
+    assert 0.16 < lo < 0.2 and abs(sf - 0.05) < 1e-3
+    ep = {"stream": ["a"], "p0": 0.0, "fixes": {"a": {"pool": [0, 1, 1, 0], "truth": [0] * 200, "seeds": []}}}
+    first = []
+    ordered_replay(lambda n, block: first.append([block(0) for _ in range(4)]) or Result(None, 4), ep, 3, seed=1)
+    assert all(sorted(f) == [0, 0, 1, 1] for f in first)  # each run reads the whole pool once, in circular order

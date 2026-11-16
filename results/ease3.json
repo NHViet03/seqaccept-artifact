@@ -1,0 +1,293 @@
+{
+ "fullsuite": {
+  "loops": 136,
+  "B1 stop at first pass": {
+   "far": 0.039705882352941174,
+   "far_ci_bug": [
+    0.0,
+    0.09999999999999999
+   ],
+   "far_ci_repo": [
+    0.0,
+    0.09
+   ],
+   "frr": 0.0,
+   "blocks_per_accept": 6.428786359077232
+  },
+  "B2 rerun-3 all green": {
+   "far": 0.009926470588235294,
+   "far_ci_bug": [
+    0.0,
+    0.026470588235294117
+   ],
+   "far_ci_repo": [
+    0.0,
+    0.02368421052631579
+   ],
+   "frr": 0.0,
+   "blocks_per_accept": 9.217436429683445
+  },
+  "B3 majority of 5": {
+   "far": 0.02683823529411765,
+   "far_ci_bug": [
+    0.0,
+    0.06654411764705882
+   ],
+   "far_ci_repo": [
+    0.0,
+    0.060526315789473685
+   ],
+   "frr": 0.0,
+   "blocks_per_accept": 33.547486033519554
+  }
+ },
+ "stress094": {
+  "episodes": 136,
+  "reps": 200,
+  "B4 peeking Clopper-Pearson": {
+   "far": 0.106875,
+   "far_ci_bug": [
+    0.048933823529411766,
+    0.17352941176470588
+   ],
+   "far_ci_repo": [
+    0.0664453125,
+    0.1479296875
+   ],
+   "frr": 0.0,
+   "blocks_per_accept": 728.0904034980056
+  },
+  "B5 naive confidence sequence": {
+   "far": 0.014595588235294117,
+   "far_ci_bug": [
+    0.006691176470588235,
+    0.02463235294117647
+   ],
+   "far_ci_repo": [
+    0.0085546875,
+    0.021470588235294116
+   ],
+   "frr": 0.0,
+   "blocks_per_accept": 2134.3950124059043
+  },
+  "SeqAccept": {
+   "far": 0.001875,
+   "far_ci_bug": [
+    0.0005882352941176471,
+    0.003713235294117647
+   ],
+   "far_ci_repo": [
+    0.0007083333333333334,
+    0.003298611111111111
+   ],
+   "frr": 0.0,
+   "blocks_per_accept": 2512.570568999346
+  }
+ },
+ "near_eps_dependence": {
+  "natural": {
+   "tested": 121,
+   "rejected": 9,
+   "rejected_upper": 0.12620397913002943,
+   "lag1_mean": -0.005627651919885977,
+   "lag1_ci_task": [
+    -0.01931924293648324,
+    0.005941009219643007
+   ],
+   "lag1_abs_over_02": 0,
+   "tasks": 13
+  },
+  "realflaky": {
+   "tested": 324,
+   "rejected": 17,
+   "rejected_upper": 0.07766543742349236,
+   "lag1_mean": -0.007410626191033711,
+   "lag1_ci_task": [
+    -0.01522866002489848,
+    0.003240251724156229
+   ],
+   "lag1_abs_over_02": 0,
+   "tasks": 13
+  }
+ },
+ "ordered_realflaky": {
+  "B4 peeking Clopper-Pearson": {
+   "iid": {
+    "far": 0.020673076923076922,
+    "far_ci_bug": [
+     0.0014423076923076924,
+     0.04519230769230769
+    ],
+    "far_ci_repo": [
+     0.0013392857142857143,
+     0.042578125
+    ],
+    "frr": 0.0014925373134328358,
+    "blocks_per_accept": 313.7823652904129
+   },
+   "ordered": {
+    "far": 0.012499999999999999,
+    "far_ci_bug": [
+     0.0014423076923076924,
+     0.027884615384615383
+    ],
+    "far_ci_repo": [
+     0.0013392857142857143,
+     0.027403846153846154
+    ],
+    "frr": 0.017164179104477612,
+    "blocks_per_accept": 472.2692031586504
+   }
+  },
+  "B5 naive confidence sequence": {
+   "iid": {
+    "far": 0.010576923076923078,
+    "far_ci_bug": [
+     0.0,
+     0.025961538461538463
+    ],
+    "far_ci_repo": [
+     0.0,
+     0.029017857142857144
+    ],
+    "frr": 0.048507462686567165,
+    "blocks_per_accept": 1546.840807174888
+   },
+   "ordered": {
+    "far": 0.0009615384615384616,
+    "far_ci_bug": [
+     0.0,
+     0.002403846153846154
+    ],
+    "far_ci_repo": [
+     0.0,
+     0.0020833333333333333
+    ],
+    "frr": 0.09999999999999999,
+    "blocks_per_accept": 2683.2632436837816
+   }
+  },
+  "SeqAccept": {
+   "iid": {
+    "far": 0.002403846153846154,
+    "far_ci_bug": [
+     0.0,
+     0.00625
+    ],
+    "far_ci_repo": [
+     0.0,
+     0.006696428571428572
+    ],
+    "frr": 0.10895522388059702,
+    "blocks_per_accept": 2552.1735941320294
+   },
+   "ordered": {
+    "far": 0.0,
+    "far_ci_bug": [
+     0.0,
+     0.0
+    ],
+    "far_ci_repo": [
+     0.0,
+     0.0
+    ],
+    "frr": 0.12835820895522387,
+    "blocks_per_accept": 3165.824915824916
+   }
+  }
+ },
+ "realflaky_lcb": {
+  "max_gap": 0.034717125530393106,
+  "B4 peeking Clopper-Pearson": {
+   "far": 0.021634615384615384,
+   "far_ci_bug": [
+    0.0,
+    0.04855769230769231
+   ],
+   "far_ci_repo": [
+    0.0,
+    0.05625
+   ],
+   "frr": 0.03805970149253731,
+   "blocks_per_accept": 635.6551215917465,
+   "frr_high": 0.11904761904761904
+  },
+  "B5 naive confidence sequence": {
+   "far": 0.004326923076923077,
+   "far_ci_bug": [
+    0.0,
+    0.010096153846153847
+   ],
+   "far_ci_repo": [
+    0.0,
+    0.011538461538461539
+   ],
+   "frr": 0.20597014925373133,
+   "blocks_per_accept": 3980.6237442922375,
+   "frr_high": 0.5666666666666667
+  },
+  "SeqAccept": {
+   "far": 0.0009615384615384616,
+   "far_ci_bug": [
+    0.0,
+    0.002403846153846154
+   ],
+   "far_ci_repo": [
+    0.0,
+    0.0020833333333333333
+   ],
+   "frr": 0.31492537313432833,
+   "blocks_per_accept": 5983.148187633262,
+   "frr_high": 0.7690476190476191
+  }
+ },
+ "cost_calibrated": {
+  "B1 stop at first pass": {
+   "blocks_per_accept": 3.4310129220508547,
+   "minutes_per_accept": 0.1601668996804224,
+   "blocks_per_loop": 3.0261029411764704
+  },
+  "B2 rerun-3 all green": {
+   "blocks_per_accept": 6.969455511288181,
+   "minutes_per_accept": 0.3063598368193891,
+   "blocks_per_loop": 5.788235294117647
+  },
+  "B3 majority of 5": {
+   "blocks_per_accept": 18.592687074829932,
+   "minutes_per_accept": 0.8422689275970805,
+   "blocks_per_loop": 16.077205882352942
+  },
+  "B4 peeking Clopper-Pearson": {
+   "blocks_per_accept": 176.7761429322123,
+   "minutes_per_accept": 9.121313361380286,
+   "blocks_per_loop": 123.6783088235294
+  },
+  "B5 naive confidence sequence": {
+   "blocks_per_accept": 275.5442105263158,
+   "minutes_per_accept": 13.995393685635017,
+   "blocks_per_loop": 192.47573529411764
+  },
+  "B6 SeqAccept, no refund": {
+   "blocks_per_accept": 299.76526315789476,
+   "minutes_per_accept": 15.139944232082387,
+   "blocks_per_loop": 209.39485294117648
+  },
+  "SeqAccept": {
+   "blocks_per_accept": 291.03789473684213,
+   "minutes_per_accept": 14.901070816292913,
+   "blocks_per_loop": 203.29852941176472
+  },
+  "B1 stop at first pass (full suite)": {
+   "runs_per_accept": 6.428786359077232,
+   "minutes_per_accept": 0.1846797225008358
+  },
+  "B2 rerun-3 all green (full suite)": {
+   "runs_per_accept": 9.217436429683445,
+   "minutes_per_accept": 0.3405251738453555
+  },
+  "B3 majority of 5 (full suite)": {
+   "runs_per_accept": 33.547486033519554,
+   "minutes_per_accept": 0.965769349923819
+  }
+ }
+}

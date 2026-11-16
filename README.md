@@ -9,7 +9,7 @@ SeqAccept decides when an LLM repair loop may stop at a passing test run, with a
 | Path | What it holds |
 |---|---|
 | `rules.py`, `sim.py` | acceptance rules (B1-B6, SeqAccept, spending baselines) and simulated streams |
-| `replay.py`, `extra_analyses.py`, `power_tuning.py`, `review2.py`, `ease_analyses.py`, `ease_round2.py`, `exec_order.py` | offline replay and analyses |
+| `replay.py`, `extra_analyses.py`, `power_tuning.py`, `review2.py`, `ease_analyses.py`, `ease_round2.py`, `ease_round3.py`, `exec_order.py` | offline replay and analyses |
 | `paper_numbers.py` | every number, table and figure of the paper, generated from `results/` |
 | `run_block.py`, `collect.py`, `agent.py`, `llm.py`, `build_episode.py`, `run_all.py`, `online.py`, `fullsuite.py`, `flaky_arm.py` | Docker and LLM harness that recorded the data |
 | `tasks/`, `bugs/`, `repos/`, `screening/` | task definitions, original and planted-bug sources, subject Dockerfiles, IDoFT screening |

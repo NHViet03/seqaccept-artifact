@@ -1482,6 +1482,8 @@ def checks():
     m("ubAcceptTwo", pct(ub["0.2-10000"]["accept"]))
     m("ubBlocksTwo", num(ub["0.2-10000"]["blocks"], 0))
     m("ubBlocksTwoCap", num(ub["0.2-800"]["blocks"], 0))
+    m("ubBpaTwo", num(ub["0.2-10000"]["blocks"] / ub["0.2-10000"]["accept"], 0))
+    m("ubBpaTwoCap", num(ub["0.2-800"]["blocks"] / ub["0.2-800"]["accept"], 0))
     m("ubAcceptMin", pct(min(ub[f"{p}-10000"]["accept"] for p in (0.1, 0.2, 0.3))))
     rb = d["realflaky_uncapped_B"]
     m("ubRfFrr", pct(rb["frr"], 2))

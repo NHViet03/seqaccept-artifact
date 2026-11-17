@@ -16,6 +16,11 @@
    real-flaky arm.
 8. The two tasks left out because grok-4.7 could not record them: rules on natural loops with the other models' loops.
 9. Drift over the recording window: B1 FAR on each model's run 1 and run 2 of the same natural tasks.
+10. Corollary 4.3 as run: eps = L + delta from a one-sided 95% Clopper-Pearson bound L on p0, delta = 0.05 + the
+    largest p0hat - L at 400 blocks, scored against p0 + delta (natural, injected, real-flaky).
+11. Real-flaky FAR over the loops that contain a Broken candidate, and the worst task with a bound.
+12. Refund break-even: blocks to accept a candidate that never fails at stream position j under SeqAccept (earlier
+    wallets unmoved), harmonic spending and no refund; the first j at which the no-refund slice falls below harmonic.
 """
 import json
 import random
@@ -25,6 +30,7 @@ from statistics import mean
 
 import replay
 from caps_adversary import adversary, ambiguous_labels
+from comparators import bug_of
 from extra_analyses import evaluate_rules, extra_rules, runs_test
 from rules import all_rules, bonferroni, fixed_n, fixed_spending, harmonic, seq_accept
 from sensitivity import cost_rows, task_of
@@ -253,6 +259,59 @@ if __name__ == "__main__":
                                "run1_start": min(e["agent"]["started"] for e in runs[1])[:10],
                                "run2_end": max(e["agent"]["started"] for e in runs[2])[:10]}
     print(f"   {json.dumps({m: [round(100 * v['run1'], 1), round(100 * v['run2'], 1), v['loops']] for m, v in out['drift'].items()})}")
+
+    print("10. Corollary 4.3: eps = L + delta, delta = 0.05 + sup(p0hat - L) at 400 blocks, scored against p0 + delta")
+    from extra_analyses import margin_labels
+    from intervals import cp_lower
+    nb = json.loads(Path(f"tasks/{task_of(natural[0])}.json").read_text())["p0_blocks"]
+    gap = max(k / nb - cp_lower(k, nb) for k in range(nb + 1))
+    delta = replay.MARGIN + round(gap, 3)
+    cor = "SeqAccept, eps = L + delta"
+    lab = margin_labels(delta)
+    rule_cor = lambda ep: {cor: all_rules(eps=cp_lower(round(ep["p0"] * nb), nb) + delta)["SeqAccept"]}
+    c10 = cost_rows(natural, per, rule_cor)[cor]
+    main_eps = [ep for ep in episodes if ep.get("flakiness", "natural") in replay.MAIN_FLAKINESS]
+    r10 = evaluate_rules(main_eps, rule_cor, labels_of=lab)[cor]
+    far_of = lambda fl: mean(r["far"] for r, ep in zip(r10, main_eps) if ep.get("flakiness", "natural") == fl)
+    nat_r = [r for r, ep in zip(r10, main_eps) if ep.get("flakiness", "natural") == "natural"]
+    nat_e = [ep for ep in main_eps if ep.get("flakiness", "natural") == "natural"]
+    hit = {bug_of(ep) for ep, r in zip(nat_e, nat_r) if r["far"] > 0}
+    with_b = {bug_of(ep) for ep in nat_e if "broken" in lab(ep)}
+    rf10 = evaluate_rules(flaky, rule_cor, labels_of=lab)[cor]
+    s_rf = replay.summarize(rf10, flaky)
+    out["corollary"] = {"delta": delta, "natural": {**c10, "far": mean(r["far"] for r in nat_r),
+                                                     "bugs_hit": len(hit), "bugs_with_broken": len(with_b),
+                                                     "bugs_upper": replay.cp_upper(0, len(with_b)) if not hit else None},
+                        "bernoulli": far_of("injected-bernoulli"), "markov": far_of("injected-markov"),
+                        "realflaky": {"far": s_rf["far"], "frr": s_rf["frr"], "blocks_per_accept": s_rf["blocks_per_accept"],
+                                      "far_ci_repo": list(replay.cluster_ci([r["far"] for r in rf10], [ep.get("repo") for ep in flaky])),
+                                      "frr_high": replay.summarize([rf10[i] for i in hi], [flaky[i] for i in hi])["frr"]}}
+    print(f"   delta {delta}: {json.dumps({k: (round(v, 4) if isinstance(v, float) else v) for k, v in out['corollary'].items() if k != 'natural'})}")
+
+    print("11. real-flaky FAR over loops with a Broken candidate; worst task")
+    main4 = ("B4 peeking Clopper-Pearson", "B5 naive confidence sequence", "B6 SeqAccept, no refund", "SeqAccept")
+    r11 = evaluate_rules(flaky, lambda ep: {n: all_rules(eps=eps_of(ep))[n] for n in main4})
+    wb = [i for i, ep in enumerate(flaky) if "broken" in replay.labels(ep)]
+    out["realflaky_broken_loops"] = {"loops": len(wb), "of": len(flaky)}
+    for n in main4:
+        by = {}
+        for i, ep in enumerate(flaky):
+            by.setdefault(task_of(ep), []).append(r11[n][i])
+        worst = max(by, key=lambda t: mean(r["far"] for r in by[t]))
+        k = sum(round(r["far"] * r["reps"]) for r in by[worst])
+        m_ = sum(r["reps"] for r in by[worst])
+        out["realflaky_broken_loops"][n] = {"far": mean(r11[n][i]["far"] for i in wb), "worst_task": worst,
+                                            "worst_far": k / m_, "worst_upper": replay.cp_upper(k, m_)}
+    print(f"   {json.dumps(out['realflaky_broken_loops'], default=str)}")
+
+    print("12. refund break-even against harmonic spending: blocks to accept a candidate that never fails")
+    pass_all = lambda a: fixed_spending(1, lambda j: 0, slices=lambda j: a, eps=0.05, max_blocks=10 ** 6).blocks
+    g = 0.5
+    worst_j = next(j for j in range(1, 100) if g * (1 - g) ** (j - 1) < 1 / (j * (j + 1)))
+    out["refund_breakeven"] = {"refund": pass_all(g * ALPHA), "worst_from": worst_j,
+                               **{f"harmonic_{j}": pass_all(ALPHA / (j * (j + 1))) for j in (5, 15, 40)},
+                               **{f"norefund_{j}": pass_all(ALPHA * g * (1 - g) ** (j - 1)) for j in (5, 15)}}
+    print(f"   {out['refund_breakeven']}")
 
     Path("results/checks.json").write_text(json.dumps(out, indent=1, default=str))
     print("saved results/checks.json")

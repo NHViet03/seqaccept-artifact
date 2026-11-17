@@ -328,5 +328,69 @@
    "run1_start": "2026-11-06",
    "run2_end": "2026-11-07"
   }
+ },
+ "corollary": {
+  "delta": 0.092,
+  "natural": {
+   "far": 0.0,
+   "frr": 0.0,
+   "blocks_per_loop": 320.9033088235294,
+   "blocks_per_accept": 459.3984210526316,
+   "bpa_task": 530.9773684210527,
+   "bpa_loop": 1032.03,
+   "minutes_per_accept": 23.000434148924356,
+   "bugs_hit": 0,
+   "bugs_with_broken": 17,
+   "bugs_upper": 0.16156611126074014
+  },
+  "bernoulli": 0.0,
+  "markov": 0.0,
+  "realflaky": {
+   "far": 0.0004807692307692308,
+   "frr": 0.05895522388059701,
+   "blocks_per_accept": 1824.1771863117872,
+   "far_ci_repo": [
+    0.0,
+    0.0014423076923076924
+   ],
+   "frr_high": 0.1880952380952381
+  }
+ },
+ "realflaky_broken_loops": {
+  "loops": 73,
+  "of": 104,
+  "B4 peeking Clopper-Pearson": {
+   "far": 0.02945205479452055,
+   "worst_task": "yamicache@realflaky",
+   "worst_far": 0.125,
+   "worst_upper": 0.1764363108221164
+  },
+  "B5 naive confidence sequence": {
+   "far": 0.015068493150684932,
+   "worst_task": "yamicache@realflaky",
+   "worst_far": 0.075,
+   "worst_upper": 0.11868447246854735
+  },
+  "B6 SeqAccept, no refund": {
+   "far": 0.0034246575342465756,
+   "worst_task": "yamicache@realflaky",
+   "worst_far": 0.01875,
+   "worst_upper": 0.047744666996474346
+  },
+  "SeqAccept": {
+   "far": 0.005479452054794521,
+   "worst_task": "yamicache@realflaky",
+   "worst_far": 0.03125,
+   "worst_upper": 0.0645796213406858
+  }
+ },
+ "refund_breakeven": {
+  "refund": 105,
+  "worst_from": 5,
+  "harmonic_5": 164,
+  "harmonic_15": 209,
+  "harmonic_40": 250,
+  "norefund_5": 165,
+  "norefund_15": 315
  }
 }

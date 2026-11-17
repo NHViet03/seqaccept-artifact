@@ -1490,6 +1490,31 @@ def checks():
     m("ubRfFrrHigh", pct(rb["frr_high"], 2))
     m("ubRfFar", pct(rb["far"], 2))
     m("ubRfBpa", num(rb["blocks_per_accept"], 0))
+    co = d["corollary"]
+    m("corDelta", f"{co['delta']:.3f}")
+    m("corFarNat", pct(co["natural"]["far"]))
+    m("corBpaNat", num(co["natural"]["blocks_per_accept"]))
+    m("corBpaTaskNat", num(co["natural"]["bpa_task"], 0))
+    m("corRfFar", pct(co["realflaky"]["far"], 2))
+    m("corRfFrr", pct(co["realflaky"]["frr"]))
+    m("corRfFrrHigh", pct(co["realflaky"]["frr_high"]))
+    m("corRfBpa", num(co["realflaky"]["blocks_per_accept"], 0))
+    bl = d["realflaky_broken_loops"]
+    m("rfBrokenLoops", bl["loops"])
+    for name in ("B4 peeking Clopper-Pearson", "SeqAccept", "B6 SeqAccept, no refund", "B5 naive confidence sequence"):
+        k = KEY[name]
+        m(f"rfCondFar{k}", pct(bl[name]["far"], 2))
+        m(f"worstTaskFar{k}", pct(bl[name]["worst_far"]))
+        m(f"worstTaskUp{k}", pct(bl[name]["worst_upper"]))
+    assert bl["SeqAccept"]["worst_task"] == bl["B4 peeking Clopper-Pearson"]["worst_task"] == "yamicache@realflaky"  # text names yamicache
+    rbk = d["refund_breakeven"]
+    m("rbRefund", rbk["refund"])
+    m("rbWorstFrom", ["", "first", "second", "third", "fourth", "fifth", "sixth", "seventh"][rbk["worst_from"]])
+    for j, t in ((5, "Five"), (15, "Fifteen"), (40, "Forty")):
+        m(f"rbHarm{t}", rbk[f"harmonic_{j}"])
+    for j, t in ((5, "Five"), (15, "Fifteen")):
+        m(f"rbNone{t}", rbk[f"norefund_{j}"])
+    m("capBpaSpendThousand", num(c["Bonferroni-1000 spending"]["blocks_per_accept"]))
     dt = d["dropped_tasks"]
     m("dropLoops", dt["loops_added"])
     m("dropFarBone", pct(dt["with"]["B1 stop at first pass"]))
@@ -1519,7 +1544,9 @@ def checks():
         r = rm[key]
         rows += f"{lab} & {valid} & {pct(r['far'], 2)} & {pct(r['frr'])} & {pct(r['frr_high'])} & {num(r['blocks_per_accept'], 0)}\\\\\n"
     rows += "\\midrule\n"
-    rows += f"\\sa{{}}, $B=10{{,}}000$ & yes & {pct(rb['far'], 2)} & {pct(rb['frr'], 2)} & {pct(rb['frr_high'], 2)} & {num(rb['blocks_per_accept'], 0)}\\\\\n"
+    rows += f"\\sa{{}}, $T=10{{,}}000$ & yes & {pct(rb['far'], 2)} & {pct(rb['frr'], 2)} & {pct(rb['frr_high'], 2)} & {num(rb['blocks_per_accept'], 0)}\\\\\n"
+    cr_ = co["realflaky"]
+    rows += f"\\sa{{}}, $\\eps=L+\\delta$ & yes$^\\dagger$ & {pct(cr_['far'], 2)} & {pct(cr_['frr'])} & {pct(cr_['frr_high'])} & {num(cr_['blocks_per_accept'], 0)}\\\\\n"
     mg = load("results/sensitivity.json")["realflaky_margin"]["0.1"]
     rows += f"\\sa{{}}, margin 0.10 & yes$^*$ & {pct(mg['far'], 2)} & {pct(mg['frr'])} & {pct(mg['frr_high'])} & {macros['rfMarginBpaSa']}\\\\\n"
     write("tab_rf_main.tex", "\\begin{tabular}{@{}llrrrr@{}}\n\\toprule\n\\textbf{Rule} & \\textbf{Valid} & \\textbf{FAR \\%} {\\scriptsize[repo.\\ CI]} & "
@@ -1607,6 +1634,12 @@ def ease2():
         valid = {"B5 naive confidence sequence": "per cand.", "B6 SeqAccept, no refund": "yes", "SeqAccept": "yes"}.get(name, "no")
         rows += (f"{SHOW[name]} & {valid} & {pct(nf['far'])}{ci} & {kb}/{nb}{ub} & {pct(r['frr'])} & "
                  f"{pct(bm['injected-bernoulli'][name])} & {pct(bm['injected-markov'][name])} & " + cost_cells(name))
+    co = load("results/checks.json")["corollary"]  # Corollary 4.3 as run: eps = L + delta, level 0.10 against p0 + delta
+    cn = co["natural"]
+    ub = f" {{\\scriptsize({pct(cn['bugs_upper'])})}}" if cn["bugs_hit"] == 0 else ""
+    rows += (f"\\sa{{}}, $\\eps=L+\\delta$ & yes$^\\dagger$ & {pct(cn['far'])} & {cn['bugs_hit']}/{cn['bugs_with_broken']}{ub} & {pct(cn['frr'])} & "
+             f"{pct(co['bernoulli'])} & {pct(co['markov'])} & {num(cn['blocks_per_loop'])} & {num(cn['blocks_per_accept'])} & "
+             f"{num(cn['bpa_task'])} & {num(cn['bpa_loop'])} & {num(cn['minutes_per_accept'], 2)}\\\\\n")
     rows += "\\midrule\n"
     comp = {"Harmonic spending": "Harmonic spending", "Discard spending": "Discarding",
             "Fixed-n Bonferroni-15 (1n0)": "Fixed-$n$ Bonf.-15 ($n_0$)", "Fixed-n Bonferroni-15 (4n0)": "Fixed-$n$ Bonf.-15 ($4n_0$)"}

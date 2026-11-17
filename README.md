@@ -11,7 +11,7 @@ SeqAccept decides when an LLM repair loop may stop at a passing test run, with a
 | `rules.py`, `sim.py` | acceptance rules (B1-B6, SeqAccept, spending baselines) and simulated streams |
 | offline replay and analyses | see *Analysis scripts* below |
 | `paper_numbers.py` | every number, table and figure of the paper, generated from `results/` |
-| `run_block.py`, `collect.py`, `agent.py`, `llm.py`, `build_episode.py`, `run_all.py`, `online.py`, `fullsuite.py`, `flaky_arm.py` | Docker and LLM harness that recorded the data |
+| `run_block.py`, `collect.py`, `agent.py`, `llm.py`, `build_episode.py`, `run_all.py`, `online.py`, `fullsuite.py`, `flaky_arm.py`, `near_eps_arm.py` | Docker and LLM harness that recorded the data |
 | `tasks/`, `bugs/`, `repos/`, `screening/` | task definitions, original and planted-bug sources, subject Dockerfiles, IDoFT screening |
 | `streams/`, `episodes/`, `episodes_flaky/`, `fullsuite/`, `online/`, `runs/exec_order/` | recorded data |
 | `results/` | recorded results |
@@ -66,6 +66,7 @@ uv run --env-file .env python run_all.py --help    # stage 1-5 driver: tasks, ag
 uv run --env-file .env python online.py            # SeqAccept in the loop with a live agent
 uv run python fullsuite.py                         # Docker only: full-suite runs of the recorded candidates
 uv run python flaky_arm.py                         # Docker only: real flaky tests kept
+uv run python near_eps_arm.py --plan                # Docker only (without --plan): recorded loops on smaller blocks, broken candidates near eps
 uv run python exec_order.py run                    # Docker only: execution-order independence check
 ```
 

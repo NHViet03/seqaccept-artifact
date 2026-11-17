@@ -1,6 +1,6 @@
-"""Analyses for the EASE 2027 mentor review (offline: no LLM, no Docker). Writes results/ease.json.
+"""Analyses for the EASE 2027 mentor review (offline: no LLM, no Docker). Writes results/ablations.json.
 
-  uv run python ease_analyses.py
+  uv run python ablations.py
 
 1. Refund ablation: no refund, the largest refund Theorem 4.2 allows (alpha_j min(E, 1)), the implemented capped
    refund and the uncapped refund, on recorded loops, late streams, refund stress and the worst case.
@@ -186,5 +186,5 @@ if __name__ == "__main__":
                     {"k": k, "far": sum(vals) / len(vals), "ci": replay.cluster_ci(vals, [bug_of(ep) for ep in cut])})
     out["persistence"] = pers
 
-    Path("results/ease.json").write_text(json.dumps(out, indent=1, default=str))
-    print("saved results/ease.json")
+    Path("results/ablations.json").write_text(json.dumps(out, indent=1, default=str))
+    print("saved results/ablations.json")

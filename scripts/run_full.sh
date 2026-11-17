@@ -18,20 +18,22 @@ step "extra analyses (spending baselines, full suite, real-flaky arm, ...) -> re
 "$PY" extra_analyses.py
 step "mixture wallet, gamma/rho sweep, KL floor            -> results/power_tuning.json"
 "$PY" power_tuning.py
-step "replay-pool and label-uncertainty checks             -> results/review2.json"
-"$PY" review2.py
+step "replay-pool and label-uncertainty checks             -> results/label_risk.json"
+"$PY" label_risk.py
 step "independence in execution order                      -> results/exec_order.json"
 "$PY" exec_order.py analyze
-step "refund ablation, shortcut, truth vs pool, cost, operating curve -> results/ease.json"
-"$PY" ease_analyses.py
-step "prefilter, refund at cap, per bug, competitors      -> results/ease2.json"
-"$PY" ease_round2.py
-step "clustered intervals, near-eps dependence, eps from L, calibrated cost -> results/ease3.json"
-"$PY" ease_round3.py
-step "attempt caps, adversary, dependence to FAR, break-even, per task -> results/ease4.json"
-"$PY" ease_round4.py
+step "refund ablation, shortcut, truth vs pool, cost, operating curve -> results/ablations.json"
+"$PY" ablations.py
+step "prefilter, refund at cap, per bug, competitors      -> results/comparators.json"
+"$PY" comparators.py
+step "clustered intervals, near-eps dependence, eps from L, calibrated cost -> results/intervals.json"
+"$PY" intervals.py
+step "attempt caps, adversary, dependence to FAR, break-even, per task -> results/caps_adversary.json"
+"$PY" caps_adversary.py
 step "cost with calibration, block size, regime map, pool scoring -> results/sensitivity.json"
 "$PY" sensitivity.py
+step "invariant, runs-test power, paired intervals, caps, no replacement -> results/checks.json"
+"$PY" checks.py
 step "paper numbers, tables and figures                    -> ${SEQACCEPT_PAPER_DIR:-paper_out}"
 "$PY" paper_numbers.py
 echo; echo "done"

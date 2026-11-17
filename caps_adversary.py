@@ -1,6 +1,6 @@
-"""EASE review round 3 follow-ups (offline: no LLM, no Docker). Writes results/ease4.json.
+"""EASE review round 3 follow-ups (offline: no LLM, no Docker). Writes results/caps_adversary.json.
 
-  uv run python ease_round4.py
+  uv run python caps_adversary.py
 
 1. Bonferroni with an attempt cap n_max = 15, 40, 100 (spending and fixed-n) against SeqAccept: natural loops and
    late streams of k = 10, 20, 40 broken candidates before a correct one.
@@ -22,9 +22,9 @@ from pathlib import Path
 from statistics import mean
 
 import replay
-from ease_round2 import bug_of
+from comparators import bug_of
 from extra_analyses import CORR_P, correlated, evaluate_rules, lag1_corr, summary as extra_summary
-from review2 import beta_cdf
+from label_risk import beta_cdf
 from rules import _refund, all_rules, bets, bonferroni, fixed_n, fixed_spending, seq_accept
 from sim import experiment, label
 
@@ -43,7 +43,7 @@ def cap_rules(eps):
     return out
 
 
-def adversary(refund, policy, n, reps, seed, near=0.051, far_p=0.9, at_cap=True):
+def adversary(refund, policy, n, reps, seed, near=0.051, far_p=0.9, at_cap=True, trace=None):
     """FAR of SeqAccept with `refund` against a white-box adversary. Every candidate is broken. The adversary hands out
     the block outcomes, so it can replay the rule's arithmetic and knows the pool W before choosing the next candidate:
     policy "near" always proposes p = near; policy "switch" proposes p = near while W >= alpha / 2 and otherwise
@@ -81,7 +81,9 @@ def adversary(refund, policy, n, reps, seed, near=0.051, far_p=0.9, at_cap=True)
             st["outs"].append(y)
             return y
 
-        res = seq_accept(n, block, eps=EPS, refund=refund, setaside_refund=at_cap)
+        if trace:
+            trace(None, None, None)  # a new run starts
+        res = seq_accept(n, block, eps=EPS, refund=refund, setaside_refund=at_cap, trace=trace)
         hits += res.accepted is not None
     return hits / reps
 
@@ -110,7 +112,7 @@ if __name__ == "__main__":
     natural = [ep for ep in episodes if ep.get("flakiness", "natural") == "natural"]
     flaky = [replay.load_episode(p) for p in sorted(Path("episodes_flaky").glob("*.json"))]
     per = {Path(e["file"]).stem: e for e in json.loads(Path("results/results.json").read_text())["per_episode"]}
-    e3 = json.loads(Path("results/ease3.json").read_text())
+    e3 = json.loads(Path("results/intervals.json").read_text())
     out = {}
 
     print("1. attempt caps")
@@ -240,5 +242,5 @@ if __name__ == "__main__":
                               **{n: mean(per[ep["name"]]["rules"][n]["far"] for ep in with_broken) for n in all_rules()}}
     print(f"   {out['worst010']}")
 
-    Path("results/ease4.json").write_text(json.dumps(out, indent=1, default=str))
-    print("saved results/ease4.json")
+    Path("results/caps_adversary.json").write_text(json.dumps(out, indent=1, default=str))
+    print("saved results/caps_adversary.json")

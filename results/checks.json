@@ -1,0 +1,332 @@
+{
+ "invariant": {
+  "adversary-near-15-max": {
+   "runs": 1000,
+   "mean_stop": 0.04534267158632253,
+   "se": 0.006663807230834123,
+   "upper": 0.05840373375875742,
+   "far": 0.043
+  },
+  "adversary-near-15-uncapped": {
+   "runs": 1000,
+   "mean_stop": 0.14344012846466636,
+   "se": 0.009930873145521796,
+   "upper": 0.1629046398298891,
+   "far": 0.114
+  },
+  "adversary-switch-15-max": {
+   "runs": 1000,
+   "mean_stop": 0.033923684844700985,
+   "se": 0.005460809359253252,
+   "upper": 0.04462687118883736,
+   "far": 0.031
+  },
+  "adversary-switch-15-uncapped": {
+   "runs": 1000,
+   "mean_stop": 0.14672756085341693,
+   "se": 0.010068145417576205,
+   "upper": 0.1664611258718663,
+   "far": 0.115
+  },
+  "constructed-0.051-15-max": {
+   "runs": 1000,
+   "mean_stop": 0.03181096339941652,
+   "se": 0.00559933773846743,
+   "upper": 0.04278566536681268,
+   "far": 0.03
+  },
+  "constructed-0.051-50-max": {
+   "runs": 400,
+   "mean_stop": 0.033693324713502656,
+   "se": 0.009203813445675467,
+   "upper": 0.051732799067026575,
+   "far": 0.0325
+  }
+ },
+ "runs_power": {
+  "candidates": 324,
+  "0.0": 0.054354539839407044,
+  "0.2": 0.9044015444015444,
+  "0.5": 0.9807513194660044
+ },
+ "frr_diff": {
+  "B6 SeqAccept, no refund": {
+   "diff": -0.016417910447761194,
+   "ci_task": [
+    -0.02727272727272727,
+    -0.0060344827586206904
+   ],
+   "ci_repo": [
+    -0.03141025641025641,
+    -0.0034246575342465756
+   ]
+  },
+  "Harmonic spending": {
+   "diff": -0.014179104477611938,
+   "ci_task": [
+    -0.02642857142857143,
+    -0.003125
+   ],
+   "ci_repo": [
+    -0.029999999999999995,
+    -0.0024193548387096775
+   ]
+  },
+  "Bonferroni-15 spending": {
+   "diff": -0.041044776119402986,
+   "ci_task": [
+    -0.09014084507042254,
+    -0.0056451612903225794
+   ],
+   "ci_repo": [
+    -0.1028169014084507,
+    -0.0033333333333333335
+   ]
+  },
+  "Bonferroni-100 spending": {
+   "diff": -0.09104477611940298,
+   "ci_task": [
+    -0.17058823529411765,
+    -0.02537313432835821
+   ],
+   "ci_repo": [
+    -0.1891304347826087,
+    -0.012295081967213115
+   ]
+  },
+  "Fixed-n Bonferroni-15 (1n0)": {
+   "diff": -0.4791044776119403,
+   "ci_task": [
+    -0.5818840579710145,
+    -0.35238095238095235
+   ],
+   "ci_repo": [
+    -0.5814102564102563,
+    -0.32155172413793104
+   ]
+  }
+ },
+ "cost_ratio": {
+  "Bonferroni-100 spending": {
+   "ratio": 0.7723261634170779,
+   "ci_task": [
+    0.6955397965700053,
+    0.8322294677347509
+   ]
+  },
+  "Fixed-n Bonferroni-15 (1n0)": {
+   "ratio": 1.4744891834137674,
+   "ci_task": [
+    1.057010700833688,
+    2.044748503089116
+   ]
+  },
+  "B4 peeking Clopper-Pearson": {
+   "ratio": 1.6455512927322096,
+   "ci_task": [
+    1.3617132365399178,
+    1.942786519655334
+   ]
+  }
+ },
+ "caps": {
+  "Fixed-n Bonferroni-15": {
+   "bpa_task": 197.28473684210527,
+   "blocks_per_accept": 125.7057894736842,
+   "frr": 0.0
+  },
+  "Fixed-n Bonferroni-40": {
+   "bpa_task": 216.4391785150079,
+   "blocks_per_accept": 144.8225381779884,
+   "frr": 0.0
+  },
+  "Fixed-n Bonferroni-100": {
+   "bpa_task": 234.362822538178,
+   "blocks_per_accept": 162.74618220115852,
+   "frr": 0.0
+  },
+  "Fixed-n Bonferroni-300": {
+   "bpa_task": 255.5395152792413,
+   "blocks_per_accept": 183.88514225500526,
+   "frr": 0.0
+  },
+  "Fixed-n Bonferroni-1000": {
+   "bpa_task": 281.7486800422387,
+   "blocks_per_accept": 209.9429778247096,
+   "frr": 0.0
+  },
+  "Fixed-n Bonferroni-3000": {
+   "bpa_task": 303.96666666666664,
+   "blocks_per_accept": 232.00899470899472,
+   "frr": 0.0
+  },
+  "Fixed-n Bonferroni-10000": {
+   "bpa_task": 328.32962374138845,
+   "blocks_per_accept": 256.2575516693164,
+   "frr": 0.0
+  },
+  "Bonferroni-1000 spending": {
+   "bpa_task": 425.79105263157896,
+   "blocks_per_accept": 354.21210526315787,
+   "frr": 0.0
+  },
+  "SeqAccept": {
+   "bpa_task": 290.8942105263158,
+   "blocks_per_accept": 219.31526315789475,
+   "frr": 0.0
+  }
+ },
+ "caps_late": {
+  "10": {
+   "Fixed-n Bonferroni-1000": 0.3972222222222222,
+   "Bonferroni-1000 spending": 0.8966666666666666
+  },
+  "40": {
+   "Fixed-n Bonferroni-1000": 0.36027777777777775,
+   "Bonferroni-1000 spending": 0.8694444444444445
+  }
+ },
+ "no_replacement": {
+  "natural": {
+   "B4 peeking Clopper-Pearson": {
+    "far": 0.0003676470588235294,
+    "frr": 0.0,
+    "blocks_per_accept": 101.79747501315097
+   },
+   "B5 naive confidence sequence": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 180.35736842105263
+   },
+   "B6 SeqAccept, no refund": {
+    "far": 0.0,
+    "frr": 0.010638297872340425,
+    "blocks_per_accept": 232.52516059957173
+   },
+   "SeqAccept": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 196.25473684210527
+   }
+  },
+  "realflaky": {
+   "B4 peeking Clopper-Pearson": {
+    "far": 0.015384615384615385,
+    "frr": 0.017164179104477612,
+    "blocks_per_accept": 255.80986418870623
+   },
+   "B5 naive confidence sequence": {
+    "far": 0.007211538461538462,
+    "frr": 0.2544776119402985,
+    "blocks_per_accept": 1617.6529411764707
+   },
+   "B6 SeqAccept, no refund": {
+    "far": 0.0,
+    "frr": 0.7283582089552239,
+    "blocks_per_accept": 7644.55737704918
+   },
+   "SeqAccept": {
+    "far": 0.0004807692307692308,
+    "frr": 0.46044776119402986,
+    "blocks_per_accept": 3113.6588720770287
+   }
+  }
+ },
+ "frr_unamb": {
+  "B4 peeking Clopper-Pearson": {
+   "frr": 0.0016666666666666668,
+   "loops": 60
+  },
+  "SeqAccept": {
+   "frr": 0.06833333333333333,
+   "loops": 60
+  }
+ },
+ "uncapped_B": {
+  "0.1-800": {
+   "accept": 0.858,
+   "blocks": 452.858
+  },
+  "0.1-10000": {
+   "accept": 0.998,
+   "blocks": 470.674
+  },
+  "0.2-800": {
+   "accept": 0.576,
+   "blocks": 569.71
+  },
+  "0.2-10000": {
+   "accept": 0.984,
+   "blocks": 747.1
+  },
+  "0.3-800": {
+   "accept": 0.448,
+   "blocks": 614.988
+  },
+  "0.3-10000": {
+   "accept": 0.994,
+   "blocks": 971.38
+  }
+ },
+ "realflaky_uncapped_B": {
+  "far": 0.009615384615384616,
+  "frr": 0.0007462686567164179,
+  "blocks_per_accept": 3281.140239605356,
+  "frr_high": 0.002380952380952381
+ },
+ "dropped_tasks": {
+  "loops_added": 12,
+  "tasks": [
+   "freezegun",
+   "kanren_b2"
+  ],
+  "with": {
+   "B1 stop at first pass": 0.26385135135135135,
+   "B2 rerun-3 all green": 0.16114864864864864,
+   "B3 majority of 5": 0.23378378378378378,
+   "B4 peeking Clopper-Pearson": 0.0010135135135135136,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  },
+  "without": {
+   "B1 stop at first pass": 0.2540441176470588,
+   "B2 rerun-3 all green": 0.1650735294117647,
+   "B3 majority of 5": 0.22904411764705881,
+   "B4 peeking Clopper-Pearson": 0.0011029411764705882,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  }
+ },
+ "drift": {
+  "gpt-4.1-mini": {
+   "run1": 0.27647058823529413,
+   "run2": 0.20294117647058824,
+   "loops": 17,
+   "run1_start": "2026-10-25",
+   "run2_end": "2026-11-06"
+  },
+  "gpt-4o": {
+   "run1": 0.31176470588235294,
+   "run2": 0.15294117647058825,
+   "loops": 17,
+   "run1_start": "2026-10-30",
+   "run2_end": "2026-11-05"
+  },
+  "grok-4.7": {
+   "run1": 0.014705882352941176,
+   "run2": 0.1676470588235294,
+   "loops": 17,
+   "run1_start": "2026-10-30",
+   "run2_end": "2026-11-08"
+  },
+  "llama3.1:8b": {
+   "run1": 0.45,
+   "run2": 0.45588235294117646,
+   "loops": 17,
+   "run1_start": "2026-11-06",
+   "run2_end": "2026-11-07"
+  }
+ }
+}

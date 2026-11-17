@@ -19,18 +19,19 @@ SeqAccept decides when an LLM repair loop may stop at a passing test run, with a
 
 ## Analysis scripts
 
-All run offline from the recorded data; each writes one file in `results/`. The supplement's last table maps every table, figure and table row of the paper to the script behind it. Some names carry the review round that asked for them; the second column says what they compute.
+All run offline from the recorded data; each writes one file in `results/`. The supplement's last table maps every table, figure and table row of the paper to the script behind it.
 
 | Script (output) | What it computes |
 |---|---|
 | `replay.py` (`results.json`) | main replay of B1-B6 and SeqAccept on all episodes: FAR, FRR, cost, splits, late streams |
 | `extra_analyses.py` (`extra.json`) | spending comparators, late and mixed streams, worst case, full-suite and real-flaky arms, first-green cut |
-| `ease_analyses.py` (`ease.json`) | refund ablation, truth against pool rates, operating curve, cost frontier, shortcut re-split |
-| `ease_round2.py` (`ease2.json`) | comparators on natural loops, bug-level intervals, leave one repository out, prefilter and refund-at-cap variants |
-| `ease_round3.py` (`ease3.json`) | bug- and repository-clustered intervals, near-eps dependence, ordered replay, eps from a lower bound on p0, calibrated cost |
-| `ease_round4.py` (`ease4.json`) | Bonferroni with attempt caps, white-box adversary, dependence to FAR, full-suite break-even, per-task real-flaky table |
+| `ablations.py` (`ablations.json`) | refund ablation, truth against pool rates, operating curve, cost frontier, shortcut re-split |
+| `comparators.py` (`comparators.json`) | comparators on natural loops, bug-level intervals, leave one repository out, prefilter and refund-at-cap variants |
+| `intervals.py` (`intervals.json`) | bug- and repository-clustered intervals, near-eps dependence, ordered replay, eps from a lower bound on p0, calibrated cost |
+| `caps_adversary.py` (`caps_adversary.json`) | Bonferroni with attempt caps, white-box adversary, dependence to FAR, full-suite break-even, per-task real-flaky table |
 | `sensitivity.py` (`sensitivity.json`) | cost with calibration per task and per loop, block-size sweep, regime map, FAR against pool rates, repository intervals, comparators on the real-flaky arm, margin curve |
-| `power_tuning.py`, `review2.py`, `exec_order.py`, `run_sim.py`, `reuse_demo.py` | mixture wallet and gamma/rho sweep; pool size and label risk; execution-order check; simulated worst case; Theorem 4.4 simulation |
+| `checks.py` (`checks.json`) | the proof's invariant in the adversary, runs-test power, paired intervals on FRR and cost, Bonferroni caps up to 10,000, replay without replacement, abstention without the block cap, dropped tasks, run-to-run drift |
+| `power_tuning.py`, `label_risk.py`, `exec_order.py`, `run_sim.py`, `reuse_demo.py` | mixture wallet and gamma/rho sweep; pool size and label risk; execution-order check; simulated worst case; Theorem 4.4 simulation |
 
 ## Setup
 

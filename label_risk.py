@@ -1,7 +1,7 @@
 """Second external review (offline, no LLM or Docker): replay-pool sensitivity, label uncertainty near eps, and a
-margin-planning table. Writes results/review2.json.
+margin-planning table. Writes results/label_risk.json.
 
-  uv run python review2.py
+  uv run python label_risk.py
 """
 import json
 import math
@@ -106,5 +106,5 @@ if __name__ == "__main__":
                        for p0 in PLAN_P0 for mg in PLAN_MARGINS]
     print(f"   {out['planning']}")
 
-    Path("results/review2.json").write_text(json.dumps(out, indent=2))
-    print("saved results/review2.json")
+    Path("results/label_risk.json").write_text(json.dumps(out, indent=2))
+    print("saved results/label_risk.json")

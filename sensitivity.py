@@ -11,9 +11,9 @@
    keep their recorded rate.
 3. Regime map: the smallest block that makes a regression of r always-failing tests in a suite of N fail a block
    with probability above eps, and whether SeqAccept on that block costs less per accept than full-suite B1/B2
-   (run time proportional to tests, the break-even of ease_round4.py).
+   (run time proportional to tests, the break-even of caps_adversary.py).
 4. FAR scored against the pool rate (what replay draws from) beside FAR against truth labels.
-5. Repository-clustered intervals for natural loops (bug-clustered ones are in ease2.json).
+5. Repository-clustered intervals for natural loops (bug-clustered ones are in comparators.json).
 6. Matched-cost comparators on the real-flaky arm.
 7. Margin against acceptance: one candidate as good as the original code (p = p0), eps = p0 + m; and the real-flaky
    arm at margins 0.05, 0.10, 0.15.
@@ -153,7 +153,7 @@ if __name__ == "__main__":
     natural = [ep for ep in episodes if ep.get("flakiness", "natural") == "natural"]
     flaky = [replay.load_episode(p) for p in sorted(Path("episodes_flaky").glob("*.json"))]
     per = {Path(e["file"]).stem: e for e in json.loads(Path("results/results.json").read_text())["per_episode"]}
-    e4 = json.loads(Path("results/ease4.json").read_text())
+    e4 = json.loads(Path("results/caps_adversary.json").read_text())
     k_match = json.loads(Path("results/extra.json").read_text())["k_match"]
     out = {}
 

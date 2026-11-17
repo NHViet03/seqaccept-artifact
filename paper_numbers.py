@@ -887,9 +887,9 @@ def power_tuning():
     m("sweepLateMin", pct(min(min(r["late"]["10"]["late_accept"], r["late"]["40"]["late_accept"]) for r in d["sweep"])))
 
 
-def review2():
-    """Second external review: results/review2.json (review2.py)."""
-    d = load("results/review2.json")
+def label_risk():
+    """Second external review: results/label_risk.json (label_risk.py)."""
+    d = load("results/label_risk.json")
     m("shortPool", d["short_pool"])
     sa = d["pool"]["SeqAccept"]
     assert sa["full"]["far"] == sa["short"]["far"] == 0 and sa["full"]["frr"] == sa["short"]["frr"] == 0, "text: unchanged"
@@ -946,8 +946,8 @@ def wilson(k, n, z=1.96):
 
 
 def ease():
-    """EASE 2027 mentor review: results/ease.json (ease_analyses.py)."""
-    d = load("results/ease.json")
+    """EASE 2027 mentor review: results/ablations.json (ablations.py)."""
+    d = load("results/ablations.json")
     # 1. refund ablation
     tag = {"none": "None", "max": "Max", "capped": "Capped", "uncapped": "Uncapped"}
     for k, t in tag.items():
@@ -1118,7 +1118,7 @@ def figure_ease(d):
     plt.close(fig)
     # risk-coverage-cost frontier on natural loops (blocks or full-suite runs per episode)
     fig, ax = plt.subplots(figsize=(3.3, 1.9))
-    full_s = load("results/ease4.json")["breakeven"]["full_s"]  # mean recorded seconds of one full-suite run
+    full_s = load("results/caps_adversary.json")["breakeven"]["full_s"]  # mean recorded seconds of one full-suite run
     for name in RULES:
         r = d["cost"]["rules"][name]
         x = r["seconds_per_episode"] / 60
@@ -1179,7 +1179,7 @@ def figure_ease(d):
     w = load("results/worst_case.json")
     shown = ["B4 peeking Clopper-Pearson", "B5 naive confidence sequence", "B6 SeqAccept, no refund", "SeqAccept"]
     ps, ns = (0.051, 0.06, 0.08, 0.10), (1, 5, 15, 50)
-    w10 = load("results/ease4.json")["worst010"]  # p = 0.10 row (ease_round4.py)
+    w10 = load("results/caps_adversary.json")["worst010"]  # p = 0.10 row (caps_adversary.py)
 
     def cell(p, n, name):  # (FAR, runs) of one heatmap cell
         if p == 0.10:
@@ -1217,7 +1217,7 @@ def figure_ease(d):
 
 def ease3():
     """Round-2 review follow-ups: clustered intervals, near-eps dependence, ordered replay, eps from L, calibrated cost."""
-    d = load("results/ease3.json")
+    d = load("results/intervals.json")
     K = {"B1 stop at first pass": "Bone", "B2 rerun-3 all green": "Btwo", "B3 majority of 5": "Bthree",
          "B4 peeking Clopper-Pearson": "Bfour", "B5 naive confidence sequence": "Bfive", "SeqAccept": "Sa"}
     fixed = ("B1 stop at first pass", "B2 rerun-3 all green", "B3 majority of 5")
@@ -1238,7 +1238,7 @@ def ease3():
         m(f"lcbFrr{K[n]}", pct(lc["frr"]))
         m(f"lcbFrrHigh{K[n]}", pct(lc["frr_high"]))
     m("lcbGap", f"{d['realflaky_lcb']['max_gap']:.3f}")
-    from ease_round3 import cp_lower  # largest gap between the estimate and the bound over every outcome of the p0 blocks
+    from intervals import cp_lower  # largest gap between the estimate and the bound over every outcome of the p0 blocks
     n0 = 400
     m("lcbSupGap", f"{max(k / n0 - cp_lower(k, n0) for k in range(n0 + 1)):.3f}")
     for arm, key in (("natural", "Nat"), ("realflaky", "Rf")):
@@ -1261,8 +1261,8 @@ def ease3():
 
 
 def ease4():
-    """Round-3 review follow-ups: results/ease4.json (ease_round4.py)."""
-    d = load("results/ease4.json")
+    """Round-3 review follow-ups: results/caps_adversary.json (caps_adversary.py)."""
+    d = load("results/caps_adversary.json")
     W = {1: "One", 5: "Five", 10: "Ten", 15: "Fifteen", 20: "Twenty", 40: "Forty", 50: "Fifty", 100: "Hundred"}
     nat, late = d["caps"]["natural"], d["caps"]["late"]
     m("capBpaSa", num(nat["SeqAccept"]["blocks_per_accept"]))
@@ -1279,6 +1279,10 @@ def ease4():
         for rule, label in ((f"Bonferroni-{n} spending", f"Bonferroni-{n} spending"), (f"Fixed-n Bonferroni-{n}", f"Fixed-$n$ Bonferroni-{n}")):
             rows += (f"{label} & {num(nat[rule]['blocks_per_accept'])} & {pct(nat[rule]['frr'])} & "
                      + " & ".join(pct(late[str(k)][rule]["accept"]) for k in (10, 20, 40)) + "\\\\\n")
+    ck = load("results/checks.json")
+    for rule, label in (("Bonferroni-1000 spending", "Bonferroni-1000 spending"), ("Fixed-n Bonferroni-1000", "Fixed-$n$ Bonferroni-1000")):
+        rows += (f"{label} & {num(ck['caps'][rule]['blocks_per_accept'])} & {pct(ck['caps'][rule]['frr'])} & "
+                 f"{pct(ck['caps_late']['10'][rule])} & -- & {pct(ck['caps_late']['40'][rule])}\\\\\n")
     rows += ("\\midrule\n\\sa{} & " + num(nat["SeqAccept"]["blocks_per_accept"]) + " & " + pct(nat["SeqAccept"]["frr"]) + " & "
              + " & ".join(pct(late[str(k)]["SeqAccept"]["accept"]) for k in (10, 20, 40)) + "\\\\\n")
     write("tab_caps.tex", "\\begin{tabular}{@{}lrrrrr@{}}\n\\toprule\n"
@@ -1374,14 +1378,14 @@ def sens():
     for N in (1000, 3000, 10000):
         rows += f"{word_int(N)}" + "".join(f" & {rg[f'{N}-{r}']['block']} & {rg[f'{N}-{r}']['cost_ratio_B1']:.2f}" for r in (1, 2, 3, 5, 10)) + "\\\\\n"
     write("tab_regime.tex", "\\begin{tabular}{@{}r" + "rr" * 5 + "@{}}\n\\toprule\n& "
-          + " & ".join(f"\\multicolumn{{2}}{{c}}{{$r={r}$}}" for r in (1, 2, 3, 5, 10)) + "\\\\\n"
+          + " & ".join(f"\\multicolumn{{2}}{{c}}{{$\\ell={r}$}}" for r in (1, 2, 3, 5, 10)) + "\\\\\n"
           + "".join(f"\\cmidrule(lr){{{2 * i + 2}-{2 * i + 3}}}" for i in range(5)) + "\n"
           + "\\textbf{Suite} $N$" + " & block & ratio" * 5 + "\\\\\n\\midrule\n" + rows + "\\bottomrule\n\\end{tabular}\n")
     ps = d["pool_scored"]
     m("poolFarRfSa", pct(ps["realflaky"]["SeqAccept"], 2))
     m("poolFarRfBfour", pct(ps["realflaky"]["B4 peeking Clopper-Pearson"], 2))
     m("poolFarRfBfive", pct(ps["realflaky"]["B5 naive confidence sequence"], 2))
-    assert all(abs(ps["natural"][n] - load("results/ease.json")["natural_far"][n]["far"]) < 1e-9 for n in RULES)
+    assert all(abs(ps["natural"][n] - load("results/ablations.json")["natural_far"][n]["far"]) < 1e-9 for n in RULES)
     nc = d["natural_repo_ci"]
     m("natRepos", nc["SeqAccept"]["repos"])
     for name in RULES[:3]:
@@ -1425,9 +1429,104 @@ def sens():
     m("rfMarginFifteenFrr", pct(rmg["0.15"]["frr"]))
 
 
+def checks():
+    """Validity, interval and selection checks: results/checks.json (checks.py)."""
+    d = load("results/checks.json")
+    inv = d["invariant"]
+    sa = [v for k, v in inv.items() if k.endswith("-max")]
+    un = [v for k, v in inv.items() if k.endswith("-uncapped")]
+    m("invSaMin", f"{min(v['mean_stop'] for v in sa):.3f}")
+    m("invSaMax", f"{max(v['mean_stop'] for v in sa):.3f}")
+    m("invUncMin", f"{min(v['mean_stop'] for v in un):.3f}")
+    m("invUncMax", f"{max(v['mean_stop'] for v in un):.3f}")
+    m("invUncLowerMin", f"{min(v['mean_stop'] - 1.96 * v['se'] for v in un):.3f}")
+    rp = d["runs_power"]
+    m("runsPowerTwo", pct(rp["0.2"], 0))
+    m("runsSize", pct(rp["0.0"]))
+    m("runsCands", rp["candidates"])
+    fd = d["frr_diff"]
+    assert all(v["ci_task"][1] < 0 for v in fd.values())  # SeqAccept loses fewer correct patches than each valid rule
+    m("frrDiffHarm", pct(-fd["Harmonic spending"]["diff"]))
+    m("frrDiffHarmLo", pct(-fd["Harmonic spending"]["ci_task"][1]))
+    m("frrDiffHarmHi", pct(-fd["Harmonic spending"]["ci_task"][0]))
+    m("frrDiffBsix", pct(-fd["B6 SeqAccept, no refund"]["diff"]))
+    m("frrDiffBsixLo", pct(-fd["B6 SeqAccept, no refund"]["ci_task"][1]))
+    m("frrDiffBsixHi", pct(-fd["B6 SeqAccept, no refund"]["ci_task"][0]))
+    cr = d["cost_ratio"]
+    for k, t in (("Bonferroni-100 spending", "BonfHundred"), ("Fixed-n Bonferroni-15 (1n0)", "Fixn"), ("B4 peeking Clopper-Pearson", "Bfour")):
+        m(f"cr{t}", f"{cr[k]['ratio']:.2f}")
+        m(f"cr{t}Lo", f"{cr[k]['ci_task'][0]:.2f}")
+        m(f"cr{t}Hi", f"{cr[k]['ci_task'][1]:.2f}")
+    c = d["caps"]
+    sa_t = c["SeqAccept"]["bpa_task"]
+    cheaper = [n for n in (15, 40, 100, 300, 1000, 3000, 10000) if c[f"Fixed-n Bonferroni-{n}"]["bpa_task"] < sa_t]
+    dearer = [n for n in (15, 40, 100, 300, 1000, 3000, 10000) if c[f"Fixed-n Bonferroni-{n}"]["bpa_task"] >= sa_t]
+    assert max(cheaper) < min(dearer)
+    m("capFixnCheapUpTo", word_int(max(cheaper)))
+    m("capFixnDearFrom", word_int(min(dearer)))
+    m("capFixnThousandTask", num(c["Fixed-n Bonferroni-1000"]["bpa_task"], 0))
+    m("capFixnThreeThousandTask", num(c["Fixed-n Bonferroni-3000"]["bpa_task"], 0))
+    m("capSpendThousandTask", num(c["Bonferroni-1000 spending"]["bpa_task"], 0))
+    cl = d["caps_late"]
+    m("capLateFixnThousandTen", pct(cl["10"]["Fixed-n Bonferroni-1000"]))
+    m("capLateSpendThousandForty", pct(cl["40"]["Bonferroni-1000 spending"]))
+    nr = d["no_replacement"]
+    m("nrNatMaxFar", pct(max(v["far"] for v in nr["natural"].values()), 2))
+    m("nrRfFarSa", pct(nr["realflaky"]["SeqAccept"]["far"], 2))
+    m("nrRfFrrSa", pct(nr["realflaky"]["SeqAccept"]["frr"]))
+    m("nrRfFarBfour", pct(nr["realflaky"]["B4 peeking Clopper-Pearson"]["far"], 2))
+    fu = d["frr_unamb"]
+    m("unambFrrSa", pct(fu["SeqAccept"]["frr"]))
+    m("unambFrrLoops", fu["SeqAccept"]["loops"])
+    ub = d["uncapped_B"]
+    m("ubAcceptTwo", pct(ub["0.2-10000"]["accept"]))
+    m("ubBlocksTwo", num(ub["0.2-10000"]["blocks"], 0))
+    m("ubBlocksTwoCap", num(ub["0.2-800"]["blocks"], 0))
+    m("ubAcceptMin", pct(min(ub[f"{p}-10000"]["accept"] for p in (0.1, 0.2, 0.3))))
+    rb = d["realflaky_uncapped_B"]
+    m("ubRfFrr", pct(rb["frr"], 2))
+    m("ubRfFrrHigh", pct(rb["frr_high"], 2))
+    m("ubRfFar", pct(rb["far"], 2))
+    m("ubRfBpa", num(rb["blocks_per_accept"], 0))
+    dt = d["dropped_tasks"]
+    m("dropLoops", dt["loops_added"])
+    m("dropFarBone", pct(dt["with"]["B1 stop at first pass"]))
+    m("dropMaxValid", pct(max(dt["with"][n] for n in RULES[3:]), 2))
+    dr = d["drift"]
+    gaps = {k: abs(v["run1"] - v["run2"]) for k, v in dr.items()}
+    worst = max(gaps, key=gaps.get)
+    m("driftModel", worst)
+    m("driftOne", pct(dr[worst]["run1"]))
+    m("driftTwo", pct(dr[worst]["run2"]))
+    # main-text real-flaky table
+    rf = load("results/extra.json")["realflaky"]
+    t, th = rf["table"], rf["p0_high"]["table"]
+    rm = load("results/sensitivity.json")["realflaky_matched"]
+    rows = ""
+    for name, valid in (("B4 peeking Clopper-Pearson", "no"), ("B5 naive confidence sequence", "per cand."), ("B6 SeqAccept, no refund", "yes"), ("SeqAccept", "yes")):
+        r = t[name]
+        ci = f" {{\\scriptsize[{pct(r['far_ci'][0], 2)}, {pct(r['far_ci'][1], 2)}]}}"
+        if name == "SeqAccept":
+            rows += "\\midrule\n"
+        rows += f"{SHOW[name]} & {valid} & {pct(r['far'], 2)}{ci} & {pct(r['frr'])} & {pct(th[name]['frr'])} & {num(r['blocks_per_accept'], 0)}\\\\\n"
+    rows += "\\midrule\n"
+    rr = next(k for k in rm if k.startswith("Rerun-"))
+    for key, lab, valid in (("Harmonic spending", "Harmonic spending", "yes"), ("Bonferroni-15 spending", "Bonferroni-15 spending", "yes"),
+                            ("Bonferroni-100 spending", "Bonferroni-100 spending", "yes"), ("Fixed-n Bonferroni-15 (1n0)", "Fixed-$n$ Bonf.-15 ($n_0$)", "yes"),
+                            (rr, rr.replace(" (all green)", " (consec.)"), "no")):
+        r = rm[key]
+        rows += f"{lab} & {valid} & {pct(r['far'], 2)} & {pct(r['frr'])} & {pct(r['frr_high'])} & {num(r['blocks_per_accept'], 0)}\\\\\n"
+    rows += "\\midrule\n"
+    rows += f"\\sa{{}}, $B=10{{,}}000$ & yes & {pct(rb['far'], 2)} & {pct(rb['frr'], 2)} & {pct(rb['frr_high'], 2)} & {num(rb['blocks_per_accept'], 0)}\\\\\n"
+    mg = load("results/sensitivity.json")["realflaky_margin"]["0.1"]
+    rows += f"\\sa{{}}, margin 0.10 & yes$^*$ & {pct(mg['far'], 2)} & {pct(mg['frr'])} & {pct(mg['frr_high'])} & {macros['rfMarginBpaSa']}\\\\\n"
+    write("tab_rf_main.tex", "\\begin{tabular}{@{}llrrrr@{}}\n\\toprule\n\\textbf{Rule} & \\textbf{Valid} & \\textbf{FAR \\%} {\\scriptsize[repo.\\ CI]} & "
+          "\\textbf{FRR \\%} & \\textbf{$p_0\\ge0.2$} & \\textbf{Blk/acc.}\\\\\n\\midrule\n" + rows + "\\bottomrule\n\\end{tabular}\n")
+
+
 def ease2():
-    """EASE round-1 follow-ups: results/ease2.json (ease_round2.py)."""
-    d = load("results/ease2.json")
+    """EASE round-1 follow-ups: results/comparators.json (comparators.py)."""
+    d = load("results/comparators.json")
     v = d["variants"]
     for name, t in (("SeqAccept", "Base"), ("no refund at cap", "Nocap"), ("prefilter 1", "Prefilter"),
                     ("earlier default", "Old")):
@@ -1472,14 +1571,14 @@ def ease2():
         return 1 - q
     m("envOneTestSuite", f"{max(n_ for n_ in range(32, 5000) if hit(n_, 1) > 0.05 + 1e-12)}")
     m("envThreeK", f"{min(k_ for k_ in range(1, 3000) if hit(3000, k_) > 0.05 + 1e-12)}")
-    # operating curve: 2,000 runs per point (ease_analyses.OP_REPS); widest 95% Wilson half-width is at 50%
+    # operating curve: 2,000 runs per point (ablations.OP_REPS); widest 95% Wilson half-width is at 50%
     lo, hi = wilson(1000, 2000)
     m("opHalfWidth", f"{100 * (hi - lo) / 2:.1f}")
     # main table: natural loops (all rules), injected modes, natural cost
     res = load("results/results.json")
     per = res["per_episode"]
     nat = [e for e in per if e["flakiness"] == "natural"]
-    e1 = load("results/ease.json")
+    e1 = load("results/ablations.json")
     rows = ""
     bm = d["by_mode"]
     sens = load("results/sensitivity.json")
@@ -1542,12 +1641,13 @@ if __name__ == "__main__":
     constants()
     extra(res)
     power_tuning()
-    review2()
+    label_risk()
     ease()
     ease2()
     ease3()
     ease4()
     sens()
+    checks()
     exec_order()
     (GEN / "numbers.tex").write_text(
         "% generated by intern1/impl/paper_numbers.py; do not edit\n"

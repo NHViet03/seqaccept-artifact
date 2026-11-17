@@ -75,7 +75,7 @@ def _refund(mode, alpha_j, E, peak):
 
 
 def seq_accept(n, block, alpha=0.05, eps=0.05, gamma=0.5, refund="max", max_blocks=800, reject_at=20, bet="kelly",
-               setaside_refund=True, prefilter=0):
+               setaside_refund=True, prefilter=0, trace=None):
     """SeqAccept (refund=False gives B6). One betting wallet per candidate, error spent from a shared pool.
 
     Accept j when its wallet E >= 1/alpha_j; reject when the opposing wallet R >= reject_at (an anytime-valid
@@ -91,6 +91,8 @@ def seq_accept(n, block, alpha=0.05, eps=0.05, gamma=0.5, refund="max", max_bloc
     prefilter=k runs k blocks first and skips a candidate that fails any of them, before it gets a slice: the skip
     depends only on blocks drawn after the candidate is fixed, so the stream it leaves is still adaptive, and the
     accept decision uses fresh blocks.
+    trace(pool, alpha_j, E), if given, is called after every block with the live stake, and with (pool, 0, 1) when a
+    candidate ends without acceptance: for broken candidates pool + alpha_j * E is the proof's M_t (sensitivity.py).
     """
     pool, blocks = alpha, 0
     for j in range(n):
@@ -122,6 +124,8 @@ def seq_accept(n, block, alpha=0.05, eps=0.05, gamma=0.5, refund="max", max_bloc
                 E *= 1 + lam * (eps - y)
             R *= 1 + mu * (y - eps)
             peak = max(peak, E)
+            if trace:
+                trace(pool, alpha_j, E)
             if E >= 1 / alpha_j:
                 return Result(j, blocks)
             if R >= reject_at:  # Alg. 1 line 9: rejected
@@ -130,6 +134,8 @@ def seq_accept(n, block, alpha=0.05, eps=0.05, gamma=0.5, refund="max", max_bloc
         else:  # set aside at the block cap
             if setaside_refund:
                 pool += _refund(refund, alpha_j, E, peak)
+        if trace:
+            trace(pool, 0.0, 1.0)
     return Result(None, blocks)
 
 

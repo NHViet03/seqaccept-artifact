@@ -1,6 +1,6 @@
-"""EASE review round 2 follow-ups (offline: no LLM, no Docker). Writes results/ease3.json.
+"""EASE review round 2 follow-ups (offline: no LLM, no Docker). Writes results/intervals.json.
 
-  uv run python ease_round3.py
+  uv run python intervals.py
 
 1. Bug- and repository-clustered intervals for full-suite FAR (natural loops, B1-B3).
 2. Bug- and repository-clustered intervals on the boundary-stress arm (m = 0.94) for B4, B5 and SeqAccept.
@@ -16,7 +16,7 @@ from pathlib import Path
 from statistics import mean
 
 import replay
-from ease_round2 import bug_of
+from comparators import bug_of
 from extra_analyses import fullsuite_episodes, lag1_corr, runs_test
 from rules import all_rules
 from sim import run_episodes
@@ -172,5 +172,5 @@ if __name__ == "__main__":
                                                        "minutes_per_accept": sum(r["seconds"] for r in rs) / acc / 60}
     print(f"   {json.dumps({n: round(v['minutes_per_accept'], 2) for n, v in out['cost_calibrated'].items()})}")
 
-    Path("results/ease3.json").write_text(json.dumps(out, indent=1, default=str))
-    print("saved results/ease3.json")
+    Path("results/intervals.json").write_text(json.dumps(out, indent=1, default=str))
+    print("saved results/intervals.json")

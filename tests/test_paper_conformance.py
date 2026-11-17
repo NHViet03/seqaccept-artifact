@@ -48,30 +48,35 @@ TRACE = {  # every public function/class in impl/*.py -> where the paper or the 
     "power_tuning.kl": "external review: KL lower bound on blocks to accept",
     "power_tuning.single": "external review: one-candidate operating point, Kelly vs mixture",
     "power_tuning.replay_summary": "external review: replay summary for the mixture wallet and the gamma / rho sweep",
-    "review2.counted_replay": "external review 2: replay with a shortened pool, counting draws per candidate",
-    "review2.beta_cdf": "external review 2: Beta posterior tail for label uncertainty",
-    "review2.label_risk": "external review 2: labels whose posterior puts p on the other side of eps",
-    "review2.kl": "external review 2: KL divergence for the margin-planning table",
-    "ease_analyses.bug_of": "EASE review: the independent bug of an episode (cluster unit)",
-    "ease_analyses.is_shortcut": "EASE review: a clearly broken candidate whose probe blocks are truth and pool",
-    "ease_analyses.kl": "EASE review: KL floor for the operating curve",
-    "ease_analyses.run_rule": "EASE review: replay one rule on every episode",
-    "ease_analyses.resplit": "EASE review: split shortcut blocks 20/20 into independent truth and pool",
-    "ease_analyses.shortcut": "EASE review: the shortcut candidates of an episode",
-    "ease_analyses.rates": "EASE review: truth and pool rates of every distinct candidate",
-    "ease_analyses.single": "EASE review: one-candidate operating point",
-    "ease_round2.bug_of": "EASE round 1: the independent bug of an episode",
-    "ease_round2.run": "EASE round 1: replay one rule on every episode",
-    "ease_round2.row": "EASE round 1: FAR, FRR, blocks and seconds per accept, blocks per loop",
-    "ease_round3.cp_lower": "EASE round 2: one-sided Clopper-Pearson lower bound on p0 (Corollary 4.3)",
-    "ease_round3.ci": "EASE round 2: bug- or repository-clustered interval",
-    "ease_round3.summary": "EASE round 2: FAR with bug and repository intervals, FRR, blocks per accept",
-    "ease_round3.run": "EASE round 2: replay one rule per episode",
-    "ease_round3.ordered_replay": "EASE round 2: replay that keeps each pool's execution order",
-    "ease_round3.near_eps_dependence": "EASE round 2: runs test and lag-1 on candidates failing in (p0, 0.5]",
-    "ease_round4.cap_rules": "EASE round 3: Bonferroni with attempt caps 15, 40, 100 against SeqAccept",
-    "ease_round4.adversary": "EASE round 3: white-box adaptive adversary against the refund variants",
-    "ease_round4.ambiguous_labels": "EASE round 3: labels with >5% posterior chance of being wrong set Marginal",
+    "label_risk.counted_replay": "external review 2: replay with a shortened pool, counting draws per candidate",
+    "label_risk.beta_cdf": "external review 2: Beta posterior tail for label uncertainty",
+    "label_risk.label_risk": "external review 2: labels whose posterior puts p on the other side of eps",
+    "label_risk.kl": "external review 2: KL divergence for the margin-planning table",
+    "ablations.bug_of": "EASE review: the independent bug of an episode (cluster unit)",
+    "ablations.is_shortcut": "EASE review: a clearly broken candidate whose probe blocks are truth and pool",
+    "ablations.kl": "EASE review: KL floor for the operating curve",
+    "ablations.run_rule": "EASE review: replay one rule on every episode",
+    "ablations.resplit": "EASE review: split shortcut blocks 20/20 into independent truth and pool",
+    "ablations.shortcut": "EASE review: the shortcut candidates of an episode",
+    "ablations.rates": "EASE review: truth and pool rates of every distinct candidate",
+    "ablations.single": "EASE review: one-candidate operating point",
+    "comparators.bug_of": "EASE round 1: the independent bug of an episode",
+    "comparators.run": "EASE round 1: replay one rule on every episode",
+    "comparators.row": "EASE round 1: FAR, FRR, blocks and seconds per accept, blocks per loop",
+    "intervals.cp_lower": "EASE round 2: one-sided Clopper-Pearson lower bound on p0 (Corollary 4.3)",
+    "intervals.ci": "EASE round 2: bug- or repository-clustered interval",
+    "intervals.summary": "EASE round 2: FAR with bug and repository intervals, FRR, blocks per accept",
+    "intervals.run": "EASE round 2: replay one rule per episode",
+    "intervals.ordered_replay": "EASE round 2: replay that keeps each pool's execution order",
+    "intervals.near_eps_dependence": "EASE round 2: runs test and lag-1 on candidates failing in (p0, 0.5]",
+    "caps_adversary.cap_rules": "EASE round 3: Bonferroni with attempt caps 15, 40, 100 against SeqAccept",
+    "caps_adversary.adversary": "EASE round 3: white-box adaptive adversary against the refund variants",
+    "caps_adversary.ambiguous_labels": "EASE round 3: labels with >5% posterior chance of being wrong set Marginal",
+    "checks.Tracker": "EASE round 5: the proof's M = W + alpha_j E logged through seq_accept's trace hook (RQ2)",
+    "checks.constructed": "EASE round 5: invariant check on constructed near-eps streams",
+    "checks.markov": "EASE round 5: Markov blocks for the runs-test power (RQ2, S4)",
+    "checks.ratio_ci": "EASE round 5: task-clustered interval of a cost ratio (RQ3)",
+    "checks.without_replacement": "EASE round 5: replay reading each pool once in random order (S5)",
     "sensitivity.task_of": "EASE round 4: task name of an episode",
     "sensitivity.subset": "EASE round 4: a block's test subset from its seed (collect.subset)",
     "sensitivity.failing_set": "EASE round 4: always-failing tests inferred from a candidate's blocks (block-fraction sweep)",
@@ -79,7 +84,7 @@ TRACE = {  # every public function/class in impl/*.py -> where the paper or the 
     "sensitivity.cost_rows": "EASE round 4: Table 3 cost columns with calibration per task and per loop",
     "sensitivity.sweep": "EASE round 4: B1-B3, B4, SeqAccept at half, recorded and double block size (RQ1)",
     "sensitivity.regime": "EASE round 4: smallest block for an r-test regression and cost against the full suite (Discussion, S6)",
-    "ease_round4.ols": "EASE round 3: least-squares block cost model (overhead + per-test seconds)",
+    "caps_adversary.ols": "EASE round 3: least-squares block cost model (overhead + per-test seconds)",
     "exec_order.done_seeds": "external review 2: resumable execution-order log",
     "exec_order.run_task": "external review 2: blocks of the original code with start/end time, worker and load",
     "exec_order.summarize": "external review 2: independence in execution order vs seed order, busy vs quiet host",
@@ -289,7 +294,7 @@ def test_paper_constants():
     assert d == {"alpha": 0.05, "eps": 0.05, "gamma": 0.5,  # §5.5
                  "refund": "max",  # EASE round 3: r_j = alpha_j min(E, 1), Theorem 4.2's bound
                  "max_blocks": 800, "reject_at": 20, "bet": "kelly",  # D1, D2; the paper's wallet is Kelly
-                 "setaside_refund": True, "prefilter": 0}  # refund also at the block cap; prefilter off
+                 "setaside_refund": True, "prefilter": 0, "trace": None}  # refund also at the block cap; prefilter off
     assert list(rules.all_rules()) == ["B1 stop at first pass", "B2 rerun-3 all green", "B3 majority of 5",
                                        "B4 peeking Clopper-Pearson", "B5 naive confidence sequence",
                                        "B6 SeqAccept, no refund", "SeqAccept"]  # §9.2, "we report k=3"; SKIPPED
@@ -540,12 +545,12 @@ def test_mixture_wallet_is_the_mean_of_fixed_bet_wallets_and_keeps_kelly_default
     assert rules.seq_accept(5, lambda j: 1, bet="mixture").accepted is None
 
 
-def test_review2_beta_cdf_and_counted_replay_match_closed_forms():  # external review 2
-    import review2
+def test_label_risk_beta_cdf_and_counted_replay_match_closed_forms():  # external review 2
+    import label_risk
     for b, x in ((5, 0.1), (200, 0.02)):
-        assert abs(review2.beta_cdf(x, 1, b) - (1 - (1 - x) ** b)) < 1e-4  # Beta(1, b) has a closed-form CDF
+        assert abs(label_risk.beta_cdf(x, 1, b) - (1 - (1 - x) ** b)) < 1e-4  # Beta(1, b) has a closed-form CDF
     ep = {"p0": 0.0, "stream": ["a"], "fixes": {"a": {"truth": [0] * 200, "pool": [0] * 200}}}
-    res, drawn = review2.counted_replay(rules.seq_accept, ep, reps=3, seed=1)
+    res, drawn = label_risk.counted_replay(rules.seq_accept, ep, reps=3, seed=1)
     perfect = rules.seq_accept(1, lambda j: 0).blocks
     assert res["blocks"] == 3 * perfect and drawn == [(200, perfect)] * 3
 
@@ -578,12 +583,12 @@ def test_max_refund_returns_alpha_j_min_wallet_one():  # EASE review: the maxima
 
 
 def test_ease_shortcut_detection_and_resplit():  # EASE review
-    import ease_analyses
+    import ablations
     ep = {"name": "t-m-1", "p0": 0.0, "params": {"probe": 4}, "stream": ["a", "b"],
           "fixes": {"a": {"truth": [1, 1, 1, 0], "pool": [1, 1, 1, 0]}, "b": {"truth": [0] * 8, "pool": [0] * 8}}}
     ep["fixes"]["a"]["pool"] = ep["fixes"]["a"]["truth"]
-    assert ease_analyses.shortcut(ep) == ["a"]  # b has identical all-pass truth and pool but is not a probe stop
-    sp = ease_analyses.resplit(ep)["fixes"]
+    assert ablations.shortcut(ep) == ["a"]  # b has identical all-pass truth and pool but is not a probe stop
+    sp = ablations.resplit(ep)["fixes"]
     assert sp["a"]["truth"] == [1, 1] and sp["a"]["pool"] == [1, 0] and sp["b"] == ep["fixes"]["b"]
 
 
@@ -603,7 +608,7 @@ def test_prefilter_skips_a_candidate_that_fails_its_first_block_without_spending
 
 def test_ease3_cp_lower_and_ordered_replay():  # EASE round 2
     import math
-    from ease_round3 import cp_lower, ordered_replay
+    from intervals import cp_lower, ordered_replay
     assert cp_lower(0, 400) == 0.0
     lo = cp_lower(80, 400)
     sf = 1 - sum(math.comb(400, i) * lo ** i * (1 - lo) ** (400 - i) for i in range(80))
@@ -615,7 +620,7 @@ def test_ease3_cp_lower_and_ordered_replay():  # EASE round 2
 
 
 def test_ease4_adversary_cost_model_and_ambiguous_labels():  # EASE round 3
-    from ease_round4 import adversary, ambiguous_labels, ols
+    from caps_adversary import adversary, ambiguous_labels, ols
     assert ols([0, 1, 2], [1, 3, 5]) == (1, 2)
     assert adversary("max", "near", 3, 30, seed=1) <= 0.2 and adversary(False, "switch", 2, 10, seed=1) >= 0.0
     ep = {"p0": 0.0, "stream": ["a", "b", "c"],
@@ -638,3 +643,23 @@ def test_sensitivity_failing_set_and_hit():  # EASE round 4
     rg = regime({"B1": {"ratio": 45.0}, "B2": {"ratio": 32.0}})
     assert rg["1000-1"]["block"] == 51  # 51/1000 > 0.05
     assert not rg["3000-1"]["cheaper_B1"] and rg["3000-10"]["cheaper_B1"]
+
+
+def test_checks_invariant_and_helpers():  # EASE round 5
+    import random as _r
+    from checks import Tracker, constructed, markov, ratio_ci
+    from rules import seq_accept
+    tr = Tracker()
+    rng = _r.Random(0)
+    res = seq_accept(3, lambda j: 0, eps=0.05, trace=tr)  # never fails: accepted, so M reaches 1
+    tr.close()
+    assert res.accepted == 0 and tr.stops[0] >= 1 and tr.maxes[0] >= 1
+    seq_accept(2, lambda j: 1, eps=0.05, trace=tr)  # always fails: both rejected with full refund, M back to alpha
+    tr.close()
+    assert abs(tr.stops[1] - 0.05) < 1e-12
+    s = constructed(0.9, 3, 50, seed=1)
+    assert s["far"] == 0 and abs(s["mean_stop"] - 0.05) < 1e-9  # clearly broken candidates return their whole slice
+    ys = markov(rng, 20000, 0.3, 0.5)
+    assert abs(sum(ys) / len(ys) - 0.3) < 0.03
+    lo, hi = ratio_ci({t: (2.0, 1, 1.0, 1) for t in range(5)})
+    assert lo == hi == 2.0

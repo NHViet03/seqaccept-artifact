@@ -1,6 +1,6 @@
-"""EASE review round 1 follow-ups (offline: no LLM, no Docker). Writes results/ease2.json.
+"""EASE review round 1 follow-ups (offline: no LLM, no Docker). Writes results/comparators.json.
 
-  uv run python ease_round2.py
+  uv run python comparators.py
 
 1. SeqAccept (maximal refund at rejection and at the cap) against no refund at the cap, the earlier default
    (capped refund, none at the cap) and a one-block prefilter, on the recorded loops and the real-flaky arm.
@@ -124,5 +124,5 @@ if __name__ == "__main__":
                                         if ep.get("flakiness", "natural") != "natural")}
     print(f"   {out['p0_se']}")
 
-    Path("results/ease2.json").write_text(json.dumps(out, indent=1, default=str))
-    print("saved results/ease2.json")
+    Path("results/comparators.json").write_text(json.dumps(out, indent=1, default=str))
+    print("saved results/comparators.json")

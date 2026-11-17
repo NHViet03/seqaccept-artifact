@@ -30,6 +30,8 @@ step "clustered intervals, near-eps dependence, eps from L, calibrated cost -> r
 "$PY" ease_round3.py
 step "attempt caps, adversary, dependence to FAR, break-even, per task -> results/ease4.json"
 "$PY" ease_round4.py
+step "cost with calibration, block size, regime map, pool scoring -> results/sensitivity.json"
+"$PY" sensitivity.py
 step "paper numbers, tables and figures                    -> ${SEQACCEPT_PAPER_DIR:-paper_out}"
 "$PY" paper_numbers.py
 echo; echo "done"

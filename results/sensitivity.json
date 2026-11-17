@@ -1,0 +1,660 @@
+{
+ "cost": {
+  "B1 stop at first pass": {
+   "far": 0.2540441176470588,
+   "frr": 0.0,
+   "blocks_per_loop": 3.0261029411764704,
+   "blocks_per_accept": 3.4310129220508547,
+   "bpa_task": 3.4310129220508547,
+   "bpa_loop": 3.4310129220508547,
+   "minutes_per_accept": 0.1601668996804224
+  },
+  "B2 rerun-3 all green": {
+   "far": 0.1650735294117647,
+   "frr": 0.0,
+   "blocks_per_loop": 5.788235294117647,
+   "blocks_per_accept": 6.969455511288181,
+   "bpa_task": 6.969455511288181,
+   "bpa_loop": 6.969455511288181,
+   "minutes_per_accept": 0.3063598368193891
+  },
+  "B3 majority of 5": {
+   "far": 0.22904411764705881,
+   "frr": 0.0,
+   "blocks_per_loop": 16.077205882352942,
+   "blocks_per_accept": 18.592687074829932,
+   "bpa_task": 18.592687074829932,
+   "bpa_loop": 18.592687074829932,
+   "minutes_per_accept": 0.8422689275970805
+  },
+  "B4 peeking Clopper-Pearson": {
+   "far": 0.0011029411764705882,
+   "frr": 0.0,
+   "blocks_per_loop": 73.6783088235294,
+   "blocks_per_accept": 105.31003678402523,
+   "bpa_task": 176.7761429322123,
+   "bpa_loop": 677.0388859695219,
+   "minutes_per_accept": 9.121313361380286
+  },
+  "B5 naive confidence sequence": {
+   "far": 0.0,
+   "frr": 0.0,
+   "blocks_per_loop": 142.47573529411764,
+   "blocks_per_accept": 203.96526315789473,
+   "bpa_task": 275.5442105263158,
+   "bpa_loop": 776.5968421052631,
+   "minutes_per_accept": 13.995393685635017
+  },
+  "B6 SeqAccept, no refund": {
+   "far": 0.0,
+   "frr": 0.0,
+   "blocks_per_loop": 159.39485294117648,
+   "blocks_per_accept": 228.1863157894737,
+   "bpa_task": 299.76526315789476,
+   "bpa_loop": 800.817894736842,
+   "minutes_per_accept": 15.139944232082387
+  },
+  "SeqAccept": {
+   "far": 0.0,
+   "frr": 0.0,
+   "blocks_per_loop": 153.19816176470587,
+   "blocks_per_accept": 219.31526315789475,
+   "bpa_task": 290.8942105263158,
+   "bpa_loop": 791.9468421052632,
+   "minutes_per_accept": 14.898080750174493
+  },
+  "Harmonic spending": {
+   "far": 0.0,
+   "frr": 0.0,
+   "blocks_per_loop": 160.0720588235294,
+   "blocks_per_accept": 229.15578947368422,
+   "bpa_task": 300.73473684210524,
+   "bpa_loop": 801.7873684210526,
+   "minutes_per_accept": 15.193864522345542
+  },
+  "Discard spending": {
+   "far": 0.0,
+   "frr": 0.0,
+   "blocks_per_loop": 163.6529411764706,
+   "blocks_per_accept": 234.2821052631579,
+   "bpa_task": 305.86105263157896,
+   "bpa_loop": 806.9136842105263,
+   "minutes_per_accept": 15.800654696358702
+  },
+  "Bonferroni-15 spending": {
+   "far": 0.0,
+   "frr": 0.0,
+   "blocks_per_loop": 184.1481617647059,
+   "blocks_per_accept": 263.6226315789474,
+   "bpa_task": 335.20157894736843,
+   "bpa_loop": 836.2542105263158,
+   "minutes_per_accept": 17.504827646051684
+  },
+  "Fixed-n Bonferroni-15 (1n0)": {
+   "far": 0.0,
+   "frr": 0.0,
+   "blocks_per_loop": 87.80919117647059,
+   "blocks_per_accept": 125.7057894736842,
+   "bpa_task": 197.28473684210527,
+   "bpa_loop": 698.3373684210526,
+   "minutes_per_accept": 11.018726201380709
+  },
+  "Fixed-n Bonferroni-15 (2n0)": {
+   "far": 0.0,
+   "frr": 0.0,
+   "blocks_per_loop": 184.38529411764705,
+   "blocks_per_accept": 263.96210526315787,
+   "bpa_task": 335.54105263157896,
+   "bpa_loop": 836.5936842105264,
+   "minutes_per_accept": 18.423187621512287
+  },
+  "Fixed-n Bonferroni-15 (4n0)": {
+   "far": 0.0,
+   "frr": 0.0,
+   "blocks_per_loop": 415.6834558823529,
+   "blocks_per_accept": 595.0836842105264,
+   "bpa_task": 666.6626315789474,
+   "bpa_loop": 1167.7152631578947,
+   "minutes_per_accept": 34.926690388639464
+  },
+  "Rerun-105 (all green)": {
+   "far": 0.0,
+   "frr": 0.0,
+   "blocks_per_loop": 83.47867647058824,
+   "blocks_per_accept": 119.50631578947369,
+   "bpa_task": 119.50631578947369,
+   "bpa_loop": 119.50631578947369,
+   "minutes_per_accept": 6.743486434495618
+  },
+  "Bonferroni-100 spending": {
+   "far": 0.0,
+   "frr": 0.0,
+   "blocks_per_loop": 213.09889705882352,
+   "blocks_per_accept": 305.0678947368421,
+   "bpa_task": 376.64684210526315,
+   "bpa_loop": 877.6994736842105,
+   "minutes_per_accept": 19.957679151402566
+  }
+ },
+ "block_fraction": {
+  "candidates": 957,
+  "explained": 917,
+  "model_gap": {
+   "mean": 0.02133346584160647,
+   "n": 460
+  },
+  "rules": {
+   "0.5": {
+    "B1 stop at first pass": {
+     "far": 0.26691176470588235,
+     "far_ci_repo": [
+      0.17673611111111112,
+      0.35520833333333335
+     ],
+     "blocks_per_loop": 2.914705882352941
+    },
+    "B2 rerun-3 all green": {
+     "far": 0.20661764705882352,
+     "far_ci_repo": [
+      0.11919642857142858,
+      0.29963235294117646
+     ],
+     "blocks_per_loop": 5.345588235294118
+    },
+    "B3 majority of 5": {
+     "far": 0.24926470588235294,
+     "far_ci_repo": [
+      0.159765625,
+      0.342578125
+     ],
+     "blocks_per_loop": 15.314338235294118
+    },
+    "B4 peeking Clopper-Pearson": {
+     "far": 0.003676470588235294,
+     "far_ci_repo": [
+      0.0006944444444444445,
+      0.00798611111111111
+     ],
+     "blocks_per_loop": 113.54264705882353
+    },
+    "SeqAccept": {
+     "far": 0.0,
+     "far_ci_repo": [
+      0.0,
+      0.0
+     ],
+     "blocks_per_loop": 278.44338235294117
+    }
+   },
+   "1": {
+    "B1 stop at first pass": {
+     "far": 0.22941176470588234,
+     "far_ci_repo": [
+      0.13625,
+      0.32534722222222223
+     ],
+     "blocks_per_loop": 3.217279411764706
+    },
+    "B2 rerun-3 all green": {
+     "far": 0.16213235294117648,
+     "far_ci_repo": [
+      0.0838235294117647,
+      0.2463235294117647
+     ],
+     "blocks_per_loop": 5.6694852941176475
+    },
+    "B3 majority of 5": {
+     "far": 0.22463235294117648,
+     "far_ci_repo": [
+      0.12664473684210525,
+      0.325
+     ],
+     "blocks_per_loop": 16.246323529411764
+    },
+    "B4 peeking Clopper-Pearson": {
+     "far": 0.0029411764705882353,
+     "far_ci_repo": [
+      0.0,
+      0.007352941176470588
+     ],
+     "blocks_per_loop": 91.73676470588235
+    },
+    "SeqAccept": {
+     "far": 0.0,
+     "far_ci_repo": [
+      0.0,
+      0.0
+     ],
+     "blocks_per_loop": 207.8110294117647
+    }
+   },
+   "2": {
+    "B1 stop at first pass": {
+     "far": 0.19448529411764706,
+     "far_ci_repo": [
+      0.0984375,
+      0.2920138888888889
+     ],
+     "blocks_per_loop": 3.5323529411764705
+    },
+    "B2 rerun-3 all green": {
+     "far": 0.09926470588235294,
+     "far_ci_repo": [
+      0.043402777777777776,
+      0.16611842105263158
+     ],
+     "blocks_per_loop": 6.14485294117647
+    },
+    "B3 majority of 5": {
+     "far": 0.16875,
+     "far_ci_repo": [
+      0.084765625,
+      0.25703125
+     ],
+     "blocks_per_loop": 18.792279411764707
+    },
+    "B4 peeking Clopper-Pearson": {
+     "far": 0.0029411764705882353,
+     "far_ci_repo": [
+      0.0,
+      0.007352941176470588
+     ],
+     "blocks_per_loop": 86.8797794117647
+    },
+    "SeqAccept": {
+     "far": 0.0,
+     "far_ci_repo": [
+      0.0,
+      0.0
+     ],
+     "blocks_per_loop": 197.26139705882352
+    }
+   }
+  }
+ },
+ "regime": {
+  "640-1": {
+   "block": 33,
+   "frac": 0.0515625,
+   "cheaper_B1": false,
+   "cheaper_B2": false,
+   "cost_ratio_B1": 2.3331359750483456,
+   "cost_ratio_B2": 1.6272672824691536
+  },
+  "640-2": {
+   "block": 17,
+   "frac": 0.0265625,
+   "cheaper_B1": false,
+   "cheaper_B2": true,
+   "cost_ratio_B1": 1.2019185326006627,
+   "cost_ratio_B2": 0.8382892061204732
+  },
+  "640-3": {
+   "block": 11,
+   "frac": 0.0171875,
+   "cheaper_B1": true,
+   "cheaper_B2": true,
+   "cost_ratio_B1": 0.7777119916827818,
+   "cost_ratio_B2": 0.5424224274897179
+  },
+  "640-5": {
+   "block": 7,
+   "frac": 0.0109375,
+   "cheaper_B1": true,
+   "cheaper_B2": true,
+   "cost_ratio_B1": 0.49490763107086116,
+   "cost_ratio_B2": 0.3451779084025478
+  },
+  "640-10": {
+   "block": 4,
+   "frac": 0.00625,
+   "cheaper_B1": true,
+   "cheaper_B2": true,
+   "cost_ratio_B1": 0.28280436061192066,
+   "cost_ratio_B2": 0.19724451908717017
+  },
+  "1000-1": {
+   "block": 51,
+   "frac": 0.051,
+   "cheaper_B1": false,
+   "cheaper_B2": false,
+   "cost_ratio_B1": 2.3076835825932727,
+   "cost_ratio_B2": 1.6095152757513085
+  },
+  "1000-2": {
+   "block": 26,
+   "frac": 0.026,
+   "cheaper_B1": false,
+   "cheaper_B2": true,
+   "cost_ratio_B1": 1.1764661401455898,
+   "cost_ratio_B2": 0.8205371994026278
+  },
+  "1000-3": {
+   "block": 17,
+   "frac": 0.017,
+   "cheaper_B1": true,
+   "cheaper_B2": true,
+   "cost_ratio_B1": 0.7692278608644242,
+   "cost_ratio_B2": 0.5365050919171028
+  },
+  "1000-5": {
+   "block": 11,
+   "frac": 0.011,
+   "cheaper_B1": true,
+   "cheaper_B2": true,
+   "cost_ratio_B1": 0.4977356746769804,
+   "cost_ratio_B2": 0.3471503535934195
+  },
+  "1000-10": {
+   "block": 6,
+   "frac": 0.006,
+   "cheaper_B1": true,
+   "cheaper_B2": true,
+   "cost_ratio_B1": 0.27149218618744386,
+   "cost_ratio_B2": 0.18935473832368335
+  },
+  "3000-1": {
+   "block": 151,
+   "frac": 0.050333333333333334,
+   "cheaper_B1": false,
+   "cheaper_B2": false,
+   "cost_ratio_B1": 2.277517784128001,
+   "cost_ratio_B2": 1.5884758603820104
+  },
+  "3000-2": {
+   "block": 76,
+   "frac": 0.025333333333333333,
+   "cheaper_B1": false,
+   "cheaper_B2": true,
+   "cost_ratio_B1": 1.1463003416803184,
+   "cost_ratio_B2": 0.7994977840333296
+  },
+  "3000-3": {
+   "block": 51,
+   "frac": 0.017,
+   "cheaper_B1": true,
+   "cheaper_B2": true,
+   "cost_ratio_B1": 0.7692278608644242,
+   "cost_ratio_B2": 0.5365050919171028
+  },
+  "3000-5": {
+   "block": 31,
+   "frac": 0.010333333333333333,
+   "cheaper_B1": true,
+   "cheaper_B2": true,
+   "cost_ratio_B1": 0.4675698762117088,
+   "cost_ratio_B2": 0.3261109382241213
+  },
+  "3000-10": {
+   "block": 16,
+   "frac": 0.005333333333333333,
+   "cheaper_B1": true,
+   "cheaper_B2": true,
+   "cost_ratio_B1": 0.2413263877221723,
+   "cost_ratio_B2": 0.1683153229543852
+  },
+  "10000-1": {
+   "block": 501,
+   "frac": 0.0501,
+   "cheaper_B1": false,
+   "cheaper_B2": false,
+   "cost_ratio_B1": 2.266959754665156,
+   "cost_ratio_B2": 1.581112065002756
+  },
+  "10000-2": {
+   "block": 254,
+   "frac": 0.0254,
+   "cheaper_B1": false,
+   "cheaper_B2": true,
+   "cost_ratio_B1": 1.1493169215268455,
+   "cost_ratio_B2": 0.8016017255702595
+  },
+  "10000-3": {
+   "block": 170,
+   "frac": 0.017,
+   "cheaper_B1": true,
+   "cheaper_B2": true,
+   "cost_ratio_B1": 0.7692278608644242,
+   "cost_ratio_B2": 0.5365050919171028
+  },
+  "10000-5": {
+   "block": 103,
+   "frac": 0.0103,
+   "cheaper_B1": true,
+   "cheaper_B2": true,
+   "cost_ratio_B1": 0.46606158628844524,
+   "cost_ratio_B2": 0.32505896745565643
+  },
+  "10000-10": {
+   "block": 52,
+   "frac": 0.0052,
+   "cheaper_B1": true,
+   "cheaper_B2": true,
+   "cost_ratio_B1": 0.23529322802911798,
+   "cost_ratio_B2": 0.16410743988052556
+  }
+ },
+ "pool_scored": {
+  "natural": {
+   "B1 stop at first pass": 0.2540441176470588,
+   "B2 rerun-3 all green": 0.1650735294117647,
+   "B3 majority of 5": 0.22904411764705881,
+   "B4 peeking Clopper-Pearson": 0.0011029411764705882,
+   "B5 naive confidence sequence": 0.0,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  },
+  "realflaky": {
+   "B1 stop at first pass": 0.3096153846153846,
+   "B2 rerun-3 all green": 0.225,
+   "B3 majority of 5": 0.28125,
+   "B4 peeking Clopper-Pearson": 0.011057692307692308,
+   "B5 naive confidence sequence": 0.0033653846153846156,
+   "B6 SeqAccept, no refund": 0.0,
+   "SeqAccept": 0.0
+  }
+ },
+ "natural_repo_ci": {
+  "B1 stop at first pass": {
+   "far": 0.2540441176470588,
+   "ci": [
+    0.159765625,
+    0.348046875
+   ],
+   "repos": 10
+  },
+  "B2 rerun-3 all green": {
+   "far": 0.1650735294117647,
+   "ci": [
+    0.083203125,
+    0.2511029411764706
+   ],
+   "repos": 10
+  },
+  "B3 majority of 5": {
+   "far": 0.22904411764705881,
+   "ci": [
+    0.1319078947368421,
+    0.32890625
+   ],
+   "repos": 10
+  },
+  "B4 peeking Clopper-Pearson": {
+   "far": 0.0011029411764705882,
+   "ci": [
+    0.0,
+    0.002573529411764706
+   ],
+   "repos": 10
+  },
+  "B5 naive confidence sequence": {
+   "far": 0.0,
+   "ci": [
+    0.0,
+    0.0
+   ],
+   "repos": 10
+  },
+  "B6 SeqAccept, no refund": {
+   "far": 0.0,
+   "ci": [
+    0.0,
+    0.0
+   ],
+   "repos": 10
+  },
+  "SeqAccept": {
+   "far": 0.0,
+   "ci": [
+    0.0,
+    0.0
+   ],
+   "repos": 10
+  }
+ },
+ "realflaky_matched": {
+  "B4 peeking Clopper-Pearson": {
+   "far": 0.020673076923076922,
+   "frr": 0.0014925373134328358,
+   "blocks_per_accept": 313.7823652904129,
+   "frr_high": 0.004761904761904762
+  },
+  "SeqAccept": {
+   "far": 0.0038461538461538464,
+   "frr": 0.0955223880597015,
+   "blocks_per_accept": 2279.0892430278886,
+   "frr_high": 0.30238095238095236
+  },
+  "Harmonic spending": {
+   "far": 0.0019230769230769232,
+   "frr": 0.10970149253731343,
+   "blocks_per_accept": 2591.619591836735,
+   "frr_high": 0.33095238095238094
+  },
+  "Discard spending": {
+   "far": 0.005288461538461539,
+   "frr": 0.12238805970149254,
+   "blocks_per_accept": 2813.670510708402,
+   "frr_high": 0.3595238095238095
+  },
+  "Bonferroni-15 spending": {
+   "far": 0.0033653846153846156,
+   "frr": 0.13656716417910447,
+   "blocks_per_accept": 3122.6210350584306,
+   "frr_high": 0.42142857142857143
+  },
+  "Fixed-n Bonferroni-15 (1n0)": {
+   "far": 0.0004807692307692308,
+   "frr": 0.5746268656716418,
+   "blocks_per_accept": 305.4678260869565,
+   "frr_high": 0.9333333333333333
+  },
+  "Fixed-n Bonferroni-15 (2n0)": {
+   "far": 0.0,
+   "frr": 0.55,
+   "blocks_per_accept": 769.7898193760262,
+   "frr_high": 0.9476190476190476
+  },
+  "Fixed-n Bonferroni-15 (4n0)": {
+   "far": 0.002403846153846154,
+   "frr": 0.3194029850746269,
+   "blocks_per_accept": 957.3197424892704,
+   "frr_high": 0.8071428571428572
+  },
+  "Rerun-105 (all green)": {
+   "far": 0.0,
+   "frr": 0.8097014925373134,
+   "blocks_per_accept": 869.0466926070039,
+   "frr_high": 1.0
+  },
+  "Bonferroni-100 spending": {
+   "far": 0.002403846153846154,
+   "frr": 0.1865671641791045,
+   "blocks_per_accept": 4161.692998204668,
+   "frr_high": 0.530952380952381
+  }
+ },
+ "margin_curve": {
+  "0.0-0.03": {
+   "accept": 1.0,
+   "blocks": 177.0
+  },
+  "0.0-0.05": {
+   "accept": 1.0,
+   "blocks": 105.0
+  },
+  "0.0-0.1": {
+   "accept": 1.0,
+   "blocks": 51.0
+  },
+  "0.0-0.15": {
+   "accept": 1.0,
+   "blocks": 33.0
+  },
+  "0.1-0.03": {
+   "accept": 0.3485,
+   "blocks": 656.1975
+  },
+  "0.1-0.05": {
+   "accept": 0.8605,
+   "blocks": 426.868
+  },
+  "0.1-0.1": {
+   "accept": 1.0,
+   "blocks": 133.2315
+  },
+  "0.1-0.15": {
+   "accept": 0.9975,
+   "blocks": 66.5325
+  },
+  "0.2-0.03": {
+   "accept": 0.168,
+   "blocks": 726.376
+  },
+  "0.2-0.05": {
+   "accept": 0.5875,
+   "blocks": 570.453
+  },
+  "0.2-0.1": {
+   "accept": 0.998,
+   "blocks": 195.7015
+  },
+  "0.2-0.15": {
+   "accept": 0.9995,
+   "blocks": 91.5865
+  },
+  "0.3-0.03": {
+   "accept": 0.139,
+   "blocks": 733.3595
+  },
+  "0.3-0.05": {
+   "accept": 0.4395,
+   "blocks": 629.8255
+  },
+  "0.3-0.1": {
+   "accept": 0.9925,
+   "blocks": 240.7185
+  },
+  "0.3-0.15": {
+   "accept": 0.997,
+   "blocks": 106.6165
+  }
+ },
+ "realflaky_margin": {
+  "0.05": {
+   "far": 0.0038461538461538464,
+   "frr": 0.0955223880597015,
+   "frr_high": 0.30238095238095236
+  },
+  "0.1": {
+   "far": 0.004807692307692308,
+   "frr": 0.0007462686567164179,
+   "frr_high": 0.0
+  },
+  "0.15": {
+   "far": 0.0019230769230769232,
+   "frr": 0.0,
+   "frr_high": 0.0
+  }
+ }
+}

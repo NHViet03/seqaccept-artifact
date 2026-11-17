@@ -9,13 +9,28 @@ SeqAccept decides when an LLM repair loop may stop at a passing test run, with a
 | Path | What it holds |
 |---|---|
 | `rules.py`, `sim.py` | acceptance rules (B1-B6, SeqAccept, spending baselines) and simulated streams |
-| `replay.py`, `extra_analyses.py`, `power_tuning.py`, `review2.py`, `ease_analyses.py`, `ease_round2.py`, `ease_round3.py`, `ease_round4.py`, `exec_order.py` | offline replay and analyses |
+| offline replay and analyses | see *Analysis scripts* below |
 | `paper_numbers.py` | every number, table and figure of the paper, generated from `results/` |
 | `run_block.py`, `collect.py`, `agent.py`, `llm.py`, `build_episode.py`, `run_all.py`, `online.py`, `fullsuite.py`, `flaky_arm.py` | Docker and LLM harness that recorded the data |
 | `tasks/`, `bugs/`, `repos/`, `screening/` | task definitions, original and planted-bug sources, subject Dockerfiles, IDoFT screening |
 | `streams/`, `episodes/`, `episodes_flaky/`, `fullsuite/`, `online/`, `runs/exec_order/` | recorded data |
 | `results/` | recorded results |
 | `tests/`, `scripts/` | tests, run scripts |
+
+## Analysis scripts
+
+All run offline from the recorded data; each writes one file in `results/`. The supplement's last table maps every table, figure and table row of the paper to the script behind it. Some names carry the review round that asked for them; the second column says what they compute.
+
+| Script (output) | What it computes |
+|---|---|
+| `replay.py` (`results.json`) | main replay of B1-B6 and SeqAccept on all episodes: FAR, FRR, cost, splits, late streams |
+| `extra_analyses.py` (`extra.json`) | spending comparators, late and mixed streams, worst case, full-suite and real-flaky arms, first-green cut |
+| `ease_analyses.py` (`ease.json`) | refund ablation, truth against pool rates, operating curve, cost frontier, shortcut re-split |
+| `ease_round2.py` (`ease2.json`) | comparators on natural loops, bug-level intervals, leave one repository out, prefilter and refund-at-cap variants |
+| `ease_round3.py` (`ease3.json`) | bug- and repository-clustered intervals, near-eps dependence, ordered replay, eps from a lower bound on p0, calibrated cost |
+| `ease_round4.py` (`ease4.json`) | Bonferroni with attempt caps, white-box adversary, dependence to FAR, full-suite break-even, per-task real-flaky table |
+| `sensitivity.py` (`sensitivity.json`) | cost with calibration per task and per loop, block-size sweep, regime map, FAR against pool rates, repository intervals, comparators on the real-flaky arm, margin curve |
+| `power_tuning.py`, `review2.py`, `exec_order.py`, `run_sim.py`, `reuse_demo.py` | mixture wallet and gamma/rho sweep; pool size and label risk; execution-order check; simulated worst case; Theorem 4.4 simulation |
 
 ## Setup
 

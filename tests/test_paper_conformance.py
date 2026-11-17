@@ -72,6 +72,13 @@ TRACE = {  # every public function/class in impl/*.py -> where the paper or the 
     "ease_round4.cap_rules": "EASE round 3: Bonferroni with attempt caps 15, 40, 100 against SeqAccept",
     "ease_round4.adversary": "EASE round 3: white-box adaptive adversary against the refund variants",
     "ease_round4.ambiguous_labels": "EASE round 3: labels with >5% posterior chance of being wrong set Marginal",
+    "sensitivity.task_of": "EASE round 4: task name of an episode",
+    "sensitivity.subset": "EASE round 4: a block's test subset from its seed (collect.subset)",
+    "sensitivity.failing_set": "EASE round 4: always-failing tests inferred from a candidate's blocks (block-fraction sweep)",
+    "sensitivity.hit": "EASE round 4: hypergeometric chance a block hits one of k tests (sweep, regime map)",
+    "sensitivity.cost_rows": "EASE round 4: Table 3 cost columns with calibration per task and per loop",
+    "sensitivity.sweep": "EASE round 4: B1-B3, B4, SeqAccept at half, recorded and double block size (RQ1)",
+    "sensitivity.regime": "EASE round 4: smallest block for an r-test regression and cost against the full suite (Discussion, S6)",
     "ease_round4.ols": "EASE round 3: least-squares block cost model (overhead + per-test seconds)",
     "exec_order.done_seeds": "external review 2: resumable execution-order log",
     "exec_order.run_task": "external review 2: blocks of the original code with start/end time, worker and load",
@@ -614,3 +621,20 @@ def test_ease4_adversary_cost_model_and_ambiguous_labels():  # EASE round 3
     ep = {"p0": 0.0, "stream": ["a", "b", "c"],
           "fixes": {"a": {"truth": [0] * 200}, "b": {"truth": [1] * 100 + [0] * 100}, "c": {"truth": [1] * 11 + [0] * 189}}}
     assert ambiguous_labels(ep) == ["correct", "broken", "marginal"]  # c: 5.5% fails, Broken but close to eps
+
+
+def test_sensitivity_failing_set_and_hit():  # EASE round 4
+    from sensitivity import failing_set, hit, regime, subset
+    assert abs(hit(10, 1, 1) - 0.1) < 1e-12 and hit(10, 0, 5) == 0.0 and hit(10, 2, 9) == 1.0
+    assert abs(hit(640, 1, 32) - 0.05) < 1e-12
+    ids, seeds = [f"t{i}" for i in range(8)], list(range(60))
+    outs = [int("t3" in subset(ids, 2, s)) for s in seeds]  # a candidate that always fails t3
+    assert failing_set({"truth": outs[:30], "pool": outs[30:], "seeds": seeds}, ids, 2) == {"t3"}
+    order = [0] * 60
+    order[0] = 1  # one failure no fixed test set explains: every test also appears in passing blocks
+    assert set().union(*(subset(ids, 2, s) for s in seeds[1:])) == set(ids)
+    assert failing_set({"truth": order[:30], "pool": order[30:], "seeds": seeds}, ids, 2) is None
+    assert failing_set({"truth": [0] * 30, "pool": [0] * 30, "seeds": seeds}, ids, 2) == set()
+    rg = regime({"B1": {"ratio": 45.0}, "B2": {"ratio": 32.0}})
+    assert rg["1000-1"]["block"] == 51  # 51/1000 > 0.05
+    assert not rg["3000-1"]["cheaper_B1"] and rg["3000-10"]["cheaper_B1"]

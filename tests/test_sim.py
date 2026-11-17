@@ -43,7 +43,9 @@ def test_without_refunds_even_a_moderately_late_correct_candidate_costs_several_
     stream = [0.5] * 30 + [0.0]
     with_refund = experiment(seq_accept, stream, reps=50, seed=3)
     no_refund = experiment(partial(seq_accept, refund=False), stream, reps=50, seed=3)
-    assert no_refund["blocks_per_accept"] > 2 * with_refund["blocks_per_accept"]  # measured ~2.6x (719 vs 279)
+    # under the derived cap (210 blocks at eps = 0.05) the 31st slice without refunds is too small to reach 1/alpha_j:
+    # the correct candidate is never accepted; with refunds it always is (measured 208 blocks per accept)
+    assert with_refund["frr"] == 0.0 and no_refund["frr"] == 1.0
 
 
 def test_experiment_reports_blocks_spent_per_accepted_fix():

@@ -32,7 +32,7 @@ import replay
 from caps_adversary import adversary, ambiguous_labels
 from comparators import bug_of
 from extra_analyses import evaluate_rules, extra_rules, runs_test
-from rules import all_rules, bonferroni, fixed_n, fixed_spending, harmonic, seq_accept
+from rules import all_rules, naive_cs, peeking_cp, bonferroni, fixed_n, fixed_spending, harmonic, seq_accept
 from sensitivity import cost_rows, task_of
 from sim import experiment, run_episodes
 
@@ -228,8 +228,8 @@ if __name__ == "__main__":
     print("7. abstention without the block cap")
     out["uncapped_B"] = {}
     for p0 in (0.1, 0.2, 0.3):
-        for B in (800, 10000):
-            r = experiment(partial(seq_accept, eps=p0 + replay.MARGIN, max_blocks=B), [p0], reps=500, seed=13, p0=p0)
+        for B in ("cap", 10000):  # the default derived cap, and 10,000
+            r = experiment(partial(seq_accept, eps=p0 + replay.MARGIN, max_blocks=None if B == "cap" else B), [p0], reps=500, seed=13, p0=p0)
             out["uncapped_B"][f"{p0}-{B}"] = {"accept": r["correct_accept"], "blocks": r["blocks"] / r["reps"]}
     print("   " + json.dumps({k: [round(100 * v["accept"], 1), round(v["blocks"])] for k, v in out["uncapped_B"].items()}))
 
@@ -312,6 +312,45 @@ if __name__ == "__main__":
                                **{f"harmonic_{j}": pass_all(ALPHA / (j * (j + 1))) for j in (5, 15, 40)},
                                **{f"norefund_{j}": pass_all(ALPHA * g * (1 - g) ** (j - 1)) for j in (5, 15)}}
     print(f"   {out['refund_breakeven']}")
+
+    print("13. near-eps arm: recorded natural loops re-graded on smaller blocks (near_eps_arm.py), every rule")
+    near = [replay.load_episode(p) for p in sorted(Path("episodes_neareps").glob("*.json"))]
+    old = lambda ep: partial(seq_accept, eps=eps_of(ep), reject_at=20, max_blocks=800)
+    r13 = evaluate_rules(near, lambda ep: {**all_rules(eps=eps_of(ep)), "SeqAccept, rho=20, T=800": old(ep)},
+                         reps=replay.NEAR_REPS)
+    nb = [[f for f, lab in zip(ep["stream"], replay.labels(ep)) if lab == "broken"] for ep in near]
+    rate = lambda ep, f: sum(ep["fixes"][f]["truth"]) / len(ep["fixes"][f]["truth"])
+    out["neareps"] = {"loops": len(near), "tasks": sorted({task_of(ep) for ep in near}),
+                      "block_sizes": {task_of(ep): [ep["block_size"], json.loads(Path(f"tasks/{task_of(ep).split('@')[0]}.json").read_text())["block_size"]] for ep in near},
+                      "broken_near": sum(len({f for f in fs if rate(ep, f) <= eps_of(ep) + 0.03}) for ep, fs in zip(near, nb)),
+                      "broken": sum(len(set(fs)) for fs in nb), "candidates": sum(len(set(ep["stream"])) for ep in near),
+                      "reps": replay.NEAR_REPS, "rules": {}}
+    for n, rs in r13.items():
+        s13 = replay.summarize(rs, near)
+        k = max(round(r["far"] * r["reps"]) for r in rs)
+        out["neareps"]["rules"][n] = {"far": s13["far"], "frr": s13["frr"], "blocks_per_accept": s13["blocks_per_accept"],
+                                      "blocks_per_loop": sum(r["blocks"] for r in rs) / sum(r["reps"] for r in rs),
+                                      "worst_loop": k / replay.NEAR_REPS, "worst_loop_upper": replay.cp_upper(k, replay.NEAR_REPS),
+                                      "far_ci_repo": list(replay.cluster_ci([r["far"] for r in rs], [ep.get("repo") for ep in near]))}
+    print("   " + json.dumps({n[:3]: [round(100 * v["far"], 2), round(100 * v["worst_loop"], 1), round(v["blocks_per_loop"])]
+                              for n, v in out["neareps"]["rules"].items()}))
+
+    print("14. the cost knobs rho and T, shared by B4, B5 and SeqAccept, on every arm")
+    knobs = {"rho=20, T=800": dict(reject_at=20, max_blocks=800), "rho=5, T=800": dict(max_blocks=800),
+             "rho=20, derived T": dict(reject_at=20), "rho=5, derived T": {}}
+    out["knobs"] = {}
+    for arm, eps_ in (("natural", natural), ("realflaky", flaky), ("neareps", near)):
+        out["knobs"][arm] = {}
+        for kn, kw in knobs.items():
+            b4kw = {"max_blocks": kw["max_blocks"]} if "max_blocks" in kw else {}
+            rs14 = evaluate_rules(eps_, lambda ep: {"B4": partial(peeking_cp, eps=eps_of(ep), **b4kw),
+                                                    "B5": partial(naive_cs, eps=eps_of(ep), **kw),
+                                                    "SeqAccept": partial(seq_accept, eps=eps_of(ep), **kw)})
+            out["knobs"][arm][kn] = {n: {"far": replay.summarize(rs, eps_)["far"], "frr": replay.summarize(rs, eps_)["frr"],
+                                         "blocks_per_loop": sum(r["blocks"] for r in rs) / sum(r["reps"] for r in rs)}
+                                     for n, rs in rs14.items()}
+        print(f"   {arm}: " + json.dumps({kn: {n: [round(100 * v['far'], 2), round(100 * (v['frr'] or 0), 1), round(v['blocks_per_loop'])]
+                                               for n, v in d.items()} for kn, d in out["knobs"][arm].items()}))
 
     Path("results/checks.json").write_text(json.dumps(out, indent=1, default=str))
     print("saved results/checks.json")

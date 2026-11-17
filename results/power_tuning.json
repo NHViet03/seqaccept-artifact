@@ -19,185 +19,185 @@
       "p": 0.02,
       "kl_bound": 303.78748214208,
       "kelly": {
-        "accept": 0.934,
-        "blocks_per_accept": 418.89186295503214
+        "accept": 0.231,
+        "blocks_per_accept": 817.1753246753246
       },
       "mixture": {
-        "accept": 0.96,
-        "blocks_per_accept": 357.2135416666667
+        "accept": 0.318,
+        "blocks_per_accept": 583.8018867924528
       }
     },
     {
       "p": 0.03,
       "kl_bound": 755.2531151311991,
       "kelly": {
-        "accept": 0.4305,
-        "blocks_per_accept": 1506.389082462253
+        "accept": 0.072,
+        "blocks_per_accept": 2726.534722222222
       },
       "mixture": {
-        "accept": 0.529,
-        "blocks_per_accept": 1138.2826086956522
+        "accept": 0.1035,
+        "blocks_per_accept": 1892.5217391304348
       }
     },
     {
       "p": 0.04,
       "kl_bound": 3274.039583818437,
       "kelly": {
-        "accept": 0.075,
-        "blocks_per_accept": 10226.2
+        "accept": 0.025,
+        "blocks_per_accept": 7838.14
       },
       "mixture": {
-        "accept": 0.1155,
-        "blocks_per_accept": 6478.320346320346
+        "accept": 0.0305,
+        "blocks_per_accept": 6379.950819672131
       }
     },
     {
       "p": 0.05,
       "kl_bound": null,
       "kelly": {
-        "accept": 0.0085,
-        "blocks_per_accept": 92216.23529411765
+        "accept": 0.0055,
+        "blocks_per_accept": 35082.09090909091
       },
       "mixture": {
-        "accept": 0.012,
-        "blocks_per_accept": 64777.041666666664
+        "accept": 0.007,
+        "blocks_per_accept": 27562.35714285714
       }
     }
   ],
   "worst": {
     "15": {
-      "kelly": 0.039,
-      "mixture": 0.026
+      "kelly": 0.021,
+      "mixture": 0.021
     },
     "50": {
-      "kelly": 0.045,
-      "mixture": 0.0275
+      "kelly": 0.03,
+      "mixture": 0.0225
     }
   },
   "recorded_mixture": {
     "far": 0.0,
-    "frr": 0.0,
-    "blocks_per_accept": 256.46916299559473,
+    "frr": 0.00022321428571428573,
+    "blocks_per_accept": 215.28133950209298,
     "late_accept": 0.8
   },
   "sweep": [
     {
       "gamma": 0.25,
-      "rho": 20,
+      "rho": 5,
       "recorded": {
         "far": 0.0,
-        "frr": 0.0,
-        "blocks_per_accept": 283.37665198237886,
+        "frr": 0.00044642857142857147,
+        "blocks_per_accept": 243.50176289114148,
         "late_accept": 0.8
       },
       "late": {
         "10": {
           "far": 0.0,
-          "frr": 0.009583333333333334,
-          "blocks_per_accept": 286.381994110223,
-          "late_accept": 0.9904166666666666
+          "frr": 0.030416666666666668,
+          "blocks_per_accept": 247.33734422002578,
+          "late_accept": 0.9695833333333334
         },
         "40": {
           "far": 0.0,
-          "frr": 0.007083333333333333,
-          "blocks_per_accept": 594.3117918590012,
-          "late_accept": 0.9929166666666667
+          "frr": 0.034166666666666665,
+          "blocks_per_accept": 440.69801553062985,
+          "late_accept": 0.9658333333333333
         }
       }
     },
     {
       "gamma": 0.5,
-      "rho": 10,
+      "rho": 3,
       "recorded": {
         "far": 0.0,
         "frr": 0.0,
-        "blocks_per_accept": 244.0374449339207,
+        "blocks_per_accept": 210.74933920704845,
         "late_accept": 0.8
       },
       "late": {
         "10": {
           "far": 0.0,
-          "frr": 0.005416666666666667,
-          "blocks_per_accept": 248.39840804356933,
-          "late_accept": 0.9945833333333334
+          "frr": 0.023333333333333334,
+          "blocks_per_accept": 217.46970989761093,
+          "late_accept": 0.9766666666666667
         },
         "40": {
+          "far": 0.0,
+          "frr": 0.034166666666666665,
+          "blocks_per_accept": 387.1259706643658,
+          "late_accept": 0.9658333333333333
+        }
+      }
+    },
+    {
+      "gamma": 0.5,
+      "rho": 5,
+      "recorded": {
+        "far": 0.0,
+        "frr": 0.00022321428571428573,
+        "blocks_per_accept": 218.02335316148933,
+        "late_accept": 0.8
+      },
+      "late": {
+        "10": {
+          "far": 0.0,
+          "frr": 0.025833333333333333,
+          "blocks_per_accept": 223.12446535500428,
+          "late_accept": 0.9741666666666666
+        },
+        "40": {
+          "far": 0.0,
+          "frr": 0.029583333333333333,
+          "blocks_per_accept": 415.2473164448261,
+          "late_accept": 0.9704166666666667
+        }
+      }
+    },
+    {
+      "gamma": 0.5,
+      "rho": 20,
+      "recorded": {
+        "far": 0.0,
+        "frr": 0.0,
+        "blocks_per_accept": 255.64625550660793,
+        "late_accept": 0.8
+      },
+      "late": {
+        "10": {
           "far": 0.0,
           "frr": 0.007916666666666667,
-          "blocks_per_accept": 518.4981100377993,
+          "blocks_per_accept": 256.5455690886182,
           "late_accept": 0.9920833333333333
-        }
-      }
-    },
-    {
-      "gamma": 0.5,
-      "rho": 20,
-      "recorded": {
-        "far": 0.0,
-        "frr": 0.0,
-        "blocks_per_accept": 257.9066079295154,
-        "late_accept": 0.8
-      },
-      "late": {
-        "10": {
-          "far": 0.0,
-          "frr": 0.004166666666666667,
-          "blocks_per_accept": 258.4573221757322,
-          "late_accept": 0.9958333333333333
         },
         "40": {
           "far": 0.0,
-          "frr": 0.006666666666666667,
-          "blocks_per_accept": 574.4920302013422,
-          "late_accept": 0.9933333333333333
-        }
-      }
-    },
-    {
-      "gamma": 0.5,
-      "rho": 50,
-      "recorded": {
-        "far": 0.0,
-        "frr": 0.0,
-        "blocks_per_accept": 276.10066079295154,
-        "late_accept": 0.8
-      },
-      "late": {
-        "10": {
-          "far": 0.0,
-          "frr": 0.004166666666666667,
-          "blocks_per_accept": 275.9284518828452,
-          "late_accept": 0.9958333333333333
-        },
-        "40": {
-          "far": 0.0,
-          "frr": 0.005416666666666667,
-          "blocks_per_accept": 648.412232928362,
-          "late_accept": 0.9945833333333334
+          "frr": 0.016666666666666666,
+          "blocks_per_accept": 572.7851694915254,
+          "late_accept": 0.9833333333333333
         }
       }
     },
     {
       "gamma": 0.75,
-      "rho": 20,
+      "rho": 5,
       "recorded": {
         "far": 0.0,
-        "frr": 0.0,
-        "blocks_per_accept": 243.3570484581498,
+        "frr": 0.00022321428571428573,
+        "blocks_per_accept": 203.74796210619078,
         "late_accept": 0.8
       },
       "late": {
         "10": {
           "far": 0.0,
-          "frr": 0.004166666666666667,
-          "blocks_per_accept": 245.60502092050208,
-          "late_accept": 0.9958333333333333
+          "frr": 0.027916666666666666,
+          "blocks_per_accept": 205.89627089584226,
+          "late_accept": 0.9720833333333333
         },
         "40": {
           "far": 0.0,
-          "frr": 0.00625,
-          "blocks_per_accept": 567.2092243186582,
-          "late_accept": 0.99375
+          "frr": 0.02875,
+          "blocks_per_accept": 404.12012012012013,
+          "late_accept": 0.97125
         }
       }
     }

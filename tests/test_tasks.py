@@ -13,7 +13,7 @@ KEYS = {"repo", "repo_kind", "bug_kind", "image", "relpath", "tests", "report", 
 @pytest.mark.parametrize("path", TASKS, ids=lambda p: p.stem)
 def test_task_is_complete_and_its_bug_is_a_one_line_change(path):
     task = json.loads(path.read_text())
-    extra = {"p0_blocks", "p0_workers", "p0_measured_at", "test_ids", "block_size", "p0_full_suite", "inject", "stream_from", "flakiness", "hidden_ids", "runs", "b7_of"}
+    extra = {"block_size_recorded", "p0_blocks", "p0_workers", "p0_measured_at", "test_ids", "block_size", "p0_full_suite", "inject", "stream_from", "flakiness", "hidden_ids", "runs", "b7_of"}
     keys = KEYS - ({"p0"} if "test_ids" not in task else set())  # a new task (D19) gets p0 when run_all collects it
     assert keys <= set(task) <= KEYS | extra
     assert task["repo_kind"] in ("OD", "NOD") and task["bug_kind"] in ("order", "ordinary")  # plan 2.4

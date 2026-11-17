@@ -20,12 +20,12 @@
           0.2588655508930523
         ]
       },
-      "frr": 0.0,
-      "marginal_accept": 0.027134146341463414,
-      "blocks_per_accept": 275.3193832599119,
+      "frr": 0.00044642857142857147,
+      "marginal_accept": 0.02621951219512195,
+      "blocks_per_accept": 240.13942201632474,
       "late_accept": 0.8,
-      "budget_seconds": 386.71500142568465,
-      "time_to_accept_min": 5.917253895451248
+      "budget_seconds": 337.02669267873455,
+      "time_to_accept_min": 5.8390021928265705
     },
     "Discard spending": {
       "calibration": 0.0,
@@ -46,12 +46,12 @@
           0.2588655508930523
         ]
       },
-      "frr": 0.0,
-      "marginal_accept": 0.027134146341463414,
-      "blocks_per_accept": 281.9541850220264,
+      "frr": 0.00044642857142857147,
+      "marginal_accept": 0.02728658536585366,
+      "blocks_per_accept": 244.31371252204585,
       "late_accept": 0.8,
-      "budget_seconds": 403.80981345121813,
-      "time_to_accept_min": 6.411055252942077
+      "budget_seconds": 346.8299050472558,
+      "time_to_accept_min": 6.2885379469340545
     },
     "Bonferroni-15 spending": {
       "calibration": 0.0,
@@ -72,12 +72,12 @@
           0.2588655508930523
         ]
       },
-      "frr": 0.0,
+      "frr": 0.00022321428571428573,
       "marginal_accept": 0.027134146341463414,
-      "blocks_per_accept": 333.62400881057266,
+      "blocks_per_accept": 297.19942706037904,
       "late_accept": 0.8,
-      "budget_seconds": 472.2985261825444,
-      "time_to_accept_min": 8.040609197042643
+      "budget_seconds": 421.3041925495423,
+      "time_to_accept_min": 7.942521603000766
     },
     "Fixed-n Bonferroni-15 (1n0)": {
       "calibration": 0.0,
@@ -205,12 +205,12 @@
             0.2588655508930523
           ]
         },
-        "frr": 0.029166666666666667,
+        "frr": 0.06125,
         "marginal_accept": 0.0,
-        "blocks_per_accept": 313.03991416309015,
-        "late_accept": 0.9708333333333333,
-        "budget_seconds": 499.43047157916726,
-        "time_to_accept_min": 8.046828584370537
+        "blocks_per_accept": 292.35286284953395,
+        "late_accept": 0.93875,
+        "budget_seconds": 441.4506538364589,
+        "time_to_accept_min": 7.136794433810481
       },
       "Discard spending": {
         "calibration": 0.0,
@@ -231,12 +231,12 @@
             0.2588655508930523
           ]
         },
-        "frr": 0.010833333333333334,
+        "frr": 0.03375,
         "marginal_accept": 0.0,
-        "blocks_per_accept": 231.42923336141533,
-        "late_accept": 0.9891666666666666,
-        "budget_seconds": 382.80427649895853,
-        "time_to_accept_min": 6.2863897185306135
+        "blocks_per_accept": 211.2514014661492,
+        "late_accept": 0.9662499999999999,
+        "budget_seconds": 330.60887858020857,
+        "time_to_accept_min": 5.477602582596669
       },
       "Bonferroni-15 spending": {
         "calibration": 0.0,
@@ -257,12 +257,12 @@
             0.2588655508930523
           ]
         },
-        "frr": 0.02,
+        "frr": 0.04666666666666667,
         "marginal_accept": 0.0,
-        "blocks_per_accept": 277.19132653061223,
-        "late_accept": 0.98,
-        "budget_seconds": 449.05115240000043,
-        "time_to_accept_min": 7.275275376806979
+        "blocks_per_accept": 254.70716783216784,
+        "late_accept": 0.9533333333333334,
+        "budget_seconds": 393.67720913229203,
+        "time_to_accept_min": 6.470522619755249
       },
       "Fixed-n Bonferroni-15 (1n0)": {
         "calibration": 0.0,
@@ -389,12 +389,12 @@
             0.2588655508930523
           ]
         },
-        "frr": 0.049166666666666664,
+        "frr": 0.09583333333333334,
         "marginal_accept": 0.0,
-        "blocks_per_accept": 423.7528483786152,
-        "late_accept": 0.9508333333333333,
-        "budget_seconds": 836.4430579177091,
-        "time_to_accept_min": 13.494791865742778
+        "blocks_per_accept": 390.28433179723504,
+        "late_accept": 0.9041666666666667,
+        "budget_seconds": 713.4156016687506,
+        "time_to_accept_min": 11.631942631682033
       },
       "Discard spending": {
         "calibration": 0.0,
@@ -415,12 +415,12 @@
             0.2588655508930523
           ]
         },
-        "frr": 0.009583333333333334,
+        "frr": 0.034166666666666665,
         "marginal_accept": 0.0,
-        "blocks_per_accept": 284.9856962557846,
-        "late_accept": 0.9904166666666666,
-        "budget_seconds": 607.0720729177087,
-        "time_to_accept_min": 9.980971661758524
+        "blocks_per_accept": 246.71009490940466,
+        "late_accept": 0.9658333333333333,
+        "budget_seconds": 497.41483066979174,
+        "time_to_accept_min": 8.187096764829594
       },
       "Bonferroni-15 spending": {
         "calibration": 0.0,
@@ -441,12 +441,12 @@
             0.2588655508930523
           ]
         },
-        "frr": 0.0175,
+        "frr": 0.04708333333333333,
         "marginal_accept": 0.0,
-        "blocks_per_accept": 334.5356234096692,
-        "late_accept": 0.9825,
-        "budget_seconds": 696.6153212656254,
-        "time_to_accept_min": 11.384964015832631
+        "blocks_per_accept": 298.84258854394403,
+        "late_accept": 0.9529166666666666,
+        "budget_seconds": 582.170501991667,
+        "time_to_accept_min": 9.50927544749308
       },
       "Fixed-n Bonferroni-15 (1n0)": {
         "calibration": 0.0,
@@ -573,12 +573,12 @@
             0.2588655508930523
           ]
         },
-        "frr": 0.059166666666666666,
+        "frr": 0.465,
         "marginal_accept": 0.0,
-        "blocks_per_accept": 611.6585473870682,
-        "late_accept": 0.9408333333333333,
-        "budget_seconds": 1265.6971714156243,
-        "time_to_accept_min": 20.860654594220545
+        "blocks_per_accept": 857.4034267912773,
+        "late_accept": 0.535,
+        "budget_seconds": 986.890212866666,
+        "time_to_accept_min": 15.426587095015572
       },
       "Discard spending": {
         "calibration": 0.0,
@@ -599,12 +599,12 @@
             0.2588655508930523
           ]
         },
-        "frr": 0.007083333333333333,
+        "frr": 0.025833333333333333,
         "marginal_accept": 0.0,
-        "blocks_per_accept": 429.75786823331936,
-        "late_accept": 0.9929166666666667,
-        "budget_seconds": 957.6472180614576,
-        "time_to_accept_min": 15.919158827755616
+        "blocks_per_accept": 332.7121471343028,
+        "late_accept": 0.9741666666666666,
+        "budget_seconds": 699.1125219635413,
+        "time_to_accept_min": 11.67979319717707
       },
       "Bonferroni-15 spending": {
         "calibration": 0.0,
@@ -629,7 +629,7 @@
         "marginal_accept": 0.0,
         "blocks_per_accept": null,
         "late_accept": 0.0,
-        "budget_seconds": 2545.8477899291647,
+        "budget_seconds": 1252.2668333302083,
         "time_to_accept_min": null
       },
       "Fixed-n Bonferroni-15 (1n0)": {
@@ -757,12 +757,12 @@
             0.2588655508930523
           ]
         },
-        "frr": 0.08791666666666667,
+        "frr": 0.5229166666666667,
         "marginal_accept": 0.0,
-        "blocks_per_accept": 857.3522156235724,
-        "late_accept": 0.9120833333333334,
-        "budget_seconds": 1736.4690684958357,
-        "time_to_accept_min": 27.946366651362897
+        "blocks_per_accept": 1231.1310043668122,
+        "late_accept": 0.47708333333333336,
+        "budget_seconds": 1270.5548938406241,
+        "time_to_accept_min": 23.984003707459962
       },
       "Discard spending": {
         "calibration": 0.0,
@@ -783,12 +783,12 @@
             0.2588655508930523
           ]
         },
-        "frr": 0.008333333333333333,
+        "frr": 0.0375,
         "marginal_accept": 0.0,
-        "blocks_per_accept": 594.3117647058823,
-        "late_accept": 0.9916666666666667,
-        "budget_seconds": 1372.0485759406265,
-        "time_to_accept_min": 22.641562667086855
+        "blocks_per_accept": 434.72900432900434,
+        "late_accept": 0.9625,
+        "budget_seconds": 938.5532477499999,
+        "time_to_accept_min": 15.57282333775252
       },
       "Bonferroni-15 spending": {
         "calibration": 0.0,
@@ -813,7 +813,7 @@
         "marginal_accept": 0.0,
         "blocks_per_accept": null,
         "late_accept": 0.0,
-        "budget_seconds": 2688.3953638812495,
+        "budget_seconds": 1573.1104715145798,
         "time_to_accept_min": null
       },
       "Fixed-n Bonferroni-15 (1n0)": {
@@ -928,9 +928,9 @@
       "n": 1,
       "reps": 1000,
       "far": {
-        "Harmonic spending": 0.014,
-        "Discard spending": 0.008,
-        "Bonferroni-15 spending": 0.003,
+        "Harmonic spending": 0.008,
+        "Discard spending": 0.002,
+        "Bonferroni-15 spending": 0.0,
         "Fixed-n Bonferroni-15 (1n0)": 0.002,
         "Fixed-n Bonferroni-15 (2n0)": 0.0,
         "Fixed-n Bonferroni-15 (4n0)": 0.004,
@@ -942,9 +942,9 @@
       "n": 5,
       "reps": 1000,
       "far": {
-        "Harmonic spending": 0.013,
-        "Discard spending": 0.013,
-        "Bonferroni-15 spending": 0.008,
+        "Harmonic spending": 0.009,
+        "Discard spending": 0.008,
+        "Bonferroni-15 spending": 0.001,
         "Fixed-n Bonferroni-15 (1n0)": 0.009,
         "Fixed-n Bonferroni-15 (2n0)": 0.003,
         "Fixed-n Bonferroni-15 (4n0)": 0.013,
@@ -956,9 +956,9 @@
       "n": 15,
       "reps": 1000,
       "far": {
-        "Harmonic spending": 0.013,
-        "Discard spending": 0.026,
-        "Bonferroni-15 spending": 0.019,
+        "Harmonic spending": 0.007,
+        "Discard spending": 0.011,
+        "Bonferroni-15 spending": 0.004,
         "Fixed-n Bonferroni-15 (1n0)": 0.037,
         "Fixed-n Bonferroni-15 (2n0)": 0.012,
         "Fixed-n Bonferroni-15 (4n0)": 0.029,
@@ -970,9 +970,9 @@
       "n": 50,
       "reps": 400,
       "far": {
-        "Harmonic spending": 0.0075,
-        "Discard spending": 0.02,
-        "Bonferroni-15 spending": 0.03,
+        "Harmonic spending": 0.01,
+        "Discard spending": 0.015,
+        "Bonferroni-15 spending": 0.0075,
         "Fixed-n Bonferroni-15 (1n0)": 0.0375,
         "Fixed-n Bonferroni-15 (2n0)": 0.01,
         "Fixed-n Bonferroni-15 (4n0)": 0.0325,
@@ -984,8 +984,8 @@
       "n": 1,
       "reps": 1000,
       "far": {
-        "Harmonic spending": 0.001,
-        "Discard spending": 0.001,
+        "Harmonic spending": 0.006,
+        "Discard spending": 0.002,
         "Bonferroni-15 spending": 0.001,
         "Fixed-n Bonferroni-15 (1n0)": 0.002,
         "Fixed-n Bonferroni-15 (2n0)": 0.0,
@@ -999,7 +999,7 @@
       "reps": 1000,
       "far": {
         "Harmonic spending": 0.002,
-        "Discard spending": 0.004,
+        "Discard spending": 0.003,
         "Bonferroni-15 spending": 0.001,
         "Fixed-n Bonferroni-15 (1n0)": 0.004,
         "Fixed-n Bonferroni-15 (2n0)": 0.002,
@@ -1013,7 +1013,7 @@
       "reps": 1000,
       "far": {
         "Harmonic spending": 0.002,
-        "Discard spending": 0.012,
+        "Discard spending": 0.006,
         "Bonferroni-15 spending": 0.003,
         "Fixed-n Bonferroni-15 (1n0)": 0.013,
         "Fixed-n Bonferroni-15 (2n0)": 0.004,
@@ -1028,7 +1028,7 @@
       "far": {
         "Harmonic spending": 0.0025,
         "Discard spending": 0.0125,
-        "Bonferroni-15 spending": 0.0075,
+        "Bonferroni-15 spending": 0.0025,
         "Fixed-n Bonferroni-15 (1n0)": 0.01,
         "Fixed-n Bonferroni-15 (2n0)": 0.0075,
         "Fixed-n Bonferroni-15 (4n0)": 0.005,
@@ -1040,7 +1040,7 @@
       "n": 1,
       "reps": 1000,
       "far": {
-        "Harmonic spending": 0.001,
+        "Harmonic spending": 0.0,
         "Discard spending": 0.0,
         "Bonferroni-15 spending": 0.0,
         "Fixed-n Bonferroni-15 (1n0)": 0.0,
@@ -1055,7 +1055,7 @@
       "reps": 1000,
       "far": {
         "Harmonic spending": 0.0,
-        "Discard spending": 0.001,
+        "Discard spending": 0.0,
         "Bonferroni-15 spending": 0.0,
         "Fixed-n Bonferroni-15 (1n0)": 0.0,
         "Fixed-n Bonferroni-15 (2n0)": 0.0,
@@ -1102,12 +1102,12 @@
       "reps": 1000,
       "far": {
         "SeqAccept": 0.021,
-        "SeqAccept, uncapped refund": 0.143,
-        "B6 SeqAccept, no refund": 0.004,
-        "Harmonic spending": 0.004,
-        "Discard spending": 0.02,
-        "B5 naive confidence sequence": 0.389,
-        "B4 peeking Clopper-Pearson": 0.992
+        "SeqAccept, uncapped refund": 0.077,
+        "B6 SeqAccept, no refund": 0.002,
+        "Harmonic spending": 0.001,
+        "Discard spending": 0.023,
+        "B5 naive confidence sequence": 0.28,
+        "B4 peeking Clopper-Pearson": 0.962
       }
     },
     "alt-0.08": {
@@ -1118,13 +1118,13 @@
       "n": 50,
       "reps": 1000,
       "far": {
-        "SeqAccept": 0.018,
-        "SeqAccept, uncapped refund": 0.137,
-        "B6 SeqAccept, no refund": 0.009,
-        "Harmonic spending": 0.008,
-        "Discard spending": 0.028,
-        "B5 naive confidence sequence": 0.422,
-        "B4 peeking Clopper-Pearson": 0.999
+        "SeqAccept": 0.014,
+        "SeqAccept, uncapped refund": 0.081,
+        "B6 SeqAccept, no refund": 0.003,
+        "Harmonic spending": 0.002,
+        "Discard spending": 0.018,
+        "B5 naive confidence sequence": 0.279,
+        "B4 peeking Clopper-Pearson": 0.961
       }
     }
   },
@@ -1263,9 +1263,9 @@
         },
         "frr": 0.0036231884057971015,
         "marginal_accept": 0.023728813559322035,
-        "blocks_per_accept": 77.89568682606657,
+        "blocks_per_accept": 77.88396624472574,
         "late_accept": 1.0,
-        "budget_seconds": 123.73056562500001,
+        "budget_seconds": 123.72442547669492,
         "time_to_accept_min": 2.631617669949495
       },
       "B5 naive confidence sequence": {
@@ -1287,12 +1287,12 @@
             0.2588655508930523
           ]
         },
-        "frr": 0.0019323671497584543,
-        "marginal_accept": 0.023728813559322035,
-        "blocks_per_accept": 152.24859550561797,
-        "late_accept": 1.0,
-        "budget_seconds": 225.00715451610176,
-        "time_to_accept_min": 4.680306931399243
+        "frr": 0.015217391304347827,
+        "marginal_accept": 0.02271186440677966,
+        "blocks_per_accept": 145.18784136784612,
+        "late_accept": 0.9666666666666667,
+        "budget_seconds": 212.81908359110173,
+        "time_to_accept_min": 4.663842566623744
       },
       "B6 SeqAccept, no refund": {
         "calibration": 0.0,
@@ -1313,12 +1313,12 @@
             0.2588655508930523
           ]
         },
-        "frr": 0.003381642512077295,
-        "marginal_accept": 0.023728813559322035,
-        "blocks_per_accept": 187.17205813408344,
-        "late_accept": 0.95,
-        "budget_seconds": 269.8937501500001,
-        "time_to_accept_min": 5.676769214877203
+        "frr": 0.01956521739130435,
+        "marginal_accept": 0.02169491525423729,
+        "blocks_per_accept": 179.62240267494627,
+        "late_accept": 0.8666666666666667,
+        "budget_seconds": 255.52914494067807,
+        "time_to_accept_min": 5.643942925474257
       },
       "SeqAccept": {
         "calibration": 0.0,
@@ -1339,12 +1339,12 @@
             0.2588655508930523
           ]
         },
-        "frr": 0.0026570048309178746,
-        "marginal_accept": 0.023728813559322035,
-        "blocks_per_accept": 177.15975638322791,
+        "frr": 0.017632850241545893,
+        "marginal_accept": 0.02169491525423729,
+        "blocks_per_accept": 169.98426698450535,
         "late_accept": 1.0,
-        "budget_seconds": 260.43279437966106,
-        "time_to_accept_min": 5.480764454034473
+        "budget_seconds": 247.13866649872892,
+        "time_to_accept_min": 5.462274514261128
       },
       "Harmonic spending": {
         "calibration": 0.0,
@@ -1365,12 +1365,12 @@
             0.2588655508930523
           ]
         },
-        "frr": 0.004106280193236715,
-        "marginal_accept": 0.023728813559322035,
-        "blocks_per_accept": 189.6556415669716,
-        "late_accept": 0.95,
-        "budget_seconds": 272.75627587584756,
-        "time_to_accept_min": 5.727648856142375
+        "frr": 0.01956521739130435,
+        "marginal_accept": 0.0211864406779661,
+        "blocks_per_accept": 181.84823135755258,
+        "late_accept": 0.8666666666666667,
+        "budget_seconds": 258.13979245169503,
+        "time_to_accept_min": 5.701361363389998
       },
       "Discard spending": {
         "calibration": 0.0,
@@ -1391,12 +1391,12 @@
             0.2588655508930523
           ]
         },
-        "frr": 0.004830917874396135,
-        "marginal_accept": 0.023728813559322035,
-        "blocks_per_accept": 201.62981220657278,
+        "frr": 0.018115942028985508,
+        "marginal_accept": 0.02152542372881356,
+        "blocks_per_accept": 193.9732824427481,
         "late_accept": 1.0,
-        "budget_seconds": 297.0558689237289,
-        "time_to_accept_min": 6.235266779399274
+        "budget_seconds": 282.3366841088984,
+        "time_to_accept_min": 6.200492936459616
       },
       "Bonferroni-15 spending": {
         "calibration": 0.0,
@@ -1417,12 +1417,12 @@
             0.2588655508930523
           ]
         },
-        "frr": 0.0142512077294686,
-        "marginal_accept": 0.023728813559322035,
-        "blocks_per_accept": 249.61525704809287,
-        "late_accept": 0.9833333333333333,
-        "budget_seconds": 363.1468159762712,
-        "time_to_accept_min": 7.718078708649841
+        "frr": 0.03140096618357488,
+        "marginal_accept": 0.020338983050847456,
+        "blocks_per_accept": 242.6491525423729,
+        "late_accept": 0.9333333333333333,
+        "budget_seconds": 345.17898836228824,
+        "time_to_accept_min": 7.651817343329179
       },
       "Fixed-n Bonferroni-15 (1n0)": {
         "calibration": 0.0,
@@ -1543,16 +1543,16 @@
         "far": 0.23597560975609755
       },
       "B4 peeking Clopper-Pearson": {
-        "far": 0.009451219512195122
+        "far": 0.00975609756097561
       },
       "B5 naive confidence sequence": {
-        "far": 0.00045731707317073173
+        "far": 0.0006097560975609756
       },
       "B6 SeqAccept, no refund": {
         "far": 0.0
       },
       "SeqAccept": {
-        "far": 0.0001524390243902439
+        "far": 0.0003048780487804878
       }
     }
   },
@@ -1571,16 +1571,16 @@
         "false_accepts": 10117
       },
       "B4 peeking Clopper-Pearson": {
-        "far": 0.019963235294117646,
-        "false_accepts": 543
+        "far": 0.01713235294117647,
+        "false_accepts": 466
       },
       "B5 naive confidence sequence": {
-        "far": 0.0027573529411764708,
-        "false_accepts": 75
+        "far": 0.002720588235294118,
+        "false_accepts": 74
       },
       "B6 SeqAccept, no refund": {
-        "far": 0.00014705882352941178,
-        "false_accepts": 4
+        "far": 3.6764705882352945e-05,
+        "false_accepts": 1
       },
       "SeqAccept": {
         "far": 0.00040441176470588236,
@@ -1601,20 +1601,20 @@
         "false_accepts": 9384
       },
       "B4 peeking Clopper-Pearson": {
-        "far": 0.026580882352941176,
-        "false_accepts": 723
+        "far": 0.024154411764705883,
+        "false_accepts": 657
       },
       "B5 naive confidence sequence": {
-        "far": 0.003713235294117647,
-        "false_accepts": 101
+        "far": 0.0026470588235294116,
+        "false_accepts": 72
       },
       "B6 SeqAccept, no refund": {
-        "far": 0.00040441176470588236,
-        "false_accepts": 11
+        "far": 3.6764705882352945e-05,
+        "false_accepts": 1
       },
       "SeqAccept": {
-        "far": 0.0007352941176470588,
-        "false_accepts": 20
+        "far": 0.00029411764705882356,
+        "false_accepts": 8
       }
     },
     "0.94": {
@@ -1631,20 +1631,20 @@
         "false_accepts": 7397
       },
       "B4 peeking Clopper-Pearson": {
-        "far": 0.106875,
-        "false_accepts": 2907
+        "far": 0.09125,
+        "false_accepts": 2482
       },
       "B5 naive confidence sequence": {
-        "far": 0.014595588235294117,
-        "false_accepts": 397
+        "far": 0.012022058823529412,
+        "false_accepts": 327
       },
       "B6 SeqAccept, no refund": {
-        "far": 0.0017279411764705883,
-        "false_accepts": 47
+        "far": 0.0009926470588235295,
+        "false_accepts": 27
       },
       "SeqAccept": {
-        "far": 0.0022426470588235293,
-        "false_accepts": 61
+        "far": 0.0017647058823529412,
+        "false_accepts": 48
       }
     }
   },
@@ -1659,8 +1659,8 @@
           "SeqAccept": 0.002,
           "B6 SeqAccept, no refund": 0.002,
           "Harmonic spending": 0.002,
-          "B5 naive confidence sequence": 0.007,
-          "B4 peeking Clopper-Pearson": 0.068
+          "B5 naive confidence sequence": 0.004,
+          "B4 peeking Clopper-Pearson": 0.059
         }
       },
       {
@@ -1668,11 +1668,11 @@
         "n": 15,
         "reps": 1000,
         "far": {
-          "SeqAccept": 0.004,
-          "B6 SeqAccept, no refund": 0.0,
-          "Harmonic spending": 0.0,
-          "B5 naive confidence sequence": 0.09,
-          "B4 peeking Clopper-Pearson": 0.662
+          "SeqAccept": 0.009,
+          "B6 SeqAccept, no refund": 0.001,
+          "Harmonic spending": 0.004,
+          "B5 naive confidence sequence": 0.088,
+          "B4 peeking Clopper-Pearson": 0.58
         }
       },
       {
@@ -1683,8 +1683,8 @@
           "SeqAccept": 0.006,
           "B6 SeqAccept, no refund": 0.006,
           "Harmonic spending": 0.006,
-          "B5 naive confidence sequence": 0.017,
-          "B4 peeking Clopper-Pearson": 0.16
+          "B5 naive confidence sequence": 0.016,
+          "B4 peeking Clopper-Pearson": 0.111
         }
       },
       {
@@ -1692,11 +1692,11 @@
         "n": 15,
         "reps": 1000,
         "far": {
-          "SeqAccept": 0.042,
-          "B6 SeqAccept, no refund": 0.021,
-          "Harmonic spending": 0.016,
-          "B5 naive confidence sequence": 0.277,
-          "B4 peeking Clopper-Pearson": 0.918
+          "SeqAccept": 0.036,
+          "B6 SeqAccept, no refund": 0.012,
+          "Harmonic spending": 0.01,
+          "B5 naive confidence sequence": 0.205,
+          "B4 peeking Clopper-Pearson": 0.853
         }
       },
       {
@@ -1704,11 +1704,11 @@
         "n": 1,
         "reps": 1000,
         "far": {
-          "SeqAccept": 0.074,
-          "B6 SeqAccept, no refund": 0.074,
-          "Harmonic spending": 0.074,
-          "B5 naive confidence sequence": 0.125,
-          "B4 peeking Clopper-Pearson": 0.337
+          "SeqAccept": 0.058,
+          "B6 SeqAccept, no refund": 0.058,
+          "Harmonic spending": 0.058,
+          "B5 naive confidence sequence": 0.089,
+          "B4 peeking Clopper-Pearson": 0.286
         }
       },
       {
@@ -1716,11 +1716,11 @@
         "n": 15,
         "reps": 1000,
         "far": {
-          "SeqAccept": 0.39,
-          "B6 SeqAccept, no refund": 0.215,
-          "Harmonic spending": 0.23,
-          "B5 naive confidence sequence": 0.842,
-          "B4 peeking Clopper-Pearson": 0.998
+          "SeqAccept": 0.283,
+          "B6 SeqAccept, no refund": 0.135,
+          "Harmonic spending": 0.122,
+          "B5 naive confidence sequence": 0.725,
+          "B4 peeking Clopper-Pearson": 0.99
         }
       },
       {
@@ -1728,11 +1728,11 @@
         "n": 1,
         "reps": 1000,
         "far": {
-          "SeqAccept": 0.393,
-          "B6 SeqAccept, no refund": 0.393,
-          "Harmonic spending": 0.393,
-          "B5 naive confidence sequence": 0.456,
-          "B4 peeking Clopper-Pearson": 0.602
+          "SeqAccept": 0.304,
+          "B6 SeqAccept, no refund": 0.304,
+          "Harmonic spending": 0.304,
+          "B5 naive confidence sequence": 0.396,
+          "B4 peeking Clopper-Pearson": 0.579
         }
       },
       {
@@ -1740,9 +1740,9 @@
         "n": 15,
         "reps": 1000,
         "far": {
-          "SeqAccept": 0.992,
-          "B6 SeqAccept, no refund": 0.956,
-          "Harmonic spending": 0.978,
+          "SeqAccept": 0.965,
+          "B6 SeqAccept, no refund": 0.793,
+          "Harmonic spending": 0.88,
           "B5 naive confidence sequence": 0.999,
           "B4 peeking Clopper-Pearson": 1.0
         }
@@ -1770,24 +1770,24 @@
         "correct_accept": 0.998,
         "marginal_accept": 0.0,
         "reps": 1000,
-        "blocks": 1666017,
+        "blocks": 491172,
         "accepts": 1000,
-        "blocks_per_accept": 1666.017,
+        "blocks_per_accept": 491.172,
         "seconds": 0.0,
         "correct_accepts": 998,
         "seconds_to_correct": 0.0
       },
       "B6 SeqAccept, no refund": {
-        "far": 0.001,
+        "far": 0.0,
         "frr": 0.0,
-        "correct_accept": 0.999,
+        "correct_accept": 1.0,
         "marginal_accept": 0.0,
         "reps": 1000,
-        "blocks": 1716129,
+        "blocks": 560071,
         "accepts": 1000,
-        "blocks_per_accept": 1716.129,
+        "blocks_per_accept": 560.071,
         "seconds": 0.0,
-        "correct_accepts": 999,
+        "correct_accepts": 1000,
         "seconds_to_correct": 0.0
       },
       "Harmonic spending": {
@@ -1796,24 +1796,24 @@
         "correct_accept": 0.999,
         "marginal_accept": 0.0,
         "reps": 1000,
-        "blocks": 1708255,
+        "blocks": 550734,
         "accepts": 1000,
-        "blocks_per_accept": 1708.255,
+        "blocks_per_accept": 550.734,
         "seconds": 0.0,
         "correct_accepts": 999,
         "seconds_to_correct": 0.0
       },
       "Discard spending": {
-        "far": 0.001,
+        "far": 0.0,
         "frr": 0.0,
-        "correct_accept": 0.999,
+        "correct_accept": 1.0,
         "marginal_accept": 0.0,
         "reps": 1000,
-        "blocks": 1658972,
+        "blocks": 501468,
         "accepts": 1000,
-        "blocks_per_accept": 1658.972,
+        "blocks_per_accept": 501.468,
         "seconds": 0.0,
-        "correct_accepts": 999,
+        "correct_accepts": 1000,
         "seconds_to_correct": 0.0
       },
       "Bonferroni-15 spending": {
@@ -1822,9 +1822,9 @@
         "correct_accept": 1.0,
         "marginal_accept": 0.0,
         "reps": 1000,
-        "blocks": 1684229,
+        "blocks": 529892,
         "accepts": 1000,
-        "blocks_per_accept": 1684.229,
+        "blocks_per_accept": 529.892,
         "seconds": 0.0,
         "correct_accepts": 1000,
         "seconds_to_correct": 0.0
@@ -1871,29 +1871,29 @@
     },
     "10": {
       "SeqAccept": {
-        "far": 0.006,
+        "far": 0.009,
         "frr": 0.0,
-        "correct_accept": 0.994,
+        "correct_accept": 0.991,
         "marginal_accept": 0.0,
         "reps": 1000,
-        "blocks": 3933245,
+        "blocks": 1052388,
         "accepts": 1000,
-        "blocks_per_accept": 3933.245,
+        "blocks_per_accept": 1052.388,
         "seconds": 0.0,
-        "correct_accepts": 994,
+        "correct_accepts": 991,
         "seconds_to_correct": 0.0
       },
       "B6 SeqAccept, no refund": {
-        "far": 0.003,
-        "frr": 0.0,
-        "correct_accept": 0.997,
+        "far": 0.0,
+        "frr": 1.0,
+        "correct_accept": 0.0,
         "marginal_accept": 0.0,
         "reps": 1000,
-        "blocks": 4097822,
-        "accepts": 1000,
-        "blocks_per_accept": 4097.822,
+        "blocks": 1154054,
+        "accepts": 0,
+        "blocks_per_accept": null,
         "seconds": 0.0,
-        "correct_accepts": 997,
+        "correct_accepts": 0,
         "seconds_to_correct": 0.0
       },
       "Harmonic spending": {
@@ -1902,24 +1902,24 @@
         "correct_accept": 1.0,
         "marginal_accept": 0.0,
         "reps": 1000,
-        "blocks": 4040575,
+        "blocks": 1134494,
         "accepts": 1000,
-        "blocks_per_accept": 4040.575,
+        "blocks_per_accept": 1134.494,
         "seconds": 0.0,
         "correct_accepts": 1000,
         "seconds_to_correct": 0.0
       },
       "Discard spending": {
-        "far": 0.002,
+        "far": 0.003,
         "frr": 0.0,
-        "correct_accept": 0.998,
+        "correct_accept": 0.997,
         "marginal_accept": 0.0,
         "reps": 1000,
-        "blocks": 3982215,
+        "blocks": 1062351,
         "accepts": 1000,
-        "blocks_per_accept": 3982.215,
+        "blocks_per_accept": 1062.351,
         "seconds": 0.0,
-        "correct_accepts": 998,
+        "correct_accepts": 997,
         "seconds_to_correct": 0.0
       },
       "Bonferroni-15 spending": {
@@ -1928,9 +1928,9 @@
         "correct_accept": 1.0,
         "marginal_accept": 0.0,
         "reps": 1000,
-        "blocks": 3999241,
+        "blocks": 1091370,
         "accepts": 1000,
-        "blocks_per_accept": 3999.241,
+        "blocks_per_accept": 1091.37,
         "seconds": 0.0,
         "correct_accepts": 1000,
         "seconds_to_correct": 0.0
@@ -1977,66 +1977,66 @@
     },
     "15": {
       "SeqAccept": {
-        "far": 0.011,
-        "frr": 0.0,
-        "correct_accept": 0.989,
-        "marginal_accept": 0.0,
-        "reps": 1000,
-        "blocks": 5492605,
-        "accepts": 1000,
-        "blocks_per_accept": 5492.605,
-        "seconds": 0.0,
-        "correct_accepts": 989,
-        "seconds_to_correct": 0.0
-      },
-      "B6 SeqAccept, no refund": {
-        "far": 0.001,
-        "frr": 0.0,
-        "correct_accept": 0.999,
-        "marginal_accept": 0.0,
-        "reps": 1000,
-        "blocks": 5730785,
-        "accepts": 1000,
-        "blocks_per_accept": 5730.785,
-        "seconds": 0.0,
-        "correct_accepts": 999,
-        "seconds_to_correct": 0.0
-      },
-      "Harmonic spending": {
-        "far": 0.001,
-        "frr": 0.0,
-        "correct_accept": 0.999,
-        "marginal_accept": 0.0,
-        "reps": 1000,
-        "blocks": 5587019,
-        "accepts": 1000,
-        "blocks_per_accept": 5587.019,
-        "seconds": 0.0,
-        "correct_accepts": 999,
-        "seconds_to_correct": 0.0
-      },
-      "Discard spending": {
         "far": 0.005,
         "frr": 0.0,
         "correct_accept": 0.995,
         "marginal_accept": 0.0,
         "reps": 1000,
-        "blocks": 5499505,
+        "blocks": 1449029,
         "accepts": 1000,
-        "blocks_per_accept": 5499.505,
+        "blocks_per_accept": 1449.029,
         "seconds": 0.0,
         "correct_accepts": 995,
         "seconds_to_correct": 0.0
       },
-      "Bonferroni-15 spending": {
-        "far": 0.001,
-        "frr": 0.999,
+      "B6 SeqAccept, no refund": {
+        "far": 0.0,
+        "frr": 1.0,
         "correct_accept": 0.0,
         "marginal_accept": 0.0,
         "reps": 1000,
-        "blocks": 6183248,
-        "accepts": 1,
-        "blocks_per_accept": 6183248.0,
+        "blocks": 1536078,
+        "accepts": 0,
+        "blocks_per_accept": null,
+        "seconds": 0.0,
+        "correct_accepts": 0,
+        "seconds_to_correct": 0.0
+      },
+      "Harmonic spending": {
+        "far": 0.0,
+        "frr": 1.0,
+        "correct_accept": 0.0,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 1536078,
+        "accepts": 0,
+        "blocks_per_accept": null,
+        "seconds": 0.0,
+        "correct_accepts": 0,
+        "seconds_to_correct": 0.0
+      },
+      "Discard spending": {
+        "far": 0.004,
+        "frr": 0.0,
+        "correct_accept": 0.996,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 1462024,
+        "accepts": 1000,
+        "blocks_per_accept": 1462.024,
+        "seconds": 0.0,
+        "correct_accepts": 996,
+        "seconds_to_correct": 0.0
+      },
+      "Bonferroni-15 spending": {
+        "far": 0.0,
+        "frr": 1.0,
+        "correct_accept": 0.0,
+        "marginal_accept": 0.0,
+        "reps": 1000,
+        "blocks": 1536078,
+        "accepts": 0,
+        "blocks_per_accept": null,
         "seconds": 0.0,
         "correct_accepts": 0,
         "seconds_to_correct": 0.0
@@ -2247,16 +2247,16 @@
       },
       "B4 peeking Clopper-Pearson": {
         "calibration": null,
-        "far": 0.020673076923076922,
+        "far": 0.023076923076923078,
         "far_ci": [
-          0.0013392857142857143,
-          0.042578125
+          0.0017857142857142857,
+          0.046153846153846156
         ],
         "far_upper": {
           "episodes": [
-            10,
+            11,
             73,
-            0.22127571453298386
+            0.2370724564331354
           ],
           "repos": [
             3,
@@ -2264,25 +2264,25 @@
             0.7107591834981907
           ]
         },
-        "frr": 0.0014925373134328358,
-        "marginal_accept": 0.09375,
-        "blocks_per_accept": 313.7823652904129,
-        "late_accept": 0.65,
-        "budget_seconds": 394.6987517367791,
-        "time_to_accept_min": 5.356824125104972
+        "frr": 0.0,
+        "marginal_accept": 0.08269230769230769,
+        "blocks_per_accept": 391.09470752089135,
+        "late_accept": 0.6166666666666667,
+        "budget_seconds": 446.44726446754737,
+        "time_to_accept_min": 5.4558360075040975
       },
       "B5 naive confidence sequence": {
         "calibration": null,
-        "far": 0.010576923076923078,
+        "far": 0.008653846153846154,
         "far_ci": [
           0.0,
-          0.029017857142857144
+          0.023076923076923078
         ],
         "far_upper": {
           "episodes": [
-            8,
+            7,
             73,
-            0.18905635320693634
+            0.17257354413753742
           ],
           "repos": [
             2,
@@ -2290,19 +2290,19 @@
             0.599689389190833
           ]
         },
-        "frr": 0.048507462686567165,
-        "marginal_accept": 0.09759615384615385,
-        "blocks_per_accept": 1546.840807174888,
-        "late_accept": 0.6833333333333333,
-        "budget_seconds": 2142.3916126693903,
-        "time_to_accept_min": 17.237710122716287
+        "frr": 0.020895522388059702,
+        "marginal_accept": 0.11394230769230769,
+        "blocks_per_accept": 2143.9205202312137,
+        "late_accept": 0.6666666666666666,
+        "budget_seconds": 2434.882139089056,
+        "time_to_accept_min": 22.638865735497326
       },
       "B6 SeqAccept, no refund": {
         "calibration": null,
-        "far": 0.002403846153846154,
+        "far": 0.0057692307692307696,
         "far_ci": [
           0.0,
-          0.006696428571428572
+          0.016071428571428573
         ],
         "far_upper": {
           "episodes": [
@@ -2316,38 +2316,38 @@
             0.4706794086011316
           ]
         },
-        "frr": 0.11194029850746269,
-        "marginal_accept": 0.08076923076923077,
-        "blocks_per_accept": 2643.985221674877,
+        "frr": 0.05373134328358209,
+        "marginal_accept": 0.10240384615384615,
+        "blocks_per_accept": 3611.745481927711,
         "late_accept": 0.6666666666666666,
-        "budget_seconds": 3251.0486088988937,
-        "time_to_accept_min": 19.560811194856246
+        "budget_seconds": 3401.12630841485,
+        "time_to_accept_min": 21.341802867595952
       },
       "SeqAccept": {
         "calibration": null,
-        "far": 0.0038461538461538464,
+        "far": 0.00625,
         "far_ci": [
           0.0,
-          0.010714285714285714
+          0.016964285714285716
         ],
         "far_upper": {
           "episodes": [
-            7,
+            5,
             73,
-            0.17257354413753742
+            0.1386295877388401
           ],
           "repos": [
-            1,
+            2,
             8,
-            0.4706794086011316
+            0.599689389190833
           ]
         },
-        "frr": 0.0955223880597015,
-        "marginal_accept": 0.08605769230769231,
-        "blocks_per_accept": 2279.0892430278886,
+        "frr": 0.041044776119402986,
+        "marginal_accept": 0.1125,
+        "blocks_per_accept": 2976.909963099631,
         "late_accept": 0.6666666666666666,
-        "budget_seconds": 3022.421413415735,
-        "time_to_accept_min": 18.87234956472355
+        "budget_seconds": 3008.6970133319337,
+        "time_to_accept_min": 21.758550370337492
       }
     },
     "same_loops_without": {
@@ -2450,9 +2450,9 @@
         },
         "frr": 0.0,
         "marginal_accept": 0.009615384615384616,
-        "blocks_per_accept": 116.18780318780318,
+        "blocks_per_accept": 116.18364518364518,
         "late_accept": 1.0,
-        "budget_seconds": 249.31546857812526,
+        "budget_seconds": 249.3139191706733,
         "time_to_accept_min": 4.0573755831572775
       },
       "B5 naive confidence sequence": {
@@ -2476,10 +2476,10 @@
         },
         "frr": 0.0,
         "marginal_accept": 0.009615384615384616,
-        "blocks_per_accept": 236.4013888888889,
+        "blocks_per_accept": 178.48541666666668,
         "late_accept": 1.0,
-        "budget_seconds": 502.7143554002364,
-        "time_to_accept_min": 6.251426009477702
+        "budget_seconds": 404.4458879146627,
+        "time_to_accept_min": 6.169503038556341
       },
       "B6 SeqAccept, no refund": {
         "calibration": null,
@@ -2501,11 +2501,11 @@
           ]
         },
         "frr": 0.0,
-        "marginal_accept": 0.009615384615384616,
-        "blocks_per_accept": 260.60069444444446,
+        "marginal_accept": 0.008173076923076924,
+        "blocks_per_accept": 205.53096729297147,
         "late_accept": 1.0,
-        "budget_seconds": 557.3149627079288,
-        "time_to_accept_min": 7.481716121625591
+        "budget_seconds": 470.9004392680283,
+        "time_to_accept_min": 7.385566302699535
       },
       "SeqAccept": {
         "calibration": null,
@@ -2528,10 +2528,10 @@
         },
         "frr": 0.0,
         "marginal_accept": 0.009615384615384616,
-        "blocks_per_accept": 251.8375,
+        "blocks_per_accept": 194.25694444444446,
         "late_accept": 1.0,
-        "budget_seconds": 545.9335821105731,
-        "time_to_accept_min": 7.258580720070427
+        "budget_seconds": 449.18426649158573,
+        "time_to_accept_min": 7.170554570774653
       }
     },
     "near_eps": {
@@ -2547,6 +2547,7 @@
       "pool_below_eps": 0
     },
     "seqaccept_false_accept_bugs": [
+      "anonapi_b2",
       "yamicache",
       "yamicache_b2"
     ],
@@ -2633,36 +2634,10 @@
         },
         "B4 peeking Clopper-Pearson": {
           "calibration": null,
-          "far": 0.040625,
+          "far": 0.04375,
           "far_ci": [
-            0.009375,
-            0.07187500000000001
-          ],
-          "far_upper": {
-            "episodes": [
-              6,
-              24,
-              0.4346913789010109
-            ],
-            "repos": [
-              2,
-              2,
-              1.0
-            ]
-          },
-          "frr": 0.004761904761904762,
-          "marginal_accept": 0.2359375,
-          "blocks_per_accept": 450.03586497890296,
-          "late_accept": 0.1,
-          "budget_seconds": 761.8858593125022,
-          "time_to_accept_min": 12.56705514590355
-        },
-        "B5 naive confidence sequence": {
-          "calibration": null,
-          "far": 0.0328125,
-          "far_ci": [
-            0.0,
-            0.065625
+            0.0125,
+            0.075
           ],
           "far_upper": {
             "episodes": [
@@ -2671,24 +2646,50 @@
               0.4787279058719695
             ],
             "repos": [
+              2,
+              2,
+              1.0
+            ]
+          },
+          "frr": 0.0,
+          "marginal_accept": 0.19999999999999998,
+          "blocks_per_accept": 687.8075313807532,
+          "late_accept": 0.0,
+          "budget_seconds": 934.4765982031264,
+          "time_to_accept_min": 12.34997010106102
+        },
+        "B5 naive confidence sequence": {
+          "calibration": null,
+          "far": 0.025,
+          "far_ci": [
+            0.0,
+            0.05
+          ],
+          "far_upper": {
+            "episodes": [
+              5,
+              24,
+              0.38913934735989825
+            ],
+            "repos": [
               1,
               2,
               0.9746794344808964
             ]
           },
-          "frr": 0.15476190476190477,
-          "marginal_accept": 0.253125,
-          "blocks_per_accept": 3453.984886649874,
-          "late_accept": 0.05,
-          "budget_seconds": 5479.596644468531,
-          "time_to_accept_min": 53.60262264271759
+          "frr": 0.05714285714285714,
+          "marginal_accept": 0.3078125,
+          "blocks_per_accept": 5167.107382550335,
+          "late_accept": 0.0,
+          "budget_seconds": 6474.964473164493,
+          "time_to_accept_min": 75.51492497026989
         },
         "B6 SeqAccept, no refund": {
           "calibration": null,
-          "far": 0.0078125,
+          "far": 0.018750000000000003,
           "far_ci": [
             0.0,
-            0.015625
+            0.037500000000000006
           ],
           "far_upper": {
             "episodes": [
@@ -2702,25 +2703,25 @@
               0.9746794344808964
             ]
           },
-          "frr": 0.3380952380952381,
-          "marginal_accept": 0.1859375,
-          "blocks_per_accept": 8065.353146853146,
+          "frr": 0.16428571428571428,
+          "marginal_accept": 0.271875,
+          "blocks_per_accept": 10211.274809160306,
           "late_accept": 0.0,
-          "budget_seconds": 8628.030777390206,
-          "time_to_accept_min": 60.18585033050277
+          "budget_seconds": 9327.642183313166,
+          "time_to_accept_min": 63.96721177173917
         },
         "SeqAccept": {
           "calibration": null,
-          "far": 0.0125,
+          "far": 0.01875,
           "far_ci": [
             0.0,
-            0.025
+            0.0375
           ],
           "far_upper": {
             "episodes": [
-              7,
+              4,
               24,
-              0.4787279058719695
+              0.3418073494041162
             ],
             "repos": [
               1,
@@ -2728,12 +2729,12 @@
               0.9746794344808964
             ]
           },
-          "frr": 0.30238095238095236,
-          "marginal_accept": 0.215625,
-          "blocks_per_accept": 6520.680379746836,
+          "frr": 0.1261904761904762,
+          "marginal_accept": 0.303125,
+          "blocks_per_accept": 7915.05023923445,
           "late_accept": 0.0,
-          "budget_seconds": 8095.840202214468,
-          "time_to_accept_min": 60.00950728284172
+          "budget_seconds": 8161.551623727282,
+          "time_to_accept_min": 69.26398019890226
         }
       }
     },
@@ -2820,10 +2821,10 @@
         },
         "B4 peeking Clopper-Pearson": {
           "calibration": null,
-          "far": 0.011805555555555557,
+          "far": 0.013888888888888888,
           "far_ci": [
             0.0,
-            0.031875
+            0.0375
           ],
           "far_upper": {
             "episodes": [
@@ -2839,23 +2840,23 @@
           },
           "frr": 0.0,
           "marginal_accept": 0.030555555555555555,
-          "blocks_per_accept": 246.15497382198953,
+          "blocks_per_accept": 243.04801670146136,
           "late_accept": 0.925,
-          "budget_seconds": 231.50448170312436,
-          "time_to_accept_min": 2.9614789202088
+          "budget_seconds": 229.5453383628456,
+          "time_to_accept_min": 2.972713884321402
         },
         "B5 naive confidence sequence": {
           "calibration": null,
-          "far": 0.0006944444444444445,
+          "far": 0.001388888888888889,
           "far_ci": [
             0.0,
-            0.0018750000000000001
+            0.0037500000000000003
           ],
           "far_upper": {
             "episodes": [
-              1,
+              2,
               49,
-              0.09319247143420124
+              0.12296750440536458
             ],
             "repos": [
               1,
@@ -2863,12 +2864,12 @@
               0.581803409252026
             ]
           },
-          "frr": 0.0,
-          "marginal_accept": 0.02847222222222222,
-          "blocks_per_accept": 742.2327311370882,
+          "frr": 0.004347826086956522,
+          "marginal_accept": 0.027777777777777776,
+          "blocks_per_accept": 701.6958377801494,
           "late_accept": 1.0,
-          "budget_seconds": 659.1893763142164,
-          "time_to_accept_min": 8.581323827632552
+          "budget_seconds": 639.289990611084,
+          "time_to_accept_min": 8.814287119925504
         },
         "B6 SeqAccept, no refund": {
           "calibration": null,
@@ -2889,45 +2890,45 @@
               0.3930377689970827
             ]
           },
-          "frr": 0.008695652173913044,
-          "marginal_accept": 0.034027777777777775,
-          "blocks_per_accept": 980.3465665236051,
+          "frr": 0.0032608695652173916,
+          "marginal_accept": 0.027083333333333334,
+          "blocks_per_accept": 837.8256684491979,
           "late_accept": 1.0,
-          "budget_seconds": 861.2787562360877,
-          "time_to_accept_min": 12.10751975660626
+          "budget_seconds": 767.1192529044869,
+          "time_to_accept_min": 11.494191658714648
         },
         "SeqAccept": {
           "calibration": null,
-          "far": 0.0,
+          "far": 0.0006944444444444445,
           "far_ci": [
             0.0,
-            0.0
+            0.0018750000000000001
           ],
           "far_upper": {
             "episodes": [
-              0,
+              1,
               49,
-              0.059306014189697116
+              0.09319247143420124
             ],
             "repos": [
-              0,
+              1,
               6,
-              0.3930377689970827
+              0.581803409252026
             ]
           },
-          "frr": 0.0010869565217391304,
-          "marginal_accept": 0.02847222222222222,
-          "blocks_per_accept": 851.6741214057508,
+          "frr": 0.002173913043478261,
+          "marginal_accept": 0.02777777777777778,
+          "blocks_per_accept": 773.982924226254,
           "late_accept": 1.0,
-          "budget_seconds": 767.5686183940755,
-          "time_to_accept_min": 11.084691644812539
+          "budget_seconds": 718.5394087117788,
+          "time_to_accept_min": 10.518426348400295
         }
       }
     },
     "repos": 8,
     "frr_ci_seqaccept": [
-      0.0,
-      0.19753086419753085
+      0.00125,
+      0.09603174603174604
     ],
     "p0_se": {
       "anonapi": 0.011639775556255371,
@@ -3025,10 +3026,10 @@
       },
       "B4 peeking Clopper-Pearson": {
         "calibration": null,
-        "far": 0.03798076923076923,
+        "far": 0.040865384615384616,
         "far_ci": [
-          0.0031249999999999997,
-          0.09711538461538462
+          0.003333333333333333,
+          0.10446428571428572
         ],
         "far_upper": {
           "episodes": [
@@ -3043,50 +3044,50 @@
           ]
         },
         "frr": 0.0007462686567164179,
-        "marginal_accept": 0.07596153846153846,
-        "blocks_per_accept": 202.23045822102426,
-        "late_accept": 0.4166666666666667,
-        "budget_seconds": 236.9128844579327,
-        "time_to_accept_min": 1.877519488906709
+        "marginal_accept": 0.07355769230769231,
+        "blocks_per_accept": 236.1263440860215,
+        "late_accept": 0.43333333333333335,
+        "budget_seconds": 266.4986534146625,
+        "time_to_accept_min": 2.1165721896333487
       },
       "B5 naive confidence sequence": {
         "calibration": null,
-        "far": 0.011538461538461539,
+        "far": 0.012499999999999999,
         "far_ci": [
           0.0,
-          0.03214285714285715
+          0.0375
         ],
         "far_upper": {
           "episodes": [
-            6,
+            4,
             73,
-            0.1557854648560501
+            0.1210149981094258
           ],
           "repos": [
-            2,
+            1,
             8,
-            0.599689389190833
+            0.4706794086011316
           ]
         },
         "frr": 0.0,
-        "marginal_accept": 0.08413461538461539,
-        "blocks_per_accept": 627.4437543133196,
-        "late_accept": 0.6166666666666667,
-        "budget_seconds": 716.9380087079154,
-        "time_to_accept_min": 5.831025054699983
+        "marginal_accept": 0.07163461538461538,
+        "blocks_per_accept": 812.5598615916955,
+        "late_accept": 0.65,
+        "budget_seconds": 837.7717849075215,
+        "time_to_accept_min": 7.238690637205132
       },
       "B6 SeqAccept, no refund": {
         "calibration": null,
-        "far": 0.003365384615384615,
+        "far": 0.008653846153846154,
         "far_ci": [
           0.0,
-          0.010096153846153847
+          0.025961538461538463
         ],
         "far_upper": {
           "episodes": [
-            2,
+            1,
             73,
-            0.08374086267128907
+            0.06334159993094508
           ],
           "repos": [
             1,
@@ -3095,18 +3096,18 @@
           ]
         },
         "frr": 0.0007462686567164179,
-        "marginal_accept": 0.08846153846153847,
-        "blocks_per_accept": 753.0279916025193,
-        "late_accept": 0.65,
-        "budget_seconds": 836.7289726778563,
-        "time_to_accept_min": 6.935440172253616
+        "marginal_accept": 0.07163461538461538,
+        "blocks_per_accept": 928.4058373870744,
+        "late_accept": 0.6666666666666666,
+        "budget_seconds": 957.2752677585,
+        "time_to_accept_min": 8.452890034133034
       },
       "SeqAccept": {
         "calibration": null,
-        "far": 0.004807692307692308,
+        "far": 0.010096153846153847,
         "far_ci": [
           0.0,
-          0.014423076923076924
+          0.03028846153846154
         ],
         "far_upper": {
           "episodes": [
@@ -3121,11 +3122,11 @@
           ]
         },
         "frr": 0.0007462686567164179,
-        "marginal_accept": 0.0875,
-        "blocks_per_accept": 719.7200557103064,
-        "late_accept": 0.6666666666666666,
-        "budget_seconds": 808.4659039086289,
-        "time_to_accept_min": 6.930681604434598
+        "marginal_accept": 0.06971153846153846,
+        "blocks_per_accept": 898.0549374130737,
+        "late_accept": 0.65,
+        "budget_seconds": 929.4265795265281,
+        "time_to_accept_min": 8.049834859113309
       }
     }
   }

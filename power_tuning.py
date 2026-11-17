@@ -9,13 +9,13 @@ from functools import partial
 from pathlib import Path
 
 import replay
-from rules import seq_accept
+from rules import REJECT_AT, seq_accept
 from sim import experiment
 
 ALPHA, EPS = 0.05, 0.05
 OP_P = (0.0, 0.02, 0.03, 0.04, 0.05)
 OP_REPS = 2000
-GAMMAS, RHOS = (0.25, 0.5, 0.75), (10, 20, 50)
+GAMMAS, RHOS = (0.25, 0.5, 0.75), (3, 5, 20)
 
 
 def kl(p, q):
@@ -70,7 +70,7 @@ if __name__ == "__main__":
     out["sweep"] = []
     for g in GAMMAS:
         for r in RHOS:
-            if g != 0.5 and r != 20:
+            if g != 0.5 and r != REJECT_AT:
                 continue  # one-at-a-time around the defaults
             mk = lambda eps, g=g, r=r: partial(seq_accept, eps=eps, gamma=g, reject_at=r)
             row = {"gamma": g, "rho": r, "recorded": replay_summary(episodes, mk),

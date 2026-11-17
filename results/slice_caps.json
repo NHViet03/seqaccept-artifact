@@ -1,0 +1,218 @@
+{
+ "shared": {
+  "natural": {
+   "SeqAccept": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 174.1705263157895,
+    "blocks_per_loop": 121.66323529411764,
+    "correct_accept": 0.6911764705882353
+   },
+   "B5": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 158.60736842105263,
+    "blocks_per_loop": 110.79191176470589,
+    "correct_accept": 0.6911764705882353
+   },
+   "B6": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 184.90353189246179,
+    "blocks_per_loop": 128.95661764705883,
+    "correct_accept": 0.6911764705882353
+   },
+   "Harmonic": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 189.91240105540896,
+    "blocks_per_loop": 132.31029411764706,
+    "correct_accept": 0.6911764705882353
+   },
+   "Bonferroni-15": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 223.14691943127963,
+    "blocks_per_loop": 155.79264705882352,
+    "correct_accept": 0.6911764705882353
+   },
+   "Bonferroni-1000": {
+    "far": 0.0,
+    "frr": 0.9361702127659575,
+    "blocks_per_accept": 38200.808333333334,
+    "blocks_per_loop": 1685.3297794117648,
+    "correct_accept": 0.04411764705882353
+   }
+  },
+  "neareps": {
+   "SeqAccept": {
+    "far": 0.0020833333333333333,
+    "frr": 0.0,
+    "blocks_per_accept": 1828.3095238095239,
+    "blocks_per_loop": 799.8854166666666,
+    "correct_accept": 0.375
+   },
+   "B5": {
+    "far": 0.016666666666666666,
+    "frr": 0.0,
+    "blocks_per_accept": 1665.4663677130045,
+    "blocks_per_loop": 773.7479166666667,
+    "correct_accept": 0.37916666666666665
+   },
+   "B6": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 1864.9952153110048,
+    "blocks_per_loop": 812.05,
+    "correct_accept": 0.38958333333333334
+   },
+   "Harmonic": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 1858.9282296650717,
+    "blocks_per_loop": 809.4083333333333,
+    "correct_accept": 0.3833333333333333
+   },
+   "Bonferroni-15": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 2073.11,
+    "blocks_per_loop": 863.7958333333333,
+    "correct_accept": 0.39166666666666666
+   },
+   "Bonferroni-1000": {
+    "far": 0.0,
+    "frr": 1.0,
+    "blocks_per_accept": null,
+    "blocks_per_loop": 1803.4375,
+    "correct_accept": 0.0
+   }
+  },
+  "late": {
+   "10": {
+    "SeqAccept": 0.9627777777777778,
+    "B5": 0.9697222222222223,
+    "B6": 0.535,
+    "Harmonic": 0.8738888888888889,
+    "Bonferroni-15": 0.9341666666666667,
+    "Bonferroni-1000": 0.5622222222222223
+   },
+   "40": {
+    "SeqAccept": 0.9408333333333333,
+    "B5": 0.9550000000000001,
+    "B6": 0.041944444444444444,
+    "Harmonic": 0.5175000000000001,
+    "Bonferroni-15": 0.0,
+    "Bonferroni-1000": 0.5375
+   }
+  }
+ },
+ "slice": {
+  "natural": {
+   "SeqAccept": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 175.9178947368421,
+    "blocks_per_loop": 122.88382352941177,
+    "correct_accept": 0.6911764705882353
+   },
+   "B5": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 158.60736842105263,
+    "blocks_per_loop": 110.79191176470589,
+    "correct_accept": 0.6911764705882353
+   },
+   "B6": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 184.3084210526316,
+    "blocks_per_loop": 128.74485294117648,
+    "correct_accept": 0.6911764705882353
+   },
+   "Harmonic": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 186.48315789473685,
+    "blocks_per_loop": 130.26397058823528,
+    "correct_accept": 0.6911764705882353
+   },
+   "Bonferroni-15": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 220.21105263157895,
+    "blocks_per_loop": 153.82389705882352,
+    "correct_accept": 0.6911764705882353
+   },
+   "Bonferroni-1000": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 313.32421052631577,
+    "blocks_per_loop": 218.86617647058824,
+    "correct_accept": 0.6911764705882353
+   }
+  },
+  "neareps": {
+   "SeqAccept": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 2136.6714285714284,
+    "blocks_per_loop": 934.79375,
+    "correct_accept": 0.375
+   },
+   "B5": {
+    "far": 0.016666666666666666,
+    "frr": 0.0,
+    "blocks_per_accept": 1665.4663677130045,
+    "blocks_per_loop": 773.7479166666667,
+    "correct_accept": 0.37916666666666665
+   },
+   "B6": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 3306.6635071090045,
+    "blocks_per_loop": 1453.5541666666666,
+    "correct_accept": 0.3854166666666667
+   },
+   "Harmonic": {
+    "far": 0.0020833333333333333,
+    "frr": 0.0,
+    "blocks_per_accept": 3056.8212560386473,
+    "blocks_per_loop": 1318.2541666666666,
+    "correct_accept": 0.38125000000000003
+   },
+   "Bonferroni-15": {
+    "far": 0.0020833333333333333,
+    "frr": 0.0,
+    "blocks_per_accept": 2801.0533980582522,
+    "blocks_per_loop": 1202.11875,
+    "correct_accept": 0.3770833333333334
+   },
+   "Bonferroni-1000": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 4535.7164179104475,
+    "blocks_per_loop": 1899.33125,
+    "correct_accept": 0.3770833333333334
+   }
+  },
+  "late": {
+   "10": {
+    "SeqAccept": 0.9644444444444444,
+    "B5": 0.9697222222222223,
+    "B6": 0.9758333333333333,
+    "Harmonic": 0.9744444444444444,
+    "Bonferroni-15": 0.9741666666666666,
+    "Bonferroni-1000": 0.9802777777777777
+   },
+   "40": {
+    "SeqAccept": 0.9536111111111112,
+    "B5": 0.9550000000000001,
+    "B6": 0.9766666666666667,
+    "Harmonic": 0.9688888888888889,
+    "Bonferroni-15": 0.0,
+    "Bonferroni-1000": 0.9725
+   }
+  }
+ }
+}

@@ -620,7 +620,9 @@ def constants():
     d = {k: v.default for k, v in inspect.signature(seq_accept).parameters.items() if v.default is not inspect._empty}
     m("alphaVal", f"{d['alpha']}")
     m("rejectAt", d["reject_at"])
-    m("capBlocks", d["max_blocks"])
+    from rules import derived_cap
+    m("capBlocks", derived_cap(replay.MARGIN))  # the derived cap at p0 = 0
+    m("capBlocksHigh", f"{derived_cap(0.2 + replay.MARGIN):,}".replace(",", "{,}"))  # the derived cap at p0 = 0.2
     m("marginVal", f"{replay.MARGIN}")
     m("lateK", replay.LATE)
     m("capSeconds", replay.CAP_SECONDS)
@@ -772,9 +774,12 @@ def extra(res):
     m("rfSaEpHits", word_int(hit["episodes"][0]))
     m("rfWithBroken", hit["episodes"][1])
     m("rfSaRepoHits", word_int(hit["repos"][0]))
-    assert rf["seqaccept_false_accept_bugs"] and {b.split("_b")[0] for b in rf["seqaccept_false_accept_bugs"]} == {"yamicache"}, \
-        rf["seqaccept_false_accept_bugs"]  # the text names yamicache
-    m("rfYamiPzero", f"{rf['p0']['yamicache']:.2f}")
+    hit_repos = {}  # repo -> highest p0 among its tasks with a SeqAccept false accept; the text names them
+    for b in rf["seqaccept_false_accept_bugs"]:
+        hit_repos[b.split("_b")[0]] = max(hit_repos.get(b.split("_b")[0], 0), rf["p0"][b])
+    assert hit_repos, "text: SeqAccept has false accepts on this arm"
+    parts = [f"{r} ($p_0={p:.2f}$)" for r, p in sorted(hit_repos.items())]
+    m("rfSaHitRepos", parts[0] if len(parts) == 1 else ", ".join(parts[:-1]) + " and " + parts[-1])
     m("rfRepos", rf["repos"])
     m("rfRepoHitsBound", rf["table"]["SeqAccept"]["far_upper"]["repos"][1])
     m("rfFarLoSa", pct(rf["table"]["SeqAccept"]["far_ci"][0], 2))
@@ -877,13 +882,14 @@ def power_tuning():
             m(f"worst{tag}Pow{nk}", pct(d["worst"][n][b]))
     rm = d["recorded_mixture"]
     m("mixRecBpa", num(rm["blocks_per_accept"]))
-    assert rm["far"] == 0 and rm["frr"] == 0, "text: the mixture wallet has no false acceptance and no lost patch"
+    assert rm["far"] == 0, "text: the mixture wallet has no false acceptance"
+    m("mixRecFrr", pct(rm["frr"], 2))
     for r in d["sweep"]:
-        tag = {(0.25, 20): "GammaLow", (0.75, 20): "GammaHigh", (0.5, 10): "RhoLow", (0.5, 50): "RhoHigh", (0.5, 20): "Default"}[(r["gamma"], r["rho"])]
+        tag = {(0.25, 5): "GammaLow", (0.75, 5): "GammaHigh", (0.5, 3): "RhoLow", (0.5, 20): "RhoHigh", (0.5, 5): "Default"}[(r["gamma"], r["rho"])]
         m(f"sweepBpa{tag}", num(r["recorded"]["blocks_per_accept"]))
         m(f"sweepFar{tag}", pct(r["recorded"]["far"], 2))
         m(f"sweepLateForty{tag}", pct(r["late"]["40"]["late_accept"]))
-        assert r["recorded"]["frr"] == 0, "text: no setting loses a correct patch on the recorded loops"
+    m("sweepFrrMax", pct(max(r["recorded"]["frr"] for r in d["sweep"]), 2))
     m("sweepLateMin", pct(min(min(r["late"]["10"]["late_accept"], r["late"]["40"]["late_accept"]) for r in d["sweep"])))
 
 
@@ -892,7 +898,7 @@ def label_risk():
     d = load("results/label_risk.json")
     m("shortPool", d["short_pool"])
     sa = d["pool"]["SeqAccept"]
-    assert sa["full"]["far"] == sa["short"]["far"] == 0 and sa["full"]["frr"] == sa["short"]["frr"] == 0, "text: unchanged"
+    assert sa["full"]["far"] == sa["short"]["far"] == 0 and sa["full"]["frr"] == sa["short"]["frr"], "text: unchanged"
     m("poolBpaFull", num(sa["full"]["blocks_per_accept"]))
     m("poolBpaShort", num(sa["short"]["blocks_per_accept"]))
     m("poolOverFull", pct(sa["full"]["over_pool"] / sa["full"]["evaluations"]))
@@ -1481,9 +1487,9 @@ def checks():
     ub = d["uncapped_B"]
     m("ubAcceptTwo", pct(ub["0.2-10000"]["accept"]))
     m("ubBlocksTwo", num(ub["0.2-10000"]["blocks"], 0))
-    m("ubBlocksTwoCap", num(ub["0.2-800"]["blocks"], 0))
+    m("ubBlocksTwoCap", num(ub["0.2-cap"]["blocks"], 0))
     m("ubBpaTwo", num(ub["0.2-10000"]["blocks"] / ub["0.2-10000"]["accept"], 0))
-    m("ubBpaTwoCap", num(ub["0.2-800"]["blocks"] / ub["0.2-800"]["accept"], 0))
+    m("ubBpaTwoCap", num(ub["0.2-cap"]["blocks"] / ub["0.2-cap"]["accept"], 0))
     m("ubAcceptMin", pct(min(ub[f"{p}-10000"]["accept"] for p in (0.1, 0.2, 0.3))))
     rb = d["realflaky_uncapped_B"]
     m("ubRfFrr", pct(rb["frr"], 2))
@@ -1551,6 +1557,67 @@ def checks():
     rows += f"\\sa{{}}, margin 0.10 & yes$^*$ & {pct(mg['far'], 2)} & {pct(mg['frr'])} & {pct(mg['frr_high'])} & {macros['rfMarginBpaSa']}\\\\\n"
     write("tab_rf_main.tex", "\\begin{tabular}{@{}llrrrr@{}}\n\\toprule\n\\textbf{Rule} & \\textbf{Valid} & \\textbf{FAR \\%} {\\scriptsize[repo.\\ CI]} & "
           "\\textbf{FRR \\%} & \\textbf{$p_0\\ge0.2$} & \\textbf{Blk/acc.}\\\\\n\\midrule\n" + rows + "\\bottomrule\n\\end{tabular}\n")
+    # near-eps arm (checks.py 13): recorded natural loops re-graded on smaller blocks
+    ne = d["neareps"]
+    m("neLoops", ne["loops"])
+    m("neTasks", len(ne["tasks"]))
+    m("neCandidates", ne["candidates"])
+    m("neBroken", ne["broken"])
+    m("neBrokenNear", ne["broken_near"])
+    m("neReps", ne["reps"])
+    m("neBlockList", ", ".join(f"{t.split('@')[0]} {bs[1]} to {bs[0]}" for t, bs in sorted(ne["block_sizes"].items())))
+    nr = ne["rules"]
+    for name in RULES:
+        k = KEY[name]
+        m(f"neFar{k}", pct(nr[name]["far"], 2))
+        m(f"neWorst{k}", pct(nr[name]["worst_loop"]))
+        m(f"neWorstUp{k}", pct(nr[name]["worst_loop_upper"]))
+        m(f"neBpl{k}", num(nr[name]["blocks_per_loop"], 0))
+        m(f"neBpa{k}", num(nr[name]["blocks_per_accept"], 0) if nr[name]["blocks_per_accept"] else "--")
+        m(f"neFrr{k}", pct(nr[name]["frr"]))
+    old = nr["SeqAccept, rho=20, T=800"]
+    m("neFarOld", pct(old["far"], 2))
+    m("neBplOld", num(old["blocks_per_loop"], 0))
+    m("neWorstOld", pct(old["worst_loop"]))
+    sa_, b5_, b4_ = nr["SeqAccept"], nr["B5 naive confidence sequence"], nr["B4 peeking Clopper-Pearson"]
+    m("neCostRatioBfive", num(sa_["blocks_per_loop"] / b5_["blocks_per_loop"], 2))
+    m("neCostRatioBfour", num(sa_["blocks_per_loop"] / b4_["blocks_per_loop"], 1))
+    m("neCostRatioOld", num(old["blocks_per_loop"] / sa_["blocks_per_loop"], 1))
+    rows = ""
+    for name in RULES:
+        r = nr[name]
+        if name == "SeqAccept":
+            rows += "\\midrule\n"
+        ci = f" {{\\scriptsize[{pct(r['far_ci_repo'][0], 2)}, {pct(r['far_ci_repo'][1], 2)}]}}"
+        bpa = num(r["blocks_per_accept"], 0) if r["blocks_per_accept"] else "--"
+        rows += (f"{SHOW[name]} & {pct(r['far'], 2)}{ci} & {pct(r['worst_loop'])} ({pct(r['worst_loop_upper'])}) & "
+                 f"{pct(r['frr'])} & {num(r['blocks_per_loop'], 0)} & {bpa}\\\\\n")
+    rows += (f"\\sa{{}}, $\\rho=20$, $T=800$ & {pct(old['far'], 2)} & {pct(old['worst_loop'])} ({pct(old['worst_loop_upper'])}) & "
+             f"{pct(old['frr'])} & {num(old['blocks_per_loop'], 0)} & {num(old['blocks_per_accept'], 0)}\\\\\n")
+    write("tab_neareps.tex", "\\begin{tabular}{@{}lrrrrr@{}}\n\\toprule\n\\textbf{Rule} & \\textbf{FAR \\%} {\\scriptsize[CI]} & "
+          "\\textbf{Worst} & \\textbf{FRR} & \\textbf{Blk/loop} & \\textbf{Blk/acc.}\\\\\n\\midrule\n" + rows + "\\bottomrule\n\\end{tabular}\n")
+    # shared cost knobs (checks.py 14): rho and T for B4, B5 and SeqAccept on every arm
+    kn = d["knobs"]
+    ARM = {"natural": "Natural", "realflaky": "Real flaky", "neareps": "Near-$\\eps$"}
+    SET = {"rho=20, T=800": "$\\rho=20$, $T=800$", "rho=5, T=800": "$\\rho=5$, $T=800$",
+           "rho=20, derived T": "$\\rho=20$, $T(p_0)$", "rho=5, derived T": "$\\rho=5$, $T(p_0)$ (default)"}
+    rows = ""
+    for arm, sets in kn.items():
+        rows += f"\\multicolumn{{11}}{{@{{}}l}}{{\\textit{{{ARM[arm]}}}}}\\\\\n"
+        for kname, rs in sets.items():
+            cells = [pct(rs[n]["far"], 2) for n in ("B4", "B5", "SeqAccept")] + \
+                    [pct(rs[n]["frr"] or 0) for n in ("B4", "B5", "SeqAccept")] + \
+                    [num(rs[n]["blocks_per_loop"], 0) for n in ("B4", "B5", "SeqAccept")]
+            rows += f"\\quad {SET[kname]} & " + " & ".join(cells) + "\\\\\n"
+    write("tab_knobs.tex", "\\begin{tabular}{@{}lrrrrrrrrr@{}}\n\\toprule\n & \\multicolumn{3}{c}{\\textbf{FAR \\%}} & "
+          "\\multicolumn{3}{c}{\\textbf{FRR \\%}} & \\multicolumn{3}{c}{\\textbf{Blocks per loop}}\\\\\n"
+          "\\cmidrule(lr){2-4}\\cmidrule(lr){5-7}\\cmidrule(l){8-10}\n\\textbf{Setting} & B4 & B5 & \\sa{} & B4 & B5 & \\sa{} & B4 & B5 & \\sa{}\\\\\n"
+          "\\midrule\n" + rows.replace("multicolumn{11}", "multicolumn{10}") + "\\bottomrule\n\\end{tabular}\n")
+    for arm, key in (("natural", "Nat"), ("realflaky", "Rf"), ("neareps", "Ne")):
+        dflt = kn[arm]["rho=5, derived T"]
+        m(f"kbCostRatioBfive{key}", num(dflt["SeqAccept"]["blocks_per_loop"] / dflt["B5"]["blocks_per_loop"], 2))
+        m(f"kbBplSa{key}", num(dflt["SeqAccept"]["blocks_per_loop"], 0))
+        m(f"kbBplOldSa{key}", num(kn[arm]["rho=20, T=800"]["SeqAccept"]["blocks_per_loop"], 0))
 
 
 def ease2():
@@ -1659,6 +1726,25 @@ def ease2():
           + rows + "\\bottomrule\n\\end{tabular}\n")
 
 
+
+def slice_caps():
+    """Cap ablation: results/slice_caps.json (slice_caps.py)."""
+    d = load("results/slice_caps.json")
+    tag = {"SeqAccept": "Sa", "B5": "Bfive", "B6": "Bsix", "Harmonic": "Harm", "Bonferroni-15": "BonfFifteen",
+           "Bonferroni-1000": "BonfThousand"}
+    for cap, ct in (("shared", "Sh"), ("slice", "Sl")):
+        for n, t in tag.items():
+            m(f"sc{ct}LateTen{t}", pct(d[cap]["late"]["10"][n]))
+            m(f"sc{ct}LateForty{t}", pct(d[cap]["late"]["40"][n]))
+            m(f"sc{ct}NeBpl{t}", num(d[cap]["neareps"][n]["blocks_per_loop"], 0))
+            m(f"sc{ct}NatBpa{t}", num(d[cap]["natural"][n]["blocks_per_accept"] or 0, 0))
+            m(f"sc{ct}NatFrr{t}", pct(d[cap]["natural"][n]["frr"]))
+    sl = d["slice"]["neareps"]
+    for n in ("B6", "Harmonic", "Bonferroni-1000"):
+        m(f"scNeRatio{tag[n]}", f'{sl[n]["blocks_per_loop"] / sl["SeqAccept"]["blocks_per_loop"]:.1f}')
+    m("scNeRatioSaBfive", f'{sl["SeqAccept"]["blocks_per_loop"] / sl["B5"]["blocks_per_loop"]:.2f}')
+    assert d["slice"]["natural"]["SeqAccept"]["far"] == 0, "text: no false acceptance on natural loops with either cap"
+
 if __name__ == "__main__":
     GEN.mkdir(parents=True, exist_ok=True)
     FIGS.mkdir(parents=True, exist_ok=True)
@@ -1676,6 +1762,7 @@ if __name__ == "__main__":
     constants()
     extra(res)
     power_tuning()
+    slice_caps()
     label_risk()
     ease()
     ease2()

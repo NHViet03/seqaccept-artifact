@@ -4,110 +4,110 @@
    "natural": {
     "far": 0.0,
     "frr": 0.0,
-    "blocks_per_accept": 219.31526315789475,
-    "blocks_per_loop": 153.19816176470587,
-    "seconds_per_accept": 657.9665055026273
+    "blocks_per_accept": 174.1705263157895,
+    "blocks_per_loop": 121.66323529411764,
+    "seconds_per_accept": 545.8245379723676
    },
    "realflaky": {
-    "far": 0.0038461538461538464,
-    "frr": 0.0955223880597015,
-    "blocks_per_accept": 2279.0892430278886,
-    "blocks_per_loop": 1375.1235576923077,
-    "seconds_per_accept": 5009.272143350381
+    "far": 0.00625,
+    "frr": 0.041044776119402986,
+    "blocks_per_accept": 2976.909963099631,
+    "blocks_per_loop": 1939.285096153846,
+    "seconds_per_accept": 4618.5164485095365
    },
    "realflaky_high": {
-    "far": 0.0125,
-    "frr": 0.30238095238095236,
-    "blocks_per_accept": 6520.680379746836,
-    "blocks_per_loop": 3219.5859375,
-    "seconds_per_accept": 16396.638384231836
+    "far": 0.01875,
+    "frr": 0.1261904761904762,
+    "blocks_per_accept": 7915.05023923445,
+    "blocks_per_loop": 5169.5171875,
+    "seconds_per_accept": 12496.155596137465
    }
   },
   "no refund at cap": {
    "natural": {
     "far": 0.0,
     "frr": 0.0,
-    "blocks_per_accept": 219.31526315789475,
-    "blocks_per_loop": 153.19816176470587,
-    "seconds_per_accept": 657.9665055026273
+    "blocks_per_accept": 175.51606108478146,
+    "blocks_per_loop": 122.53860294117646,
+    "seconds_per_accept": 551.1567815863605
    },
    "realflaky": {
-    "far": 0.002403846153846154,
-    "frr": 0.10895522388059702,
-    "blocks_per_accept": 2549.728606356968,
-    "blocks_per_loop": 1504.0947115384615,
-    "seconds_per_accept": 5419.865845792342
+    "far": 0.006730769230769231,
+    "frr": 0.05447761194029851,
+    "blocks_per_accept": 3565.1475655430713,
+    "blocks_per_loop": 2288.2076923076925,
+    "seconds_per_accept": 5299.81257207139
    },
    "realflaky_high": {
-    "far": 0.0078125,
-    "frr": 0.33571428571428574,
-    "blocks_per_accept": 7780.7054794520545,
-    "blocks_per_loop": 3549.946875,
-    "seconds_per_accept": 18787.380302079593
+    "far": 0.0203125,
+    "frr": 0.16904761904761906,
+    "blocks_per_accept": 10114.467336683418,
+    "blocks_per_loop": 6289.934375,
+    "seconds_per_accept": 15153.501536476995
    }
   },
   "prefilter 1": {
    "natural": {
     "far": 0.0,
     "frr": 0.0,
-    "blocks_per_accept": 198.8278947368421,
-    "blocks_per_loop": 138.88713235294117,
-    "seconds_per_accept": 612.7465906144703
+    "blocks_per_accept": 167.63842105263157,
+    "blocks_per_loop": 117.10036764705882,
+    "seconds_per_accept": 536.5224589355255
    },
    "realflaky": {
-    "far": 0.004326923076923077,
-    "frr": 0.11716417910447761,
-    "blocks_per_accept": 2012.7134693877551,
-    "blocks_per_loop": 1185.3721153846154,
-    "seconds_per_accept": 4692.588208934536
+    "far": 0.013942307692307693,
+    "frr": 0.058208955223880594,
+    "blocks_per_accept": 2704.4515401953417,
+    "blocks_per_loop": 1730.5889423076924,
+    "seconds_per_accept": 5201.973973540859
    },
    "realflaky_high": {
-    "far": 0.0125,
-    "frr": 0.3595238095238095,
-    "blocks_per_accept": 5926.568965517241,
-    "blocks_per_loop": 2685.4765625,
-    "seconds_per_accept": 16202.261362559775
+    "far": 0.043750000000000004,
+    "frr": 0.15952380952380954,
+    "blocks_per_accept": 7270.653366583541,
+    "blocks_per_loop": 4555.51875,
+    "seconds_per_accept": 14810.917318361384
    }
   },
   "earlier default": {
    "natural": {
     "far": 0.0,
     "frr": 0.0,
-    "blocks_per_accept": 219.45894736842106,
-    "blocks_per_loop": 153.29852941176472,
-    "seconds_per_accept": 658.1459094697325
+    "blocks_per_accept": 175.24644549763033,
+    "blocks_per_loop": 122.35036764705882,
+    "seconds_per_accept": 550.9400967548702
    },
    "realflaky": {
-    "far": 0.002403846153846154,
-    "frr": 0.10895522388059702,
-    "blocks_per_accept": 2552.1735941320294,
-    "blocks_per_loop": 1505.5370192307691,
-    "seconds_per_accept": 5425.575628818015
+    "far": 0.007211538461538462,
+    "frr": 0.05522388059701493,
+    "blocks_per_accept": 3544.701425356339,
+    "blocks_per_loop": 2271.6764423076925,
+    "seconds_per_accept": 5126.334093351768
    },
    "realflaky_high": {
-    "far": 0.0078125,
-    "frr": 0.33571428571428574,
-    "blocks_per_accept": 7780.708904109589,
-    "blocks_per_loop": 3549.9484375,
-    "seconds_per_accept": 18787.382839553906
+    "far": 0.021875,
+    "frr": 0.16666666666666666,
+    "blocks_per_accept": 10012.964824120603,
+    "blocks_per_loop": 6226.8125,
+    "seconds_per_accept": 14495.966461772477
    }
   }
  },
  "worst010": {
   "1": {
-   "B4 peeking Clopper-Pearson": 0.003,
+   "B4 peeking Clopper-Pearson": 0.006,
    "B5 naive confidence sequence": 0.0,
    "B6 SeqAccept, no refund": 0.0,
    "SeqAccept": 0.0
   },
   "15": {
    "B4 peeking Clopper-Pearson": 0.033,
-   "B5 naive confidence sequence": 0.0,
+   "B5 naive confidence sequence": 0.001,
    "B6 SeqAccept, no refund": 0.0,
-   "SeqAccept": 0.0
+   "SeqAccept": 0.001
   },
   "50": {
-   "B4 peeking Clopper-Pearson": 0.09,
+   "B4 peeking Clopper-Pearson": 0.1025,
    "B5 naive confidence sequence": 0.0025,
    "B6 SeqAccept, no refund": 0.0,
    "SeqAccept": 0.0
@@ -390,44 +390,44 @@
   "B4 peeking Clopper-Pearson": {
    "far": 0.0011029411764705882,
    "frr": 0.0,
-   "blocks_per_accept": 105.31003678402523,
-   "blocks_per_loop": 73.6783088235294,
-   "seconds_per_accept": 311.73237758145063
+   "blocks_per_accept": 105.30688386757751,
+   "blocks_per_loop": 73.67610294117647,
+   "seconds_per_accept": 311.73068406200764
   },
   "B5 naive confidence sequence": {
    "far": 0.0,
    "frr": 0.0,
-   "blocks_per_accept": 203.96526315789473,
-   "blocks_per_loop": 142.47573529411764,
-   "seconds_per_accept": 603.8052816302588
+   "blocks_per_accept": 158.60736842105263,
+   "blocks_per_loop": 110.79191176470589,
+   "seconds_per_accept": 490.03315296973597
   },
   "B6 SeqAccept, no refund": {
    "far": 0.0,
    "frr": 0.0,
-   "blocks_per_accept": 228.1863157894737,
-   "blocks_per_loop": 159.39485294117648,
-   "seconds_per_accept": 672.4783144171009
+   "blocks_per_accept": 184.90353189246179,
+   "blocks_per_loop": 128.95661764705883,
+   "seconds_per_accept": 572.5466262796515
   },
   "SeqAccept": {
    "far": 0.0,
    "frr": 0.0,
-   "blocks_per_accept": 219.31526315789475,
-   "blocks_per_loop": 153.19816176470587,
-   "seconds_per_accept": 657.9665055026273
+   "blocks_per_accept": 174.1705263157895,
+   "blocks_per_loop": 121.66323529411764,
+   "seconds_per_accept": 545.8245379723676
   },
   "Harmonic spending": {
    "far": 0.0,
    "frr": 0.0,
-   "blocks_per_accept": 229.15578947368422,
-   "blocks_per_loop": 160.0720588235294,
-   "seconds_per_accept": 675.7135318328903
+   "blocks_per_accept": 189.91240105540896,
+   "blocks_per_loop": 132.31029411764706,
+   "seconds_per_accept": 592.9641754155668
   },
   "Discard spending": {
    "far": 0.0,
    "frr": 0.0,
-   "blocks_per_accept": 234.2821052631579,
-   "blocks_per_loop": 163.6529411764706,
-   "seconds_per_accept": 712.1209422736799
+   "blocks_per_accept": 190.60695468914648,
+   "blocks_per_loop": 133.00441176470588,
+   "seconds_per_accept": 606.490496680716
   },
   "Fixed-n Bonferroni-15 (1n0)": {
    "far": 0.0,

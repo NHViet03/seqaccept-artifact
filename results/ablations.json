@@ -3,109 +3,109 @@
   "none": {
    "recorded": {
     "far": 0.0,
-    "frr": 0.0,
-    "blocks_per_accept": 274.24449339207047
+    "frr": 0.00044642857142857147,
+    "blocks_per_accept": 238.73627342888645
    },
    "late": {
     "10": {
      "far": 0.0,
-     "late_accept": 0.8875,
-     "blocks_per_accept": 540.3403755868544
+     "late_accept": 0.46208333333333335,
+     "blocks_per_accept": 881.9891794409377
     },
     "40": {
      "far": 0.0,
-     "late_accept": 0.5345833333333333,
-     "blocks_per_accept": 2131.7724084177707
+     "late_accept": 0.06458333333333333,
+     "blocks_per_accept": 11234.367741935484
     }
    },
    "stress": {
-    "alt-0.10": 0.004,
-    "alt-0.08": 0.009
+    "alt-0.10": 0.002,
+    "alt-0.08": 0.003
    },
    "worst": {
-    "15": 0.016,
-    "50": 0.015
+    "15": 0.013,
+    "50": 0.0125
    }
   },
   "max": {
    "recorded": {
     "far": 0.0,
-    "frr": 0.0,
-    "blocks_per_accept": 257.9066079295154
+    "frr": 0.00022321428571428573,
+    "blocks_per_accept": 218.02335316148933
    },
    "late": {
     "10": {
      "far": 0.0,
-     "late_accept": 0.9958333333333333,
-     "blocks_per_accept": 258.4573221757322
+     "late_accept": 0.9741666666666666,
+     "blocks_per_accept": 223.12446535500428
     },
     "40": {
      "far": 0.0,
-     "late_accept": 0.9933333333333333,
-     "blocks_per_accept": 574.4920302013422
+     "late_accept": 0.9704166666666667,
+     "blocks_per_accept": 415.2473164448261
     }
    },
    "stress": {
     "alt-0.10": 0.021,
-    "alt-0.08": 0.018
+    "alt-0.08": 0.014
    },
    "worst": {
-    "15": 0.039,
-    "50": 0.045
+    "15": 0.021,
+    "50": 0.03
    }
   },
   "capped": {
    "recorded": {
     "far": 0.0,
-    "frr": 0.0,
-    "blocks_per_accept": 257.99493392070485
+    "frr": 0.00022321428571428573,
+    "blocks_per_accept": 218.1815377836528
    },
    "late": {
     "10": {
      "far": 0.0,
-     "late_accept": 0.9954166666666666,
-     "blocks_per_accept": 262.75177898702384
+     "late_accept": 0.9758333333333333,
+     "blocks_per_accept": 226.09094790777112
     },
     "40": {
      "far": 0.0,
-     "late_accept": 0.9933333333333333,
-     "blocks_per_accept": 584.79572147651
+     "late_accept": 0.9629166666666666,
+     "blocks_per_accept": 433.45002163565556
     }
    },
    "stress": {
-    "alt-0.10": 0.021,
-    "alt-0.08": 0.017
+    "alt-0.10": 0.025,
+    "alt-0.08": 0.016
    },
    "worst": {
-    "15": 0.035,
-    "50": 0.035
+    "15": 0.019,
+    "50": 0.0375
    }
   },
   "uncapped": {
    "recorded": {
     "far": 0.0,
-    "frr": 0.0,
-    "blocks_per_accept": 258.0497797356828
+    "frr": 0.00044642857142857147,
+    "blocks_per_accept": 217.6789334508594
    },
    "late": {
     "10": {
      "far": 0.0,
-     "late_accept": 0.995,
-     "blocks_per_accept": 260.2403685092127
+     "late_accept": 0.9758333333333333,
+     "blocks_per_accept": 224.66182749786506
     },
     "40": {
      "far": 0.0,
-     "late_accept": 0.9929166666666667,
-     "blocks_per_accept": 580.5073436844314
+     "late_accept": 0.9633333333333334,
+     "blocks_per_accept": 423.42560553633217
     }
    },
    "stress": {
-    "alt-0.10": 0.143,
-    "alt-0.08": 0.137
+    "alt-0.10": 0.077,
+    "alt-0.08": 0.081
    },
    "worst": {
-    "15": 0.109,
-    "50": 0.2375
+    "15": 0.065,
+    "50": 0.145
    }
   }
  },
@@ -14108,26 +14108,26 @@
     "frr": 0.0
    },
    "B4 peeking Clopper-Pearson": {
-    "blocks_per_episode": 73.6783088235294,
-    "seconds_per_episode": 218.09805681525754,
+    "blocks_per_episode": 73.67610294117647,
+    "seconds_per_episode": 218.0968719742649,
     "far": 0.0011029411764705884,
     "frr": 0.0
    },
    "B5 naive confidence sequence": {
-    "blocks_per_episode": 142.47573529411764,
-    "seconds_per_episode": 421.77574819760724,
+    "blocks_per_episode": 110.79191176470589,
+    "seconds_per_episode": 342.3025700891538,
     "far": 0.0,
     "frr": 0.0
    },
    "B6 SeqAccept, no refund": {
-    "blocks_per_episode": 159.39485294117648,
-    "seconds_per_episode": 469.7458813942984,
+    "blocks_per_episode": 128.95661764705883,
+    "seconds_per_episode": 399.3091728134187,
     "far": 0.0,
     "frr": 0.0
    },
    "SeqAccept": {
-    "blocks_per_episode": 153.19816176470587,
-    "seconds_per_episode": 459.6089560496294,
+    "blocks_per_episode": 121.66323529411764,
+    "seconds_per_episode": 381.2744934365803,
     "far": 0.0,
     "frr": 0.0
    },
@@ -14171,12 +14171,12 @@
    "eps": 0.05,
    "kl_floor": 149.12908760279257,
    "kelly": {
-    "accept": 1.0,
-    "blocks_per_accept": 193.3735
+    "accept": 0.6015,
+    "blocks_per_accept": 266.15378221113883
    },
    "mixture": {
-    "accept": 1.0,
-    "blocks_per_accept": 178.3655
+    "accept": 0.719,
+    "blocks_per_accept": 218.79833101529903
    }
   },
   {
@@ -14185,12 +14185,12 @@
    "eps": 0.05,
    "kl_floor": 303.78748214208,
    "kelly": {
-    "accept": 0.934,
-    "blocks_per_accept": 418.89186295503214
+    "accept": 0.231,
+    "blocks_per_accept": 817.1753246753246
    },
    "mixture": {
-    "accept": 0.96,
-    "blocks_per_accept": 357.2135416666667
+    "accept": 0.318,
+    "blocks_per_accept": 583.8018867924528
    }
   },
   {
@@ -14199,12 +14199,12 @@
    "eps": 0.05,
    "kl_floor": 755.2531151311991,
    "kelly": {
-    "accept": 0.4305,
-    "blocks_per_accept": 1506.389082462253
+    "accept": 0.072,
+    "blocks_per_accept": 2726.534722222222
    },
    "mixture": {
-    "accept": 0.529,
-    "blocks_per_accept": 1138.2826086956522
+    "accept": 0.1035,
+    "blocks_per_accept": 1892.5217391304348
    }
   },
   {
@@ -14213,12 +14213,12 @@
    "eps": 0.05,
    "kl_floor": 3274.039583818437,
    "kelly": {
-    "accept": 0.075,
-    "blocks_per_accept": 10226.2
+    "accept": 0.025,
+    "blocks_per_accept": 7838.14
    },
    "mixture": {
-    "accept": 0.1155,
-    "blocks_per_accept": 6478.320346320346
+    "accept": 0.0305,
+    "blocks_per_accept": 6379.950819672131
    }
   },
   {
@@ -14227,12 +14227,12 @@
    "eps": 0.05,
    "kl_floor": null,
    "kelly": {
-    "accept": 0.0085,
-    "blocks_per_accept": 92216.23529411765
+    "accept": 0.0055,
+    "blocks_per_accept": 35082.09090909091
    },
    "mixture": {
-    "accept": 0.012,
-    "blocks_per_accept": 64777.041666666664
+    "accept": 0.007,
+    "blocks_per_accept": 27562.35714285714
    }
   },
   {
@@ -14241,12 +14241,12 @@
    "eps": 0.25,
    "kl_floor": 526.8242316162303,
    "kelly": {
-    "accept": 0.576,
-    "blocks_per_accept": 998.9253472222222
+    "accept": 0.9485,
+    "blocks_per_accept": 766.4607274644175
    },
    "mixture": {
-    "accept": 0.646,
-    "blocks_per_accept": 815.3421052631579
+    "accept": 0.9535,
+    "blocks_per_accept": 684.2627163083378
    }
   },
   {
@@ -14255,12 +14255,12 @@
    "eps": 0.25,
    "kl_floor": 831.9562586613013,
    "kelly": {
-    "accept": 0.3385,
-    "blocks_per_accept": 1964.2703101920235
+    "accept": 0.9085,
+    "blocks_per_accept": 1272.1051183269126
    },
    "mixture": {
-    "accept": 0.4105,
-    "blocks_per_accept": 1534.6601705237515
+    "accept": 0.925,
+    "blocks_per_accept": 1143.9956756756758
    }
   },
   {
@@ -14269,12 +14269,12 @@
    "eps": 0.25,
    "kl_floor": 1494.1905976313244,
    "kelly": {
-    "accept": 0.16,
-    "blocks_per_accept": 4529.03125
+    "accept": 0.669,
+    "blocks_per_accept": 2723.965620328849
    },
    "mixture": {
-    "accept": 0.212,
-    "blocks_per_accept": 3283.1367924528304
+    "accept": 0.711,
+    "blocks_per_accept": 2377.8382559774964
    }
   },
   {
@@ -14283,12 +14283,12 @@
    "eps": 0.25,
    "kl_floor": 3395.0158816378953,
    "kelly": {
-    "accept": 0.069,
-    "blocks_per_accept": 10874.934782608696
+    "accept": 0.2415,
+    "blocks_per_accept": 10085.051759834369
    },
    "mixture": {
-    "accept": 0.0865,
-    "blocks_per_accept": 8619.630057803468
+    "accept": 0.2725,
+    "blocks_per_accept": 8506.653211009174
    }
   },
   {
@@ -14297,12 +14297,12 @@
    "eps": 0.25,
    "kl_floor": 13708.534261355217,
    "kelly": {
-    "accept": 0.029,
-    "blocks_per_accept": 26308.224137931036
+    "accept": 0.0465,
+    "blocks_per_accept": 56112.52688172043
    },
    "mixture": {
-    "accept": 0.0445,
-    "blocks_per_accept": 17078.70786516854
+    "accept": 0.0605,
+    "blocks_per_accept": 42903.59504132231
    }
   },
   {
@@ -14311,12 +14311,12 @@
    "eps": 0.25,
    "kl_floor": null,
    "kelly": {
-    "accept": 0.0095,
-    "blocks_per_accept": 81216.63157894737
+    "accept": 0.0105,
+    "blocks_per_accept": 245785.33333333334
    },
    "mixture": {
-    "accept": 0.0185,
-    "blocks_per_accept": 41329.91891891892
+    "accept": 0.0225,
+    "blocks_per_accept": 113222.93333333333
    }
   }
  ],

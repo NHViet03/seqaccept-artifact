@@ -5,8 +5,48 @@ candidate j and returns 1 if it FAILED, 0 if it passed. A rule returns the index
 candidate it accepts (or None) and how many blocks it spent.
 """
 import math
+import random
 from dataclasses import dataclass
 from functools import lru_cache, partial
+
+
+REJECT_AT = 5  # rho: the reject wallet's threshold (user decision 2026-11-18; was 20). Theorem 4.2 never uses it
+CAP_GAP, CAP_Q, CAP_MULT, CAP_REPS = 0.05, 0.9, 2, 400  # default block cap T, see derived_cap
+
+
+@lru_cache(maxsize=None)
+def derived_cap(eps, alpha=0.05, gamma=0.5):
+    """Default block cap T for a task (user decision 2026-11-18; was a fixed 800): twice the 90th percentile of the
+    blocks SeqAccept needs to accept a first candidate that fails as often as the original code, p = max(eps - 0.05, 0),
+    over 400 seeded simulated runs. It depends only on eps, so it is fixed before the loop; 210 blocks when p0 = 0.
+    Every rule with a cap shares it. Theorem 4.2 holds for any T."""
+    p, rng, times = max(eps - CAP_GAP, 0.0), random.Random(1), []
+    for _ in range(CAP_REPS):
+        used = [0]
+
+        def block(j):
+            used[0] += 1
+            return int(rng.random() < p)
+
+        r = seq_accept(1, block, alpha=alpha, eps=eps, gamma=gamma, max_blocks=10 ** 5, reject_at=math.inf)
+        times.append(used[0] if r.accepted is not None else 10 ** 5)
+    times.sort()
+    return CAP_MULT * times[math.ceil(CAP_Q * CAP_REPS) - 1]
+
+
+SLICE_CAPS = False  # experiment: scale each candidate's cap with log(1/alpha_j) below the first slice
+
+
+def cap_for(eps, max_blocks, level, alpha=0.05, gamma=0.5):
+    """Block cap for one candidate tested at `level`. An explicit max_blocks wins. Otherwise the derived cap, and with
+    SLICE_CAPS it grows with log(1/level) once level is below SeqAccept's first slice gamma * alpha, because a wallet's
+    time to reach 1/level grows with that log; never below the derived cap."""
+    if max_blocks is not None:
+        return max_blocks
+    base = derived_cap(eps)
+    if not SLICE_CAPS or level <= 0:
+        return base
+    return max(base, math.ceil(base * math.log(1 / level) / math.log(1 / (gamma * alpha))))
 
 
 @dataclass(frozen=True)
@@ -74,7 +114,7 @@ def _refund(mode, alpha_j, E, peak):
     return 0.0  # B6
 
 
-def seq_accept(n, block, alpha=0.05, eps=0.05, gamma=0.5, refund="max", max_blocks=800, reject_at=20, bet="kelly",
+def seq_accept(n, block, alpha=0.05, eps=0.05, gamma=0.5, refund="max", max_blocks=None, reject_at=REJECT_AT, bet="kelly",
                setaside_refund=True, prefilter=0, trace=None):
     """SeqAccept (refund=False gives B6). One betting wallet per candidate, error spent from a shared pool.
 
@@ -94,6 +134,7 @@ def seq_accept(n, block, alpha=0.05, eps=0.05, gamma=0.5, refund="max", max_bloc
     trace(pool, alpha_j, E), if given, is called after every block with the live stake, and with (pool, 0, 1) when a
     candidate ends without acceptance: for broken candidates pool + alpha_j * E is the proof's M_t (sensitivity.py).
     """
+    cap_arg = max_blocks
     pool, blocks = alpha, 0
     for j in range(n):
         if prefilter:
@@ -112,7 +153,7 @@ def seq_accept(n, block, alpha=0.05, eps=0.05, gamma=0.5, refund="max", max_bloc
         lams = mix_lambdas(eps) if mix else None
         peak = 1.0
         fails = 0
-        for t in range(max_blocks):
+        for t in range(cap_for(eps, cap_arg, alpha_j)):
             lam, mu = bets(fails, t, eps)
             y = block(j)
             blocks += 1
@@ -139,7 +180,7 @@ def seq_accept(n, block, alpha=0.05, eps=0.05, gamma=0.5, refund="max", max_bloc
     return Result(None, blocks)
 
 
-def discard_spending(n, block, alpha=0.05, eps=0.05, gamma=0.5, tau=0.5, max_blocks=800, reject_at=20):
+def discard_spending(n, block, alpha=0.05, eps=0.05, gamma=0.5, tau=0.5, max_blocks=None, reject_at=REJECT_AT):
     """Comparator for refunds: online FWER spending with discarding (ADDIS-spending style, Tian and Ramdas 2021), with
     SeqAccept's wallets. Candidate j may spend s_j = gamma * pool and is tested at level tau * s_j. Its anytime p-value
     is 1 / (peak wallet); if that never fell to tau, the candidate is discarded and its whole s_j returns to the pool,
@@ -149,7 +190,7 @@ def discard_spending(n, block, alpha=0.05, eps=0.05, gamma=0.5, tau=0.5, max_blo
         s_j = gamma * pool
         E = R = peak = 1.0
         fails = 0
-        for t in range(max_blocks):
+        for t in range(cap_for(eps, max_blocks, tau * s_j)):
             lam, mu = bets(fails, t, eps)
             y = block(j)
             blocks += 1
@@ -166,7 +207,7 @@ def discard_spending(n, block, alpha=0.05, eps=0.05, gamma=0.5, tau=0.5, max_blo
     return Result(None, blocks)
 
 
-def fixed_spending(n, block, slices, eps=0.05, max_blocks=800, reject_at=20):
+def fixed_spending(n, block, slices, eps=0.05, max_blocks=None, reject_at=REJECT_AT):
     """No-refund error spending on a fixed schedule: candidate j gets alpha_j = slices(j) (sum <= alpha), with
     SeqAccept's wallets. Valid by Theorem 6 with r_j = 0. A slice of 0 means the candidate cannot be accepted."""
     blocks = 0
@@ -174,7 +215,7 @@ def fixed_spending(n, block, slices, eps=0.05, max_blocks=800, reject_at=20):
         alpha_j = slices(j)
         E = R = 1.0
         fails = 0
-        for t in range(max_blocks):
+        for t in range(cap_for(eps, max_blocks, alpha_j)):
             lam, mu = bets(fails, t, eps)
             y = block(j)
             blocks += 1
@@ -261,7 +302,8 @@ def _cp_thresholds(eps, alpha, max_blocks):
     return accept_t, reject_k
 
 
-def peeking_cp(n, block, alpha=0.05, eps=0.05, max_blocks=800):  # B4: fixed-sample CI checked after every block
+def peeking_cp(n, block, alpha=0.05, eps=0.05, max_blocks=None):  # B4: fixed-sample CI checked after every block
+    max_blocks = derived_cap(eps) if max_blocks is None else max_blocks
     accept_t, reject_k = _cp_thresholds(eps, alpha, max_blocks)
     blocks = 0
     for j in range(n):
@@ -276,8 +318,9 @@ def peeking_cp(n, block, alpha=0.05, eps=0.05, max_blocks=800):  # B4: fixed-sam
     return Result(None, blocks)
 
 
-def naive_cs(n, block, alpha=0.05, eps=0.05, max_blocks=800, reject_at=20):
+def naive_cs(n, block, alpha=0.05, eps=0.05, max_blocks=None, reject_at=REJECT_AT):
     """B5: SeqAccept's per-candidate betting wallets, but every candidate gets the full alpha (no error spending)."""
+    max_blocks = derived_cap(eps) if max_blocks is None else max_blocks
     blocks = 0
     for j in range(n):
         E = R = 1.0

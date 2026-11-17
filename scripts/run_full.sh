@@ -34,6 +34,8 @@ step "cost with calibration, block size, regime map, pool scoring -> results/sen
 "$PY" sensitivity.py
 step "invariant, runs-test power, paired intervals, caps, no replacement -> results/checks.json"
 "$PY" checks.py
+step "cap ablation: shared cap against caps scaled with log(1/alpha_j) -> results/slice_caps.json"
+"$PY" slice_caps.py
 step "paper numbers, tables and figures                    -> ${SEQACCEPT_PAPER_DIR:-paper_out}"
 "$PY" paper_numbers.py
 echo; echo "done"

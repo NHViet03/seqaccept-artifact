@@ -30,6 +30,7 @@ TRACE = {  # every public function/class in impl/*.py -> where the paper or the 
     "rules.rerun_k": "§9.2 B2 rerun-k all green",
     "rules.majority_of_5": "§9.2 B3",
     "rules.peeking_cp": "§9.2 B4 fixed-sample Clopper-Pearson at a data-dependent stopping time (+ D16)",
+    "rules.cap_for": "the block cap of one candidate: derived from p0, optionally scaled with log(1/alpha_j)",
     "rules.naive_cs": "§9.2 B5 naive confidence sequence, no error spending (+ D16)",
     "rules.bets": "§7 truncated Kelly bet (+ D2 reject wallet)",
     "rules.seq_accept": "§5 Alg. 1; refund=False is §9.2 B6",
@@ -45,6 +46,12 @@ TRACE = {  # every public function/class in impl/*.py -> where the paper or the 
     "flaky_arm.flaky_selection": "review round 4: keep known flaky tests, other deselects stay",
     "flaky_arm.make_variant": "review round 4: <bug>@realflaky task with its own test ids and block size",
     "flaky_arm.jobs": "review round 4: every recorded natural loop of the main table",
+    "slice_caps.rules_of": "cap ablation: the wallet rules compared under the shared and the slice-scaled caps",
+    "slice_caps.summary": "cap ablation: FAR, FRR, blocks and correct acceptance per rule on one set of loops",
+    "near_eps_arm.candidates": "EASE round 6: distinct candidates of a bug's natural loops with their failing sets",
+    "near_eps_arm.choose": "EASE round 6: smaller block size that puts the most candidates just above eps",
+    "near_eps_arm.plan": "EASE round 6: near-eps arm selection and cost",
+    "near_eps_arm.make_variant": "EASE round 6: <bug>@neareps task with the smaller block size",
     "power_tuning.kl": "external review: KL lower bound on blocks to accept",
     "power_tuning.single": "external review: one-candidate operating point, Kelly vs mixture",
     "power_tuning.replay_summary": "external review: replay summary for the mixture wallet and the gamma / rho sweep",
@@ -293,7 +300,7 @@ def test_paper_constants():
     d = {k: v.default for k, v in inspect.signature(seq_accept).parameters.items() if v.default is not inspect._empty}
     assert d == {"alpha": 0.05, "eps": 0.05, "gamma": 0.5,  # §5.5
                  "refund": "max",  # EASE round 3: r_j = alpha_j min(E, 1), Theorem 4.2's bound
-                 "max_blocks": 800, "reject_at": 20, "bet": "kelly",  # D1, D2; the paper's wallet is Kelly
+                 "max_blocks": None, "reject_at": 5, "bet": "kelly",  # derived cap and rho = 5 (user decision 2026-11-18); the paper's wallet is Kelly
                  "setaside_refund": True, "prefilter": 0, "trace": None}  # refund also at the block cap; prefilter off
     assert list(rules.all_rules()) == ["B1 stop at first pass", "B2 rerun-3 all green", "B3 majority of 5",
                                        "B4 peeking Clopper-Pearson", "B5 naive confidence sequence",
@@ -312,10 +319,12 @@ def test_labels_are_section_8(p, want):  # Correct p < 0.01, Broken p > 0.05
     assert sim.label(p) == want
 
 
-def algorithm_1(n, block, alpha=0.05, eps=0.05, gamma=0.5, refund="max", cap=800, reject_at=20, line_14=True,
+def algorithm_1(n, block, alpha=0.05, eps=0.05, gamma=0.5, refund="max", cap=None, reject_at=5, line_14=True,
                 on_refund=None):
     """Algorithm 1 transcribed from the paper (EASE round 3): r_j = alpha_j min(E, 1) at rejection (line 11) and at
     the cap (line 14). refund=True is the earlier capped refund alpha_j min(E, 1 - alpha_j G_j)."""
+    from rules import derived_cap
+    cap = derived_cap(eps) if cap is None else cap  # T: derived from p0 = eps - 0.05 (user decision 2026-11-18)
     W, blocks = alpha, 0  # Require: budget pool W <- alpha
     for j in range(n):  # line 1
         a_j = gamma * W  # line 2
@@ -361,7 +370,7 @@ def test_seq_accept_is_algorithm_1(seed, refund):
     rng = random.Random(seed)
     p0 = rng.choice([0.0, 0.02, 0.05])
     ps = [rng.choice([p0, p0 + 0.03, p0 + 0.06, p0 + 0.2, 0.5, 0.96]) for _ in range(rng.randint(1, 12))]
-    outcomes = [[int(rng.random() < p) for _ in range(800)] for p in ps]
+    outcomes = [[int(rng.random() < p) for _ in range(4000)] for p in ps]  # >= the derived cap at p0 = 0.05
     kw = {"eps": p0 + 0.05, "refund": refund}
     assert seq_accept(len(ps), scripted(outcomes), **kw) == algorithm_1(len(ps), scripted(outcomes), **kw)
 
@@ -375,6 +384,11 @@ def test_refund_never_exceeds_the_wallet():  # D24: what Theorem 6's supermartin
         algorithm_1(len(ps), scripted(outcomes), on_refund=lambda a, E, r: seen.append((a, E, r)))
     assert seen and all(0 <= r <= a * min(E, 1) + 1e-15 for a, E, r in seen)
     assert any(E < 1 for _, E, _ in seen)  # the cap is exercised, not vacuous
+
+
+def test_derived_cap():  # user decision 2026-11-18: 2 x q90 accept time of a candidate failing at p0; 210 at p0 = 0
+    from rules import derived_cap
+    assert derived_cap(0.05) == 210 and derived_cap(0.15) > derived_cap(0.10) > derived_cap(0.05)
 
 
 def test_real_flaky_variant_keeps_only_the_known_flaky_tests():  # review round 4

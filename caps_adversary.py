@@ -25,14 +25,15 @@ import replay
 from comparators import bug_of
 from extra_analyses import CORR_P, correlated, evaluate_rules, lag1_corr, summary as extra_summary
 from label_risk import beta_cdf
-from rules import _refund, all_rules, bets, bonferroni, fixed_n, fixed_spending, seq_accept
+from rules import REJECT_AT, _refund, all_rules, bets, bonferroni, derived_cap, fixed_n, fixed_spending, seq_accept
 from sim import experiment, label
 
 NMAX = (15, 40, 100)
 LATE_K = (10, 20, 40)
 REFUNDS = {"none": (False, False), "max": ("max", True), "capped": (True, True), "uncapped": ("uncapped", True),
            "online": ("uncapped", False)}  # (refund, refund at the cap); "online" is the rule the live runs used
-ALPHA, GAMMA, RHO_REJECT, CAP, EPS = 0.05, 0.5, 20, 800, 0.05
+EPS = 0.05
+ALPHA, GAMMA, RHO_REJECT, CAP = 0.05, 0.5, REJECT_AT, derived_cap(EPS)  # the rule's defaults
 
 
 def cap_rules(eps):

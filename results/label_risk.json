@@ -4,37 +4,37 @@
     "SeqAccept": {
       "full": {
         "far": 0.0,
-        "frr": 0.0,
-        "blocks_per_accept": 257.9066079295154,
-        "evaluations": 34174,
-        "over_pool": 1293,
-        "over_half_pool": 4774
+        "frr": 0.00022321428571428573,
+        "blocks_per_accept": 218.02335316148933,
+        "evaluations": 34276,
+        "over_pool": 1097,
+        "over_half_pool": 4286
       },
       "short": {
         "far": 0.0,
-        "frr": 0.0,
-        "blocks_per_accept": 258.24118942731275,
-        "evaluations": 34236,
-        "over_pool": 4419,
-        "over_half_pool": 6998
+        "frr": 0.00022321428571428573,
+        "blocks_per_accept": 212.9352280237938,
+        "evaluations": 34335,
+        "over_pool": 3921,
+        "over_half_pool": 6109
       }
     },
     "B4 peeking Clopper-Pearson": {
       "full": {
         "far": 0.0006097560975609756,
         "frr": 0.0,
-        "blocks_per_accept": 112.07373981950253,
+        "blocks_per_accept": 112.07241910631741,
         "evaluations": 34158,
-        "over_pool": 140,
-        "over_half_pool": 725
+        "over_pool": 141,
+        "over_half_pool": 726
       },
       "short": {
-        "far": 0.0007621951219512195,
+        "far": 0.0010670731707317074,
         "frr": 0.00022321428571428573,
-        "blocks_per_accept": 111.97731277533039,
-        "evaluations": 34163,
-        "over_pool": 616,
-        "over_half_pool": 3749
+        "blocks_per_accept": 111.55724350506385,
+        "evaluations": 34149,
+        "over_pool": 603,
+        "over_half_pool": 3750
       }
     }
   },

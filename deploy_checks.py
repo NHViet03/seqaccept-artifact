@@ -21,11 +21,17 @@
 8. Near-eps arm scored on all blocks (near_eps_checks.py step 7, same seeds): false acceptances of B4, B5 and SeqAccept
    per distinct candidate.
 9. Discarding on constructed streams of 15 and 50 candidates at p = 0.051 and 0.06 (2,000 runs, seed 41).
+10. Discarding against the white-box adversary of caps_adversary.py, which sees the pool before each candidate: policy
+    "near" (every candidate at p = 0.051) and "switch" (near candidates while the pool is at least alpha / 2, then
+    alternating quickly rejected ones at p = 0.9 with near ones), 15 and 50 candidates, 2,000 runs.
+11. Exposure: share of recorded loops with at least 1 and at least 5 Broken candidates (stream positions) failing within
+    one point above eps on their truth blocks, the counts at which B4 and B5 exceed alpha on the constructed grid.
 
   uv run python deploy_checks.py
 """
 import csv
 import json
+import random
 from functools import partial
 from pathlib import Path
 from statistics import mean, median
@@ -94,6 +100,25 @@ def accepted(rule, episodes, reps):
         replay.replay(wrapped, ep, reps, seed=replay.episode_seed(ep, i))
         out.append(got)
     return out
+
+
+def discard_adversary(policy, n, reps, seed, near_p=0.051, far_p=0.9):
+    """FAR of discard_spending when an adversary that sees the pool before each candidate picks its failure rate."""
+    rng, hits = random.Random(seed), 0
+    for _ in range(reps):
+        st = {"pool": ALPHA, "j": -1, "p": near_p, "k": 0}
+
+        def block(j):
+            if j != st["j"]:
+                st["j"] = j
+                if policy == "near" or st["pool"] >= ALPHA / 2:
+                    st["p"] = near_p
+                else:
+                    st["k"] += 1
+                    st["p"] = far_p if st["k"] % 2 else near_p
+            return int(rng.random() < st["p"])
+        hits += discard_spending(n, block, trace=lambda pool: st.__setitem__("pool", pool)).accepted is not None
+    return hits / reps
 
 
 def screening():
@@ -208,6 +233,18 @@ if __name__ == "__main__":
     out["discarding"] = {f"{n}-{p}": experiment(discard_spending, [p] * n, reps=2000, seed=41)["far"]
                          for n in (15, 50) for p in (0.051, 0.06)}
     print("   " + json.dumps(out["discarding"]))
+
+    print("10. discarding against the white-box adversary")
+    out["discard_adversary"] = {f"{pol}-{n}": discard_adversary(pol, n, 2000, 43) for pol in ("near", "switch") for n in (15, 50)}
+    print("   " + json.dumps(out["discard_adversary"]))
+
+    print("11. exposure to candidates within one point above eps")
+    out["exposure"] = {}
+    for arm, e_ in (("natural", natural), ("realflaky", flaky), ("neareps", near)):
+        counts = [sum(eps_of(ep) < mean(ep["fixes"][f]["truth"]) <= eps_of(ep) + 0.01 for f in ep["stream"]) for ep in e_]
+        out["exposure"][arm] = {"loops": len(e_), "at_least_1": sum(c >= 1 for c in counts) / len(e_),
+                                "at_least_5": sum(c >= 5 for c in counts) / len(e_)}
+    print("   " + json.dumps(out["exposure"]))
     path.write_text(json.dumps(out, indent=1, default=str))
     print("saved results/deploy_checks.json")
 

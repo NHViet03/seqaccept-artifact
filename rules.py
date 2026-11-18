@@ -183,13 +183,15 @@ def seq_accept(n, block, alpha=0.05, eps=0.05, gamma=0.5, refund="max", max_bloc
     return Result(None, blocks)
 
 
-def discard_spending(n, block, alpha=0.05, eps=0.05, gamma=0.5, tau=0.5, max_blocks=None, reject_at=REJECT_AT):
+def discard_spending(n, block, alpha=0.05, eps=0.05, gamma=0.5, tau=0.5, max_blocks=None, reject_at=REJECT_AT, trace=None):
     """Comparator for refunds: online FWER spending with discarding (ADDIS-spending style, Tian and Ramdas 2021), with
     SeqAccept's wallets. Candidate j may spend s_j = gamma * pool and is tested at level tau * s_j. Its anytime p-value
     is 1 / (peak wallet); if that never fell to tau, the candidate is discarded and its whole s_j returns to the pool,
     otherwise s_j is spent. Validity in the adaptive setting is not covered by Theorem 6."""
     pool, blocks = alpha, 0
     for j in range(n):
+        if trace:
+            trace(pool)  # the pool before candidate j, for a white-box adversary
         s_j = gamma * pool
         E = R = peak = 1.0
         fails = 0

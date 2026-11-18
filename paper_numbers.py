@@ -1951,6 +1951,20 @@ def deploy_checks():
     m("discMax", pct(dmax))
     z = 1.96; nr = 2000
     m("discMaxUp", pct((dmax + z * z / (2 * nr) + z * ((dmax * (1 - dmax) / nr + z * z / (4 * nr * nr)) ** 0.5)) / (1 + z * z / nr)))
+    da = max(d["discard_adversary"].values())
+    m("discAdvMax", pct(da))
+    m("discAdvMaxUp", pct((da + z * z / (2 * nr) + z * ((da * (1 - da) / nr + z * z / (4 * nr * nr)) ** 0.5)) / (1 + z * z / nr)))
+    ex = d["exposure"]
+    m("expOneNat", pct(ex["natural"]["at_least_1"]))
+    m("expOneRf", pct(ex["realflaky"]["at_least_1"]))
+    m("expFiveRf", pct(ex["realflaky"]["at_least_5"]))
+    for arm, A in (("natural", "Nat"), ("realflaky", "Rf")):
+        v = dl[arm]["default"]
+        m(f"lat{A}Cal", num(d["latency"][arm]["default"] * v["bpa_loop"] / v["blocks_per_accept"]))
+    spr = load("results/design_checks.json")["split"]["total05"]["realflaky"]
+    m("dlBplDeltaRf", num(spr["blocks_per_accept"] * (1 + 400 / spr["blocks_per_loop"]), 0))
+    ftb = load("results/near_eps_checks.json")["firmer"]["pooled"]["B5 naive confidence sequence"]["tasks_lower_above"]
+    m("frTasksBfiveWord", "none" if ftb == 0 else str(ftb))
     m("fullMinRatio", f"{float(macros['costMinTaskSa']) / float(macros['fullMinBone']):.0f}")
     # 5. latency
     m("latBfourNat", num(d["latency"]["natural"]["B4"]))

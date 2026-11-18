@@ -70,6 +70,7 @@ TRACE = {  # every public function/class in impl/*.py -> where the paper or the 
     "near_eps_checks.save": "writes results/near_eps_checks.json after every step",
 "deploy_checks.accepted": "stream index each replay accepted, with the main replays' seeds (yamicache count, near-eps per candidate)",
 "deploy_checks.run15": "deploy_checks.py steps 1-5 (skipped with --resume when saved)",
+"deploy_checks.discard_adversary": "EASE round 11: discarding against a white-box adversary that sees the pool",
 "deploy_checks.variants": "EASE round 9: SeqAccept with refund share 1, 0.5, 0 and gamma 1/4 under dependent blocks",
 "deploy_checks.p0_blocks": "calibration blocks of an episode's task",
 "deploy_checks.deployment": "deployment rows: default, eps = L_0.99 + 0.05 at alpha 0.04, B4, fixed-n Bonferroni-15",

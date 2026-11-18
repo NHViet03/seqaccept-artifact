@@ -1559,7 +1559,7 @@ def checks():
     mg = load("results/sensitivity.json")["realflaky_margin"]["0.1"]
     rows += f"\\sa{{}}, margin 0.10 & yes$^*$ & {pct(mg['far'], 2)} & {pct(mg['frr'])} & {pct(mg['frr_high'])} & {macros['rfMarginBpaSa']}\\\\\n"
     write("tab_rf_main.tex", "\\begin{tabular}{@{}llrrrr@{}}\n\\toprule\n\\textbf{Rule} & \\textbf{Valid} & \\textbf{FAR \\%} {\\scriptsize[repo.\\ CI]} & "
-          "\\textbf{FRR \\%} & \\textbf{$p_0\\ge0.2$} & \\textbf{Blk/acc.}\\\\\n\\midrule\n" + rows + "\\bottomrule\n\\end{tabular}\n")
+          "\\textbf{FRR \\%} & \\textbf{FRR$_{p_0\\ge.2}$} & \\textbf{Blk/acc.}\\\\\n\\midrule\n" + rows + "\\bottomrule\n\\end{tabular}\n")
     # near-eps arm (checks.py 13): recorded natural loops re-graded on smaller blocks
     ne = d["neareps"]
     m("neLoops", ne["loops"])
@@ -1757,6 +1757,7 @@ def near_eps_checks():
     """Near-eps arm and cost checks: results/near_eps_checks.json (near_eps_checks.py)."""
     d = load("results/near_eps_checks.json")
     ne = d["neareps"]
+    per_loop = lambda r: r["blocks_per_accept"] * (1 + 400 / r["blocks_per_loop"])  # calibration repeated per loop
     K = {"B1 stop at first pass": "Bone", "B4 peeking Clopper-Pearson": "Bfour", "B5 naive confidence sequence": "Bfive",
          "B6 SeqAccept, no refund": "Bsix", "Harmonic spending": "Harm", "Bonferroni-100 spending": "BonfHundred",
          "Fixed-n Bonferroni-15 (1n0)": "Fixn", "SeqAccept": "Sa"}
@@ -1810,18 +1811,18 @@ def near_eps_checks():
         r = ne[n]
         if n == "SeqAccept":
             rows += "\\midrule\n"
-        bpa = num(r["bpa_calib"], 0) if r["bpa_calib"] else "--"
+        bpa = num(per_loop(r), 0) if r["blocks_per_accept"] else "--"
         rows += (f"{LAB[n]} & {VALID[n]} & {pct(r['far'], 2)} & {r['loops_above_alpha']} & {pct(r['worst_loop'])} & "
                  f"{num(r['blocks_per_loop'], 0)} & {bpa} & {pct(po[n]['far'], 2)} & {po[n]['loops_lower_above']}\\\\\n")
     cor = load("results/design_checks.json")["split"]["total10"]["neareps"]  # design_checks.py 4: Corollary 4.3 row
     rows += (f"\\sa{{}}, $\\eps=L+\\delta$ & yes$^\\dagger$ & {pct(cor['far'], 2)} & -- & {pct(cor['worst_loop'])} & "
-             f"{num(cor['blocks_per_loop'], 0)} & {num(cor['bpa_calib'], 0)} & -- & --\\\\\n")
+             f"{num(cor['blocks_per_loop'], 0)} & {num(per_loop(cor), 0)} & -- & --\\\\\n")
     rows += "\\midrule\n\\multicolumn{9}{@{}l}{\\textit{Earlier settings $\\rho=20$, $T=800$}}\\\\\n"
     for n in ("old B4", "old B5", "old B6", "old SeqAccept"):
         r = ne[n]
         lab = LAB[{"old B4": "B4 peeking Clopper-Pearson", "old B5": "B5 naive confidence sequence",
                    "old B6": "B6 SeqAccept, no refund", "old SeqAccept": "SeqAccept"}[n]]
-        bpa = num(r["bpa_calib"], 0) if r["bpa_calib"] else "--"
+        bpa = num(per_loop(r), 0) if r["blocks_per_accept"] else "--"
         rows += (f"\\quad {lab} & {VALID[{'old B4': 'B4 peeking Clopper-Pearson', 'old B5': 'B5 naive confidence sequence', 'old B6': 'B6 SeqAccept, no refund', 'old SeqAccept': 'SeqAccept'}[n]]} & {pct(r['far'], 2)} & {r['loops_above_alpha']} & {pct(r['worst_loop'])} & "
                  f"{num(r['blocks_per_loop'], 0)} & {bpa} & {pct(po[n]['far'], 2)} & {po[n]['loops_lower_above']}\\\\\n")
     write("tab_neareps.tex", "\\begin{tabular}{@{}llrrrrrrr@{}}\n\\toprule\n& & \\multicolumn{5}{c}{\\textbf{Labels on 200 blocks}} & "
@@ -1937,6 +1938,20 @@ def deploy_checks():
         m(f"selcFlaky{T}", f"{sc[t]['flaky_rate']:.2f}")
         m(f"selcPzero{T}", f"{sc[t]['p0']:.2f}")
         m(f"selcSec{T}", f"{sc[t]['seconds_per_block']:.2f}")
+    # 6-9. break-even dependence, yamicache count, near-eps per candidate, discarding
+    m("bePhiFifteen", f"{d['breakeven_phi']['15']:.2f}")
+    m("bePhiFifty", f"{d['breakeven_phi']['50']:.2f}")
+    y = d["yamicache"]
+    assert y["risky"] == y["false"], "the paper says all of SeqAccept's yamicache false acceptances have uncertain labels"
+    m("yamFalse", y["false"]); m("yamRisky", y["risky"]); m("yamReplays", y["replays"]); m("yamDistinct", y["distinct"])
+    for n, K in (("B4 peeking Clopper-Pearson", "Bfour"), ("B5 naive confidence sequence", "Bfive"), ("SeqAccept", "Sa")):
+        m(f"nc{K}Distinct", d["near_candidates"][n]["distinct"])
+        m(f"nc{K}False", d["near_candidates"][n]["false"])
+    dmax = max(d["discarding"].values())
+    m("discMax", pct(dmax))
+    z = 1.96; nr = 2000
+    m("discMaxUp", pct((dmax + z * z / (2 * nr) + z * ((dmax * (1 - dmax) / nr + z * z / (4 * nr * nr)) ** 0.5)) / (1 + z * z / nr)))
+    m("fullMinRatio", f"{float(macros['costMinTaskSa']) / float(macros['fullMinBone']):.0f}")
     # 5. latency
     m("latBfourNat", num(d["latency"]["natural"]["B4"]))
     m("latBfourRf", num(d["latency"]["realflaky"]["B4"]))

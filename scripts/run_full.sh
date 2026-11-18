@@ -36,8 +36,10 @@ step "invariant, runs-test power, paired intervals, caps, no replacement -> resu
 "$PY" checks.py
 step "cap ablation: shared cap against caps scaled with log(1/alpha_j) -> results/slice_caps.json"
 "$PY" slice_caps.py
-step "round-7 checks: near-eps comparators and labels, cap 10,000, refund crossing, redrawn eps, start-up cost -> results/round7.json"
-"$PY" round7_checks.py
+step "near-eps comparators and labels, cap 10,000, refund crossing, redrawn eps, start-up cost -> results/near_eps_checks.json"
+"$PY" near_eps_checks.py
+step "design checks: mixture wallet, gamma, harmonic with refund, power-sized fixed-n, Corollary 4.3 at total level 0.05 -> results/design_checks.json"
+"$PY" design_checks.py
 step "paper numbers, tables and figures                    -> ${SEQACCEPT_PAPER_DIR:-paper_out}"
 "$PY" paper_numbers.py
 echo; echo "done"

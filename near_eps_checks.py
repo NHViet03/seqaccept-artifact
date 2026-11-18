@@ -1,4 +1,4 @@
-"""EASE round-7 follow-ups (offline, no LLM or Docker). Writes results/round7.json.
+"""Near-eps arm and cost checks (offline, no LLM or Docker). Writes results/near_eps_checks.json.
 
 1. Near-eps arm, every comparator, at the shared defaults and at rho = 20, T = 800: FAR, worst loop, loops above alpha,
    FRR, blocks per loop and per accept, per accept with the task's p0 calibration, minutes per accept; per task.
@@ -10,7 +10,7 @@
 5. Real-flaky arm with eps redrawn per replay from a bootstrap of the task's 400 calibration blocks, scored against
    labels at the recorded p0 + 0.05.
 
-  uv run python round7_checks.py
+  uv run python near_eps_checks.py
 """
 import json
 import random
@@ -148,7 +148,7 @@ def overhead_model(natural, starts=(0, 100, 1000)):
 
 
 def save(out):
-    Path("results/round7.json").write_text(json.dumps(out, indent=1, default=str))
+    Path("results/near_eps_checks.json").write_text(json.dumps(out, indent=1, default=str))
 
 
 if __name__ == "__main__":
@@ -157,7 +157,7 @@ if __name__ == "__main__":
     flaky = load("episodes_flaky", lambda p: not replay.excluded(p))
     near = load("episodes_neareps")
     R = replay.NEAR_REPS
-    out = json.loads(Path("results/round7.json").read_text()) if "--resume" in sys.argv and Path("results/round7.json").exists() else {}
+    out = json.loads(Path("results/near_eps_checks.json").read_text()) if "--resume" in sys.argv and Path("results/near_eps_checks.json").exists() else {}
 
     print("1. near-eps arm, every comparator")
     if "neareps" not in out:
@@ -221,4 +221,4 @@ if __name__ == "__main__":
           + " " + json.dumps({s: {k: round(v, 2) for k, v in d.items() if k.split("-")[0] != "640"} for s, d in out["overhead"]["ratio_B1"].items()}))
 
     save(out)
-    print("saved results/round7.json")
+    print("saved results/near_eps_checks.json")

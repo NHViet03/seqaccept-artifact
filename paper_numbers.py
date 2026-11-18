@@ -1098,7 +1098,7 @@ def figure_ease(d):
     fig.savefig(FIGS / "truthpool.pdf", bbox_inches="tight")
     plt.close(fig)
     # operating curve near eps at p0 = 0 and 0.2
-    fig, axes = plt.subplots(1, 2, figsize=(3.4, 1.6))
+    fig, axes = plt.subplots(1, 2, figsize=(3.4, 1.8))
     for p0, mk in ((0.0, "o"), (0.2, "s")):
         rows = [r for r in d["operating"] if r["p0"] == p0]
         gaps = [r["eps"] - r["p"] for r in rows]
@@ -1195,7 +1195,7 @@ def figure_ease(d):
             return w10[str(n)][name], (1000 if n < 50 else 400)
         r = next(r for r in w["rows"] if r["p"] == p and r["n"] == n)
         return r["far"][name], r["reps"]
-    fig, axes = plt.subplots(1, 4, figsize=(6.8, 1.6))
+    fig, axes = plt.subplots(1, 4, figsize=(6.8, 1.8))
     for ax, name in zip(axes, shown):
         grid = [[cell(p, n, name)[0] for n in ns] for p in ps]
         ax.imshow(grid, cmap="Reds", vmin=0, vmax=1, aspect="auto")
@@ -1206,7 +1206,7 @@ def figure_ease(d):
                 far, reps = cell(p, n, name)  # every cell: the 95% Wilson upper bound below the rate
                 up = wilson(round(far * reps), reps)[1]
                 txt += f"\n\u2264{100 * up:.0f}" if up >= 0.1 else f"\n\u2264{100 * up:.1f}"
-                ax.text(j, i, txt, ha="center", va="center", fontsize=5, linespacing=0.9,
+                ax.text(j, i, txt, ha="center", va="center", fontsize=6, linespacing=0.9,
                         color="white" if v > 50 else (INK if v <= 5 else "#7a1f1f"), fontweight="bold" if v > 5 else "normal")
                 if far > 0.05:  # outline cells whose rate exceeds alpha
                     ax.add_patch(plt.Rectangle((j - 0.48, i - 0.48), 0.96, 0.96, fill=False, ec=INK, lw=0.8))
@@ -1612,7 +1612,7 @@ def checks():
                     [pct(rs[n]["frr"] or 0) for n in ("B4", "B5", "SeqAccept")] + \
                     [num(rs[n]["blocks_per_loop"], 0) for n in ("B4", "B5", "SeqAccept")]
             rows += f"\\quad {SET[kname]} & " + " & ".join(cells) + "\\\\\n"
-        big = load("results/round7.json")["big_cap"][arm]  # round7_checks.py 3: the same rules with T = 10,000
+        big = load("results/near_eps_checks.json")["big_cap"][arm]  # near_eps_checks.py 3: the same rules with T = 10,000
         cells = [pct(big[n]["far"], 2) for n in ("B4", "B5", "SeqAccept")] + \
                 [pct(big[n]["frr"] or 0) for n in ("B4", "B5", "SeqAccept")] + \
                 [num(big[n]["blocks_per_loop"], 0) for n in ("B4", "B5", "SeqAccept")]
@@ -1728,9 +1728,9 @@ def ease2():
           "\\begin{tabular}{@{}llrrrrr|rrrrr@{}}\n\\toprule\n"
           "& & \\multicolumn{3}{c}{\\textbf{Natural loops (" + str(len(nat)) + ")}} & \\multicolumn{2}{c|}{\\textbf{Injected FAR \\%}} & \\multicolumn{5}{c}{\\textbf{Cost, natural loops}}\\\\\n"
           "\\cmidrule(lr){3-5}\\cmidrule(lr){6-7}\\cmidrule(lr){8-12}\n"
-          "& & & & & & & & & \\multicolumn{2}{c}{\\textbf{with $p_0$, per}} & \\\\\n"
+          "& & & & & & & & \\multicolumn{3}{c}{\\textbf{Blk/acc., $p_0$ calibration}} & \\\\\n"
           "\\textbf{Rule} & \\textbf{Valid} & \\textbf{FAR \\%} {\\scriptsize[repo.\\ CI]} & \\textbf{Bugs hit} {\\scriptsize(UB \\%)} & \\textbf{FRR \\%} & "
-          "\\textbf{Bern.} & \\textbf{Markov} & \\textbf{Blk/loop} & \\textbf{Blk/acc.} & \\textbf{task} & \\textbf{loop} & \\textbf{Min/acc.}\\\\\n\\midrule\n"
+          "\\textbf{Bern.} & \\textbf{Markov} & \\textbf{Blk/loop} & \\textbf{none} & \\textbf{per task} & \\textbf{per loop} & \\textbf{Min/acc.}\\\\\n\\midrule\n"
           + rows + "\\bottomrule\n\\end{tabular}\n")
 
 
@@ -1753,9 +1753,9 @@ def slice_caps():
     m("scNeRatioSaBfive", f'{sl["SeqAccept"]["blocks_per_loop"] / sl["B5"]["blocks_per_loop"]:.2f}')
     assert d["slice"]["natural"]["SeqAccept"]["far"] == 0, "text: no false acceptance on natural loops with either cap"
 
-def round7():
-    """EASE round-7 follow-ups: results/round7.json (round7_checks.py)."""
-    d = load("results/round7.json")
+def near_eps_checks():
+    """Near-eps arm and cost checks: results/near_eps_checks.json (near_eps_checks.py)."""
+    d = load("results/near_eps_checks.json")
     ne = d["neareps"]
     K = {"B1 stop at first pass": "Bone", "B4 peeking Clopper-Pearson": "Bfour", "B5 naive confidence sequence": "Bfive",
          "B6 SeqAccept, no refund": "Bsix", "Harmonic spending": "Harm", "Bonferroni-100 spending": "BonfHundred",
@@ -1790,6 +1790,9 @@ def round7():
         mins = num(r["min_per_accept"]) if r["min_per_accept"] else "--"
         rows += (f"{LAB[n]} & {pct(r['far'], 2)} & {r['loops_above_alpha']} & {pct(r['worst_loop'])} ({pct(r['worst_loop_upper'])}) & "
                  f"{num(r['blocks_per_loop'], 0)} & {bpa} & {mins}\\\\\n")
+    cor = load("results/design_checks.json")["split"]["total10"]["neareps"]  # design_checks.py 4: Corollary 4.3 row
+    rows += (f"\\sa{{}}, $\\eps=L+\\delta^\\dagger$ & {pct(cor['far'], 2)} & -- & {pct(cor['worst_loop'])} & "
+             f"{num(cor['blocks_per_loop'], 0)} & {num(cor['bpa_calib'], 0)} & --\\\\\n")
     rows += "\\midrule\n\\multicolumn{7}{@{}l}{\\textit{Earlier settings $\\rho=20$, $T=800$}}\\\\\n"
     for n in ("old B4", "old B5", "old B6", "old SeqAccept"):
         r = ne[n]
@@ -1800,7 +1803,7 @@ def round7():
         rows += (f"\\quad {lab} & {pct(r['far'], 2)} & {r['loops_above_alpha']} & {pct(r['worst_loop'])} ({pct(r['worst_loop_upper'])}) & "
                  f"{num(r['blocks_per_loop'], 0)} & {bpa} & {mins}\\\\\n")
     write("tab_neareps.tex", "\\begin{tabular}{@{}lrrrrrr@{}}\n\\toprule\n\\textbf{Rule} & \\textbf{FAR \\%} & $>\\alpha$ & "
-          "\\textbf{Worst} & \\textbf{Blk/loop} & \\textbf{Blk/acc.} & \\textbf{Min.}\\\\\n\\midrule\n" + rows + "\\bottomrule\n\\end{tabular}\n")
+          "\\textbf{Worst} & \\textbf{Blk/loop} & \\textbf{Blk/acc.\\ (cal.)} & \\textbf{Min.}\\\\\n\\midrule\n" + rows + "\\bottomrule\n\\end{tabular}\n")
     # per task (supplement)
     tasks = sorted(sa["per_task"])
     four = ("B4 peeking Clopper-Pearson", "B5 naive confidence sequence", "B6 SeqAccept, no refund", "SeqAccept")
@@ -1852,6 +1855,65 @@ def round7():
             m(f"oh{T}{L}Big", f"{oh['ratio_B1'][k][f'10000-{ell}']:.2f}")
 
 
+def design_checks():
+    """Design checks: results/design_checks.json (design_checks.py)."""
+    d = load("results/design_checks.json")
+    A = {"natural": "Nat", "neareps": "Ne", "realflaky": "Rf"}
+    W = {"SeqAccept": "Sa", "SeqAccept, mixture wallet": "Mix", "SeqAccept, gamma 3/4": "Gam"}
+    for arm, a in A.items():
+        for n, w in W.items():
+            v = d["wallets"][arm][n]
+            m(f"dc{w}Far{a}", pct(v["far"], 2))
+            m(f"dc{w}Frr{a}", pct(v["frr"] or 0, 2))
+            m(f"dc{w}Bpl{a}", num(v["blocks_per_loop"], 0))
+    S = {"SeqAccept": "Sa", "B6": "Bsix", "Harmonic": "Harm", "Harmonic + refund": "HarmRef"}
+    for cap, c in (("shared", "Sh"), ("slice", "Sl")):
+        for n, k in S.items():
+            m(f"hr{c}LateForty{k}", pct(d["schedules"][cap]["late40"][n]))
+            m(f"hr{c}LateTen{k}", pct(d["schedules"][cap]["late10"][n]))
+            m(f"hr{c}NeBpl{k}", num(d["schedules"][cap]["neareps"][n]["blocks_per_loop"], 0))
+    fp = d["fixed_power"]
+    sa_bpa = d["wallets"]["natural"]["SeqAccept"]["blocks_per_accept"]
+    for cap, c in (("15", "Fifteen"), ("100", "Hundred"), ("1000", "Thousand")):
+        m(f"fpBpa{c}", num(fp[cap]["fixed"]["blocks_per_accept"], 0))
+        m(f"fpRatio{c}", num(fp[cap]["fixed"]["blocks_per_accept"] / sa_bpa, 1))
+        m(f"fpLateTen{c}", pct(fp[cap]["fixed"]["late10"]))
+        m(f"fpLateForty{c}", pct(fp[cap]["fixed"]["late40"]))
+        m(f"fpM{c}", fp[cap]["m"])
+        m(f"fpNzeroRatio{c}", num(fp[cap]["fixed n0"]["blocks_per_accept"] / sa_bpa, 1))
+    m("fpSaBpa", num(sa_bpa, 0))
+    sp = d["split"]
+    m("spDelta", f"{sp['total05']['delta']:.3f}")
+    for arm, a in A.items():
+        v = sp["total05"][arm]
+        m(f"sp{a}Far", pct(v["far"], 2))
+        m(f"sp{a}Frr", pct(v["frr"] or 0, 2))
+        m(f"sp{a}Bpa", num(v["blocks_per_accept"], 0))
+        m(f"sp{a}Worst", pct(v["worst_loop"]))
+    m("spRfFrrHigh", pct(sp["total05"]["realflaky"]["frr_high"] or 0, 2))
+    m("spNatRatio", num(sp["total05"]["natural"]["blocks_per_accept"] / sa_bpa, 1))
+    t10 = sp["total10"]["neareps"]
+    m("spTenNeFar", pct(t10["far"], 2))
+    m("spTenNeWorst", pct(t10["worst_loop"]))
+    m("spTenNeBpl", num(t10["blocks_per_loop"], 0))
+    m("spTenNeBpa", num(t10["bpa_calib"], 0))
+    nl = d["near_lower"]
+    for n, k in (("B4 peeking Clopper-Pearson", "Bfour"), ("B5 naive confidence sequence", "Bfive"), ("SeqAccept", "Sa")):
+        m(f"nlLoops{k}", nl[n]["loops_lower_above"])
+        m(f"nlTasks{k}", nl[n]["tasks_lower_above"])
+        m(f"nlTaskMax{k}", pct(max(v["far"] for v in nl[n]["tasks"].values()), 2))
+        m(f"nlTaskMin{k}", pct(min(v["far"] for v in nl[n]["tasks"].values()), 2))
+    lat = d["latency"]
+    for arm, a in A.items():
+        m(f"lat{a}", num(lat[arm]["minutes_at_8"]))
+    ne = load("results/near_eps_checks.json")["neareps"]
+    m("crBfourNe", num(ne["SeqAccept"]["bpa_calib"] / ne["B4 peeking Clopper-Pearson"]["bpa_calib"], 1))
+    rf = load("results/extra.json")["realflaky"]["table"]
+    m("crBfourRf", num(rf["SeqAccept"]["blocks_per_accept"] / rf["B4 peeking Clopper-Pearson"]["blocks_per_accept"], 1))
+    ct = load("results/caps_adversary.json")["realflaky_tasks"]
+    m("rfYamiNear", ct["yamicache@realflaky"]["near_broken"])
+
+
 if __name__ == "__main__":
     GEN.mkdir(parents=True, exist_ok=True)
     FIGS.mkdir(parents=True, exist_ok=True)
@@ -1877,7 +1939,8 @@ if __name__ == "__main__":
     ease4()
     sens()
     checks()
-    round7()
+    near_eps_checks()
+    design_checks()
     exec_order()
     (GEN / "numbers.tex").write_text(
         "% generated by intern1/impl/paper_numbers.py; do not edit\n"

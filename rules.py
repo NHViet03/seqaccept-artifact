@@ -146,7 +146,7 @@ def seq_accept(n, block, alpha=0.05, eps=0.05, gamma=0.5, refund="max", max_bloc
                     break
             if failed:
                 continue  # skipped before it gets a slice: no budget spent
-        alpha_j = gamma * pool  # slice of the error budget this candidate may spend
+        alpha_j = (gamma(j) if callable(gamma) else gamma) * pool  # slice; gamma may be chosen per candidate (Thm 4.2)
         pool -= alpha_j
         E = R = 1.0  # E: bets the candidate is fine (p <= eps); R: bets it is broken (p > eps)
         mix = [1.0] * MIX_K if bet == "mixture" else None

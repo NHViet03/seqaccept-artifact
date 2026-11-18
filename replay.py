@@ -129,7 +129,9 @@ def cp_upper(k, n, alpha=0.05):
     lo, hi = k / n, 1.0
     for _ in range(60):  # bisection on Binom(n, p).cdf(k) = alpha, which falls as p rises
         mid = (lo + hi) / 2
-        cdf = sum(math.comb(n, i) * mid ** i * (1 - mid) ** (n - i) for i in range(k + 1))
+        lc = math.lgamma(n + 1)  # log space: math.comb(n, i) overflows a float for n above about 1,000
+        cdf = sum(math.exp(lc - math.lgamma(i + 1) - math.lgamma(n - i + 1) + i * math.log(mid) + (n - i) * math.log1p(-mid))
+                  for i in range(k + 1))
         lo, hi = (mid, hi) if cdf > alpha else (lo, mid)
     return hi
 

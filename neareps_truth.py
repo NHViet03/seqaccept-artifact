@@ -9,6 +9,8 @@ runs/blocks/<task>-truth.jsonl, so an interrupted run resumes, and a larger --ex
 
   uv run python neareps_truth.py --plan
   uv run python neareps_truth.py [--extra 2000] [--workers 8] 2>&1 | tee -a runs/neareps_truth.log
+  uv run python neareps_truth.py --episodes episodes_flaky --task yamicache@realflaky --out results/flaky_truth.json
+      (EASE round 12: the real-flaky yamicache candidates within 3 points of eps, behind SeqAccept's false acceptances)
 """
 import argparse
 import json
@@ -23,14 +25,16 @@ BAND, SEED0 = 0.03, 1_000_001
 OUT = Path("results/neareps_truth.json")
 
 
-def near_candidates():
+def near_candidates(episodes="episodes_neareps", task_prefix=""):
     """{task: {fix_id: (code, truth rate, mean block seconds)}} for candidates within BAND of eps."""
     code = {}
     for bug, stream, name in jobs():
         for c in json.loads(stream.read_text())["stream"]:
             code.setdefault((bug, c["fix_id"]), c["code"])
     out = {}
-    for p in sorted(Path("episodes_neareps").glob("*.json")):
+    for p in sorted(Path(episodes).glob(f"{task_prefix}*.json")):
+        if replay.excluded(p):
+            continue
         ep, task = json.loads(p.read_text()), p.stem.split("-")[0]
         eps = ep["p0"] + replay.MARGIN
         for f in ep["stream"]:
@@ -46,8 +50,12 @@ if __name__ == "__main__":
     ap.add_argument("--extra", type=int, default=2000, help="extra truth blocks per candidate")
     ap.add_argument("--workers", type=int, default=8)
     ap.add_argument("--plan", action="store_true", help="print the candidates and the expected time; run nothing")
+    ap.add_argument("--episodes", default="episodes_neareps", help="episode folder (episodes_flaky for the real-flaky arm)")
+    ap.add_argument("--task", default="", help="episode-name prefix, e.g. yamicache@realflaky")
+    ap.add_argument("--out", default=str(OUT), help="output JSON")
     a = ap.parse_args()
-    cands = near_candidates()
+    OUT = Path(a.out)
+    cands = near_candidates(a.episodes, a.task)
     n = sum(map(len, cands.values()))
     secs = sum(s for d in cands.values() for _, _, s in d.values()) * a.extra / a.workers
     log(f"near-eps truth: {n} candidates ({', '.join(f'{t} {len(d)}' for t, d in cands.items())}), {a.extra} extra "

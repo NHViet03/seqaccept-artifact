@@ -1825,7 +1825,7 @@ def near_eps_checks():
         bpa = num(per_loop(r), 0) if r["blocks_per_accept"] else "--"
         rows += (f"\\quad {lab} & {VALID[{'old B4': 'B4 peeking Clopper-Pearson', 'old B5': 'B5 naive confidence sequence', 'old B6': 'B6 SeqAccept, no refund', 'old SeqAccept': 'SeqAccept'}[n]]} & {pct(r['far'], 2)} & {r['loops_above_alpha']} & {pct(r['worst_loop'])} & "
                  f"{num(r['blocks_per_loop'], 0)} & {bpa} & {pct(po[n]['far'], 2)} & {po[n]['loops_lower_above']}\\\\\n")
-    write("tab_neareps.tex", "\\begin{tabular}{@{}llrrrrrrr@{}}\n\\toprule\n& & \\multicolumn{5}{c}{\\textbf{Labels on 200 blocks}} & "
+    write("tab_neareps.tex", "\\begin{tabular}{@{}llrrrrrrr@{}}\n\\toprule\n& & \\multicolumn{5}{c}{\\textbf{Labels on \\nTruth{} blocks}} & "
           "\\multicolumn{2}{c}{\\textbf{Re-measured}}\\\\\n\\cmidrule(lr){3-7}\\cmidrule(l){8-9}\n\\textbf{Rule} & \\textbf{Valid} & \\textbf{FAR \\%} & $>\\alpha$ & "
           "\\textbf{Worst} & \\textbf{Blk/loop} & \\textbf{Blk/acc.} & \\textbf{FAR \\%} & \\textbf{LB}\\\\\n\\midrule\n"
           + rows + "\\bottomrule\n\\end{tabular}\n")
@@ -1915,6 +1915,11 @@ def deploy_checks():
         rows.append(f"{name} & {g} & " + " & ".join(cells) + "\\\\\n")
     cells = []
     for arm in ("natural", "neareps", "realflaky"):
+        v = d["default04"][arm]
+        cells += [pct(v["far"], 2), pct(v["frr"] or 0, 1), num(v["bpa_loop"], 0)]
+    rows.insert(1, f"\\sa{{}}, $\\eps=\\hat p_0+0.05$, $\\alpha=0.04$ & $p_0+\\delta$, 0.05$^\\ddagger$ & " + " & ".join(cells) + "\\\\\n")
+    cells = []
+    for arm in ("natural", "neareps", "realflaky"):
         v = sp[arm]
         per_loop = v["blocks_per_accept"] * (1 + 400 / v["blocks_per_loop"])
         cells += [pct(v["far"], 2), pct(v["frr"] or 0, 1), num(per_loop, 0)]
@@ -1966,6 +1971,42 @@ def deploy_checks():
     ftb = load("results/near_eps_checks.json")["firmer"]["pooled"]["B5 naive confidence sequence"]["tasks_lower_above"]
     m("frTasksBfiveWord", "none" if ftb == 0 else str(ftb))
     m("fullMinRatio", f"{float(macros['costMinTaskSa']) / float(macros['fullMinBone']):.0f}")
+    # per-candidate FAR near eps (step 8), default at alpha 0.04 (step 12), deflated wallet (step 13)
+    nc = d["near_candidates"]
+    m("ncCands", nc["SeqAccept"]["candidates"])
+    for n, K in (("B4 peeking Clopper-Pearson", "Bfour"), ("B5 naive confidence sequence", "Bfive"), ("SeqAccept", "Sa")):
+        m(f"nc{K}AboveLow", nc[n]["above_alpha_lower"])
+        w = nc[n]["worst"]
+        m(f"nc{K}Worst", pct(w["far"])); m(f"nc{K}WorstLo", pct(w["lower"])); m(f"nc{K}WorstUp", pct(w["upper"]))
+    dz = d["default04"]
+    for arm, A in (("natural", "Nat"), ("neareps", "Ne"), ("realflaky", "Rf")):
+        m(f"dzFrr{A}", pct(dz[arm]["frr"] or 0)); m(f"dzFar{A}", pct(dz[arm]["far"], 2))
+        m(f"dzBpl{A}", num(dz[arm]["bpa_loop"], 0)); m(f"dzFarWide{A}", pct(dz[arm]["far_wide"]["default04"], 2))
+    m("dzFrrHighRf", pct(dz["realflaky"]["frr_high"] or 0))
+    spn = load("results/design_checks.json")["split"]["total05"]["natural"]
+    m("dlBplDeltaNat", num(spn["blocks_per_accept"] * (1 + 400 / spn["blocks_per_loop"]), 0))
+    df = d["deflated"]
+    for pm, P in (("0.25", "Quarter"), ("0.5", "Half")):
+        m(f"dfFarLow{P}", pct(df[pm]["far"]["0.2"])); m(f"dfFarMid{P}", pct(df[pm]["far"]["0.5"]))
+        m(f"dfFrrRf{P}", pct(df[pm]["realflaky"]["frr"] or 0)); m(f"dfBpaNat{P}", num(df[pm]["natural"]["blocks_per_accept"], 0))
+        m(f"dfBpaRf{P}", num(df[pm]["realflaky"]["blocks_per_accept"], 0))
+    from near_eps_checks import BIG_CAP
+    m("bigCap", f"{BIG_CAP:,}".replace(",", "{,}"))
+    # inverse of the supplement's result-to-script map: each paper table and figure with every script it draws on
+    import re as _re
+    sup = (GEN.parent / "supplement.tex").read_text()
+    body = sup[sup.index("\\label{stab:map}"):]
+    body = body[body.index("\\midrule"):body.index("\\end{tabular}")]
+    inv = {}
+    for rowtxt in body.split("\\\\"):
+        refs = [("Table" if k == "tab" else "Figure", f"M-{k}:{n}") for k, n in _re.findall(r"\\ref\{M-(tab|fig):([A-Za-z]+)\}", rowtxt)]
+        scripts = _re.findall(r"\\texttt\{([A-Za-z0-9_\\]+?)\.py\}", rowtxt)
+        for kind, ref in refs:
+            inv.setdefault((kind, ref), set()).update(scripts)
+    rows = "".join(f"{kind}~\\ref{{{ref}}} & " + (", ".join(f"\\texttt{{{sc}.py}}" for sc in sorted(v)) or "drawn by hand") + "\\\\\n"
+                   for (kind, ref), v in sorted(inv.items(), key=lambda kv: (kv[0][0] != "Table", kv[0][1])))
+    write("tab_map_inverse.tex", "\\begin{tabular}{@{}lp{0.72\\linewidth}@{}}\n\\toprule\n\\textbf{In the paper} & \\textbf{Scripts}\\\\\n\\midrule\n"
+          + rows + "\\bottomrule\n\\end{tabular}\n")
     # 5. latency
     m("latBfourNat", num(d["latency"]["natural"]["B4"]))
     m("latBfourRf", num(d["latency"]["realflaky"]["B4"]))

@@ -24,6 +24,15 @@
 10. Discarding against the white-box adversary of caps_adversary.py, which sees the pool before each candidate: policy
     "near" (every candidate at p = 0.051) and "switch" (near candidates while the pool is at least alpha / 2, then
     alternating quickly rejected ones at p = 0.9 with near ones), 15 and 50 candidates, 2,000 runs.
+12. The default at alpha = 0.04 on every arm (with alpha_0 = 0.01 it protects the true p0 + 0.109 at total level
+    0.05, the plug-in corollary), and the default at 0.05 and 0.04 scored against labels at p0hat + 0.109.
+13. Deflated-eps accept wallet under lag-1 dependence: SeqAccept run at eps' = eps (1 - phi_max), phi_max 0.25 and 0.5,
+    on 15 broken candidates at p = 0.06 with phi 0, 0.2 and 0.5 (2,000 runs, seed 51; FAR scored at eps), and its FRR
+    and cost on natural and real-flaky loops. Under a two-state lag-1 chain a broken candidate fails after a pass with
+    probability p (1 - phi) > eps', so the wallet stays a supermartingale for phi <= phi_max.
+14. If results/flaky_truth.json exists (neareps_truth.py on yamicache@realflaky, Docker): yamicache relabelled with all
+    of each re-measured candidate's blocks as pool and label, SeqAccept's FAR there, and the re-measured rates of the
+    candidates behind its false acceptances.
 11. Exposure: share of recorded loops with at least 1 and at least 5 Broken candidates (stream positions) failing within
     one point above eps on their truth blocks, the counts at which B4 and B5 exceed alpha on the constructed grid.
 
@@ -41,6 +50,7 @@ import sys
 from caps_adversary import ambiguous_labels
 from extra_analyses import correlated, evaluate_rules, first_green, margin_labels
 from intervals import cp_lower
+from replay import cp_upper
 from near_eps_checks import firmer
 from rules import all_rules, bonferroni, discard_spending, fixed_n, seq_accept
 from sim import experiment
@@ -211,6 +221,7 @@ if __name__ == "__main__":
                     yam["risky"] += 1
                     yam["distinct_risky"].add(ep["stream"][j])
     out["yamicache"] = {k: (len(v) if isinstance(v, set) else v) for k, v in yam.items()}
+    out["yamicache"]["ids"] = sorted(yam["distinct"])
     print("   " + json.dumps(out["yamicache"]))
 
     print("8. near-eps false acceptances per distinct candidate (scored on all blocks)")
@@ -218,15 +229,24 @@ if __name__ == "__main__":
     out["near_candidates"] = {}
     for name in ("B4 peeking Clopper-Pearson", "B5 naive confidence sequence", "SeqAccept"):
         got = accepted(lambda ep, n=name: all_rules(eps=eps_of(ep))[n], pooled, replay.NEAR_REPS)
-        per = {}
+        per, den = {}, {}
         for ep, g in zip(pooled, got):
-            labs = replay.labels(ep)
+            labs, task = replay.labels(ep), ep["name"].split("-")[0]
+            for f in {f for f, l in zip(ep["stream"], labs) if l == "broken"}:
+                den[(task, f)] = den.get((task, f), 0) + len(g)  # replays of loops that hold this candidate
             for j in g:
                 if j is not None and labs[j] == "broken":
-                    key = (ep["name"].split("-")[0], ep["stream"][j])
+                    key = (task, ep["stream"][j])
                     per[key] = per.get(key, 0) + 1
+        rates = {k: (per.get(k, 0), den[k]) for k in den}
+        worst = max(rates.items(), key=lambda kv: kv[1][0] / kv[1][1])
         out["near_candidates"][name] = {"distinct": len(per), "false": sum(per.values()),
-                                       "top_share": max(per.values()) / sum(per.values()) if per else 0.0}
+                                       "top_share": max(per.values()) / sum(per.values()) if per else 0.0,
+                                       "candidates": len(den),
+                                       "worst": {"task": worst[0][0], "far": worst[1][0] / worst[1][1], "n": worst[1][1],
+                                                 "lower": cp_lower(*worst[1]), "upper": cp_upper(*worst[1])},
+                                       "above_alpha_lower": sum(cp_lower(k, n) > ALPHA for k, n in rates.values()),
+                                       "above_alpha_point": sum(k / n > ALPHA for k, n in rates.values())}
     print("   " + json.dumps(out["near_candidates"]))
 
     print("9. discarding on constructed near-eps streams")
@@ -245,6 +265,49 @@ if __name__ == "__main__":
         out["exposure"][arm] = {"loops": len(e_), "at_least_1": sum(c >= 1 for c in counts) / len(e_),
                                 "at_least_5": sum(c >= 5 for c in counts) / len(e_)}
     print("   " + json.dumps(out["exposure"]))
+
+    print("12. default at alpha 0.04; default scored at p0hat + 0.109")
+    sp_delta = json.loads(Path("results/design_checks.json").read_text())["split"]["total05"]["delta"]
+    out["default04"] = {"delta": sp_delta}
+    for arm, e_, reps in arms:
+        d04 = evaluate_rules(e_, lambda ep: {"default04": partial(seq_accept, alpha=0.04, eps=eps_of(ep))}, reps=reps,
+                             labels_of=margin_labels(replay.MARGIN))["default04"]
+        wide = evaluate_rules(e_, lambda ep: {"default": partial(seq_accept, eps=eps_of(ep)),
+                                              "default04": partial(seq_accept, alpha=0.04, eps=eps_of(ep))},
+                              reps=reps, labels_of=margin_labels(sp_delta))
+        out["default04"][arm] = {**row(d04, e_), "far_wide": {k: mean(r["far"] for r in rs) for k, rs in wide.items()},
+                                 "worst_wide": {k: max(r["far"] for r in rs) for k, rs in wide.items()}}
+    print("   " + json.dumps({a: [round(100 * v["far"], 2), round(100 * (v["frr"] or 0), 2), round(v["bpa_loop"] or 0),
+                                  {k: round(100 * x, 2) for k, x in v["far_wide"].items()}]
+                              for a, v in out["default04"].items() if a != "delta"}))
+
+    print("13. deflated-eps accept wallet under lag-1 dependence")
+    out["deflated"] = {}
+    for pm in (0.25, 0.5):
+        rule = partial(seq_accept, eps=0.05 * (1 - pm))
+        d = {"far": {str(phi): correlated(rule, CORR_P, 15, phi, 2000, 51) for phi in PHIS}}
+        for arm, e_, reps in (("natural", natural, replay.REPS), ("realflaky", flaky, replay.REPS)):
+            rs = evaluate_rules(e_, lambda ep: {"d": partial(seq_accept, eps=eps_of(ep) * (1 - pm))}, reps=reps)["d"]
+            d[arm] = row(rs, e_)
+        out["deflated"][str(pm)] = d
+    print("   " + json.dumps({pm: [{k: round(100 * v, 1) for k, v in d["far"].items()},
+                                  [round(100 * (d[a]["frr"] or 0), 1) for a in ("natural", "realflaky")],
+                                  [round(d[a]["blocks_per_accept"] or 0) for a in ("natural", "realflaky")]]
+                              for pm, d in out["deflated"].items()}))
+
+    ft = Path("results/flaky_truth.json")
+    if ft.exists():
+        print("14. yamicache relabelled with the re-measured blocks")
+        truth = json.loads(ft.read_text())
+        yam_eps = [ep for ep in flaky if ep["name"].startswith("yamicache@")]
+        pooled_y = firmer(yam_eps, truth, pooled=True)
+        rs = evaluate_rules(pooled_y, lambda ep: {"SeqAccept": partial(seq_accept, eps=eps_of(ep))})["SeqAccept"]
+        rate = {f: v["truth200"] for t in truth.values() for f, v in t.items()}
+        firm = {f: mean(v["extra"]) for t in truth.values() for f, v in t.items()}
+        out["yamicache_firm"] = {"far": mean(r["far"] for r in rs), "worst": max(r["far"] for r in rs),
+                                 "accepted": {f: {"truth200": rate.get(f), "extra": firm.get(f)} for f in out["yamicache"]["ids"]},
+                                 "eps": eps_of(yam_eps[0])}
+        print("   " + json.dumps(out["yamicache_firm"]))
     path.write_text(json.dumps(out, indent=1, default=str))
     print("saved results/deploy_checks.json")
 

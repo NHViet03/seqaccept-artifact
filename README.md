@@ -76,6 +76,7 @@ uv run python fullsuite.py                         # Docker only: full-suite run
 uv run python flaky_arm.py                         # Docker only: real flaky tests kept
 uv run python near_eps_arm.py --plan                # Docker only (without --plan): recorded loops on smaller blocks, broken candidates near eps
 uv run python neareps_truth.py --plan               # Docker only (without --plan): 2,000 extra truth blocks per near-eps candidate, for firmer labels
+uv run python neareps_truth.py --plan --episodes episodes_flaky --task yamicache@realflaky --out results/flaky_truth.json   # Docker only (without --plan): the same for yamicache with flaky tests kept; deploy_checks.py step 14 rescores it
 uv run python exec_order.py run                    # Docker only: execution-order independence check
 ```
 

@@ -2,6 +2,8 @@
 
 Code and recorded data for the paper *Knowing When to Stop: Anytime-Valid Patch Acceptance under Adaptive Retries and Stochastic Test Runs*.
 
+**Version.** The paper describes the tag `ease2027-submission` (EASE 2027 round 7 revision, 2026-11-18). Its supplement is `supplement.pdf` in this folder; the supplement's last table maps every table, figure and table row of the paper to its script and output file.
+
 SeqAccept decides when an LLM repair loop may stop at a passing test run, with a guarantee that holds across adaptively proposed candidate patches. StopSafe-SE is the dataset of recorded repair loops (4 LLMs, 17 planted bugs in 10 Python repositories) the rules are replayed on.
 
 ## Contents
@@ -13,8 +15,9 @@ SeqAccept decides when an LLM repair loop may stop at a passing test run, with a
 | `paper_numbers.py` | every number, table and figure of the paper, generated from `results/` |
 | `run_block.py`, `collect.py`, `agent.py`, `llm.py`, `build_episode.py`, `run_all.py`, `online.py`, `fullsuite.py`, `flaky_arm.py`, `near_eps_arm.py` | Docker and LLM harness that recorded the data |
 | `tasks/`, `bugs/`, `repos/`, `screening/` | task definitions, original and planted-bug sources, subject Dockerfiles, IDoFT screening |
-| `streams/`, `episodes/`, `episodes_flaky/`, `fullsuite/`, `online/`, `runs/exec_order/` | recorded data |
+| `streams/`, `episodes/`, `episodes_flaky/`, `episodes_neareps/`, `fullsuite/`, `online/`, `runs/exec_order/` | recorded data |
 | `results/` | recorded results |
+| `supplement.pdf` | the paper's supplement (proofs, per-task tables, robustness checks, result-to-script map) |
 | `tests/`, `scripts/` | tests, run scripts |
 
 ## Analysis scripts
@@ -31,6 +34,8 @@ All run offline from the recorded data; each writes one file in `results/`. The 
 | `caps_adversary.py` (`caps_adversary.json`) | Bonferroni with attempt caps, white-box adversary, dependence to FAR, full-suite break-even, per-task real-flaky table |
 | `sensitivity.py` (`sensitivity.json`) | cost with calibration per task and per loop, block-size sweep, regime map, FAR against pool rates, repository intervals, comparators on the real-flaky arm, margin curve |
 | `checks.py` (`checks.json`) | the proof's invariant in the adversary, runs-test power, paired intervals on FRR and cost, Bonferroni caps up to 10,000, replay without replacement, abstention without the block cap, dropped tasks, run-to-run drift |
+| `slice_caps.py` (`slice_caps.json`) | the shared block cap against caps scaled with log(1/alpha_j) |
+| `round7_checks.py` (`round7.json`) | near-eps arm with every comparator and the earlier settings, near-eps labels, a cap of 10,000, refund crossing against harmonic spending, eps redrawn from calibration blocks, start-up cost in the cost model |
 | `power_tuning.py`, `label_risk.py`, `exec_order.py`, `run_sim.py`, `reuse_demo.py` | mixture wallet and gamma/rho sweep; pool size and label risk; execution-order check; simulated worst case; Theorem 4.4 simulation |
 
 ## Setup

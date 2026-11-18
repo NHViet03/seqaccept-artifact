@@ -30,5 +30,6 @@ paper_out/
 *.tex
 *.bib
 *.pdf
+!supplement.pdf
 *.log
 *.bak*

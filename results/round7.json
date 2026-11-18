@@ -1,0 +1,452 @@
+{
+ "neareps": {
+  "B1 stop at first pass": {
+   "far": 0.5164583333333334,
+   "frr": 0.0,
+   "blocks_per_loop": 1.219375,
+   "blocks_per_accept": 1.219375,
+   "bpa_calib": 51.219375,
+   "min_per_accept": 1.818120449991959,
+   "worst_loop": 1.0,
+   "worst_loop_upper": 1.0,
+   "loops_above_alpha": 13,
+   "loops": 24,
+   "per_task": {
+    "filestack@neareps": 0.92875,
+    "kanren@neareps": 0.490625,
+    "pymeterbus@neareps": 0.13
+   }
+  },
+  "B4 peeking Clopper-Pearson": {
+   "far": 0.11416666666666667,
+   "frr": 0.0,
+   "blocks_per_loop": 418.38895833333333,
+   "blocks_per_accept": 626.7999375780274,
+   "bpa_calib": 701.706304619226,
+   "min_per_accept": 11.449143714680508,
+   "worst_loop": 0.61,
+   "worst_loop_upper": 0.6677152463416112,
+   "loops_above_alpha": 10,
+   "loops": 24,
+   "per_task": {
+    "filestack@neareps": 0.138125,
+    "kanren@neareps": 0.080625,
+    "pymeterbus@neareps": 0.12375
+   }
+  },
+  "B5 naive confidence sequence": {
+   "far": 0.01625,
+   "frr": 0.0,
+   "blocks_per_loop": 777.5804166666667,
+   "blocks_per_accept": 1658.8382222222222,
+   "bpa_calib": 1765.504888888889,
+   "min_per_accept": 26.255296349260604,
+   "worst_loop": 0.095,
+   "worst_loop_upper": 0.13627776482107676,
+   "loops_above_alpha": 3,
+   "loops": 24,
+   "per_task": {
+    "filestack@neareps": 0.02125,
+    "kanren@neareps": 0.00625,
+    "pymeterbus@neareps": 0.021249999999999998
+   }
+  },
+  "B6 SeqAccept, no refund": {
+   "far": 0.00020833333333333335,
+   "frr": 0.0,
+   "blocks_per_loop": 822.16625,
+   "blocks_per_accept": 1893.6650671785028,
+   "bpa_calib": 2008.8282149712093,
+   "min_per_accept": 29.690162912249527,
+   "worst_loop": 0.005,
+   "worst_loop_upper": 0.023498470434950736,
+   "loops_above_alpha": 0,
+   "loops": 24,
+   "per_task": {
+    "filestack@neareps": 0.0,
+    "kanren@neareps": 0.0,
+    "pymeterbus@neareps": 0.000625
+   }
+  },
+  "Harmonic spending": {
+   "far": 0.0004166666666666667,
+   "frr": 0.0,
+   "blocks_per_loop": 823.5883333333334,
+   "blocks_per_accept": 1896.940499040307,
+   "bpa_calib": 2012.1036468330135,
+   "min_per_accept": 29.738963513037277,
+   "worst_loop": 0.005,
+   "worst_loop_upper": 0.023498470434950736,
+   "loops_above_alpha": 0,
+   "loops": 24,
+   "per_task": {
+    "filestack@neareps": 0.0,
+    "kanren@neareps": 0.000625,
+    "pymeterbus@neareps": 0.000625
+   }
+  },
+  "Bonferroni-100 spending": {
+   "far": 0.0,
+   "frr": 0.0,
+   "blocks_per_loop": 889.4845833333334,
+   "blocks_per_accept": 2134.763,
+   "bpa_calib": 2254.763,
+   "min_per_accept": 33.066449445439005,
+   "worst_loop": 0.0,
+   "worst_loop_upper": 0.01486703923127203,
+   "loops_above_alpha": 0,
+   "loops": 24,
+   "per_task": {
+    "filestack@neareps": 0.0,
+    "kanren@neareps": 0.0,
+    "pymeterbus@neareps": 0.0
+   }
+  },
+  "Fixed-n Bonferroni-15 (1n0)": {
+   "far": 0.0027083333333333334,
+   "frr": 0.0,
+   "blocks_per_loop": 128.95479166666667,
+   "blocks_per_accept": 299.74963680387407,
+   "bpa_calib": 415.972397094431,
+   "min_per_accept": 8.295842962995838,
+   "worst_loop": 0.015,
+   "worst_loop_upper": 0.03830970849856936,
+   "loops_above_alpha": 0,
+   "loops": 24,
+   "per_task": {
+    "filestack@neareps": 0.0025,
+    "kanren@neareps": 0.000625,
+    "pymeterbus@neareps": 0.005
+   }
+  },
+  "SeqAccept": {
+   "far": 0.002916666666666667,
+   "frr": 0.0,
+   "blocks_per_loop": 814.7464583333333,
+   "blocks_per_accept": 1860.5057088487156,
+   "bpa_calib": 1974.6826831588962,
+   "min_per_accept": 29.19432773969379,
+   "worst_loop": 0.02,
+   "worst_loop_upper": 0.045180414994718754,
+   "loops_above_alpha": 0,
+   "loops": 24,
+   "per_task": {
+    "filestack@neareps": 0.0025,
+    "kanren@neareps": 0.001875,
+    "pymeterbus@neareps": 0.004375
+   }
+  },
+  "old B4": {
+   "far": 0.14958333333333332,
+   "frr": 0.0,
+   "blocks_per_loop": 653.2435416666667,
+   "blocks_per_accept": 859.2954234036722,
+   "bpa_calib": 925.0668676349685,
+   "min_per_accept": 14.763934620113533,
+   "worst_loop": 0.825,
+   "worst_loop_upper": 0.8678503844541785,
+   "loops_above_alpha": 7,
+   "loops": 24,
+   "per_task": {
+    "filestack@neareps": 0.2225,
+    "kanren@neareps": 0.114375,
+    "pymeterbus@neareps": 0.11187499999999999
+   }
+  },
+  "old B5": {
+   "far": 0.026666666666666665,
+   "frr": 0.0,
+   "blocks_per_loop": 2023.2608333333333,
+   "blocks_per_accept": 3559.9897360703812,
+   "bpa_calib": 3647.966275659824,
+   "min_per_accept": 52.65518178427578,
+   "worst_loop": 0.175,
+   "worst_loop_upper": 0.2252413553683334,
+   "loops_above_alpha": 4,
+   "loops": 24,
+   "per_task": {
+    "filestack@neareps": 0.034999999999999996,
+    "kanren@neareps": 0.014375,
+    "pymeterbus@neareps": 0.030625
+   }
+  },
+  "old B6": {
+   "far": 0.00125,
+   "frr": 0.0,
+   "blocks_per_loop": 2330.5125,
+   "blocks_per_accept": 4635.913800248653,
+   "bpa_calib": 4735.3750518027355,
+   "min_per_accept": 67.08097399140291,
+   "worst_loop": 0.02,
+   "worst_loop_upper": 0.045180414994718754,
+   "loops_above_alpha": 0,
+   "loops": 24,
+   "per_task": {
+    "filestack@neareps": 0.0,
+    "kanren@neareps": 0.000625,
+    "pymeterbus@neareps": 0.003125
+   }
+  },
+  "old SeqAccept": {
+   "far": 0.008333333333333333,
+   "frr": 0.0,
+   "blocks_per_loop": 2284.89625,
+   "blocks_per_accept": 4434.897695107157,
+   "bpa_calib": 4531.945814799838,
+   "min_per_accept": 64.34176688313995,
+   "worst_loop": 0.05,
+   "worst_loop_upper": 0.08333515106637196,
+   "loops_above_alpha": 0,
+   "loops": 24,
+   "per_task": {
+    "filestack@neareps": 0.008125,
+    "kanren@neareps": 0.008125,
+    "pymeterbus@neareps": 0.00875
+   }
+  }
+ },
+ "neareps_labels": {
+  "near_distinct": 36,
+  "near_risky": 31,
+  "far": {
+   "unamb": {
+    "B4 peeking Clopper-Pearson": {
+     "far": 0.03666666666666667,
+     "worst_loop": 0.43,
+     "loops_above_alpha": 4
+    },
+    "B5 naive confidence sequence": {
+     "far": 0.006458333333333333,
+     "worst_loop": 0.095,
+     "loops_above_alpha": 1
+    },
+    "B6 SeqAccept, no refund": {
+     "far": 0.0,
+     "worst_loop": 0.0,
+     "loops_above_alpha": 0
+    },
+    "SeqAccept": {
+     "far": 0.0010416666666666667,
+     "worst_loop": 0.015,
+     "loops_above_alpha": 0
+    }
+   },
+   "pool": {
+    "B4 peeking Clopper-Pearson": {
+     "far": 0.045625,
+     "worst_loop": 0.275,
+     "loops_above_alpha": 9
+    },
+    "B5 naive confidence sequence": {
+     "far": 0.005,
+     "worst_loop": 0.025,
+     "loops_above_alpha": 0
+    },
+    "B6 SeqAccept, no refund": {
+     "far": 0.0,
+     "worst_loop": 0.0,
+     "loops_above_alpha": 0
+    },
+    "SeqAccept": {
+     "far": 0.0008333333333333334,
+     "worst_loop": 0.01,
+     "loops_above_alpha": 0
+    }
+   },
+   "swap": {
+    "B4 peeking Clopper-Pearson": {
+     "far": 0.13,
+     "worst_loop": 0.61,
+     "loops_above_alpha": 12
+    },
+    "B5 naive confidence sequence": {
+     "far": 0.0225,
+     "worst_loop": 0.11,
+     "loops_above_alpha": 4
+    },
+    "B6 SeqAccept, no refund": {
+     "far": 0.001875,
+     "worst_loop": 0.025,
+     "loops_above_alpha": 0
+    },
+    "SeqAccept": {
+     "far": 0.007291666666666667,
+     "worst_loop": 0.045,
+     "loops_above_alpha": 0
+    }
+   }
+  }
+ },
+ "big_cap": {
+  "natural": {
+   "B4": {
+    "far": 0.0011029411764705882,
+    "frr": 0.0,
+    "blocks_per_loop": 73.6783088235294,
+    "blocks_per_accept": 105.31003678402523
+   },
+   "B5": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_loop": 112.60882352941177,
+    "blocks_per_accept": 161.2084210526316
+   },
+   "SeqAccept": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_loop": 123.33492647058823,
+    "blocks_per_accept": 176.5636842105263
+   }
+  },
+  "realflaky": {
+   "B4": {
+    "far": 0.023076923076923078,
+    "frr": 0.002238805970149254,
+    "blocks_per_loop": 314.4076923076923,
+    "blocks_per_accept": 456.3628750872296
+   },
+   "B5": {
+    "far": 0.013461538461538462,
+    "frr": 0.002238805970149254,
+    "blocks_per_loop": 1822.1028846153847,
+    "blocks_per_accept": 2678.426855123675
+   },
+   "SeqAccept": {
+    "far": 0.012980769230769231,
+    "frr": 0.0029850746268656717,
+    "blocks_per_loop": 2106.7120192307693,
+    "blocks_per_accept": 3094.6052259887006
+   }
+  },
+  "neareps": {
+   "B4": {
+    "far": 0.19375,
+    "frr": 0.0,
+    "blocks_per_loop": 1538.9979166666667,
+    "blocks_per_accept": 1928.770234986945
+   },
+   "B5": {
+    "far": 0.09375,
+    "frr": 0.0,
+    "blocks_per_loop": 6491.589583333333,
+    "blocks_per_accept": 9111.002923976608
+   },
+   "SeqAccept": {
+    "far": 0.03958333333333333,
+    "frr": 0.0,
+    "blocks_per_loop": 7314.3625,
+    "blocks_per_accept": 11075.375394321767
+   }
+  }
+ },
+ "refund_crossing": {
+  "by_kept": {
+   "0.0": 5,
+   "0.5": 20,
+   "0.9": 193,
+   "0.99": 3066
+  },
+  "natural": {
+   "kept": 0.9867895639529669,
+   "ended": 11917,
+   "crossing": 2223
+  },
+  "neareps": {
+   "kept": 0.8546950409641713,
+   "ended": 3873,
+   "crossing": 119
+  },
+  "realflaky": {
+   "kept": 0.9166587786141118,
+   "ended": 10697,
+   "crossing": 243
+  }
+ },
+ "redrawn_eps": {
+  "far": {
+   "B4 peeking Clopper-Pearson": 0.022451923076923078,
+   "B5 naive confidence sequence": 0.009278846153846153,
+   "SeqAccept": 0.007259615384615384
+  },
+  "worst_task_sa": [
+   0.075625,
+   "yamicache@realflaky"
+  ],
+  "reps": 200,
+  "draws": 20
+ },
+ "overhead": {
+  "seconds_per_extra_test": -0.0034299567963697155,
+  "tasks": 17,
+  "block_s": 3.1122400467699505,
+  "full_s": 3.64377002997003,
+  "ratio_B1": {
+   "0": {
+    "640-1": 1.971049670821683,
+    "640-2": 1.0153892243626852,
+    "640-3": 0.657016556940561,
+    "640-5": 0.41810144532581156,
+    "640-10": 0.2389151116147495,
+    "1000-1": 1.9495473107763557,
+    "1000-2": 0.9938868643173577,
+    "1000-3": 0.6498491035921186,
+    "1000-5": 0.4204905964419591,
+    "1000-10": 0.22935850715015949,
+    "3000-1": 1.924063032204116,
+    "3000-2": 0.968402585745118,
+    "3000-3": 0.6498491035921186,
+    "3000-5": 0.3950063178697192,
+    "3000-10": 0.20387422857791956,
+    "10000-1": 1.9151435347038317,
+    "10000-2": 0.9709510136023418,
+    "10000-3": 0.6498491035921186,
+    "10000-5": 0.39373210394110714,
+    "10000-10": 0.19877737286347155
+   },
+   "100": {
+    "640-1": 6.870423750218741,
+    "640-2": 6.043906607335283,
+    "640-3": 5.733962678753987,
+    "640-5": 5.527333393033123,
+    "640-10": 5.372361428742474,
+    "1000-1": 5.247444633283952,
+    "1000-2": 4.3786624092303175,
+    "1000-3": 4.065900808571008,
+    "1000-5": 3.8573930747981366,
+    "1000-10": 3.68363662998741,
+    "3000-1": 3.095106736273658,
+    "3000-2": 2.170274046152047,
+    "3000-3": 1.8619964827781765,
+    "3000-5": 1.6153744320790804,
+    "3000-10": 1.4304078940547582,
+    "10000-1": 2.2746611022647834,
+    "10000-2": 1.3398170219662782,
+    "10000-3": 1.0218943387878394,
+    "10000-5": 0.7683131510145607,
+    "10000-10": 0.5752886647990799
+   },
+   "1000": {
+    "640-1": 24.077981492491336,
+    "640-2": 23.705040830458554,
+    "640-3": 23.565188082196265,
+    "640-5": 23.47195291668807,
+    "640-10": 23.402026542556925,
+    "1000-1": 20.087982584568138,
+    "1000-2": 19.61015236133864,
+    "1000-3": 19.438133480976017,
+    "1000-5": 19.323454227400937,
+    "1000-10": 19.227888182755038,
+    "3000-1": 10.999651738743067,
+    "3000-2": 10.282906403898819,
+    "3000-3": 10.043991292284069,
+    "3000-5": 9.852859202992269,
+    "3000-10": 9.709510136023418,
+    "10000-1": 5.216168473218021,
+    "10000-2": 4.3578116358530306,
+    "10000-3": 4.065900808571009,
+    "10000-5": 3.833067172524635,
+    "10000-10": 3.655835598817694
+   }
+  }
+ }
+}

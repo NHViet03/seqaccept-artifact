@@ -283,12 +283,21 @@ def _cp_thresholds(eps, alpha, max_blocks):
         return math.exp(math.lgamma(t + 1) - math.lgamma(k + 1) - math.lgamma(t - k + 1)
                         + k * math.log(eps) + (t - k) * math.log1p(-eps))
 
+    def cdf_below(k, t):
+        return sum(pmf(i, t) for i in range(k + 1)) < alpha
+
     accept_t, k = [], 0
-    while True:
-        t = next((t for t in range(max(k, 1), max_blocks + 1) if sum(pmf(i, t) for i in range(k + 1)) < alpha), None)
-        if t is None:
+    while True:  # Binom(t, eps).cdf(k) falls as t grows, so the fewest t is found by bisection
+        lo, hi = max(k, 1), max_blocks
+        if not cdf_below(k, hi):
             break
-        accept_t.append(t)
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if cdf_below(k, mid):
+                hi = mid
+            else:
+                lo = mid + 1
+        accept_t.append(lo)
         k += 1
     reject_k = [None]
     for t in range(1, max_blocks + 1):

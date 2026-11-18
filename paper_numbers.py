@@ -132,6 +132,9 @@ def benchmark(res, episodes):
     # the bug check that excluded a planted bug: buggy code must fail more than p0 + 0.05 of blocks
     all_bugs = sorted(p.stem for p in Path("tasks").glob("*.json") if "@" not in p.stem)
     m("nPlantedBugs", len(all_bugs))
+    not_recorded = {t for t, _ in replay.EXCLUDED_RUNS}  # planted bugs grok-4.7 could not record (D18, D23)
+    m("nNotRecorded", len(not_recorded))
+    m("nBugCheckFailed", len(all_bugs) - len(bugs) - len(not_recorded))
 
     # agents
     per_model = Counter(ep["model"] for ep in episodes)
@@ -1115,9 +1118,9 @@ def figure_ease(d):
     axes[1].set_ylabel("blocks per accept")
     axes[1].set_yscale("log")
     handles, labels = axes[0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="upper center", ncol=4, frameon=False, fontsize=5.3, bbox_to_anchor=(0.5, 1.07),
+    fig.legend(handles, labels, loc="upper center", ncol=4, frameon=False, fontsize=6, bbox_to_anchor=(0.5, 1.08),
                handlelength=1.6, columnspacing=0.8)
-    axes[1].text(0.97, 0.92, "dotted: KL floor", transform=axes[1].transAxes, fontsize=5.5, color=MUTED, ha="right")
+    axes[1].text(0.97, 0.92, "dotted: KL floor", transform=axes[1].transAxes, fontsize=6, color=MUTED, ha="right")
     fig.tight_layout(pad=0.3)
     fig.subplots_adjust(top=0.84)
     fig.savefig(FIGS / "operating.pdf", bbox_inches="tight")
@@ -1609,6 +1612,11 @@ def checks():
                     [pct(rs[n]["frr"] or 0) for n in ("B4", "B5", "SeqAccept")] + \
                     [num(rs[n]["blocks_per_loop"], 0) for n in ("B4", "B5", "SeqAccept")]
             rows += f"\\quad {SET[kname]} & " + " & ".join(cells) + "\\\\\n"
+        big = load("results/round7.json")["big_cap"][arm]  # round7_checks.py 3: the same rules with T = 10,000
+        cells = [pct(big[n]["far"], 2) for n in ("B4", "B5", "SeqAccept")] + \
+                [pct(big[n]["frr"] or 0) for n in ("B4", "B5", "SeqAccept")] + \
+                [num(big[n]["blocks_per_loop"], 0) for n in ("B4", "B5", "SeqAccept")]
+        rows += "\\quad $\\rho=5$, $T=10{,}000$ & " + " & ".join(cells) + "\\\\\n"
     write("tab_knobs.tex", "\\begin{tabular}{@{}lrrrrrrrrr@{}}\n\\toprule\n & \\multicolumn{3}{c}{\\textbf{FAR \\%}} & "
           "\\multicolumn{3}{c}{\\textbf{FRR \\%}} & \\multicolumn{3}{c}{\\textbf{Blocks per loop}}\\\\\n"
           "\\cmidrule(lr){2-4}\\cmidrule(lr){5-7}\\cmidrule(l){8-10}\n\\textbf{Setting} & B4 & B5 & \\sa{} & B4 & B5 & \\sa{} & B4 & B5 & \\sa{}\\\\\n"
@@ -1745,6 +1753,105 @@ def slice_caps():
     m("scNeRatioSaBfive", f'{sl["SeqAccept"]["blocks_per_loop"] / sl["B5"]["blocks_per_loop"]:.2f}')
     assert d["slice"]["natural"]["SeqAccept"]["far"] == 0, "text: no false acceptance on natural loops with either cap"
 
+def round7():
+    """EASE round-7 follow-ups: results/round7.json (round7_checks.py)."""
+    d = load("results/round7.json")
+    ne = d["neareps"]
+    K = {"B1 stop at first pass": "Bone", "B4 peeking Clopper-Pearson": "Bfour", "B5 naive confidence sequence": "Bfive",
+         "B6 SeqAccept, no refund": "Bsix", "Harmonic spending": "Harm", "Bonferroni-100 spending": "BonfHundred",
+         "Fixed-n Bonferroni-15 (1n0)": "Fixn", "SeqAccept": "Sa"}
+    LAB = {**SHOW, "Harmonic spending": "Harmonic spending", "Bonferroni-100 spending": "Bonf.-100 spending",
+           "Fixed-n Bonferroni-15 (1n0)": "Fixed-$n$ Bonf.-15"}
+    m("neLoopsAll", ne["SeqAccept"]["loops"])
+    for n, k in K.items():
+        r = ne[n]
+        m(f"neAbove{k}", r["loops_above_alpha"])
+        m(f"neFarAll{k}", pct(r["far"], 2))
+        m(f"neWorstAll{k}", pct(r["worst_loop"]))
+        m(f"neBplAll{k}", num(r["blocks_per_loop"], 0))
+        if r["bpa_calib"]:
+            m(f"neBpaCal{k}", num(r["bpa_calib"], 0))
+            m(f"neMin{k}", num(r["min_per_accept"]))
+    for n, k in (("old B4", "Bfour"), ("old B5", "Bfive"), ("old B6", "Bsix"), ("old SeqAccept", "Sa")):
+        r = ne[n]
+        m(f"neOldFar{k}", pct(r["far"], 2))
+        m(f"neOldWorst{k}", pct(r["worst_loop"]))
+        m(f"neOldAbove{k}", r["loops_above_alpha"])
+        m(f"neOldBpl{k}", num(r["blocks_per_loop"], 0))
+    sa = ne["SeqAccept"]
+    m("neRatioBsixSa", num(ne["B6 SeqAccept, no refund"]["blocks_per_loop"] / sa["blocks_per_loop"], 2))
+    m("neRatioHarmSa", num(ne["Harmonic spending"]["blocks_per_loop"] / sa["blocks_per_loop"], 2))
+    rows = ""
+    for n, k in K.items():
+        r = ne[n]
+        if n == "SeqAccept":
+            rows += "\\midrule\n"
+        bpa = num(r["bpa_calib"], 0) if r["bpa_calib"] else "--"
+        mins = num(r["min_per_accept"]) if r["min_per_accept"] else "--"
+        rows += (f"{LAB[n]} & {pct(r['far'], 2)} & {r['loops_above_alpha']} & {pct(r['worst_loop'])} ({pct(r['worst_loop_upper'])}) & "
+                 f"{num(r['blocks_per_loop'], 0)} & {bpa} & {mins}\\\\\n")
+    rows += "\\midrule\n\\multicolumn{7}{@{}l}{\\textit{Earlier settings $\\rho=20$, $T=800$}}\\\\\n"
+    for n in ("old B4", "old B5", "old B6", "old SeqAccept"):
+        r = ne[n]
+        lab = LAB[{"old B4": "B4 peeking Clopper-Pearson", "old B5": "B5 naive confidence sequence",
+                   "old B6": "B6 SeqAccept, no refund", "old SeqAccept": "SeqAccept"}[n]]
+        bpa = num(r["bpa_calib"], 0) if r["bpa_calib"] else "--"
+        mins = num(r["min_per_accept"]) if r["min_per_accept"] else "--"
+        rows += (f"\\quad {lab} & {pct(r['far'], 2)} & {r['loops_above_alpha']} & {pct(r['worst_loop'])} ({pct(r['worst_loop_upper'])}) & "
+                 f"{num(r['blocks_per_loop'], 0)} & {bpa} & {mins}\\\\\n")
+    write("tab_neareps.tex", "\\begin{tabular}{@{}lrrrrrr@{}}\n\\toprule\n\\textbf{Rule} & \\textbf{FAR \\%} & $>\\alpha$ & "
+          "\\textbf{Worst} & \\textbf{Blk/loop} & \\textbf{Blk/acc.} & \\textbf{Min.}\\\\\n\\midrule\n" + rows + "\\bottomrule\n\\end{tabular}\n")
+    # per task (supplement)
+    tasks = sorted(sa["per_task"])
+    four = ("B4 peeking Clopper-Pearson", "B5 naive confidence sequence", "B6 SeqAccept, no refund", "SeqAccept")
+    rows = "".join(f"{t.split('@')[0]} & " + " & ".join(pct(ne[n]["per_task"][t], 2) for n in four) + "\\\\\n" for t in tasks)
+    write("tab_neareps_tasks.tex", "\\begin{tabular}{@{}lrrrr@{}}\n\\toprule\n\\textbf{Task} & B4 & B5 & B6 & \\sa{}\\\\\n\\midrule\n"
+          + rows + "\\bottomrule\n\\end{tabular}\n")
+    # labels near eps
+    lb = d["neareps_labels"]
+    m("neNearDistinct", lb["near_distinct"])
+    m("neNearRisky", lb["near_risky"])
+    for tag, T in (("unamb", "Unamb"), ("pool", "Pool"), ("swap", "Swap")):
+        for n, k in zip(four, ("Bfour", "Bfive", "Bsix", "Sa")):
+            v = lb["far"][tag][n]
+            m(f"ne{T}Far{k}", pct(v["far"], 2))
+            m(f"ne{T}Worst{k}", pct(v["worst_loop"]))
+            m(f"ne{T}Above{k}", v["loops_above_alpha"])
+    # cap of 10,000
+    bc = d["big_cap"]
+    for arm, A in (("natural", "Nat"), ("realflaky", "Rf"), ("neareps", "Ne")):
+        for n, k in (("B4", "Bfour"), ("B5", "Bfive"), ("SeqAccept", "Sa")):
+            v = bc[arm][n]
+            m(f"bc{A}Far{k}", pct(v["far"], 2))
+            m(f"bc{A}Frr{k}", pct(v["frr"] or 0, 2))
+            m(f"bc{A}Bpl{k}", num(v["blocks_per_loop"], 0))
+    m("bcNeRatioSa", num(bc["neareps"]["SeqAccept"]["blocks_per_loop"] / sa["blocks_per_loop"], 1))
+    m("bcNeRatioBfiveSa", num(bc["neareps"]["SeqAccept"]["blocks_per_loop"] / ne["B5 naive confidence sequence"]["blocks_per_loop"], 1))
+    # refund crossing
+    rc = d["refund_crossing"]
+    for kept, T in (("0.0", "Zero"), ("0.5", "Half"), ("0.9", "Nine"), ("0.99", "NineNine")):
+        m(f"rcCross{T}", f"{rc['by_kept'][kept]:,}".replace(",", "{,}"))
+    for arm, A in (("natural", "Nat"), ("neareps", "Ne"), ("realflaky", "Rf")):
+        m(f"rcKept{A}", f"{rc[arm]['kept']:.2f}")
+        m(f"rcCross{A}", f"{rc[arm]['crossing']:,}".replace(",", "{,}"))
+    # eps redrawn per replay
+    rd = d["redrawn_eps"]
+    m("rdFarSa", pct(rd["far"]["SeqAccept"], 2))
+    m("rdFarBfour", pct(rd["far"]["B4 peeking Clopper-Pearson"], 2))
+    m("rdFarBfive", pct(rd["far"]["B5 naive confidence sequence"], 2))
+    m("rdWorstSa", pct(rd["worst_task_sa"][0], 2))
+    m("rdWorstTask", rd["worst_task_sa"][1].split("@")[0].replace("_", "\\_"))
+    m("rdDraws", rd["draws"])
+    # cost model with a start-up cost
+    oh = d["overhead"]
+    m("ohExtraMs", f"{1000 * oh['seconds_per_extra_test']:.1f}")
+    for k, T in (("100", "Hundred"), ("1000", "Thousand")):
+        for ell, L in ((1, "One"), (2, "Two"), (3, "Three"), (5, "Five"), (10, "Ten")):
+            vals = [oh["ratio_B1"][k][f"{N}-{ell}"] for N in (1000, 3000, 10000)]
+            m(f"oh{T}{L}", f"{min(vals):.2f}--{max(vals):.2f}")
+            m(f"oh{T}{L}Big", f"{oh['ratio_B1'][k][f'10000-{ell}']:.2f}")
+
+
 if __name__ == "__main__":
     GEN.mkdir(parents=True, exist_ok=True)
     FIGS.mkdir(parents=True, exist_ok=True)
@@ -1770,6 +1877,7 @@ if __name__ == "__main__":
     ease4()
     sens()
     checks()
+    round7()
     exec_order()
     (GEN / "numbers.tex").write_text(
         "% generated by intern1/impl/paper_numbers.py; do not edit\n"

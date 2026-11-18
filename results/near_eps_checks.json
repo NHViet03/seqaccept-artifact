@@ -448,5 +448,608 @@
     "10000-10": 3.655835598817694
    }
   }
+ },
+ "firmer": {
+  "remeasured": 60,
+  "extra_blocks": [
+   2000
+  ],
+  "changes": {
+   "correct->correct": 0,
+   "correct->marginal": 0,
+   "correct->broken": 0,
+   "marginal->correct": 0,
+   "marginal->marginal": 7,
+   "marginal->broken": 17,
+   "broken->correct": 0,
+   "broken->marginal": 0,
+   "broken->broken": 36
+  },
+  "still_uncertain": 24,
+  "pooled_labels": {
+   "correct": 97,
+   "marginal": 18,
+   "broken": 217
+  },
+  "truth_only": {
+   "B1 stop at first pass": {
+    "far": 0.725625,
+    "frr": 0.0,
+    "blocks_per_loop": 1.219375,
+    "blocks_per_accept": 1.219375,
+    "bpa_calib": 51.219375,
+    "min_per_accept": 1.818120449991959,
+    "worst_loop": 1.0,
+    "worst_loop_upper": 1.0,
+    "loops_above_alpha": 18,
+    "loops": 24,
+    "per_task": {
+     "filestack@neareps": 0.92875,
+     "kanren@neareps": 0.49875,
+     "pymeterbus@neareps": 0.749375
+    },
+    "loops_lower_above": 18,
+    "tasks_lower": {
+     "filestack@neareps": 0.9172628605941161,
+     "kanren@neareps": 0.4778909127680438,
+     "pymeterbus@neareps": 0.7309102377347413
+    },
+    "tasks_lower_above": 3
+   },
+   "B4 peeking Clopper-Pearson": {
+    "far": 0.2529166666666667,
+    "frr": 0.0,
+    "blocks_per_loop": 418.38895833333333,
+    "blocks_per_accept": 626.7999375780274,
+    "bpa_calib": 701.706304619226,
+    "min_per_accept": 11.449143714680508,
+    "worst_loop": 0.89,
+    "worst_loop_upper": 0.9243471062478087,
+    "loops_above_alpha": 13,
+    "loops": 24,
+    "per_task": {
+     "filestack@neareps": 0.138125,
+     "kanren@neareps": 0.085625,
+     "pymeterbus@neareps": 0.535
+    },
+    "loops_lower_above": 12,
+    "tasks_lower": {
+     "filestack@neareps": 0.12412427604158237,
+     "kanren@neareps": 0.0743771440352084,
+     "pymeterbus@neareps": 0.5141419098392258
+    },
+    "tasks_lower_above": 3
+   },
+   "B5 naive confidence sequence": {
+    "far": 0.051458333333333335,
+    "frr": 0.0,
+    "blocks_per_loop": 777.5804166666667,
+    "blocks_per_accept": 1658.8382222222222,
+    "bpa_calib": 1765.504888888889,
+    "min_per_accept": 26.255296349260604,
+    "worst_loop": 0.295,
+    "worst_loop_upper": 0.35260361527993406,
+    "loops_above_alpha": 8,
+    "loops": 24,
+    "per_task": {
+     "filestack@neareps": 0.02125,
+     "kanren@neareps": 0.006875,
+     "pymeterbus@neareps": 0.12625
+    },
+    "loops_lower_above": 7,
+    "tasks_lower": {
+     "filestack@neareps": 0.015670637906305185,
+     "kanren@neareps": 0.0038602576534549674,
+     "pymeterbus@neareps": 0.11279571566701527
+    },
+    "tasks_lower_above": 1
+   },
+   "B6 SeqAccept, no refund": {
+    "far": 0.0175,
+    "frr": 0.0,
+    "blocks_per_loop": 822.16625,
+    "blocks_per_accept": 1893.6650671785028,
+    "bpa_calib": 2008.8282149712093,
+    "min_per_accept": 29.690162912249527,
+    "worst_loop": 0.09,
+    "worst_loop_upper": 0.13053904797449095,
+    "loops_above_alpha": 5,
+    "loops": 24,
+    "per_task": {
+     "filestack@neareps": 0.0,
+     "kanren@neareps": 0.0,
+     "pymeterbus@neareps": 0.052500000000000005
+    },
+    "loops_lower_above": 4,
+    "tasks_lower": {
+     "filestack@neareps": 0.0,
+     "kanren@neareps": 0.0,
+     "pymeterbus@neareps": 0.04363256380338452
+    },
+    "tasks_lower_above": 0
+   },
+   "Harmonic spending": {
+    "far": 0.017708333333333333,
+    "frr": 0.0,
+    "blocks_per_loop": 823.5883333333334,
+    "blocks_per_accept": 1896.940499040307,
+    "bpa_calib": 2012.1036468330135,
+    "min_per_accept": 29.738963513037277,
+    "worst_loop": 0.09,
+    "worst_loop_upper": 0.13053904797449095,
+    "loops_above_alpha": 5,
+    "loops": 24,
+    "per_task": {
+     "filestack@neareps": 0.0,
+     "kanren@neareps": 0.000625,
+     "pymeterbus@neareps": 0.052500000000000005
+    },
+    "loops_lower_above": 4,
+    "tasks_lower": {
+     "filestack@neareps": 0.0,
+     "kanren@neareps": 3.2057795130122546e-05,
+     "pymeterbus@neareps": 0.04363256380338452
+    },
+    "tasks_lower_above": 0
+   },
+   "Bonferroni-100 spending": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_loop": 889.4845833333334,
+    "blocks_per_accept": 2134.763,
+    "bpa_calib": 2254.763,
+    "min_per_accept": 33.066449445439005,
+    "worst_loop": 0.0,
+    "worst_loop_upper": 0.01486703923127203,
+    "loops_above_alpha": 0,
+    "loops": 24,
+    "per_task": {
+     "filestack@neareps": 0.0,
+     "kanren@neareps": 0.0,
+     "pymeterbus@neareps": 0.0
+    },
+    "loops_lower_above": 0,
+    "tasks_lower": {
+     "filestack@neareps": 0.0,
+     "kanren@neareps": 0.0,
+     "pymeterbus@neareps": 0.0
+    },
+    "tasks_lower_above": 0
+   },
+   "Fixed-n Bonferroni-15 (1n0)": {
+    "far": 0.012083333333333333,
+    "frr": 0.0,
+    "blocks_per_loop": 128.95479166666667,
+    "blocks_per_accept": 299.74963680387407,
+    "bpa_calib": 415.972397094431,
+    "min_per_accept": 8.295842962995838,
+    "worst_loop": 0.075,
+    "worst_loop_upper": 0.11313838826640062,
+    "loops_above_alpha": 2,
+    "loops": 24,
+    "per_task": {
+     "filestack@neareps": 0.0025,
+     "kanren@neareps": 0.000625,
+     "pymeterbus@neareps": 0.033125
+    },
+    "loops_lower_above": 0,
+    "tasks_lower": {
+     "filestack@neareps": 0.0008543853973716804,
+     "kanren@neareps": 3.2057795130122546e-05,
+     "pymeterbus@neareps": 0.026097886832380925
+    },
+    "tasks_lower_above": 0
+   },
+   "SeqAccept": {
+    "far": 0.020625,
+    "frr": 0.0,
+    "blocks_per_loop": 814.7464583333333,
+    "blocks_per_accept": 1860.5057088487156,
+    "bpa_calib": 1974.6826831588962,
+    "min_per_accept": 29.19432773969379,
+    "worst_loop": 0.1,
+    "worst_loop_upper": 0.14198925159094505,
+    "loops_above_alpha": 5,
+    "loops": 24,
+    "per_task": {
+     "filestack@neareps": 0.0025,
+     "kanren@neareps": 0.001875,
+     "pymeterbus@neareps": 0.0575
+    },
+    "loops_lower_above": 4,
+    "tasks_lower": {
+     "filestack@neareps": 0.0008543853973716804,
+     "kanren@neareps": 0.0005112461143986158,
+     "pymeterbus@neareps": 0.04822410559507947
+    },
+    "tasks_lower_above": 0
+   },
+   "old B4": {
+    "far": 0.35083333333333333,
+    "frr": 0.0,
+    "blocks_per_loop": 653.2435416666667,
+    "blocks_per_accept": 859.2954234036722,
+    "bpa_calib": 925.0668676349685,
+    "min_per_accept": 14.763934620113533,
+    "worst_loop": 1.0,
+    "worst_loop_upper": 1.0,
+    "loops_above_alpha": 13,
+    "loops": 24,
+    "per_task": {
+     "filestack@neareps": 0.224375,
+     "kanren@neareps": 0.12375,
+     "pymeterbus@neareps": 0.704375
+    },
+    "loops_lower_above": 13,
+    "tasks_lower": {
+     "filestack@neareps": 0.2072921297768012,
+     "kanren@neareps": 0.11041564963722901,
+     "pymeterbus@neareps": 0.685029425742905
+    },
+    "tasks_lower_above": 3
+   },
+   "old B5": {
+    "far": 0.14958333333333335,
+    "frr": 0.0,
+    "blocks_per_loop": 2023.2608333333333,
+    "blocks_per_accept": 3559.9897360703812,
+    "bpa_calib": 3647.966275659824,
+    "min_per_accept": 52.65518178427578,
+    "worst_loop": 0.67,
+    "worst_loop_upper": 0.7250197717183304,
+    "loops_above_alpha": 9,
+    "loops": 24,
+    "per_task": {
+     "filestack@neareps": 0.034999999999999996,
+     "kanren@neareps": 0.01625,
+     "pymeterbus@neareps": 0.3975
+    },
+    "loops_lower_above": 8,
+    "tasks_lower": {
+     "filestack@neareps": 0.027771993758503078,
+     "kanren@neareps": 0.01141086092905045,
+     "pymeterbus@neareps": 0.3772147602432345
+    },
+    "tasks_lower_above": 1
+   },
+   "old B6": {
+    "far": 0.08604166666666667,
+    "frr": 0.0,
+    "blocks_per_loop": 2330.5125,
+    "blocks_per_accept": 4635.913800248653,
+    "bpa_calib": 4735.3750518027355,
+    "min_per_accept": 67.08097399140291,
+    "worst_loop": 0.44,
+    "worst_loop_upper": 0.500614793441943,
+    "loops_above_alpha": 5,
+    "loops": 24,
+    "per_task": {
+     "filestack@neareps": 0.0,
+     "kanren@neareps": 0.000625,
+     "pymeterbus@neareps": 0.2575
+    },
+    "loops_lower_above": 5,
+    "tasks_lower": {
+     "filestack@neareps": 0.0,
+     "kanren@neareps": 3.2057795130122546e-05,
+     "pymeterbus@neareps": 0.23954667573726388
+    },
+    "tasks_lower_above": 1
+   },
+   "old SeqAccept": {
+    "far": 0.09895833333333333,
+    "frr": 0.0,
+    "blocks_per_loop": 2284.89625,
+    "blocks_per_accept": 4434.897695107157,
+    "bpa_calib": 4531.945814799838,
+    "min_per_accept": 64.34176688313995,
+    "worst_loop": 0.455,
+    "worst_loop_upper": 0.5156291482630786,
+    "loops_above_alpha": 5,
+    "loops": 24,
+    "per_task": {
+     "filestack@neareps": 0.008125,
+     "kanren@neareps": 0.008125,
+     "pymeterbus@neareps": 0.280625
+    },
+    "loops_lower_above": 5,
+    "tasks_lower": {
+     "filestack@neareps": 0.004812480041265341,
+     "kanren@neareps": 0.004812480041265341,
+     "pymeterbus@neareps": 0.26214520817834447
+    },
+    "tasks_lower_above": 1
+   }
+  },
+  "pooled": {
+   "B1 stop at first pass": {
+    "far": 0.52,
+    "frr": 0.0,
+    "blocks_per_loop": 1.2354166666666666,
+    "blocks_per_accept": 1.2354166666666666,
+    "bpa_calib": 51.235416666666666,
+    "min_per_accept": 1.818358230070084,
+    "worst_loop": 1.0,
+    "worst_loop_upper": 1.0,
+    "loops_above_alpha": 14,
+    "loops": 24,
+    "per_task": {
+     "filestack@neareps": 0.906875,
+     "kanren@neareps": 0.499375,
+     "pymeterbus@neareps": 0.15375
+    },
+    "loops_lower_above": 13,
+    "tasks_lower": {
+     "filestack@neareps": 0.8940511292278452,
+     "kanren@neareps": 0.47851501446702044,
+     "pymeterbus@neareps": 0.13908360360006922
+    },
+    "tasks_lower_above": 3
+   },
+   "B4 peeking Clopper-Pearson": {
+    "far": 0.12645833333333334,
+    "frr": 0.0,
+    "blocks_per_loop": 532.14375,
+    "blocks_per_accept": 930.1857246904589,
+    "bpa_calib": 1017.5855790240349,
+    "min_per_accept": 15.702123171993692,
+    "worst_loop": 0.565,
+    "worst_loop_upper": 0.6241423452963448,
+    "loops_above_alpha": 12,
+    "loops": 24,
+    "per_task": {
+     "filestack@neareps": 0.04625,
+     "kanren@neareps": 0.0325,
+     "pymeterbus@neareps": 0.300625
+    },
+    "loops_lower_above": 10,
+    "tasks_lower": {
+     "filestack@neareps": 0.03792629979827284,
+     "kanren@neareps": 0.02554123513982009,
+     "pymeterbus@neareps": 0.28173897053665026
+    },
+    "tasks_lower_above": 1
+   },
+   "B5 naive confidence sequence": {
+    "far": 0.017083333333333332,
+    "frr": 0.0,
+    "blocks_per_loop": 855.34625,
+    "blocks_per_accept": 1952.2881597717546,
+    "bpa_calib": 2066.410841654779,
+    "min_per_accept": 30.155278741897906,
+    "worst_loop": 0.125,
+    "worst_loop_upper": 0.17019272587537676,
+    "loops_above_alpha": 3,
+    "loops": 24,
+    "per_task": {
+     "filestack@neareps": 0.00125,
+     "kanren@neareps": 0.003125,
+     "pymeterbus@neareps": 0.046875
+    },
+    "loops_lower_above": 3,
+    "tasks_lower": {
+     "filestack@neareps": 0.0002221457065562312,
+     "kanren@neareps": 0.001232125536346662,
+     "pymeterbus@neareps": 0.03849509674046563
+    },
+    "tasks_lower_above": 0
+   },
+   "B6 SeqAccept, no refund": {
+    "far": 0.0008333333333333334,
+    "frr": 0.0,
+    "blocks_per_loop": 890.2366666666667,
+    "blocks_per_accept": 2123.8250497017893,
+    "bpa_calib": 2243.1093439363817,
+    "min_per_accept": 32.60270419930565,
+    "worst_loop": 0.005,
+    "worst_loop_upper": 0.023498470434950736,
+    "loops_above_alpha": 0,
+    "loops": 24,
+    "per_task": {
+     "filestack@neareps": 0.0,
+     "kanren@neareps": 0.000625,
+     "pymeterbus@neareps": 0.001875
+    },
+    "loops_lower_above": 0,
+    "tasks_lower": {
+     "filestack@neareps": 0.0,
+     "kanren@neareps": 3.2057795130122546e-05,
+     "pymeterbus@neareps": 0.0005112461143986158
+    },
+    "tasks_lower_above": 0
+   },
+   "Harmonic spending": {
+    "far": 0.000625,
+    "frr": 0.0,
+    "blocks_per_loop": 891.18625,
+    "blocks_per_accept": 2127.1476877175533,
+    "bpa_calib": 2246.4912978617604,
+    "min_per_accept": 32.65236602364229,
+    "worst_loop": 0.005,
+    "worst_loop_upper": 0.023498470434950736,
+    "loops_above_alpha": 0,
+    "loops": 24,
+    "per_task": {
+     "filestack@neareps": 0.0,
+     "kanren@neareps": 0.000625,
+     "pymeterbus@neareps": 0.00125
+    },
+    "loops_lower_above": 0,
+    "tasks_lower": {
+     "filestack@neareps": 0.0,
+     "kanren@neareps": 3.2057795130122546e-05,
+     "pymeterbus@neareps": 0.0002221457065562312
+    },
+    "tasks_lower_above": 0
+   },
+   "Bonferroni-100 spending": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_loop": 932.8495833333334,
+    "blocks_per_accept": 2238.839,
+    "bpa_calib": 2358.839,
+    "min_per_accept": 34.22862939133483,
+    "worst_loop": 0.0,
+    "worst_loop_upper": 0.01486703923127203,
+    "loops_above_alpha": 0,
+    "loops": 24,
+    "per_task": {
+     "filestack@neareps": 0.0,
+     "kanren@neareps": 0.0,
+     "pymeterbus@neareps": 0.0
+    },
+    "loops_lower_above": 0,
+    "tasks_lower": {
+     "filestack@neareps": 0.0,
+     "kanren@neareps": 0.0,
+     "pymeterbus@neareps": 0.0
+    },
+    "tasks_lower_above": 0
+   },
+   "Fixed-n Bonferroni-15 (1n0)": {
+    "far": 0.003541666666666667,
+    "frr": 0.0,
+    "blocks_per_loop": 129.19520833333334,
+    "blocks_per_accept": 306.2404938271605,
+    "bpa_calib": 424.759012345679,
+    "min_per_accept": 8.44458582642127,
+    "worst_loop": 0.035,
+    "worst_loop_upper": 0.0647325221368485,
+    "loops_above_alpha": 0,
+    "loops": 24,
+    "per_task": {
+     "filestack@neareps": 0.0,
+     "kanren@neareps": 0.0,
+     "pymeterbus@neareps": 0.010625
+    },
+    "loops_lower_above": 0,
+    "tasks_lower": {
+     "filestack@neareps": 0.0,
+     "kanren@neareps": 0.0,
+     "pymeterbus@neareps": 0.006781063983855525
+    },
+    "tasks_lower_above": 0
+   },
+   "SeqAccept": {
+    "far": 0.004583333333333333,
+    "frr": 0.0,
+    "blocks_per_loop": 880.7633333333333,
+    "blocks_per_accept": 2084.646942800789,
+    "bpa_calib": 2202.9901380670613,
+    "min_per_accept": 32.04298221343012,
+    "worst_loop": 0.045,
+    "worst_loop_upper": 0.07721097501733815,
+    "loops_above_alpha": 0,
+    "loops": 24,
+    "per_task": {
+     "filestack@neareps": 0.0,
+     "kanren@neareps": 0.00125,
+     "pymeterbus@neareps": 0.0125
+    },
+    "loops_lower_above": 0,
+    "tasks_lower": {
+     "filestack@neareps": 0.0,
+     "kanren@neareps": 0.0002221457065562312,
+     "pymeterbus@neareps": 0.008299098320395285
+    },
+    "tasks_lower_above": 0
+   },
+   "old B4": {
+    "far": 0.14125000000000001,
+    "frr": 0.0,
+    "blocks_per_loop": 978.3129166666666,
+    "blocks_per_accept": 1601.6036834924967,
+    "bpa_calib": 1683.4590723055935,
+    "min_per_accept": 24.16125009589721,
+    "worst_loop": 0.62,
+    "worst_loop_upper": 0.6773306566404144,
+    "loops_above_alpha": 12,
+    "loops": 24,
+    "per_task": {
+     "filestack@neareps": 0.051875000000000004,
+     "kanren@neareps": 0.04625,
+     "pymeterbus@neareps": 0.325625
+    },
+    "loops_lower_above": 11,
+    "tasks_lower": {
+     "filestack@neareps": 0.043060194029426624,
+     "kanren@neareps": 0.03792629979827284,
+     "pymeterbus@neareps": 0.30629091110399015
+    },
+    "tasks_lower_above": 1
+   },
+   "old B5": {
+    "far": 0.024583333333333332,
+    "frr": 0.0,
+    "blocks_per_loop": 2961.2145833333334,
+    "blocks_per_accept": 6601.871806781235,
+    "bpa_calib": 6713.344170924292,
+    "min_per_accept": 91.35973141028381,
+    "worst_loop": 0.16,
+    "worst_loop_upper": 0.2088852496235744,
+    "loops_above_alpha": 4,
+    "loops": 24,
+    "per_task": {
+     "filestack@neareps": 0.003125,
+     "kanren@neareps": 0.00125,
+     "pymeterbus@neareps": 0.06937499999999999
+    },
+    "loops_lower_above": 3,
+    "tasks_lower": {
+     "filestack@neareps": 0.001232125536346662,
+     "kanren@neareps": 0.0002221457065562312,
+     "pymeterbus@neareps": 0.05920696147943097
+    },
+    "tasks_lower_above": 1
+   },
+   "old B6": {
+    "far": 0.0008333333333333334,
+    "frr": 0.0,
+    "blocks_per_loop": 3103.459375,
+    "blocks_per_accept": 7374.556930693069,
+    "bpa_calib": 7493.368811881188,
+    "min_per_accept": 101.49861096660894,
+    "worst_loop": 0.005,
+    "worst_loop_upper": 0.023498470434950736,
+    "loops_above_alpha": 0,
+    "loops": 24,
+    "per_task": {
+     "filestack@neareps": 0.0,
+     "kanren@neareps": 0.0,
+     "pymeterbus@neareps": 0.0025
+    },
+    "loops_lower_above": 0,
+    "tasks_lower": {
+     "filestack@neareps": 0.0,
+     "kanren@neareps": 0.0,
+     "pymeterbus@neareps": 0.0008543853973716804
+    },
+    "tasks_lower_above": 0
+   },
+   "old SeqAccept": {
+    "far": 0.004166666666666667,
+    "frr": 0.0,
+    "blocks_per_loop": 3085.5147916666665,
+    "blocks_per_accept": 7256.477707006369,
+    "bpa_calib": 7374.067123958844,
+    "min_per_accept": 99.89258270364199,
+    "worst_loop": 0.025,
+    "worst_loop_upper": 0.051843339120290544,
+    "loops_above_alpha": 0,
+    "loops": 24,
+    "per_task": {
+     "filestack@neareps": 0.00125,
+     "kanren@neareps": 0.0,
+     "pymeterbus@neareps": 0.01125
+    },
+    "loops_lower_above": 0,
+    "tasks_lower": {
+     "filestack@neareps": 0.0002221457065562312,
+     "kanren@neareps": 0.0,
+     "pymeterbus@neareps": 0.0072836832557805755
+    },
+    "tasks_lower_above": 0
+   }
+  }
  }
 }

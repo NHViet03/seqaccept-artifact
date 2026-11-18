@@ -32,7 +32,9 @@ def cp_lower(k, n, alpha=0.05):
     lo, hi = 0.0, k / n
     for _ in range(60):  # Pr[X >= k | p] rises with p; find p with Pr[X >= k] = alpha
         mid = (lo + hi) / 2
-        sf = 1 - sum(math.comb(n, i) * mid ** i * (1 - mid) ** (n - i) for i in range(k))
+        lc = math.lgamma(n + 1)  # log space: math.comb(n, i) overflows a float for n above about 1,000
+        sf = 1 - sum(math.exp(lc - math.lgamma(i + 1) - math.lgamma(n - i + 1) + i * math.log(mid) + (n - i) * math.log1p(-mid))
+                     for i in range(k))
         lo, hi = (lo, mid) if sf > alpha else (mid, hi)
     return lo
 

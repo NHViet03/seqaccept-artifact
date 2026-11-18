@@ -68,6 +68,8 @@ TRACE = {  # every public function/class in impl/*.py -> where the paper or the 
     "near_eps_checks.redrawn_eps": "real-flaky arm with eps redrawn from the calibration blocks",
     "near_eps_checks.overhead_model": "cost model with a start-up cost per run",
     "near_eps_checks.save": "writes results/near_eps_checks.json after every step",
+"near_eps_checks.firmer": "near-eps arm relabelled with the extra truth blocks of neareps_truth.py",
+"neareps_truth.near_candidates": "EASE round 8: near-eps candidates within 3 points of eps, re-run for firmer labels",
     "near_eps_checks.task_of": "task of an episode, from its file name",
     "near_eps_checks.eps_of": "eps = p0 + margin for an episode",
     "near_eps_checks.load": "loads the episodes of one arm",

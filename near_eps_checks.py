@@ -9,6 +9,11 @@
    which SeqAccept's slice falls below harmonic spending's for that kept share.
 5. Real-flaky arm with eps redrawn per replay from a bootstrap of the task's 400 calibration blocks, scored against
    labels at the recorded p0 + 0.05.
+6. Cost model with a fixed start-up per run.
+7. Firmer labels (only once neareps_truth.py has run): the near-eps arm with 2,000 extra blocks per candidate within
+   3 points of eps; label changes and candidates still uncertain. Every comparator's FAR, worst loop, loops and tasks
+   above alpha (also by a one-sided 95% Clopper-Pearson lower bound), scored two ways: truth_only (labels from
+   200 + extra truth blocks, pools unchanged) and pooled (all of a candidate's blocks are its pool and its label).
 
   uv run python near_eps_checks.py
 """
@@ -22,6 +27,7 @@ from statistics import mean
 import replay
 from caps_adversary import ambiguous_labels
 from extra_analyses import evaluate_rules, pool_labels
+from intervals import cp_lower
 from rules import (all_rules, bonferroni, fixed_n, fixed_spending, harmonic, naive_cs, peeking_cp, seq_accept)
 
 ALPHA, GAMMA, BIG_CAP = 0.05, 0.5, 10_000
@@ -147,6 +153,19 @@ def overhead_model(natural, starts=(0, 100, 1000)):
             "ratio_B1": ratio}
 
 
+def firmer(eps_list, truth, pooled=False):
+    """The episodes with each re-measured candidate's truth extended by its extra blocks, pools unchanged. pooled=True:
+    every candidate's blocks (truth, pool and extra) are both its pool and its truth, so each label is exact for the
+    replay's draws (a clearly broken candidate's 40 blocks serve as both already, so they count once)."""
+    def fix(ep, f, v):
+        extra = truth.get(task_of(ep), {}).get(f, {}).get("extra", [])
+        if not pooled:
+            return {**v, "truth": v["truth"] + extra} if extra else v
+        blocks = (v["truth"] if len(v["seeds"]) == len(v["truth"]) else v["truth"] + v["pool"]) + extra
+        return {**v, "truth": blocks, "pool": blocks}
+    return [{**ep, "fixes": {f: fix(ep, f, v) for f, v in ep["fixes"].items()}} for ep in eps_list]
+
+
 def save(out):
     Path("results/near_eps_checks.json").write_text(json.dumps(out, indent=1, default=str))
 
@@ -192,8 +211,9 @@ if __name__ == "__main__":
 
     save(out)
     print("3. block cap 10,000 for B4, B5 and SeqAccept (20 replays per loop on every arm)")
-    out["big_cap"] = {}
-    for arm, eps_, reps in (("natural", natural, replay.REPS), ("realflaky", flaky, replay.REPS), ("neareps", near, replay.REPS)):
+    big = "big_cap" not in out
+    out.setdefault("big_cap", {})
+    for arm, eps_, reps in (("natural", natural, replay.REPS), ("realflaky", flaky, replay.REPS), ("neareps", near, replay.REPS)) if big else ():
         rr = evaluate_rules(eps_, lambda ep: {"B4": partial(peeking_cp, eps=eps_of(ep), max_blocks=BIG_CAP),
                                               "B5": partial(naive_cs, eps=eps_of(ep), max_blocks=BIG_CAP),
                                               "SeqAccept": partial(seq_accept, eps=eps_of(ep), max_blocks=BIG_CAP)}, reps=reps)
@@ -204,21 +224,56 @@ if __name__ == "__main__":
 
     save(out)
     print("4. refund break-even against harmonic spending")
-    out["refund_crossing"] = {"by_kept": {str(k): crossing(k) for k in (0.0, 0.5, 0.9, 0.99)}}
-    for arm, eps_ in (("natural", natural), ("neareps", near), ("realflaky", flaky)):
-        k, n = kept_share(eps_)
-        out["refund_crossing"][arm] = {"kept": k, "ended": n, "crossing": crossing(k)}
+    if "refund_crossing" not in out:
+        out["refund_crossing"] = {"by_kept": {str(k): crossing(k) for k in (0.0, 0.5, 0.9, 0.99)}}
+        for arm, eps_ in (("natural", natural), ("neareps", near), ("realflaky", flaky)):
+            k, n = kept_share(eps_)
+            out["refund_crossing"][arm] = {"kept": k, "ended": n, "crossing": crossing(k)}
     print("   " + json.dumps(out["refund_crossing"]))
 
     save(out)
     print("5. real-flaky arm with eps redrawn from the calibration blocks")
-    out["redrawn_eps"] = redrawn_eps(flaky)
+    if "redrawn_eps" not in out:
+        out["redrawn_eps"] = redrawn_eps(flaky)
     print("   " + json.dumps(out["redrawn_eps"], default=str))
 
     print("6. cost model with a fixed start-up per run")
-    out["overhead"] = overhead_model(natural)
+    if "overhead" not in out:
+        out["overhead"] = overhead_model(natural)
     print("   " + json.dumps({k: v for k, v in out["overhead"].items() if k != "ratio_B1"})
           + " " + json.dumps({s: {k: round(v, 2) for k, v in d.items() if k.split("-")[0] != "640"} for s, d in out["overhead"]["ratio_B1"].items()}))
 
     save(out)
+    tp = Path("results/neareps_truth.json")
+    if tp.exists():
+        print("7. near-eps arm relabelled with the extra truth blocks")
+        truth = json.loads(tp.read_text())
+        firm = firmer(near, truth)
+        old = {(task_of(ep), f): l for ep in near for f, l in zip(ep["stream"], replay.labels(ep))}
+        new = {(task_of(ep), f): l for ep in firm for f, l in zip(ep["stream"], replay.labels(ep))}
+        amb = {(task_of(ep), f): l for ep in firm for f, l in zip(ep["stream"], ambiguous_labels(ep))}
+        moved = [k for k in new if k[1] in truth.get(k[0], {})]
+        d = {"remeasured": len(moved), "extra_blocks": sorted({len(v["extra"]) for t in truth.values() for v in t.values()}),
+             "changes": {f"{a}->{b}": sum(old[k] == a and new[k] == b for k in moved)
+                         for a in ("correct", "marginal", "broken") for b in ("correct", "marginal", "broken")},
+             "still_uncertain": sum(new[k] != amb[k] for k in moved)}
+        pool = firmer(near, truth, pooled=True)
+        d["pooled_labels"] = {l: sum(x == l for ep in pool for x in replay.labels(ep)) for l in ("correct", "marginal", "broken")}
+        for tag, world in (("truth_only", firm), ("pooled", pool)):  # pooled: labels exact for the draws; the main scoring
+            d[tag] = {}
+            for n, rs in evaluate_rules(world, near_rules, reps=R).items():
+                r_ = row(rs, world, R)
+                ks, by = [round(x["far"] * x["reps"]) for x in rs], {}
+                for k, ep in zip(ks, world):
+                    by.setdefault(task_of(ep), []).append(k)
+                r_["loops_lower_above"] = sum(cp_lower(k, R) > ALPHA for k in ks)
+                r_["tasks_lower"] = {t: cp_lower(sum(v), R * len(v)) for t, v in by.items()}
+                r_["tasks_lower_above"] = sum(v > ALPHA for v in r_["tasks_lower"].values())
+                d[tag][n] = r_
+            print(f"   {tag}: " + json.dumps({n[:12]: [round(100 * v["far"], 2), round(100 * v["worst_loop"], 1), v["loops_above_alpha"],
+                                                      v["loops_lower_above"], v["tasks_lower_above"], round(v["blocks_per_loop"])]
+                                                  for n, v in d[tag].items()}))
+        out["firmer"] = d
+        print("   " + json.dumps({k: v for k, v in d.items() if k not in ("truth_only", "pooled")}))
+        save(out)
     print("saved results/near_eps_checks.json")

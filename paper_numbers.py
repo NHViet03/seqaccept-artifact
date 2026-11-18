@@ -1781,29 +1781,49 @@ def near_eps_checks():
     sa = ne["SeqAccept"]
     m("neRatioBsixSa", num(ne["B6 SeqAccept, no refund"]["blocks_per_loop"] / sa["blocks_per_loop"], 2))
     m("neRatioHarmSa", num(ne["Harmonic spending"]["blocks_per_loop"] / sa["blocks_per_loop"], 2))
+    fr = d["firmer"]  # near_eps_checks.py 7: labels re-measured on 2,400 blocks, exact for the replay's draws
+    po = fr["pooled"]
+    m("frRemeasured", fr["remeasured"])
+    m("frExtra", f"{fr['extra_blocks'][0]:,}".replace(",", "{,}"))
+    m("frBlocks", f"{fr['extra_blocks'][0] + 400:,}".replace(",", "{,}"))
+    m("frMargBroken", fr["changes"]["marginal->broken"])
+    m("frMargMarg", fr["changes"]["marginal->marginal"])
+    m("frBrokenKept", fr["changes"]["broken->broken"])
+    m("frOtherChanges", sum(v for k, v in fr["changes"].items() if k not in ("marginal->broken", "marginal->marginal", "broken->broken")))
+    for n, k in {**K, "old B5": "OldBfive", "old SeqAccept": "OldSa"}.items():
+        r = po[n]
+        m(f"frFar{k}", pct(r["far"], 2))
+        m(f"frWorst{k}", pct(r["worst_loop"]))
+        m(f"frWorstUp{k}", pct(r["worst_loop_upper"]))
+        m(f"frAbove{k}", r["loops_above_alpha"])
+        m(f"frLow{k}", r["loops_lower_above"])
+        m(f"frTasks{k}", r["tasks_lower_above"])
+    for n, k in (("B5 naive confidence sequence", "Bfive"), ("SeqAccept", "Sa"), ("B6 SeqAccept, no refund", "Bsix")):
+        m(f"frToFar{k}", pct(fr["truth_only"][n]["far"], 2))
+        m(f"frToLow{k}", fr["truth_only"][n]["loops_lower_above"])
     rows = ""
     for n, k in K.items():
         r = ne[n]
         if n == "SeqAccept":
             rows += "\\midrule\n"
         bpa = num(r["bpa_calib"], 0) if r["bpa_calib"] else "--"
-        mins = num(r["min_per_accept"]) if r["min_per_accept"] else "--"
-        rows += (f"{LAB[n]} & {pct(r['far'], 2)} & {r['loops_above_alpha']} & {pct(r['worst_loop'])} ({pct(r['worst_loop_upper'])}) & "
-                 f"{num(r['blocks_per_loop'], 0)} & {bpa} & {mins}\\\\\n")
+        rows += (f"{LAB[n]} & {pct(r['far'], 2)} & {r['loops_above_alpha']} & {pct(r['worst_loop'])} & "
+                 f"{num(r['blocks_per_loop'], 0)} & {bpa} & {pct(po[n]['far'], 2)} & {po[n]['loops_lower_above']}\\\\\n")
     cor = load("results/design_checks.json")["split"]["total10"]["neareps"]  # design_checks.py 4: Corollary 4.3 row
     rows += (f"\\sa{{}}, $\\eps=L+\\delta^\\dagger$ & {pct(cor['far'], 2)} & -- & {pct(cor['worst_loop'])} & "
-             f"{num(cor['blocks_per_loop'], 0)} & {num(cor['bpa_calib'], 0)} & --\\\\\n")
-    rows += "\\midrule\n\\multicolumn{7}{@{}l}{\\textit{Earlier settings $\\rho=20$, $T=800$}}\\\\\n"
+             f"{num(cor['blocks_per_loop'], 0)} & {num(cor['bpa_calib'], 0)} & -- & --\\\\\n")
+    rows += "\\midrule\n\\multicolumn{8}{@{}l}{\\textit{Earlier settings $\\rho=20$, $T=800$}}\\\\\n"
     for n in ("old B4", "old B5", "old B6", "old SeqAccept"):
         r = ne[n]
         lab = LAB[{"old B4": "B4 peeking Clopper-Pearson", "old B5": "B5 naive confidence sequence",
                    "old B6": "B6 SeqAccept, no refund", "old SeqAccept": "SeqAccept"}[n]]
         bpa = num(r["bpa_calib"], 0) if r["bpa_calib"] else "--"
-        mins = num(r["min_per_accept"]) if r["min_per_accept"] else "--"
-        rows += (f"\\quad {lab} & {pct(r['far'], 2)} & {r['loops_above_alpha']} & {pct(r['worst_loop'])} ({pct(r['worst_loop_upper'])}) & "
-                 f"{num(r['blocks_per_loop'], 0)} & {bpa} & {mins}\\\\\n")
-    write("tab_neareps.tex", "\\begin{tabular}{@{}lrrrrrr@{}}\n\\toprule\n\\textbf{Rule} & \\textbf{FAR \\%} & $>\\alpha$ & "
-          "\\textbf{Worst} & \\textbf{Blk/loop} & \\textbf{Blk/acc.\\ (cal.)} & \\textbf{Min.}\\\\\n\\midrule\n" + rows + "\\bottomrule\n\\end{tabular}\n")
+        rows += (f"\\quad {lab} & {pct(r['far'], 2)} & {r['loops_above_alpha']} & {pct(r['worst_loop'])} & "
+                 f"{num(r['blocks_per_loop'], 0)} & {bpa} & {pct(po[n]['far'], 2)} & {po[n]['loops_lower_above']}\\\\\n")
+    write("tab_neareps.tex", "\\begin{tabular}{@{}lrrrrrrr@{}}\n\\toprule\n& \\multicolumn{5}{c}{\\textbf{Labels on 200 blocks}} & "
+          "\\multicolumn{2}{c}{\\textbf{Re-measured}}\\\\\n\\cmidrule(lr){2-6}\\cmidrule(l){7-8}\n\\textbf{Rule} & \\textbf{FAR \\%} & $>\\alpha$ & "
+          "\\textbf{Worst} & \\textbf{Blk/loop} & \\textbf{Blk/acc.} & \\textbf{FAR \\%} & \\textbf{LB}\\\\\n\\midrule\n"
+          + rows + "\\bottomrule\n\\end{tabular}\n")
     # per task (supplement)
     tasks = sorted(sa["per_task"])
     four = ("B4 peeking Clopper-Pearson", "B5 naive confidence sequence", "B6 SeqAccept, no refund", "SeqAccept")

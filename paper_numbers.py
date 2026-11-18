@@ -1760,8 +1760,12 @@ def near_eps_checks():
     K = {"B1 stop at first pass": "Bone", "B4 peeking Clopper-Pearson": "Bfour", "B5 naive confidence sequence": "Bfive",
          "B6 SeqAccept, no refund": "Bsix", "Harmonic spending": "Harm", "Bonferroni-100 spending": "BonfHundred",
          "Fixed-n Bonferroni-15 (1n0)": "Fixn", "SeqAccept": "Sa"}
-    LAB = {**SHOW, "Harmonic spending": "Harmonic spending", "Bonferroni-100 spending": "Bonf.-100 spending",
-           "Fixed-n Bonferroni-15 (1n0)": "Fixed-$n$ Bonf.-15"}
+    LAB = {"B1 stop at first pass": "B1", "B4 peeking Clopper-Pearson": "B4", "B5 naive confidence sequence": "B5",
+           "B6 SeqAccept, no refund": "B6", "Harmonic spending": "Harmonic", "Bonferroni-100 spending": "Bonf.-100",
+           "Fixed-n Bonferroni-15 (1n0)": "Fixed-$n$ Bonf.-15", "SeqAccept": "\\sa{}"}
+    VALID = {"B1 stop at first pass": "no", "B4 peeking Clopper-Pearson": "no", "B5 naive confidence sequence": "cand.",
+             "B6 SeqAccept, no refund": "yes", "Harmonic spending": "yes", "Bonferroni-100 spending": "yes",
+             "Fixed-n Bonferroni-15 (1n0)": "yes", "SeqAccept": "yes"}
     m("neLoopsAll", ne["SeqAccept"]["loops"])
     for n, k in K.items():
         r = ne[n]
@@ -1807,21 +1811,21 @@ def near_eps_checks():
         if n == "SeqAccept":
             rows += "\\midrule\n"
         bpa = num(r["bpa_calib"], 0) if r["bpa_calib"] else "--"
-        rows += (f"{LAB[n]} & {pct(r['far'], 2)} & {r['loops_above_alpha']} & {pct(r['worst_loop'])} & "
+        rows += (f"{LAB[n]} & {VALID[n]} & {pct(r['far'], 2)} & {r['loops_above_alpha']} & {pct(r['worst_loop'])} & "
                  f"{num(r['blocks_per_loop'], 0)} & {bpa} & {pct(po[n]['far'], 2)} & {po[n]['loops_lower_above']}\\\\\n")
     cor = load("results/design_checks.json")["split"]["total10"]["neareps"]  # design_checks.py 4: Corollary 4.3 row
-    rows += (f"\\sa{{}}, $\\eps=L+\\delta^\\dagger$ & {pct(cor['far'], 2)} & -- & {pct(cor['worst_loop'])} & "
+    rows += (f"\\sa{{}}, $\\eps=L+\\delta$ & yes$^\\dagger$ & {pct(cor['far'], 2)} & -- & {pct(cor['worst_loop'])} & "
              f"{num(cor['blocks_per_loop'], 0)} & {num(cor['bpa_calib'], 0)} & -- & --\\\\\n")
-    rows += "\\midrule\n\\multicolumn{8}{@{}l}{\\textit{Earlier settings $\\rho=20$, $T=800$}}\\\\\n"
+    rows += "\\midrule\n\\multicolumn{9}{@{}l}{\\textit{Earlier settings $\\rho=20$, $T=800$}}\\\\\n"
     for n in ("old B4", "old B5", "old B6", "old SeqAccept"):
         r = ne[n]
         lab = LAB[{"old B4": "B4 peeking Clopper-Pearson", "old B5": "B5 naive confidence sequence",
                    "old B6": "B6 SeqAccept, no refund", "old SeqAccept": "SeqAccept"}[n]]
         bpa = num(r["bpa_calib"], 0) if r["bpa_calib"] else "--"
-        rows += (f"\\quad {lab} & {pct(r['far'], 2)} & {r['loops_above_alpha']} & {pct(r['worst_loop'])} & "
+        rows += (f"\\quad {lab} & {VALID[{'old B4': 'B4 peeking Clopper-Pearson', 'old B5': 'B5 naive confidence sequence', 'old B6': 'B6 SeqAccept, no refund', 'old SeqAccept': 'SeqAccept'}[n]]} & {pct(r['far'], 2)} & {r['loops_above_alpha']} & {pct(r['worst_loop'])} & "
                  f"{num(r['blocks_per_loop'], 0)} & {bpa} & {pct(po[n]['far'], 2)} & {po[n]['loops_lower_above']}\\\\\n")
-    write("tab_neareps.tex", "\\begin{tabular}{@{}lrrrrrrr@{}}\n\\toprule\n& \\multicolumn{5}{c}{\\textbf{Labels on 200 blocks}} & "
-          "\\multicolumn{2}{c}{\\textbf{Re-measured}}\\\\\n\\cmidrule(lr){2-6}\\cmidrule(l){7-8}\n\\textbf{Rule} & \\textbf{FAR \\%} & $>\\alpha$ & "
+    write("tab_neareps.tex", "\\begin{tabular}{@{}llrrrrrrr@{}}\n\\toprule\n& & \\multicolumn{5}{c}{\\textbf{Labels on 200 blocks}} & "
+          "\\multicolumn{2}{c}{\\textbf{Re-measured}}\\\\\n\\cmidrule(lr){3-7}\\cmidrule(l){8-9}\n\\textbf{Rule} & \\textbf{Valid} & \\textbf{FAR \\%} & $>\\alpha$ & "
           "\\textbf{Worst} & \\textbf{Blk/loop} & \\textbf{Blk/acc.} & \\textbf{FAR \\%} & \\textbf{LB}\\\\\n\\midrule\n"
           + rows + "\\bottomrule\n\\end{tabular}\n")
     # per task (supplement)
@@ -1873,6 +1877,95 @@ def near_eps_checks():
             vals = [oh["ratio_B1"][k][f"{N}-{ell}"] for N in (1000, 3000, 10000)]
             m(f"oh{T}{L}", f"{min(vals):.2f}--{max(vals):.2f}")
             m(f"oh{T}{L}Big", f"{oh['ratio_B1'][k][f'10000-{ell}']:.2f}")
+
+
+def deploy_checks():
+    """Deployment checks: results/deploy_checks.json (deploy_checks.py) and the near-eps re-measurement per task."""
+    d = load("results/deploy_checks.json")
+    # 1. refund share and gamma under dependent blocks
+    V = {"e1": "Max", "e05": "Half", "e0": "None", "g025": "Quarter"}
+    for phi, P in (("0.2", "Low"), ("0.5", "Mid")):
+        for k, K in V.items():
+            m(f"rsh{K}{P}Fifteen", pct(d["dependence"][f"{phi}-15"][k]))
+    for arm, A in (("natural", "Nat"), ("neareps", "Ne"), ("realflaky", "Rf")):
+        c = d["dependence_cost"][arm]
+        m(f"rshExtraHalf{A}", f"{100 * (c['e05'] / c['e1'] - 1):.0f}")
+    # 2. deployment rows; per-loop calibration-inclusive ratios
+    dl = d["deployment"]
+    for arm, A in (("natural", "Nat"), ("neareps", "Ne"), ("realflaky", "Rf")):
+        for k, K in (("default", "Sa"), ("total05", "Tot"), ("B4", "Bfour"), ("fixedn15", "Fixn")):
+            v = dl[arm][k]
+            m(f"dlFar{K}{A}", pct(v["far"], 2))
+            m(f"dlFrr{K}{A}", pct(v["frr"] or 0, 1))
+            m(f"dlBpl{K}{A}", num(v["bpa_loop"], 0))
+        m(f"plRatioBfour{A}", num(dl[arm]["default"]["bpa_loop"] / dl[arm]["B4"]["bpa_loop"], 2))
+    m("plRatioFixnNat", num(dl["natural"]["default"]["bpa_loop"] / dl["natural"]["fixedn15"]["bpa_loop"], 2))
+    m("plCalibShareNat", f"{100 * 400 / dl['natural']['default']['bpa_loop']:.0f}")
+    sp = load("results/design_checks.json")["split"]["total05"]
+    rows = []
+    lab = {"default": ("\\sa{}, $\\eps=\\hat p_0+0.05$", "declared $\\eps$, 0.05"),
+           "total05": ("\\sa{}, $\\eps=L_{0.99}+0.05$, $\\alpha=0.04$", "$p_0+0.05$, 0.05"),
+           "B4": ("B4 Fixed-sample CI", "none"), "fixedn15": ("Fixed-$n$ Bonf.-15 ($n_0$)", "declared $\\eps$, cap 15")}
+    for k, (name, g) in lab.items():
+        cells = []
+        for arm in ("natural", "neareps", "realflaky"):
+            v = dl[arm][k]
+            cells += [pct(v["far"], 2), pct(v["frr"] or 0, 1), num(v["bpa_loop"], 0)]
+        rows.append(f"{name} & {g} & " + " & ".join(cells) + "\\\\\n")
+    cells = []
+    for arm in ("natural", "neareps", "realflaky"):
+        v = sp[arm]
+        per_loop = v["blocks_per_accept"] * (1 + 400 / v["blocks_per_loop"])
+        cells += [pct(v["far"], 2), pct(v["frr"] or 0, 1), num(per_loop, 0)]
+    rows.append(f"\\sa{{}}, $\\eps=L_{{0.99}}+\\delta$, $\\alpha=0.04$$^*$ & $p_0+\\delta$, 0.05 & " + " & ".join(cells) + "\\\\\n")
+    write("tab_deploy.tex", "\\begin{tabular}{@{}llrrrrrrrrr@{}}\n\\toprule\n& & \\multicolumn{3}{c}{\\textbf{Natural}} & "
+          "\\multicolumn{3}{c}{\\textbf{Near $\\eps$}} & \\multicolumn{3}{c}{\\textbf{Real flaky}}\\\\\n"
+          "\\cmidrule(lr){3-5}\\cmidrule(lr){6-8}\\cmidrule(l){9-11}\n\\textbf{Configuration} & \\textbf{Guarantee, level} & FAR & FRR & Blk/acc. & "
+          "FAR & FRR & Blk/acc. & FAR & FRR & Blk/acc.\\\\\n\\midrule\n" + "".join(rows) + "\\bottomrule\n\\end{tabular}\n")
+    # 3. on-policy prefix
+    pf = d["prefix"]
+    m("pfAfter", word_int(pf["natural"]["after_green"]))
+    m("pfCands", word_int(pf["natural"]["candidates"]))
+    m("pfAfterPct", f"{100 * pf['natural']['after_green'] / pf['natural']['candidates']:.0f}")
+    for arm, A in (("natural", "Nat"), ("realflaky", "Rf")):
+        for n, K in (("B1 stop at first pass", "Bone"), ("B4 peeking Clopper-Pearson", "Bfour"), ("SeqAccept", "Sa")):
+            m(f"pf{K}{A}", pct(pf[arm]["far_prefix"][n], 2 if K != "Bone" else 1))
+    # 4. screening: chosen against unchosen usable pairs
+    sc = d["screening"]
+    for t, T in (("chosen", "Chosen"), ("unchosen", "Unchosen")):
+        m(f"selc{T}N", sc[t]["n"])
+        m(f"selcFlaky{T}", f"{sc[t]['flaky_rate']:.2f}")
+        m(f"selcPzero{T}", f"{sc[t]['p0']:.2f}")
+        m(f"selcSec{T}", f"{sc[t]['seconds_per_block']:.2f}")
+    # 5. latency
+    m("latBfourNat", num(d["latency"]["natural"]["B4"]))
+    m("latBfourRf", num(d["latency"]["realflaky"]["B4"]))
+    # near-eps re-measurement per task (near_eps_checks.py 7, pooled) and the re-measured rates
+    ne = load("results/near_eps_checks.json")["firmer"]["pooled"]
+    T = {"filestack@neareps": "Filestack", "kanren@neareps": "Kanren", "pymeterbus@neareps": "Pymeterbus"}
+    for n, K in (("B4 peeking Clopper-Pearson", "Bfour"), ("B5 naive confidence sequence", "Bfive"),
+                 ("B6 SeqAccept, no refund", "Bsix"), ("SeqAccept", "Sa"), ("B1 stop at first pass", "Bone")):
+        for t, TT in T.items():
+            m(f"frTk{TT}{K}", pct(ne[n]["per_task"][t], 2))
+            m(f"frTk{TT}{K}Lb", "$^\\ddagger$" if ne[n]["tasks_lower"][t] > 0.05 else "")
+    loops = {t: sum(1 for p in Path("episodes_neareps").glob(f"{t}-*.json")) for t in T}
+    for t, TT in T.items():
+        m(f"frTk{TT}Loops", loops[t])
+    truth = load("results/neareps_truth.json")
+    rates = []
+    for t, fs in truth.items():
+        for f, v in fs.items():
+            ep = next(load(p) for p in sorted(Path("episodes_neareps").glob(f"{t}-*.json")) if f in load(p)["fixes"])
+            fx = ep["fixes"][f]
+            allb = (fx["truth"] if len(fx["seeds"]) == len(fx["truth"]) else fx["truth"] + fx["pool"]) + v["extra"]
+            r = sum(allb) / len(allb)
+            if r > ep["p0"] + 0.05:
+                rates.append(r - ep["p0"] - 0.05)
+    rates.sort()
+    m("frRateN", len(rates))
+    m("frRateMed", pct(median(rates), 1))
+    m("frRateMax", pct(rates[-1], 1))
+    m("frRateWithinOne", sum(r <= 0.01 for r in rates))
 
 
 def design_checks():
@@ -1961,6 +2054,7 @@ if __name__ == "__main__":
     checks()
     near_eps_checks()
     design_checks()
+    deploy_checks()
     exec_order()
     (GEN / "numbers.tex").write_text(
         "% generated by intern1/impl/paper_numbers.py; do not edit\n"

@@ -40,6 +40,8 @@ step "near-eps comparators and labels, cap 10,000, refund crossing, redrawn eps,
 "$PY" near_eps_checks.py
 step "design checks: mixture wallet, gamma, harmonic with refund, power-sized fixed-n, Corollary 4.3 at total level 0.05 -> results/design_checks.json"
 "$PY" design_checks.py
+step "deployment checks: refund share under dependence, eps = L + 0.05 at alpha 0.04, on-policy prefix, screening, latency -> results/deploy_checks.json"
+"$PY" deploy_checks.py
 step "paper numbers, tables and figures                    -> ${SEQACCEPT_PAPER_DIR:-paper_out}"
 "$PY" paper_numbers.py
 echo; echo "done"

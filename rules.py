@@ -107,6 +107,8 @@ def _refund(mode, alpha_j, E, peak):
     """r_j returned to the pool when a candidate is rejected or set aside."""
     if mode == "max":  # Theorem 4.2's bound: W + alpha_j E stays a supermartingale
         return alpha_j * min(E, 1.0)
+    if type(mode) is float:  # partial refund: a share of the maximal one, still within Theorem 4.2
+        return mode * alpha_j * min(E, 1.0)
     if mode == "uncapped":  # the online subset's refund (D20, D24): can exceed the stake, outside the proof
         return alpha_j * (1 - alpha_j * peak)
     if mode:  # pre-round-3 default: s_j = alpha_j * peak, never more than the wallet (D24)
@@ -121,6 +123,7 @@ def seq_accept(n, block, alpha=0.05, eps=0.05, gamma=0.5, refund="max", max_bloc
     Accept j when its wallet E >= 1/alpha_j; reject when the opposing wallet R >= reject_at (an anytime-valid
     "lower confidence bound > eps" at level 1/reject_at, Alg. 1 line 9). A rejected candidate, and one set aside at the
     block cap, refunds r_j = alpha_j * min(E, 1), the largest refund Theorem 4.2 admits (EASE round 3: the default).
+    refund=e (a float in [0, 1]) refunds the share e of that maximal refund, also within Theorem 4.2.
     refund=True is the earlier capped refund alpha_j * min(E, 1 - alpha_j G_j); refund="uncapped" is the online
     subset's alpha_j (1 - alpha_j G_j), outside the proof; refund=False gives B6 (no refund anywhere).
     Every candidate starts from wallet 1: evidence is never carried between candidates.

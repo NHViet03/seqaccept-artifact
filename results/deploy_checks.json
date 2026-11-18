@@ -1,0 +1,233 @@
+{
+ "dependence": {
+  "0.0-1": {
+   "e1": 0.002,
+   "e05": 0.002,
+   "e0": 0.002,
+   "g025": 0.001
+  },
+  "0.0-15": {
+   "e1": 0.009,
+   "e05": 0.004,
+   "e0": 0.001,
+   "g025": 0.005
+  },
+  "0.2-1": {
+   "e1": 0.006,
+   "e05": 0.006,
+   "e0": 0.006,
+   "g025": 0.003
+  },
+  "0.2-15": {
+   "e1": 0.036,
+   "e05": 0.021,
+   "e0": 0.012,
+   "g025": 0.024
+  },
+  "0.5-1": {
+   "e1": 0.058,
+   "e05": 0.058,
+   "e0": 0.058,
+   "g025": 0.046
+  },
+  "0.5-15": {
+   "e1": 0.283,
+   "e05": 0.177,
+   "e0": 0.135,
+   "g025": 0.267
+  }
+ },
+ "dependence_cost": {
+  "natural": {
+   "e1": 174.1705263157895,
+   "e05": 178.06,
+   "e0": 184.90353189246179,
+   "g025": 190.1
+  },
+  "neareps": {
+   "e1": 1860.5057088487156,
+   "e05": 1888.2657074340527,
+   "e0": 1893.6650671785028,
+   "g025": 1958.4890510948906
+  },
+  "realflaky": {
+   "e1": 2976.909963099631,
+   "e05": 3182.745535714286,
+   "e0": 3611.745481927711,
+   "g025": 3425.426656738645
+  }
+ },
+ "deployment": {
+  "natural": {
+   "default": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 174.1705263157895,
+    "frr_high": null,
+    "bpa_loop": 746.8021052631578,
+    "worst_loop": 0.0
+   },
+   "total05": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 175.19,
+    "frr_high": null,
+    "bpa_loop": 747.8215789473684,
+    "worst_loop": 0.0
+   },
+   "B4": {
+    "far": 0.0011029411764705882,
+    "frr": 0.0,
+    "blocks_per_accept": 105.30688386757751,
+    "frr_high": null,
+    "bpa_loop": 677.0357330530741,
+    "worst_loop": 0.05
+   },
+   "fixedn15": {
+    "far": 0.0,
+    "frr": 0.0,
+    "blocks_per_accept": 125.7057894736842,
+    "frr_high": null,
+    "bpa_loop": 698.3373684210526,
+    "worst_loop": 0.0
+   }
+  },
+  "neareps": {
+   "default": {
+    "far": 0.002916666666666667,
+    "frr": 0.0,
+    "blocks_per_accept": 1860.5057088487156,
+    "frr_high": null,
+    "bpa_loop": 2773.9215033301616,
+    "worst_loop": 0.02
+   },
+   "total05": {
+    "far": 0.0020833333333333333,
+    "frr": 0.0,
+    "blocks_per_accept": 1889.1603638104357,
+    "frr_high": null,
+    "bpa_loop": 2808.26041168023,
+    "worst_loop": 0.015
+   },
+   "B4": {
+    "far": 0.11416666666666667,
+    "frr": 0.0,
+    "blocks_per_accept": 626.7999375780274,
+    "frr_high": null,
+    "bpa_loop": 1226.0508739076154,
+    "worst_loop": 0.61
+   },
+   "fixedn15": {
+    "far": 0.0027083333333333334,
+    "frr": 0.0,
+    "blocks_per_accept": 299.74963680387407,
+    "frr_high": null,
+    "bpa_loop": 1229.5317191283293,
+    "worst_loop": 0.015
+   }
+  },
+  "realflaky": {
+   "default": {
+    "far": 0.00625,
+    "frr": 0.041044776119402986,
+    "blocks_per_accept": 2976.909963099631,
+    "frr_high": 0.1261904761904762,
+    "bpa_loop": 3590.932103321033,
+    "worst_loop": 0.45
+   },
+   "total05": {
+    "far": 0.0009615384615384616,
+    "frr": 0.2992537313432836,
+    "blocks_per_accept": 8722.388185654008,
+    "frr_high": 0.6642857142857143,
+    "bpa_loop": 9600.025316455696,
+    "worst_loop": 0.1
+   },
+   "B4": {
+    "far": 0.023076923076923078,
+    "frr": 0.0,
+    "blocks_per_accept": 391.09470752089135,
+    "frr_high": 0.0,
+    "bpa_loop": 970.4818941504178,
+    "worst_loop": 1.0
+   },
+   "fixedn15": {
+    "far": 0.0004807692307692308,
+    "frr": 0.5746268656716418,
+    "blocks_per_accept": 305.4678260869565,
+    "frr_high": 0.9333333333333333,
+    "bpa_loop": 1752.424347826087,
+    "worst_loop": 0.05
+   }
+  }
+ },
+ "prefix": {
+  "natural": {
+   "after_green": 1478,
+   "candidates": 1866,
+   "far_prefix": {
+    "B1 stop at first pass": 0.1922794117647059,
+    "B4 peeking Clopper-Pearson": 0.0,
+    "B5 naive confidence sequence": 0.0,
+    "B6 SeqAccept, no refund": 0.0,
+    "SeqAccept": 0.0
+   },
+   "far_full": {
+    "B1 stop at first pass": 0.2540441176470588,
+    "B4 peeking Clopper-Pearson": 0.0011029411764705882,
+    "B5 naive confidence sequence": 0.0,
+    "B6 SeqAccept, no refund": 0.0,
+    "SeqAccept": 0.0
+   }
+  },
+  "realflaky": {
+   "after_green": 1192,
+   "candidates": 1433,
+   "far_prefix": {
+    "B1 stop at first pass": 0.22067307692307692,
+    "B4 peeking Clopper-Pearson": 0.009134615384615385,
+    "B5 naive confidence sequence": 0.0038461538461538464,
+    "B6 SeqAccept, no refund": 0.0014423076923076922,
+    "SeqAccept": 0.002403846153846154
+   },
+   "far_full": {
+    "B1 stop at first pass": 0.32403846153846155,
+    "B4 peeking Clopper-Pearson": 0.023076923076923078,
+    "B5 naive confidence sequence": 0.008653846153846154,
+    "B6 SeqAccept, no refund": 0.0057692307692307696,
+    "SeqAccept": 0.00625
+   }
+  }
+ },
+ "screening": {
+  "chosen": {
+   "n": 8,
+   "flaky_rate": 0.675,
+   "p0": 0.0,
+   "seconds_per_block": 0.6049055447263527
+  },
+  "unchosen": {
+   "n": 14,
+   "flaky_rate": 0.6499999999999999,
+   "p0": 0.0,
+   "seconds_per_block": 0.5626252292247955
+  }
+ },
+ "latency": {
+  "natural": {
+   "default": 1.129292681181249,
+   "B4": 0.6827922941108899,
+   "fixedn15": 0.8150554002309011
+  },
+  "neareps": {
+   "default": 8.673459429297358,
+   "B4": 2.9220678028627325,
+   "fixedn15": 1.3973976545193305
+  },
+  "realflaky": {
+   "default": 14.542786625077019,
+   "B4": 1.9105740355516676,
+   "fixedn15": 1.4922699949525036
+  }
+ }
+}

@@ -72,3 +72,10 @@ def test_false_accept_rate_on_all_broken_streams_stays_below_alpha(p0):
         res = seq_accept(20, lambda j: int(rng.random() < p_fail), alpha=0.05, eps=p0 + 0.05)
         accepted_broken += res.accepted is not None
     assert accepted_broken / reps <= 0.05
+
+
+def test_partial_refund_is_a_share_of_the_maximal_one():
+    from rules import _refund
+    assert _refund(0.5, 0.02, 0.4, 3.0) == 0.5 * _refund("max", 0.02, 0.4, 3.0)
+    assert _refund(0.0, 0.02, 0.4, 3.0) == 0.0
+    assert _refund(1.0, 0.02, 2.0, 3.0) == _refund("max", 0.02, 2.0, 3.0) == 0.02

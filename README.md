@@ -37,6 +37,7 @@ All run offline from the recorded data; each writes one file in `results/`. The 
 | `slice_caps.py` (`slice_caps.json`) | the shared block cap against caps scaled with log(1/alpha_j) |
 | `design_checks.py` (`design_checks.json`) | mixture wallet and gamma 3/4 on every arm, harmonic spending with the refund, fixed-sample Bonferroni sized for power, Corollary 4.3 at total level 0.05, near-eps exceedances by lower bound |
 | `near_eps_checks.py` (`near_eps_checks.json`) | near-eps arm with every comparator and the earlier settings, near-eps labels, a cap of 10,000, refund crossing against harmonic spending, eps redrawn from calibration blocks, start-up cost in the cost model |
+| `deploy_checks.py` (`deploy_checks.json`) | refund share and gamma under dependent blocks, deployment configurations in matched conditions (eps = L + 0.05 at alpha 0.04), on-policy prefix of the recorded streams, chosen against unchosen IDoFT pairs, comparator latency |
 | `neareps_truth.py` (`neareps_truth.json`, Docker) | 2,000 extra blocks for each of the 60 near-eps candidates within 3 points of eps; `near_eps_checks.py` step 7 relabels the arm with them |
 | `power_tuning.py`, `label_risk.py`, `exec_order.py`, `run_sim.py`, `reuse_demo.py` | mixture wallet and gamma/rho sweep; pool size and label risk; execution-order check; simulated worst case; Theorem 4.4 simulation |
 

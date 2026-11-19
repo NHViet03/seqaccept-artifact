@@ -445,5 +445,20 @@
     "worst_loop": 0.0
    }
   }
+ },
+ "yamicache_firm": {
+  "far": 0.0,
+  "worst": 0.0,
+  "accepted": {
+   "0e6e2c0bb015": {
+    "truth200": 0.265,
+    "extra": 0.234
+   },
+   "6cb4802ecdc3": {
+    "truth200": 0.255,
+    "extra": 0.235
+   }
+  },
+  "eps": 0.25
  }
 }

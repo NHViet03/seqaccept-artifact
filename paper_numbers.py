@@ -1949,6 +1949,15 @@ def deploy_checks():
     y = d["yamicache"]
     assert y["risky"] == y["false"], "the paper says all of SeqAccept's yamicache false acceptances have uncertain labels"
     m("yamFalse", y["false"]); m("yamRisky", y["risky"]); m("yamReplays", y["replays"]); m("yamDistinct", y["distinct"])
+    # 14. the yamicache candidates behind those false acceptances, re-measured on fresh blocks (neareps_truth.py)
+    yf, ft = d["yamicache_firm"], json.loads(Path("results/flaky_truth.json").read_text())
+    runs = [v for t in ft.values() for f, v in t.items() if f in y["ids"]]
+    kn = [(round(v["truth200"] * 200) + sum(v["extra"]), 200 + len(v["extra"])) for v in runs]
+    assert len(runs) == y["distinct"] and all(k / n < yf["eps"] for k, n in kn) and yf["far"] == 0
+    m("yamFirmExtra", f"{len(runs[0]['extra']):,}"); m("yamFirmBlocks", f"{kn[0][1]:,}")
+    m("yamFirmLo", pct(min(k / n for k, n in kn))); m("yamFirmHi", pct(max(k / n for k, n in kn)))
+    m("yamFirmUp", pct(max(replay.cp_upper(k, n) for k, n in kn)))
+    m("yamFirmEps", pct(yf["eps"], 0)); m("yamFirmFar", pct(yf["far"]))
     for n, K in (("B4 peeking Clopper-Pearson", "Bfour"), ("B5 naive confidence sequence", "Bfive"), ("SeqAccept", "Sa")):
         m(f"nc{K}Distinct", d["near_candidates"][n]["distinct"])
         m(f"nc{K}False", d["near_candidates"][n]["false"])

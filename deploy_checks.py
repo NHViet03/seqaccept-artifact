@@ -3,7 +3,7 @@
 1. Refund share under dependent blocks: SeqAccept with a share e in {0, 0.5, 1} of the maximal refund, and with
    gamma = 1/4, on 1 and 15 broken candidates at p = 0.06 whose blocks follow a Markov chain with lag-1 correlation
    phi in {0, 0.2, 0.5} (1,000 runs, seed 51, as extra_analyses.py step 6); and the same variants' cost on natural,
-   near-eps and real-flaky loops. Every variant is covered by Theorem 4.2.
+   near-eps and real-flaky loops (blocks per accept and FRR). Every variant is covered by Theorem 4.2.
 2. Deployment rows in matched conditions: the default, Corollary 4.3 at total level 0.05 with margin 0.05
    (eps = L_0.99 + 0.05, alpha = 0.04, alpha_0 = 0.01), B4 and fixed-n Bonferroni-15, all scored against labels at
    p0hat + 0.05: FAR, FRR, FRR at p0 >= 0.2 and blocks per accept with the task's p0 blocks repeated per loop.
@@ -34,9 +34,12 @@
     of each re-measured candidate's blocks as pool and label, SeqAccept's FAR there, and the re-measured rates of the
     candidates behind its false acceptances.
 11. Exposure: share of recorded loops with at least 1 and at least 5 Broken candidates (stream positions) failing within
-    one point above eps on their truth blocks, the counts at which B4 and B5 exceed alpha on the constructed grid.
+    one point above eps on their truth blocks, the counts at which B4 and B5 exceed alpha on the constructed grid; the
+    same within 3 points; and the posterior chance (Beta on the truth blocks) of at least one within one point.
 
-  uv run python deploy_checks.py
+  uv run python deploy_checks.py [--resume]     all steps (--resume keeps steps 1-5 from the saved results)
+  uv run python deploy_checks.py --exposure     step 11 only
+  uv run python deploy_checks.py --dependence-cost   step 1's cost and FRR on recorded loops only
 """
 import csv
 import json
@@ -145,13 +148,19 @@ def screening():
     return out
 
 
+def dependence_cost(out, arms):
+    """Step 1, cost side: blocks per accept and FRR of each refund variant on the three arms (same seeds)."""
+    rows = {arm: {k: row(rs, e_) for k, rs in evaluate_rules(e_, lambda ep: variants(eps_of(ep)), reps=reps).items()}
+            for arm, e_, reps in arms}
+    out["dependence_cost"] = {a: {k: v["blocks_per_accept"] for k, v in d.items()} for a, d in rows.items()}
+    out["dependence_frr"] = {a: {k: v["frr"] for k, v in d.items()} for a, d in rows.items()}
+
+
 def run15(out, natural, near, flaky, arms):
     print("1. refund share and gamma under dependent blocks")
     out["dependence"] = {f"{phi}-{n}": {k: correlated(r, CORR_P, n, phi, 1000, 51) for k, r in variants().items()}
                          for phi in PHIS for n in NS}
-    out["dependence_cost"] = {arm: {k: row(rs, e_)["blocks_per_accept"]
-                                    for k, rs in evaluate_rules(e_, lambda ep: variants(eps_of(ep)), reps=reps).items()}
-                              for arm, e_, reps in arms}
+    dependence_cost(out, arms)
     print("   " + json.dumps({k: {v: round(100 * x, 1) for v, x in d.items()} for k, d in out["dependence"].items()}))
     print("   " + json.dumps({a: {k: round(v or 0) for k, v in d.items()} for a, d in out["dependence_cost"].items()}))
 
@@ -185,6 +194,34 @@ def run15(out, natural, near, flaky, arms):
     print("   " + json.dumps({a: {k: round(v, 1) for k, v in d.items()} for a, d in out["latency"].items()}))
 
 
+def exposure(out, natural, flaky, near):
+    """Step 11. Share of loops with at least 1 (5) Broken stream positions whose truth rate lies in (eps, eps + w], for
+    w = 1 point (where B4 exceeds alpha with one candidate on the constructed grid) and w = 3 points (the near-eps arm's
+    window, wider than the label's standard error); and, matched to label resolution, the posterior chance under
+    Beta(1 + fails, 1 + passes) on the truth blocks that a loop holds at least one candidate with p in (eps, eps + 0.01],
+    averaged over loops (distinct candidates of a loop treated as independent)."""
+    from label_risk import beta_cdf
+    print("11. exposure to candidates near eps")
+    out["exposure"] = {}
+    for arm, e_ in (("natural", natural), ("realflaky", flaky), ("neareps", near)):
+        r = {"loops": len(e_)}
+        for w, tag in ((0.01, ""), (0.03, "_w3")):
+            counts = [sum(eps_of(ep) < mean(ep["fixes"][f]["truth"]) <= eps_of(ep) + w for f in ep["stream"]) for ep in e_]
+            r[f"at_least_1{tag}"] = sum(c >= 1 for c in counts) / len(e_)
+            r[f"at_least_5{tag}"] = sum(c >= 5 for c in counts) / len(e_)
+        post = []
+        for ep in e_:
+            e, miss = eps_of(ep), 1.0
+            for f in set(ep["stream"]):
+                t = ep["fixes"][f]["truth"]
+                a, b = 1 + sum(t), 1 + len(t) - sum(t)
+                miss *= 1 - max(0.0, beta_cdf(min(e + 0.01, 1), a, b) - beta_cdf(e, a, b))
+            post.append(1 - miss)
+        r["posterior_1"] = mean(post)
+        out["exposure"][arm] = r
+    print("   " + json.dumps(out["exposure"]))
+
+
 if __name__ == "__main__":
     episodes = load("episodes", lambda p: not replay.excluded(p))
     natural = [ep for ep in episodes if ep.get("flakiness", "natural") == "natural"]
@@ -192,6 +229,15 @@ if __name__ == "__main__":
     near = load("episodes_neareps")
     arms = (("natural", natural, replay.REPS), ("neareps", near, replay.NEAR_REPS), ("realflaky", flaky, replay.REPS))
     path = Path("results/deploy_checks.json")
+    if "--exposure" in sys.argv or "--dependence-cost" in sys.argv:  # one step only, into the existing results
+        out = json.loads(path.read_text())
+        if "--exposure" in sys.argv:
+            exposure(out, natural, flaky, near)
+        else:
+            dependence_cost(out, arms)
+            print("   " + json.dumps(out["dependence_cost"]) + "\n   " + json.dumps(out["dependence_frr"]))
+        path.write_text(json.dumps(out, indent=1, default=str))
+        raise SystemExit("saved results/deploy_checks.json (one step only)")
     out = json.loads(path.read_text()) if "--resume" in sys.argv and path.exists() else {}
     if "deployment" in out:
         print("steps 1-5 kept from results/deploy_checks.json (--resume)")
@@ -258,13 +304,7 @@ if __name__ == "__main__":
     out["discard_adversary"] = {f"{pol}-{n}": discard_adversary(pol, n, 2000, 43) for pol in ("near", "switch") for n in (15, 50)}
     print("   " + json.dumps(out["discard_adversary"]))
 
-    print("11. exposure to candidates within one point above eps")
-    out["exposure"] = {}
-    for arm, e_ in (("natural", natural), ("realflaky", flaky), ("neareps", near)):
-        counts = [sum(eps_of(ep) < mean(ep["fixes"][f]["truth"]) <= eps_of(ep) + 0.01 for f in ep["stream"]) for ep in e_]
-        out["exposure"][arm] = {"loops": len(e_), "at_least_1": sum(c >= 1 for c in counts) / len(e_),
-                                "at_least_5": sum(c >= 5 for c in counts) / len(e_)}
-    print("   " + json.dumps(out["exposure"]))
+    exposure(out, natural, flaky, near)
 
     print("12. default at alpha 0.04; default scored at p0hat + 0.109")
     sp_delta = json.loads(Path("results/design_checks.json").read_text())["split"]["total05"]["delta"]

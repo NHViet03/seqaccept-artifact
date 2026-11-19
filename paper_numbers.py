@@ -1068,8 +1068,25 @@ def ease():
           "& & \\textbf{Rec.} & \\multicolumn{3}{c}{\\textbf{Late streams}} & \\multicolumn{2}{c}{\\textbf{FAR \\%}}\\\\\n"
           "\\cmidrule(lr){4-6}\\cmidrule(lr){7-8}\n"
           "\\textbf{Refund} & \\textbf{Valid} & \\textbf{Blk/acc.} & $k{=}10$ \\% & $k{=}40$ \\% & \\textbf{Blk/acc.} & \\textbf{Stress} & \\textbf{Worst}\\\\\n\\midrule\n"
-          + body + "\\bottomrule\n\\end{tabular}\n")
+          + body + "\\bottomrule\n\\end{tabular}\n\n\\smallskip\n" + refund_caps_panel())
     figure_ease(d)
+
+
+def refund_caps_panel():
+    """Second panel of the refund table: shared cap against caps scaled with the slice (slice_caps.py)."""
+    sc = load("results/slice_caps.json")
+    body = ""
+    for n, show in (("B6", "None (B6)"), ("Harmonic", "Harmonic, none"), ("SeqAccept", "Maximal (\\sa{})")):
+        cells = [f'{pct(sc[c]["late"]["40"][n])}' for c in ("shared", "slice")]
+        cells += [num(sc[c]["neareps"][n]["blocks_per_loop"], 0) for c in ("shared", "slice")]
+        cells += [num(sc[c]["natural"][n]["blocks_per_accept"], 0) for c in ("shared", "slice")]
+        body += f"{show} & " + " & ".join(cells) + "\\\\\n"
+    return ("\\begin{tabular}{@{}lrrrrrr@{}}\n\\toprule\n"
+            "& \\multicolumn{2}{c}{\\textbf{Late $k{=}40$ \\%}} & \\multicolumn{2}{c}{\\textbf{Near-$\\eps$ blk/loop}} & "
+            "\\multicolumn{2}{c}{\\textbf{Natural blk/acc.}}\\\\\n"
+            "\\cmidrule(lr){2-3}\\cmidrule(lr){4-5}\\cmidrule(l){6-7}\n"
+            "\\textbf{Refund, schedule} & shared & scaled & shared & scaled & shared & scaled\\\\\n\\midrule\n"
+            + body + "\\bottomrule\n\\end{tabular}\n")
 
 
 def figure_ease(d):
@@ -1880,6 +1897,48 @@ def near_eps_checks():
             m(f"oh{T}{L}Big", f"{oh['ratio_B1'][k][f'10000-{ell}']:.2f}")
 
 
+def deploy_main(d, dl):
+    """Main-text deployment table: the default, the default at alpha = 0.04, eps = L_0.99 + 0.05 and + delta, and B4,
+    with calibration repeated per loop (deploy_checks.json steps 2 and 12; the L + delta row from design_checks.json)."""
+    sp = load("results/design_checks.json")["split"]["total05"]
+    per_loop = lambda v: v["blocks_per_accept"] * (1 + 400 / v["blocks_per_loop"])
+    rows = [("Default", "$\\eps$, 0.05", {a: dl[a]["default"] for a in dl}, lambda v: v["bpa_loop"]),
+            ("Default, $\\alpha{=}.04$", "$p_0{+}\\delta$, 0.05", d["default04"], lambda v: v["bpa_loop"]),
+            ("$L_{.99}{+}.05$, $\\alpha{=}.04$", "$p_0{+}.05$, 0.05", {a: dl[a]["total05"] for a in dl}, lambda v: v["bpa_loop"]),
+            ("$L_{.99}{+}\\delta$, $\\alpha{=}.04^*$", "$p_0{+}\\delta$, 0.05", sp, per_loop),
+            ("B4", "none", {a: dl[a]["B4"] for a in dl}, lambda v: v["bpa_loop"])]
+    body = ""
+    for name, g, v, bpl in rows:
+        n, e, r = v["natural"], v["neareps"], v["realflaky"]
+        body += (f"{name} & {g} & {num(bpl(n), 0)} & {pct(e['far'], 2)} & {num(bpl(e), 0)} & {pct(r['far'], 2)} & "
+                 f"{pct(r['frr'] or 0, 1)} & {num(bpl(r), 0)}\\\\\n")
+    write("tab_deploy_main.tex", "\\begin{tabular}{@{}llrrrrrr@{}}\n\\toprule\n& & \\textbf{Nat.} & "
+          "\\multicolumn{2}{c}{\\textbf{Near $\\eps$}} & \\multicolumn{3}{c}{\\textbf{Real flaky (exploratory)}}\\\\\n"
+          "\\cmidrule(lr){3-3}\\cmidrule(lr){4-5}\\cmidrule(l){6-8}\n\\textbf{Rule} & \\textbf{Protects} & Blk/acc. & FAR & Blk/acc. & "
+          "FAR & FRR & Blk/acc.\\\\\n\\midrule\n" + body + "\\bottomrule\n\\end{tabular}\n")
+
+
+def dependence_table(d):
+    """Dependence variants: FAR on 15 broken candidates at p = 0.06 under a lag-1 chain, and cost and FRR on recorded
+    loops (deploy_checks.json steps 1 and 13)."""
+    dep, cost, frr, df = d["dependence"], d["dependence_cost"], d["dependence_frr"], d["deflated"]
+    body = ""
+    for k, name in (("e1", "\\sa{} (maximal)"), ("e05", "Half refund"), ("e0", "No refund (B6)"), ("g025", "$\\gamma=1/4$")):
+        far = [pct(dep[f"{phi}-15"][k]) for phi in ("0.0", "0.2", "0.5")]
+        body += (f"{name} & independent & " + " & ".join(far) + f" & {num(cost['natural'][k], 0)} & "
+                 f"{num(cost['realflaky'][k], 0)} & {pct(frr['realflaky'][k] or 0)}\\\\\n")
+    for pm in ("0.25", "0.5"):
+        v = df[pm]
+        far = [pct(v["far"][phi]) for phi in ("0.0", "0.2", "0.5")]
+        body += (f"$\\eps(1-{pm.lstrip('0')})$ wallet & $\\phi\\le{pm.lstrip('0')}$ & " + " & ".join(far) + f" & "
+                 f"{num(v['natural']['blocks_per_accept'], 0)} & {num(v['realflaky']['blocks_per_accept'], 0)} & "
+                 f"{pct(v['realflaky']['frr'] or 0)}\\\\\n")
+    write("tab_dependence.tex", "\\begin{tabular}{@{}llrrrrrr@{}}\n\\toprule\n& & \\multicolumn{3}{c}{\\textbf{FAR \\% at $\\phi$}} & "
+          "\\multicolumn{2}{c}{\\textbf{Blk/acc.}} & \\textbf{FRR}\\\\\n\\cmidrule(lr){3-5}\\cmidrule(lr){6-7}\\cmidrule(l){8-8}\n"
+          "\\textbf{Variant} & \\textbf{Valid for} & 0 & 0.2 & 0.5 & Nat. & Flaky & Flaky \\%\\\\\n\\midrule\n"
+          + body + "\\bottomrule\n\\end{tabular}\n")
+
+
 def deploy_checks():
     """Deployment checks: results/deploy_checks.json (deploy_checks.py) and the near-eps re-measurement per task."""
     d = load("results/deploy_checks.json")
@@ -1972,6 +2031,11 @@ def deploy_checks():
     m("expOneNat", pct(ex["natural"]["at_least_1"]))
     m("expOneRf", pct(ex["realflaky"]["at_least_1"]))
     m("expFiveRf", pct(ex["realflaky"]["at_least_5"]))
+    for arm, A in (("natural", "Nat"), ("realflaky", "Rf")):
+        m(f"expThree{A}", pct(ex[arm]["at_least_1_w3"])); m(f"expPost{A}", pct(ex[arm]["posterior_1"]))
+    m("expFiveThreeRf", pct(ex["realflaky"]["at_least_5_w3"]))
+    deploy_main(d, dl)
+    dependence_table(d)
     for arm, A in (("natural", "Nat"), ("realflaky", "Rf")):
         v = dl[arm]["default"]
         m(f"lat{A}Cal", num(d["latency"][arm]["default"] * v["bpa_loop"] / v["blocks_per_accept"]))

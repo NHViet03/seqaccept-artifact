@@ -489,5 +489,61 @@
    "e0": 0.05373134328358209,
    "g025": 0.048507462686567165
   }
+ },
+ "attempts": {
+  "natural": {
+   "B1 stop at first pass": {
+    "median": 1,
+    "p90": 3,
+    "none": 0.11801470588235294
+   },
+   "B4 peeking Clopper-Pearson": {
+    "median": 1,
+    "p90": 3,
+    "none": 0.3003676470588235
+   },
+   "B5 naive confidence sequence": {
+    "median": 1.0,
+    "p90": 3,
+    "none": 0.3014705882352941
+   },
+   "B6 SeqAccept, no refund": {
+    "median": 1,
+    "p90": 3,
+    "none": 0.3025735294117647
+   },
+   "SeqAccept": {
+    "median": 1.0,
+    "p90": 3,
+    "none": 0.3014705882352941
+   }
+  },
+  "realflaky": {
+   "B1 stop at first pass": {
+    "median": 1,
+    "p90": 3,
+    "none": 0.08413461538461539
+   },
+   "B4 peeking Clopper-Pearson": {
+    "median": 1.0,
+    "p90": 3,
+    "none": 0.3096153846153846
+   },
+   "B5 naive confidence sequence": {
+    "median": 1.0,
+    "p90": 4,
+    "none": 0.3346153846153846
+   },
+   "B6 SeqAccept, no refund": {
+    "median": 1.0,
+    "p90": 4,
+    "none": 0.36153846153846153
+   },
+   "SeqAccept": {
+    "median": 1,
+    "p90": 4,
+    "none": 0.3485576923076923
+   }
+  }
  }
 }

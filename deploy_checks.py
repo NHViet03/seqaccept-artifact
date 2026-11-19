@@ -30,6 +30,8 @@
     on 15 broken candidates at p = 0.06 with phi 0, 0.2 and 0.5 (2,000 runs, seed 51; FAR scored at eps), and its FRR
     and cost on natural and real-flaky loops. Under a two-state lag-1 chain a broken candidate fails after a pass with
     probability p (1 - phi) > eps', so the wallet stays a supermartingale for phi <= phi_max.
+15. Attempts per loop: position of the accepted candidate (median, 90th percentile) and the share of replays that
+    accept nothing, for the main rules on natural and real-flaky loops (same seeds as the main replays).
 14. If results/flaky_truth.json exists (neareps_truth.py on yamicache@realflaky, Docker): yamicache relabelled with all
     of each re-measured candidate's blocks as pool and label, SeqAccept's FAR there, and the re-measured rates of the
     candidates behind its false acceptances.
@@ -40,6 +42,7 @@
   uv run python deploy_checks.py [--resume]     all steps (--resume keeps steps 1-5 from the saved results)
   uv run python deploy_checks.py --exposure     step 11 only
   uv run python deploy_checks.py --dependence-cost   step 1's cost and FRR on recorded loops only
+  uv run python deploy_checks.py --attempts     step 15 only (attempts per loop)
 """
 import csv
 import json
@@ -222,6 +225,33 @@ def exposure(out, natural, flaky, near):
     print("   " + json.dumps(out["exposure"]))
 
 
+def attempts(out, natural, flaky):
+    """Step 15. Attempts per loop: the 1-based position of the accepted candidate in each replay (same seeds as the main
+    replays), median and 90th percentile over accepting replays, and the share of replays that try every candidate
+    without accepting, for B1, B4, B5, B6 and SeqAccept on natural and real-flaky loops."""
+    print("15. attempts per loop (accepted candidate's position)")
+    out["attempts"] = {}
+    for arm, e_ in (("natural", natural), ("realflaky", flaky)):
+        pos, none = {}, {}
+
+        def rules_of(ep):
+            rs = {n: r for n, r in all_rules(eps=eps_of(ep)).items() if n in MAIN}
+            return {n: recording(r, n) for n, r in rs.items()}
+
+        def recording(rule, name):
+            def run(n, block):
+                res = rule(n, block)
+                (pos.setdefault(name, []).append(res.accepted + 1) if res.accepted is not None
+                 else none.__setitem__(name, none.get(name, 0) + 1))
+                return res
+            return run
+        evaluate_rules(e_, rules_of, reps=replay.REPS)
+        total = len(e_) * replay.REPS
+        out["attempts"][arm] = {n: {"median": median(v), "p90": sorted(v)[int(0.9 * (len(v) - 1))],
+                                    "none": none.get(n, 0) / total} for n, v in pos.items()}
+    print("   " + json.dumps(out["attempts"]))
+
+
 if __name__ == "__main__":
     episodes = load("episodes", lambda p: not replay.excluded(p))
     natural = [ep for ep in episodes if ep.get("flakiness", "natural") == "natural"]
@@ -229,10 +259,12 @@ if __name__ == "__main__":
     near = load("episodes_neareps")
     arms = (("natural", natural, replay.REPS), ("neareps", near, replay.NEAR_REPS), ("realflaky", flaky, replay.REPS))
     path = Path("results/deploy_checks.json")
-    if "--exposure" in sys.argv or "--dependence-cost" in sys.argv:  # one step only, into the existing results
+    if {"--exposure", "--dependence-cost", "--attempts"} & set(sys.argv):  # one step only, into the existing results
         out = json.loads(path.read_text())
         if "--exposure" in sys.argv:
             exposure(out, natural, flaky, near)
+        elif "--attempts" in sys.argv:
+            attempts(out, natural, flaky)
         else:
             dependence_cost(out, arms)
             print("   " + json.dumps(out["dependence_cost"]) + "\n   " + json.dumps(out["dependence_frr"]))
@@ -305,6 +337,7 @@ if __name__ == "__main__":
     print("   " + json.dumps(out["discard_adversary"]))
 
     exposure(out, natural, flaky, near)
+    attempts(out, natural, flaky)
 
     print("12. default at alpha 0.04; default scored at p0hat + 0.109")
     sp_delta = json.loads(Path("results/design_checks.json").read_text())["split"]["total05"]["delta"]

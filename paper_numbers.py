@@ -2036,6 +2036,25 @@ def deploy_checks():
     m("expFiveThreeRf", pct(ex["realflaky"]["at_least_5_w3"]))
     deploy_main(d, dl)
     dependence_table(d)
+    # step 15: attempts per loop; retained suite sizes; power of the serial-against-parallel gate
+    at = d["attempts"]
+    for arm, A in (("natural", "Nat"), ("realflaky", "Rf")):
+        for n, K in (("SeqAccept", "Sa"), ("B4 peeking Clopper-Pearson", "Bfour")):
+            m(f"att{K}{A}Med", f"{at[arm][n]['median']:.0f}"); m(f"att{K}{A}Ninety", f"{at[arm][n]['p90']:.0f}")
+    import statistics
+    tasks = sorted({p.stem.split("-")[0] for p in Path("episodes").glob("*.json") if not replay.excluded(p)
+                    and "@" not in p.stem.split("-")[0]})
+    sizes = [len(json.loads(Path(f"tasks/{t}.json").read_text())["test_ids"]) for t in tasks]
+    assert len(sizes) == 17, len(sizes)
+    m("suiteMin", min(sizes)); m("suiteMed", f"{statistics.median(sizes):.0f}"); m("suiteMax", max(sizes))
+    from statistics import NormalDist
+    nb, p0g = 400, 0.2  # calibration blocks per mode; p0 of the flakiest tasks
+    def gate_power(gap):
+        p1, p2 = p0g, p0g + gap
+        pb = (p1 + p2) / 2
+        se0, se1 = (2 * pb * (1 - pb) / nb) ** 0.5, (p1 * (1 - p1) / nb + p2 * (1 - p2) / nb) ** 0.5
+        return 1 - NormalDist().cdf((1.96 * se0 - gap) / se1)
+    m("gatePowFive", pct(gate_power(0.05), 0)); m("gatePowTen", pct(gate_power(0.10), 0))
     for arm, A in (("natural", "Nat"), ("realflaky", "Rf")):
         v = dl[arm]["default"]
         m(f"lat{A}Cal", num(d["latency"][arm]["default"] * v["bpa_loop"] / v["blocks_per_accept"]))

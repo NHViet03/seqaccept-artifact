@@ -1960,6 +1960,22 @@ def deploy_checks():
             m(f"dlBpl{K}{A}", num(v["bpa_loop"], 0))
         m(f"plRatioBfour{A}", num(dl[arm]["default"]["bpa_loop"] / dl[arm]["B4"]["bpa_loop"], 2))
     m("plRatioFixnNat", num(dl["natural"]["default"]["bpa_loop"] / dl["natural"]["fixedn15"]["bpa_loop"], 2))
+    # cost-ratio table (round 15, E15-F): SeqAccept's blocks per accept over B4's and Bonferroni-15's, by accounting
+    rows = ""
+    for arm, A, show in (("natural", "Nat", "Natural"), ("neareps", "Ne", "Near $\\eps$ (expl.)"), ("realflaky", "Rf", "Real flaky (expl.)")):
+        sa, cells = dl[arm]["default"], []
+        for k in ("B4", "fixedn15"):
+            r0, r1 = sa["blocks_per_accept"] / dl[arm][k]["blocks_per_accept"], sa["bpa_loop"] / dl[arm][k]["bpa_loop"]
+            m(f"ctNone{'Bfour' if k == 'B4' else 'Fixn'}{A}", num(r0, 2))
+            cells += [num(r0, 2), num(r1, 2)]
+        rows += (f"{show} & {cells[0]} & {cells[1]} & {pct(dl[arm]['B4']['far'])} & {cells[2]} & {cells[3]} & "
+                 f"{pct(dl[arm]['fixedn15']['frr'] or 0)} & {pct(sa['frr'] or 0)}\\\\\n")
+    write("tab_cost.tex",
+          "\\begin{tabular}{@{}lrrrrrrr@{}}\n\\toprule\n"
+          "& \\multicolumn{3}{c}{\\textbf{vs.\\ B4}} & \\multicolumn{3}{c}{\\textbf{vs.\\ Bonf.-15}} & \\textbf{\\sa{}}\\\\\n"
+          "\\cmidrule(lr){2-4}\\cmidrule(lr){5-7}\\cmidrule(l){8-8}\n"
+          "\\textbf{Arm} & none & loop & FAR & none & loop & FRR & FRR\\\\\n\\midrule\n"
+          + rows + "\\bottomrule\n\\end{tabular}\n")
     m("plCalibShareNat", f"{100 * 400 / dl['natural']['default']['bpa_loop']:.0f}")
     sp = load("results/design_checks.json")["split"]["total05"]
     rows = []
